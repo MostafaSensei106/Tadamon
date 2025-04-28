@@ -18,7 +18,7 @@ flutter_native_splash:
   android_12:
     # Set the background color for Android 12+
     color: "#fcf1e1"
-    image: assets/icons/ic_launcher_foreground.png
+    image: assets/icons/play_store_512.png
 
   # Dark mode support
   #color_dark: "#1c110f"
