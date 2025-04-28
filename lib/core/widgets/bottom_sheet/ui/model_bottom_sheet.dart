@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
 import 'package:tadamon/core/widgets/bottom_sheet/widget/bottom_model_sheet_content.dart';
 import 'package:tadamon/core/widgets/bottom_sheet/widget/sheet_header.dart';
-import 'package:tadamon/core/widgets/textbutton_component/textbuttonicon_component.dart';
+import 'package:tadamon/core/widgets/textbutton_component/textbutton_component.dart';
 import 'package:tadamon/generated/l10n.dart';
 
 class ModelBottomSheet {
@@ -79,15 +79,19 @@ class ModelBottomSheet {
                       BottomModelSheetContent(
                         child: child,
                       ),
-                     Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                       children: [
-                         TextbuttonIconComponent(
-                          text: S.of(context).close, onPressed: () => {
-                          HapticFeedback.vibrate(),
-                          Navigator.of(context).pop()}, icon: Icons.close,),
-                       ],
-                     ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          TextButtonComponent(
+                            useInBorderRadius: true,
+                            text: S.of(context).close,
+                            onPressed: () => {
+                              HapticFeedback.vibrate(),
+                              Navigator.of(context).pop()
+                            },
+                          ),
+                        ],
+                      ),
                     ],
                   ),
                 )
@@ -98,5 +102,4 @@ class ModelBottomSheet {
       ),
     );
   }
-
 }

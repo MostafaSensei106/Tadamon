@@ -153,7 +153,9 @@ class _TermsGateState extends State<TermsGate> with TickerProviderStateMixin {
                     child: FadeTransition(
                       opacity: _controllers[index],
                       child: Card(
-                        margin: EdgeInsets.only(top: SenseiConst.margin.h),
+                        margin: index == 0
+                            ? EdgeInsets.only(top: SenseiConst.margin.h)
+                            : null,
                         elevation: 0,
                         child: Padding(
                           padding: const EdgeInsets.all(SenseiConst.padding),
