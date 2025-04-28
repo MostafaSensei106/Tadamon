@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
+import 'package:tadamon/core/config/fonts/fonts.dart';
 import 'package:tadamon/generated/l10n.dart';
 
 class HomeTip extends StatefulWidget {
@@ -124,12 +125,10 @@ class HomeTipState extends State<HomeTip> with SingleTickerProviderStateMixin {
               ),
               title: Text(
                 S.of(context).appName,
-                style: TextStyle(
-                  color: Theme.of(context).colorScheme.onSurface,
-                ),
               ),
               subtitle: Text(
                 S.of(context).appDescription,
+                style: AppTextStyle.subtitle(context),
               ),
             ),
           ),

@@ -59,5 +59,6 @@ class AppTextStyle {
   static TextStyle subtitle(BuildContext context) => TextStyle(
         fontWeight: FontWeight.normal,
         color: Theme.of(context).colorScheme.onSurface.withAlpha(0x80),
+        fontFamily: 'ArabicFont',
       );
 }
