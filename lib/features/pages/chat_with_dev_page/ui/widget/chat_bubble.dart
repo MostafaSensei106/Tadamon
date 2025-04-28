@@ -6,7 +6,7 @@ import 'package:tadamon/core/config/const/sensei_const.dart';
 import 'package:tadamon/core/services/share_Services/share_services.dart';
 import 'package:tadamon/core/services/url_services/url_services.dart';
 import 'package:tadamon/core/widgets/icon_button_component/icon_button_filledtonal_component.dart';
-import 'package:tadamon/features/pages/chat_with_dev/ui/widget/donation_for_dev_slider.dart';
+import 'package:tadamon/features/pages/chat_with_dev_page/ui/widget/donation_for_dev_slider.dart';
 
 class ChatBubble extends StatelessWidget {
   final String text;
@@ -77,7 +77,8 @@ class ChatBubble extends StatelessWidget {
                           color: Theme.of(context).colorScheme.secondaryFixed,
                           onPressed: () {
                             HapticFeedback.vibrate();
-                            UrlRunServices.launchURL(SenseiConst.devPortfolioLink);
+                            UrlRunServices.launchURL(
+                                SenseiConst.devPortfolioLink);
                           }),
                     ],
                   ),

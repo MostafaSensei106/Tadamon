@@ -3,7 +3,6 @@ import 'package:tadamon/core/config/const/sensei_const.dart';
 import 'package:tadamon/core/widgets/app_bar/action_drawer_icons.dart';
 import 'package:tadamon/core/widgets/app_bar/app_bar_title.dart';
 
-
 class SenseiAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
 
@@ -22,11 +21,8 @@ class SenseiAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
       ),
       child: AppBar(
-        automaticallyImplyLeading: false,
         elevation: 0,
-        actions: const [
-          ActionDrawerIcon(),
-        ],
+        leading: const ActionDrawerIcon(),
         title: AppBarTitle(title: title),
       ),
     );

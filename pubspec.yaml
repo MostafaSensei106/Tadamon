@@ -45,6 +45,7 @@ dependencies:
   file_picker: ^10.1.2
   firebase_app_check: ^0.3.2+4
   share_plus: ^11.0.0
+  package_info_plus: ^8.3.0
 
 
   

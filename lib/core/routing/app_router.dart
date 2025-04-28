@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tadamon/core/error/no_routes.dart';
 import 'package:tadamon/core/routing/routes.dart';
-import 'package:tadamon/features/pages/chat_with_dev/ui/page/chat_with_dev.dart';
+import 'package:tadamon/features/pages/app_info_page/ui/page/app_info.dart';
+import 'package:tadamon/features/pages/chat_with_dev_page/ui/page/chat_with_dev.dart';
 import 'package:tadamon/features/pages/help_user_page/ui/page/help_user_page.dart';
 import 'package:tadamon/features/pages/main_page/ui/page/main_page.dart';
 import 'package:tadamon/features/pages/onboarding_page/ui/page/onboarding_page.dart';
@@ -20,18 +21,6 @@ class AppRouter {
     return Theme.of(context).colorScheme;
   }
 
-  /// Returns a route based on [settings.name].
-  ///
-  /// The supported routes are:
-  ///
-  /// * [Routes.onBoarding]
-  /// * [Routes.mainPage]
-  /// * [Routes.palatineMap]
-  /// * [Routes.userHelp]
-  /// * [Routes.chatWithDev]
-  /// * [Routes.noRoutes]
-  ///
-  /// If [settings.name] is not recognized, returns a route leading to [NoRoutes].
   Route<dynamic> generateRoute(RouteSettings settings) {
     Widget page;
     switch (settings.name) {
@@ -52,6 +41,8 @@ class AppRouter {
         break;
       case Routes.chatWithDev:
         page = ChatWithDev();
+      case Routes.appInfo:
+        page = const AppInfo();
       default:
         page = const NoRoutes();
     }

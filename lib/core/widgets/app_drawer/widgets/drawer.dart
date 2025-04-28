@@ -256,9 +256,6 @@ class SenseiDrawer extends StatelessWidget {
     );
   }
 
-
-
-
   Widget _buildUpdateLocalHiveDataBase(BuildContext context) {
     return BlocProvider(
       create: (_) => LocalDBCubit()..loclaDBHasData(),
@@ -522,7 +519,7 @@ Widget _buildDeveloper(BuildContext context) {
     title: S.of(context).developer,
     subtitle: S.of(context).mostafaMahmoud,
     trailingWidget: Icon(
-        Icons.arrow_forward_ios_rounded,
+      Icons.arrow_forward_ios_rounded,
       color: Theme.of(context).colorScheme.onSurface.withAlpha(0x80),
     ),
     onTapped: () => {
@@ -540,12 +537,15 @@ Widget _buildAbout(BuildContext context) {
     useGroupBottom: true,
     leadingIcon: Icons.info_outline,
     trailingWidget: Icon(
-        Icons.arrow_forward_ios_rounded,
+      Icons.arrow_forward_ios_rounded,
       color: Theme.of(context).colorScheme.onSurface.withAlpha(0x80),
     ),
-
     title: S.of(context).about,
     subtitle: S.of(context).about,
-    // onTapped: () => appAbout(context),
+    onTapped: () => {
+      HapticFeedback.vibrate(),
+      Navigator.pop(context),
+      Navigator.pushNamed(context, Routes.appInfo),
+    },
   );
 }
