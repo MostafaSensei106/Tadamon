@@ -23,7 +23,9 @@ class SenseiAppBar extends StatelessWidget implements PreferredSizeWidget {
       child: AppBar(
         elevation: 0,
         leading: const ActionDrawerIcon(),
-        title: AppBarTitle(title: title),
+        title: AppBarTitle(
+          title: title,
+        ),
       ),
     );
   }

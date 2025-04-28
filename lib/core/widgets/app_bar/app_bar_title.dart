@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tadamon/core/config/fonts/fonts.dart';
 
 class AppBarTitle extends StatelessWidget {
   const AppBarTitle({
@@ -9,6 +10,7 @@ class AppBarTitle extends StatelessWidget {
   final String title;
 
   @override
+
   /// Returns an [AnimatedSwitcher] which displays the [title] within a [Text]
   /// widget. When the [title] changes, the widget is animated out by sliding
   /// upwards and fading out, before the new widget is animated in by sliding
@@ -34,9 +36,7 @@ class AppBarTitle extends StatelessWidget {
       child: Text(
         title,
         key: ValueKey<String>(title),
-        style: const TextStyle(
-          color: Colors.white,
-        ),
+        style: AppTextStyle.headline2(context).copyWith(color: Colors.white),
       ),
     );
   }

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppTextStyle {
-
   static TextStyle headline1(BuildContext context) => TextStyle(
         fontSize: 34.sp,
         fontWeight: FontWeight.bold,
@@ -11,7 +10,7 @@ class AppTextStyle {
 
   static TextStyle headline2(BuildContext context) => TextStyle(
         fontSize: 24.sp,
-        fontWeight: FontWeight.w600,
+        //fontWeight: FontWeight.w600,
         color: Theme.of(context).colorScheme.onPrimary,
       );
 
@@ -57,7 +56,7 @@ class AppTextStyle {
         color: Theme.of(context).colorScheme.onPrimary.withAlpha(0x50),
       );
 
-  static TextStyle subtitle(BuildContext context) =>  TextStyle(
+  static TextStyle subtitle(BuildContext context) => TextStyle(
         fontWeight: FontWeight.normal,
         color: Theme.of(context).colorScheme.onSurface.withAlpha(0x80),
       );
