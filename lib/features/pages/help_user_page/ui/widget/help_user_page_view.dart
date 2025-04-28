@@ -8,19 +8,56 @@ import 'package:tadamon/features/pages/help_user_page/logic/cubit/help_user_stat
 import 'package:tadamon/core/widgets/app_bar/side_page_app_bar.dart';
 import 'package:tadamon/generated/l10n.dart';
 
-class HelpUserPageView extends StatelessWidget {
+class HelpUserPageView extends StatefulWidget {
   const HelpUserPageView({super.key});
+
+  @override
+  State<HelpUserPageView> createState() => _HelpUserPageViewState();
+}
+
+class _HelpUserPageViewState extends State<HelpUserPageView>
+    with TickerProviderStateMixin {
+  late final List<AnimationController> _controllers;
+  late final List<Animation<Offset>> _slideAnimations;
+
+  void initAnimations(final qnaList) async {
+    _controllers = List.generate(
+      qnaList.length,
+      (index) => AnimationController(
+        vsync: this,
+        duration: Duration(milliseconds: 300 + (index * 75)),
+      ),
+    );
+
+    _slideAnimations = _controllers.map((controller) {
+      return Tween<Offset>(
+        begin: const Offset(1, 0),
+        end: Offset.zero,
+      ).animate(CurvedAnimation(
+        parent: controller,
+        curve: Curves.easeOut,
+      ));
+    }).toList();
+
+    // Delay start a bit for UX
+    Future.delayed(const Duration(milliseconds: 200), () {
+      for (var controller in _controllers) {
+        controller.forward();
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: SidePageAppBar(title:S.of(context).howToUse, useBackButton: true),
+      appBar:
+          SidePageAppBar(title: S.of(context).howToUse, useBackButton: true),
       body: BlocBuilder<HelpUserCubit, HelpUserState>(
         builder: (context, state) {
           if (state is HlepUserLoadingQnaState) {
             return const Center(child: CircularProgressIndicator());
           }
-      
+
           if (state is HelpUserErrorState) {
             return Center(
               child: Column(
@@ -38,33 +75,39 @@ class HelpUserPageView extends StatelessWidget {
               ),
             );
           }
-      
+
           if (state is HlepUserLoadingQnaStateSuccess) {
-            return ListView.separated(
+            initAnimations(state.qnaList);
+            return ListView.builder(
               itemCount: state.qnaList.length,
               padding: EdgeInsets.all(SenseiConst.padding.w),
               itemBuilder: (context, index) {
                 final qna = state.qnaList[index];
-                return ExpansionTileComponent(
-                  leadingIcon: Icons.help_outline,
-                  title: qna.question,
-                  subtitle: qna.simAnswer,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Text(
-                        qna.fullAnswer,
-                        style: const TextStyle(
-                          fontSize: 16,
-                          height: 1.5,
+                return SlideTransition(
+                  position: _slideAnimations[index],
+                  child: FadeTransition(
+                    opacity: _controllers[index],
+                    child: ExpansionTileComponent(
+                      useMargin: index == 0 ? false : true,
+                      leadingIcon: Icons.help_outline,
+                      title: qna.question,
+                      subtitle: qna.simAnswer,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            qna.fullAnswer,
+                            style: const TextStyle(
+                              fontSize: 16,
+                              height: 1.5,
+                            ),
+                          ),
                         ),
-                      ),
+                      ],
                     ),
-                  ],
+                  ),
                 );
               },
-              separatorBuilder: (context, index) =>
-                   SizedBox(height: 8.h),
             );
           }
           return const SizedBox.shrink();

@@ -5,7 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
 import 'package:tadamon/core/routing/routes.dart';
 import 'package:tadamon/core/widgets/button_component/button_compnent.dart';
-import 'package:tadamon/core/widgets/textbutton_component/textbutton_component.dart';
+import 'package:tadamon/core/widgets/textbutton_component/textbuttonicon_component.dart';
 import 'package:tadamon/core/widgets/app_bar/side_page_app_bar.dart';
 
 class TermsGate extends StatefulWidget {
@@ -153,7 +153,9 @@ class _TermsGateState extends State<TermsGate> with TickerProviderStateMixin {
                     child: FadeTransition(
                       opacity: _controllers[index],
                       child: Card(
-                        margin: EdgeInsets.only(top: SenseiConst.margin.h),
+                        margin: index == 0
+                            ? EdgeInsets.only(top: SenseiConst.margin.h)
+                            : null,
                         elevation: 0,
                         child: Padding(
                           padding: const EdgeInsets.all(SenseiConst.padding),
@@ -193,12 +195,11 @@ class _TermsGateState extends State<TermsGate> with TickerProviderStateMixin {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  TextButtonComponent(
-                    onTap: () =>
+                  TextbuttonIconComponent(
+                    onPressed: () =>
                         {HapticFeedback.vibrate(), SystemNavigator.pop()},
                     text: ' الخروج من التطبيق',
                     icon: Icons.close,
-                    isClose: true,
                   ),
                   Directionality(
                     textDirection: TextDirection.ltr,

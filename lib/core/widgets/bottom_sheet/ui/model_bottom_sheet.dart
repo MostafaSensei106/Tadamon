@@ -79,17 +79,19 @@ class ModelBottomSheet {
                       BottomModelSheetContent(
                         child: child,
                       ),
-                     Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                       children: [
-                         TextButtonComponent(
-                          useInBorderRadius: true,
-                          isClose: true,
-                          text: S.of(context).close, onTap: () => {
-                          HapticFeedback.vibrate(),
-                          Navigator.of(context).pop()}, icon: Icons.close,),
-                       ],
-                     ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          TextButtonComponent(
+                            useInBorderRadius: true,
+                            text: S.of(context).close,
+                            onPressed: () => {
+                              HapticFeedback.vibrate(),
+                              Navigator.of(context).pop()
+                            },
+                          ),
+                        ],
+                      ),
                     ],
                   ),
                 )
@@ -100,5 +102,4 @@ class ModelBottomSheet {
       ),
     );
   }
-
 }
