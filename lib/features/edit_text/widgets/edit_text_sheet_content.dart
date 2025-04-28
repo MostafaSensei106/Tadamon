@@ -6,6 +6,7 @@ import 'package:tadamon/core/widgets/bottom_sheet/ui/model_bottom_sheet.dart';
 import 'package:tadamon/core/widgets/button_component/button_compnent.dart';
 import 'package:tadamon/core/widgets/text_filed_component/text_filed_component.dart';
 import 'package:tadamon/generated/l10n.dart';
+
 class EditTextSheetContent extends StatefulWidget {
   const EditTextSheetContent({super.key});
 
@@ -57,7 +58,8 @@ class _EditTextSheetContentState extends State<EditTextSheetContent> {
     StringBuffer buffer = StringBuffer();
     for (int i = 0; i < text.length; i++) {
       String char = text[i];
-      buffer.write(arabicLetters.containsKey(char) ? arabicLetters[char] : char);
+      buffer
+          .write(arabicLetters.containsKey(char) ? arabicLetters[char] : char);
     }
 
     return buffer.toString();
@@ -113,12 +115,15 @@ class _EditTextSheetContentState extends State<EditTextSheetContent> {
                 )
               : null,
         ),
-        SizedBox(height: SenseiConst.margin.h-4),
+        SizedBox(height: SenseiConst.margin.h - 4),
         SizedBox(
           width: 1.sw,
           child: ButtonCompnent(
-            useInBorderRadius: true,
-              label: 'نسخ', icon: Icons.copy, onPressed: _copyToClipboard),
+              isEnabled: _processedText.isNotEmpty,
+              useInBorderRadius: true,
+              label: 'نسخ',
+              icon: Icons.copy,
+              onPressed: _copyToClipboard),
         ),
       ],
     );
