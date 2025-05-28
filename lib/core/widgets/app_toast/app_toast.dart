@@ -17,8 +17,10 @@ class AppToast {
       foregroundColor: AppRouter.theme.onSurface,
       borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius),
       closeButton: const ToastCloseButton(showType: CloseButtonShowType.none),
-      borderSide: const BorderSide(
-          strokeAlign: BorderSide.strokeAlignCenter, color: Colors.transparent),
+      borderSide: BorderSide(
+        strokeAlign: BorderSide.strokeAlignCenter,
+        color: AppRouter.theme.outline.withAlpha(0x80),
+      ),
       dragToClose: true,
       pauseOnHover: true,
     );
@@ -39,8 +41,10 @@ class AppToast {
       foregroundColor: AppRouter.theme.onSurface,
       borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius),
       closeButton: const ToastCloseButton(showType: CloseButtonShowType.none),
-      borderSide: const BorderSide(
-          strokeAlign: BorderSide.strokeAlignCenter, color: Colors.transparent),
+      borderSide: BorderSide(
+        strokeAlign: BorderSide.strokeAlignCenter,
+        color: AppRouter.theme.outline.withAlpha(0x80),
+      ),
       dragToClose: true,
       pauseOnHover: true,
       showProgressBar: true,
@@ -49,23 +53,24 @@ class AppToast {
 
   static void showWarningToast(String discription) {
     toastification.show(
-      type: ToastificationType.warning,
-      style: ToastificationStyle.minimal,
-      title: const Text('حدث خطأ'),
-      description: Text(discription),
-      alignment: Alignment.bottomCenter,
-      autoCloseDuration: const Duration(seconds: 4),
-      padding: const EdgeInsets.all(SenseiConst.padding),
-      backgroundColor: AppRouter.theme.surface,
-      foregroundColor: AppRouter.theme.onSurface,
-      borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius),
-      closeButton: const ToastCloseButton(showType: CloseButtonShowType.none),
-      borderSide: const BorderSide(
-          strokeAlign: BorderSide.strokeAlignCenter, color: Colors.transparent),
-      dragToClose: true,
-      pauseOnHover: true,
-      showProgressBar: true
-    );
+        type: ToastificationType.warning,
+        style: ToastificationStyle.minimal,
+        title: const Text('تحذير'),
+        description: Text(discription),
+        alignment: Alignment.bottomCenter,
+        autoCloseDuration: const Duration(seconds: 4),
+        padding: const EdgeInsets.all(SenseiConst.padding),
+        backgroundColor: AppRouter.theme.surface,
+        foregroundColor: AppRouter.theme.onSurface,
+        borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius),
+        closeButton: const ToastCloseButton(showType: CloseButtonShowType.none),
+        borderSide: BorderSide(
+          strokeAlign: BorderSide.strokeAlignCenter,
+          color: AppRouter.theme.outline.withAlpha(0x80),
+        ),
+        dragToClose: true,
+        pauseOnHover: true,
+        showProgressBar: true);
   }
 
   /// Shows a toast with the given [message] for a short duration at the bottom
@@ -82,8 +87,10 @@ class AppToast {
       foregroundColor: AppRouter.theme.onSurface,
       borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius),
       closeButton: const ToastCloseButton(showType: CloseButtonShowType.none),
-      borderSide: const BorderSide(
-          strokeAlign: BorderSide.strokeAlignCenter, color: Colors.transparent),
+      borderSide: BorderSide(
+        strokeAlign: BorderSide.strokeAlignCenter,
+        color: AppRouter.theme.outline.withAlpha(0x80),
+      ),
       dragToClose: true,
       pauseOnHover: true,
     );
@@ -91,20 +98,22 @@ class AppToast {
 
   static void showInfoToast(String message) {
     toastification.show(
-      type: ToastificationType.info,
-      style: ToastificationStyle.minimal,
-      title: Text(message),
-      alignment: Alignment.bottomCenter,
-      autoCloseDuration: const Duration(seconds: 4),
-      backgroundColor: AppRouter.theme.surface,
-      foregroundColor: AppRouter.theme.onSurface,
-      borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius),
-      closeButton: const ToastCloseButton(showType: CloseButtonShowType.none),
-      borderSide: const BorderSide(
-          strokeAlign: BorderSide.strokeAlignCenter, color: Colors.transparent),
-      dragToClose: true,
-      pauseOnHover: true,
-      showProgressBar: true
-    );
+        type: ToastificationType.info,
+        style: ToastificationStyle.minimal,
+        title: const Text('معلومات'),
+        description: Text(message),
+        alignment: Alignment.bottomCenter,
+        autoCloseDuration: const Duration(seconds: 4),
+        backgroundColor: AppRouter.theme.surface,
+        foregroundColor: AppRouter.theme.onSurface,
+        borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius),
+        closeButton: const ToastCloseButton(showType: CloseButtonShowType.none),
+        borderSide: BorderSide(
+          strokeAlign: BorderSide.strokeAlignCenter,
+          color: AppRouter.theme.outline.withAlpha(0x80),
+        ),
+        dragToClose: true,
+        pauseOnHover: true,
+        showProgressBar: true);
   }
 }

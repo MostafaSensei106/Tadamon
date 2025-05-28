@@ -18,17 +18,20 @@ class S {
   static S? _current;
 
   static S get current {
-    assert(_current != null,
-        'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.');
+    assert(
+      _current != null,
+      'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.',
+    );
     return _current!;
   }
 
   static const AppLocalizationDelegate delegate = AppLocalizationDelegate();
 
   static Future<S> load(Locale locale) {
-    final name = (locale.countryCode?.isEmpty ?? false)
-        ? locale.languageCode
-        : locale.toString();
+    final name =
+        (locale.countryCode?.isEmpty ?? false)
+            ? locale.languageCode
+            : locale.toString();
     final localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
@@ -41,8 +44,10 @@ class S {
 
   static S of(BuildContext context) {
     final instance = S.maybeOf(context);
-    assert(instance != null,
-        'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?');
+    assert(
+      instance != null,
+      'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?',
+    );
     return instance!;
   }
 
@@ -60,10 +65,10 @@ class S {
     );
   }
 
-  /// `دعم فلسطين واجب إنساني. مقاطعة الشركات الداعمة للاحتلال هي صوت الحرية.`
+  /// `اللهم الطف بإخواننا، وثبّت أقدامهم، وانصرهم، وأعزّ بفضلك من نصرهم، وأذلّ بقدرتك من خذلهم.`
   String get appDescription {
     return Intl.message(
-      'دعم فلسطين واجب إنساني. مقاطعة الشركات الداعمة للاحتلال هي صوت الحرية.',
+      'اللهم الطف بإخواننا، وثبّت أقدامهم، وانصرهم، وأعزّ بفضلك من نصرهم، وأذلّ بقدرتك من خذلهم.',
       name: 'appDescription',
       desc: 'وصف التطبيق',
       args: [],
@@ -102,12 +107,7 @@ class S {
 
   /// ` الرجوع`
   String get back {
-    return Intl.message(
-      ' الرجوع',
-      name: 'back',
-      desc: 'زر الرجوع',
-      args: [],
-    );
+    return Intl.message(' الرجوع', name: 'back', desc: 'زر الرجوع', args: []);
   }
 
   /// `الرئيسية`
@@ -122,12 +122,7 @@ class S {
 
   /// `بحث`
   String get search {
-    return Intl.message(
-      'بحث',
-      name: 'search',
-      desc: 'زر البحث',
-      args: [],
-    );
+    return Intl.message('بحث', name: 'search', desc: 'زر البحث', args: []);
   }
 
   /// `السجلات`
@@ -392,12 +387,7 @@ class S {
 
   /// `تجريبي`
   String get test {
-    return Intl.message(
-      'تجريبي',
-      name: 'test',
-      desc: 'اختبار',
-      args: [],
-    );
+    return Intl.message('تجريبي', name: 'test', desc: 'اختبار', args: []);
   }
 
   /// `تفاصيل المنتج`
@@ -582,12 +572,7 @@ class S {
 
   /// `إغلاق`
   String get close {
-    return Intl.message(
-      'إغلاق',
-      name: 'close',
-      desc: 'زر الإغلاق',
-      args: [],
-    );
+    return Intl.message('إغلاق', name: 'close', desc: 'زر الإغلاق', args: []);
   }
 }
 
@@ -595,9 +580,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
   const AppLocalizationDelegate();
 
   List<Locale> get supportedLocales {
-    return const <Locale>[
-      Locale.fromSubtags(languageCode: 'ar'),
-    ];
+    return const <Locale>[Locale.fromSubtags(languageCode: 'ar')];
   }
 
   @override

@@ -49,14 +49,15 @@ class BarcodeScanner {
         lineColor: '#FF0000',
         cancelButtonText: S.of(context).close,
       );
-      if (barcodeScanRes == null || barcodeScanRes == '-1') {
+      if (barcodeScanRes == '-1') {
         AppToast.showErrorToast('لم يتم قراءة اي باركود');
         return '-1';
       }
 
-      if (!BarcodeValidator.isNumber(barcodeScanRes)) {
+      if (!BarcodeValidator.isNumber(barcodeScanRes!)) {
         AppToast.showErrorToast(
-            'الباركود :$barcodeScanRes غير صالح، يجب أن يكون رقمًا فقط');
+          'الباركود :$barcodeScanRes غير صالح، يجب أن يكون رقمًا فقط',
+        );
         return '-404';
       }
 

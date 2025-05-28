@@ -6,7 +6,6 @@ class TextButtonComponent extends StatelessWidget {
   final VoidCallback onPressed;
   final bool isClose;
   final bool useInBorderRadius;
-  final bool useBorderSide;
 
   const TextButtonComponent({
     super.key,
@@ -14,7 +13,6 @@ class TextButtonComponent extends StatelessWidget {
     required this.onPressed,
     this.isClose = false,
     this.useInBorderRadius = false,
-    this.useBorderSide = false,
   });
 
   @override
@@ -31,11 +29,6 @@ class TextButtonComponent extends StatelessWidget {
         elevation: 0,
         enableFeedback: true,
         enabledMouseCursor: SystemMouseCursors.click,
-        side: BorderSide(
-          color: useBorderSide
-              ? Theme.of(context).colorScheme.primary
-              : Colors.transparent,
-        )
       ),
       child: Text(text),
     );

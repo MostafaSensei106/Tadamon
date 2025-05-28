@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:tadamon/core/config/const/sensei_const.dart';
 import 'package:tadamon/core/config/fonts/fonts.dart';
@@ -9,6 +10,7 @@ class ExpansionTileComponent extends StatefulWidget {
   final String subtitle;
   final List<Widget> children;
   final bool useInBorderRadius;
+  final bool useMargin;
 
   const ExpansionTileComponent({
     super.key,
@@ -17,6 +19,7 @@ class ExpansionTileComponent extends StatefulWidget {
     required this.subtitle,
     required this.children,
     this.useInBorderRadius = false,
+    this.useMargin = false,
   });
 
   @override
@@ -27,6 +30,8 @@ class _ExpansionTileComponentState extends State<ExpansionTileComponent> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin:
+          widget.useMargin ? EdgeInsets.only(top: SenseiConst.margin.h) : null,
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.surfaceContainer,
         borderRadius: BorderRadius.circular(
@@ -48,18 +53,23 @@ class _ExpansionTileComponentState extends State<ExpansionTileComponent> {
           ),
         ),
         title: Text(widget.title),
-        subtitle: Text(widget.subtitle,style: AppTextStyle.subtitle(context),),
+        subtitle: Text(
+          widget.subtitle,
+          style: AppTextStyle.subtitle(context),
+        ),
         backgroundColor: Theme.of(context).colorScheme.surfaceContainer,
         enableFeedback: true,
         showTrailingIcon: true,
-        shape: RoundedRectangleBorder(  
-            borderRadius: BorderRadius.circular(
-              widget.useInBorderRadius
-                  ? SenseiConst.inBorderRadius
-                  : SenseiConst.outBorderRadius,
-            ),
-            side: BorderSide(
-                color: Theme.of(context).colorScheme.outline.withAlpha(0x80),),),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(
+            widget.useInBorderRadius
+                ? SenseiConst.inBorderRadius
+                : SenseiConst.outBorderRadius,
+          ),
+          side: BorderSide(
+            color: Theme.of(context).colorScheme.outline.withAlpha(0x80),
+          ),
+        ),
         children: widget.children,
       ),
     );

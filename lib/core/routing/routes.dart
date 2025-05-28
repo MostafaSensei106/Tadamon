@@ -1,4 +1,3 @@
-
 /// The class contains all the routes used in the app.
 class Routes {
   /// The on-boarding route.
@@ -16,6 +15,8 @@ class Routes {
   static const String userHelp = '/userHelp';
 
   static const String chatWithDev = '/chatWithDev';
+
+  static const String appInfo = '/appInfo';
 
   /// The route to the no routes page.
   static const String noRoutes = '/noRoutes';

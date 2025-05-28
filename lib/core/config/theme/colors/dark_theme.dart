@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tadamon/core/config/const/sensei_const.dart';
 
 final ThemeData darkTheme = ThemeData(
-  colorScheme:  const ColorScheme(
+  colorScheme: const ColorScheme(
     brightness: Brightness.dark,
     primary: Color(0xfffff9f9),
     surfaceTint: Color(0xffffb4aa),
@@ -42,7 +42,7 @@ final ThemeData darkTheme = ThemeData(
     onTertiaryFixed: Color(0xff000000),
     tertiaryFixedDim: Color(0xfffbc243),
     onTertiaryFixedVariant: Color(0xff1f1400),
-    surfaceDim:  Color(0xff1c110f),
+    surfaceDim: Color(0xff1c110f),
     surfaceBright: Color(0xff443634),
     surfaceContainerLowest: Color(0xff160b0a),
     surfaceContainerLow: Color(0xff251917),
@@ -51,21 +51,10 @@ final ThemeData darkTheme = ThemeData(
     surfaceContainerHighest: Color(0xff403130),
   ),
   fontFamily: 'ArabicFont',
-  
-    appBarTheme: const AppBarTheme(
+  appBarTheme: const AppBarTheme(
     elevation: 0,
     centerTitle: true,
-    foregroundColor: Colors.white,
     backgroundColor: Colors.transparent,
-    iconTheme: IconThemeData(size: SenseiConst.iconSize,),
+    iconTheme: IconThemeData(size: SenseiConst.iconSize),
   ),
-
-  // listTileTheme:  ListTileThemeData(
-  //   subtitleTextStyle: AppTextStyle.subtitle(),
-  //   ),
-
-    
-
-
-    
 );
