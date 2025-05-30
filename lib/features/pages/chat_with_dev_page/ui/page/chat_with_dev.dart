@@ -183,6 +183,9 @@ class _ChatWithDevState extends State<ChatWithDev>
 
   @override
   void dispose() {
+    for (var controller in _controllers) {
+      controller.dispose();
+    }
     _controller.dispose();
     super.dispose();
   }
