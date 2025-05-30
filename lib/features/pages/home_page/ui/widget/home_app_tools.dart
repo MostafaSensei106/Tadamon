@@ -17,30 +17,34 @@ class HomeAppTools extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(top: SenseiConst.margin.h),
-
+      padding: EdgeInsets.symmetric(horizontal: 2.w,),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius.r),
+        borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius),
         color: Theme.of(context).colorScheme.surfaceContainer,
       ),
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         physics: const BouncingScrollPhysics(),
+        padding: EdgeInsets.symmetric(
+          vertical: SenseiConst.padding.h,
+        ),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             BlocProvider(
               create: (_) => ProductScanCubit(),
               child: BlocBuilder<ProductScanCubit, ProductScanState>(
-                  builder: (context, state) {
-                return HomeToolsComponent(
-                  icon: Icons.qr_code_rounded,
-                  title: S.of(context).scanBarcode,
-                  onTapped: () => context
-                      .read<ProductScanCubit>()
-                      .scanBarcodeByCamera(context),
-                );
-              }),
+                builder: (context, state) {
+                  return HomeToolsComponent(
+                    icon: Icons.qr_code_rounded,
+                    title: S.of(context).scanBarcode,
+                    onTapped: () => context
+                        .read<ProductScanCubit>()
+                        .scanBarcodeByCamera(context),
+                  );
+                },
+              ),
             ),
+            SizedBox(width: 8.w),
             BlocProvider(
               create: (_) => ProductScanCubit(),
               child: BlocBuilder<ProductScanCubit, ProductScanState>(
@@ -55,20 +59,25 @@ class HomeAppTools extends StatelessWidget {
                 },
               ),
             ),
+            SizedBox(width: 8.w),
             HomeToolsComponent(
-                icon: Icons.short_text_outlined,
-                title: S.of(context).editText,
-                onTapped: () {
-                  HapticFeedback.vibrate();
-                  EditTextSheetContent.showEditTextBottomSheet(context);
-                }),
+              icon: Icons.short_text_outlined,
+              title: S.of(context).editText,
+              onTapped: () {
+                HapticFeedback.vibrate();
+                EditTextSheetContent.showEditTextBottomSheet(context);
+              },
+            ),
+            SizedBox(width: 8.w),
             HomeToolsComponent(
-                icon: Icons.map_outlined,
-                title: S.of(context).palatineMap,
-                onTapped: () {
-                  HapticFeedback.vibrate();
-                  Navigator.pushNamed(context, Routes.palatineMap);
-                }),
+              icon: Icons.map_outlined,
+              title: S.of(context).palatineMap,
+              onTapped: () {
+                HapticFeedback.vibrate();
+                Navigator.pushNamed(context, Routes.palatineMap);
+              },
+            ),
+            SizedBox(width: 8.w),
             HomeToolsComponent(
               icon: Icons.volunteer_activism_outlined,
               title: S.of(context).donate,

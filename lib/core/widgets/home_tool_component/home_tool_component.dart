@@ -53,42 +53,39 @@ class HomeToolsComponent extends StatelessWidget {
   ///    The [Text] widget is configured with a maxLines of 2, and an
   ///    [overflow] of [TextOverflow.fade].
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 4.0),
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius),
-          enableFeedback: true,
-          onTap: onTapped,
-          child: Container(
-            padding: const EdgeInsets.all(3),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  padding: const EdgeInsets.all(SenseiConst.padding),
-                  decoration: BoxDecoration(
-                    borderRadius:
-                        BorderRadius.circular(SenseiConst.inBorderRadius),
-                    color: Theme.of(context).colorScheme.primaryContainer,
-                  ),
-                  child: Icon(
-                    icon,
-                    size: SenseiConst.iconSize.sp,
-                    color: Theme.of(context).colorScheme.onPrimaryContainer,
-                  ),
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius),
+        enableFeedback: true,
+        onTap: onTapped,
+        child: Container(
+          padding: const EdgeInsets.all(3),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                padding: const EdgeInsets.all(SenseiConst.padding),
+                decoration: BoxDecoration(
+                  borderRadius:
+                      BorderRadius.circular(SenseiConst.inBorderRadius),
+                  color: Theme.of(context).colorScheme.primaryContainer,
                 ),
-                SizedBox(height: SenseiConst.padding.h),
-                Text(
-                  title,
-                  textAlign: TextAlign.center,
-                  maxLines: 2,
-                  overflow: TextOverflow.fade,
-                  style: AppTextStyle.subtitle(context),
+                child: Icon(
+                  icon,
+                  size: SenseiConst.iconSize.sp,
+                  color: Theme.of(context).colorScheme.onPrimaryContainer,
                 ),
-              ],
-            ),
+              ),
+              SizedBox(height: SenseiConst.padding.h),
+              Text(
+                title,
+                textAlign: TextAlign.center,
+                maxLines: 2,
+                overflow: TextOverflow.fade,
+                style: AppTextStyle.subtitle(context),
+              ),
+            ],
           ),
         ),
       ),
