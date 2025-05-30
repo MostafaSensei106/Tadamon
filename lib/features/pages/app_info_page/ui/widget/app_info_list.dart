@@ -21,6 +21,18 @@ class AppInfoList extends StatelessWidget {
     required this.installerStore,
   });
 
+  /// Copies the app information to the clipboard.
+  ///
+  /// The information includes:
+  ///
+  /// - اسم التطبيق (app name)
+  /// - إصدار التطبيق (app version)
+  /// - رقم البناء (build number)
+  /// - توقيع البناء (build signature)
+  /// - اسم الحزمة (package name)
+  /// - المتجر المثبت (installer store)
+  ///
+  /// The user will receive a haptic feedback when the information is copied.
   void copyToClipboard() {
     HapticFeedback.vibrate();
     Clipboard.setData(
@@ -39,45 +51,59 @@ class AppInfoList extends StatelessWidget {
   }
 
   @override
+  /// Builds a column of [ListTileComponent] widgets with the given app information,
+  ///
+  /// The column contains the following widgets in order:
+  ///
+  /// - A [ListTileComponent] with the app name
+  /// - A [ListTileComponent] with the app version
+  /// - A [ListTileComponent] with the build number
+  /// - A [ListTileComponent] with the build signature
+  /// - A [ListTileComponent] with the package name
+  /// - A [ListTileComponent] with the installer store
+  /// - A [ButtonCompnent] to copy the app information to the clipboard
+  ///
+  /// The column is wrapped in a [SingleChildScrollView] to make it possible to
+  /// scroll the content if it does not fit in the available space.
   Widget build(BuildContext context) {
     return Column(
       children: [
-        DrawerComponent(
+        ListTileComponent(
           leadingIcon: Icons.android_rounded,
           title: 'اسم التطبيق',
           subtitle: appName,
           useDivider: true,
           useGroupTop: true,
         ),
-        DrawerComponent(
+        ListTileComponent(
           leadingIcon: Icons.info_outline,
           title: 'إصدار التطبيق',
           subtitle: appVersion,
           useDivider: true,
           useGroupMiddle: true,
         ),
-        DrawerComponent(
+        ListTileComponent(
           leadingIcon: Icons.build_outlined,
           title: 'رقم البناء',
           subtitle: buildNumber,
           useDivider: true,
           useGroupMiddle: true,
         ),
-        DrawerComponent(
+        ListTileComponent(
           leadingIcon: Icons.code_outlined,
           title: 'توقيع البناء',
           subtitle: buildSignature,
           useDivider: true,
           useGroupMiddle: true,
         ),
-        DrawerComponent(
+        ListTileComponent(
           leadingIcon: Icons.app_registration_outlined,
           title: 'اسم الحزمة',
           subtitle: packageName,
           useDivider: true,
           useGroupMiddle: true,
         ),
-        DrawerComponent(
+        ListTileComponent(
           leadingIcon: Icons.store_outlined,
           title: 'المتجر المثبت',
           subtitle: installerStore,

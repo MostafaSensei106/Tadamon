@@ -108,7 +108,7 @@ class SenseiDrawer extends StatelessWidget {
     return BlocBuilder<ThemeCubit, ThemeState>(
       buildWhen: (previous, current) => previous.themeMode != current.themeMode,
       builder: (context, state) {
-        return DrawerComponent(
+        return ListTileComponent(
           useMargin: false,
           useDivider: state.themeMode != ThemeMode.system,
           useGroupTop: state.themeMode != ThemeMode.system,
@@ -140,7 +140,7 @@ class SenseiDrawer extends StatelessWidget {
       builder: (context, state) {
         return state.themeMode == ThemeMode.system
             ? const SizedBox.shrink()
-            : DrawerComponent(
+            : ListTileComponent(
                 key: ValueKey(state.isDark),
                 useGroupBottom: true,
                 leadingIcon: state.isDark
@@ -195,7 +195,7 @@ class SenseiDrawer extends StatelessWidget {
             subtitleText = S.of(context).appOflineLoading;
             groupTop = false;
           }
-          return DrawerComponent(
+          return ListTileComponent(
             useMargin: true,
             useDivider: groupTop,
             useGroupTop: groupTop,
@@ -282,7 +282,7 @@ class SenseiDrawer extends StatelessWidget {
         child: BlocBuilder<LocalDBCubit, LocalDBState>(
           builder: (context, state) {
             if (state is LoclaDBDataBaseHasData) {
-              return DrawerComponent(
+              return ListTileComponent(
                 useDivider: true,
                 useGroupMiddle: true,
                 leadingIcon: Icons.dataset_linked_outlined,
@@ -327,7 +327,7 @@ class SenseiDrawer extends StatelessWidget {
         child: BlocBuilder<LocalDBCubit, LocalDBState>(
           builder: (context, state) {
             if (state is LoclaDBDataBaseHasData) {
-              return DrawerComponent(
+              return ListTileComponent(
                 useGroupBottom: true,
                 leadingIcon: Icons.delete_forever_outlined,
                 title: 'حذف البيانات',
@@ -346,7 +346,7 @@ class SenseiDrawer extends StatelessWidget {
   }
 
   Widget _buildClearLogs(BuildContext context) {
-    return DrawerComponent(
+    return ListTileComponent(
       useMargin: true,
       useDivider: true,
       useGroupTop: true,
@@ -373,7 +373,7 @@ class SenseiDrawer extends StatelessWidget {
               message: 'الرجاء الانتظار',
             );
           }
-          return DrawerComponent(
+          return ListTileComponent(
             useMargin: false,
             useDivider: false,
             useGroupBottom: true,
@@ -393,7 +393,7 @@ class SenseiDrawer extends StatelessWidget {
 }
 
 Widget _buildHowToUse(BuildContext context) {
-  return DrawerComponent(
+  return ListTileComponent(
       useMargin: true,
       useDivider: true,
       useGroupTop: true,
@@ -412,7 +412,7 @@ Widget _buildHowToUse(BuildContext context) {
 }
 
 Widget _buildReportProduct(BuildContext context) {
-  return DrawerComponent(
+  return ListTileComponent(
     useMargin: false,
     useDivider: false,
     useGroupBottom: true,
@@ -429,7 +429,7 @@ Widget _buildReportProduct(BuildContext context) {
 }
 
 Widget _buildReadMe(BuildContext context) {
-  return DrawerComponent(
+  return ListTileComponent(
     useMargin: true,
     useDivider: true,
     useGroupTop: true,
@@ -449,7 +449,7 @@ Widget _buildReadMe(BuildContext context) {
 }
 
 Widget _buildLetestUpdate(BuildContext context) {
-  return DrawerComponent(
+  return ListTileComponent(
     useMargin: false,
     useDivider: true,
     useGroupMiddle: true,
@@ -470,7 +470,7 @@ Widget _buildLetestUpdate(BuildContext context) {
 }
 
 Widget _buildGithubToken(BuildContext context) {
-  return DrawerComponent(
+  return ListTileComponent(
     useMargin: false,
     useDivider: true,
     useGroupMiddle: true,
@@ -491,7 +491,7 @@ Widget _buildGithubToken(BuildContext context) {
 }
 
 Widget _buildTelegramChannel(BuildContext context) {
-  return DrawerComponent(
+  return ListTileComponent(
       useMargin: false,
       useDivider: false,
       useGroupBottom: true,
@@ -511,7 +511,7 @@ Widget _buildTelegramChannel(BuildContext context) {
 }
 
 Widget _buildDeveloper(BuildContext context) {
-  return DrawerComponent(
+  return ListTileComponent(
     useMargin: true,
     useDivider: true,
     useGroupTop: true,
@@ -531,7 +531,7 @@ Widget _buildDeveloper(BuildContext context) {
 }
 
 Widget _buildAbout(BuildContext context) {
-  return DrawerComponent(
+  return ListTileComponent(
     useMargin: false,
     useDivider: false,
     useGroupBottom: true,

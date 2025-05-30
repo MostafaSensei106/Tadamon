@@ -23,11 +23,28 @@ class _AppInfoState extends State<AppInfo> {
   bool _isLoading = true;
 
   @override
+  /// Initializes the state of the widget.
+  ///
+  /// This function is called when the widget is first inserted into the tree.
+  ///
+  /// It calls [super.initState] and then calls [_loadAppInfo] to load the app's
+  /// information and update the state with the loaded values.
   void initState() {
     super.initState();
     _loadAppInfo();
   }
 
+  /// Loads the app's information from the device.
+  ///
+  /// This function is used in [initState] to load the app's information when the
+  /// widget is first initialized.
+  ///
+  /// If the app's information is successfully loaded, it updates the state with
+  /// the loaded values. If there is an error while loading the app's
+  /// information, it updates the state with an error message.
+  ///
+  /// The app's information includes the app's name, version, build number,
+  /// package name, installer store, and build signature.
   Future<void> _loadAppInfo() async {
     try {
       final packageInfo = await PackageInfo.fromPlatform();
