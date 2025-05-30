@@ -15,6 +15,7 @@ import 'generated/l10n.dart';
 class TadamonApp extends StatelessWidget {
   final AppRouter appRouter = AppRouter();
   TadamonApp(AppRouter appRouter, {super.key});
+  
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
@@ -50,6 +51,15 @@ class TadamonApp extends StatelessWidget {
                 ],
                 localeResolutionCallback: (locale, supportedLocales) =>
                     const Locale('ar', 'EG'),
+                builder: (context, child) {
+                  return SafeArea(
+                    top: false,
+                    bottom: true,
+                    left: false,
+                    right: false,
+                    child: child!,
+                  );
+                },
               ),
             );
           },
