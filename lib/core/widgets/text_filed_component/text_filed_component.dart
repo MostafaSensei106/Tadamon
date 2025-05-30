@@ -69,7 +69,7 @@ class TextFieldComponent extends StatelessWidget {
       onTapOutside: (event) => FocusScope.of(context).unfocus(),
       onChanged: onChange,
       readOnly: readOnly,
-      maxLines: largeField ? 5 : 1,
+      maxLines: isExpands ? null : largeField ? 5 : 1,
       minLines: 1,
       enableInteractiveSelection: true,
       decoration: InputDecoration(
@@ -103,3 +103,4 @@ class TextFieldComponent extends StatelessWidget {
     );
   }
 }
+
