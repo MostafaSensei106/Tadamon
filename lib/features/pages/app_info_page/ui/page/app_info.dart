@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:tadamon/core/config/const/sensei_const.dart';
 import 'package:tadamon/core/widgets/app_bar/side_page_app_bar.dart';
+import 'package:tadamon/features/pages/app_info_page/ui/widget/app_info_list.dart';
 
 class AppInfo extends StatefulWidget {
   const AppInfo({super.key});
@@ -11,8 +13,14 @@ class AppInfo extends StatefulWidget {
 }
 
 class _AppInfoState extends State<AppInfo> {
-  String appVersion = '';
-  String buildNumber = '';
+  String _appVersion = '';
+  String _buildNumber = '';
+  String _appName = '';
+  String _packageName = '';
+  String _installerStore = '';
+  String _buildSignature = '';
+
+  bool _isLoading = true;
 
   @override
   void initState() {
@@ -23,15 +31,26 @@ class _AppInfoState extends State<AppInfo> {
   Future<void> _loadAppInfo() async {
     try {
       final packageInfo = await PackageInfo.fromPlatform();
+
       setState(() {
-        appVersion = packageInfo.version;
-        buildNumber = packageInfo.buildNumber;
+        _appVersion = "${packageInfo.version}-V";
+        _buildNumber = packageInfo.buildNumber;
+        _appName = packageInfo.appName;
+        _packageName = packageInfo.packageName;
+        _installerStore = packageInfo.installerStore ?? 'غير معروف';
+        _buildSignature = packageInfo.buildSignature;
+        _isLoading = false;
       });
-    } on MissingPluginException catch (e) {
-      debugPrint('PackageInfoPlus error: $e');
+    } catch (e) {
+      debugPrint('Error loading app info: $e');
       setState(() {
-        appVersion = ' PackageInfoPlus error';
-        buildNumber = ' PackageInfoPlus error';
+        _appVersion = 'خطأ في تحميل البيانات';
+        _buildNumber = 'خطأ في تحميل البيانات';
+        _appName = 'خطأ في تحميل البيانات';
+        _packageName = 'خطأ في تحميل البيانات';
+        _installerStore = 'خطأ في تحميل البيانات';
+        _buildSignature = 'خطأ في تحميل البيانات';
+        _isLoading = false;
       });
     }
   }
@@ -39,17 +58,23 @@ class _AppInfoState extends State<AppInfo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:
-          const SidePageAppBar(title: 'معلومات التطبيق', useBackButton: true),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          children: [
-            Text('الاصدار: $appVersion'),
-            Text('رقم التحديث: $buildNumber'),
-          ],
-        ),
+      appBar: const SidePageAppBar(
+        title: 'معلومات التطبيق',
+        useBackButton: true,
       ),
+      body: _isLoading
+          ? const Center(child: CircularProgressIndicator())
+          : SingleChildScrollView(
+              padding: EdgeInsets.symmetric(horizontal: SenseiConst.padding.w),
+              child: AppInfoList(
+                appName: _appName,
+                appVersion: _appVersion,
+                buildNumber: _buildNumber,
+                buildSignature: _buildSignature,
+                packageName: _packageName,
+                installerStore: _installerStore,
+              ),
+            ),
     );
   }
 }
