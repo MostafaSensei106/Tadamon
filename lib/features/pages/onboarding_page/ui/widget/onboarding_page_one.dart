@@ -34,7 +34,7 @@ class OnboardingPageOne extends StatelessWidget {
           ),
           SizedBox(height: 10.h),
           Text(
-            "تطبيق تضامن",
+            "تطبيق تَضَامُنٌ",
             style: TextStyle(
               fontSize: 28.sp,
               fontWeight: FontWeight.bold,

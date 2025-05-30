@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tadamon/core/widgets/button_component/button_compnent.dart';
 import 'package:tadamon/core/widgets/drawer_component/drawer_component.dart';
+import 'package:tadamon/features/pages/app_info_page/ui/widget/app_info_title.dart';
 
 class AppInfoList extends StatelessWidget {
   final String appName;
@@ -51,6 +53,7 @@ class AppInfoList extends StatelessWidget {
   }
 
   @override
+
   /// Builds a column of [ListTileComponent] widgets with the given app information,
   ///
   /// The column contains the following widgets in order:
@@ -68,6 +71,10 @@ class AppInfoList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        const AppInfoTitle(),
+        SizedBox(
+          height: 8.h,
+        ),
         ListTileComponent(
           leadingIcon: Icons.android_rounded,
           title: 'اسم التطبيق',
