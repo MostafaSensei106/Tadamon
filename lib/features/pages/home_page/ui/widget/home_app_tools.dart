@@ -17,7 +17,7 @@ class HomeAppTools extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(top: SenseiConst.margin.h),
-      padding: EdgeInsets.symmetric(horizontal: 2.w,),
+      padding: EdgeInsets.symmetric(horizontal: 2.w),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius),
         color: Theme.of(context).colorScheme.surfaceContainer,
@@ -26,7 +26,7 @@ class HomeAppTools extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         physics: const BouncingScrollPhysics(),
         padding: EdgeInsets.symmetric(
-          vertical: SenseiConst.padding.h,
+          vertical: SenseiConst.padding.h-3,
         ),
         child: Row(
           children: [
