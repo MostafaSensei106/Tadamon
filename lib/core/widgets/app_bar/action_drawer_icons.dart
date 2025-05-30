@@ -10,7 +10,7 @@ class ActionDrawerIcon extends StatelessWidget {
   ///
   /// Calls [HapticFeedback.vibrate] to generate a haptic feedback,
   /// then calls [Scaffold.of(context).openDrawer] to open the drawer.
-  void openDrawer(context) {
+  void openDrawer(BuildContext context) {
     HapticFeedback.vibrate();
     Scaffold.of(context).openDrawer();
   }

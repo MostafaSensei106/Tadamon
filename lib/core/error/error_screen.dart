@@ -18,7 +18,7 @@ import 'package:tadamon/core/widgets/lottie_component/lottie_component.dart';
 ///
 /// The [Material] widget is used to display the error screen when an error
 /// occurs.
-errorScreen() {
+void errorScreen() {
   ErrorWidget.builder = (details) {
     return Material(
       child: Center(

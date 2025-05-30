@@ -1,9 +1,11 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tadamon/core/config/theme/colors/logic/cubit/theme_shared_preferences.dart';
 import 'package:tadamon/core/config/theme/colors/logic/cubit/theme_state.dart';
+import 'package:tadamon/core/routing/app_router.dart';
 
 class ThemeCubit extends Cubit<ThemeState> {
   final ThemeSharedPreferences _themeSharedPreferences;
@@ -29,6 +31,24 @@ class ThemeCubit extends Cubit<ThemeState> {
     await _themeSharedPreferences.setThemeMode(state.themeMode);
   }
 
+  /// Sets the System UI overlay style depending on the given [ThemeState].
+  ///
+  /// If the theme is light, it sets the status bar and navigation bar to be
+  /// light with a dark icon brightness.  If the theme is dark, it sets the
+  /// status bar and navigation bar to be dark with a light icon brightness.
+  ///
+  /// This function is called whenever the user changes the theme.
+  ///
+  /// [state] is the [ThemeState] to set the System UI overlay style based on.
+  void _setSystemUIOverlayStyle() {
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle.dark.copyWith(
+        systemNavigationBarColor: AppRouter.theme.surface,
+        systemNavigationBarIconBrightness: Brightness.dark,
+      ),
+    );
+  }
+
   /// Toggles the theme between dark and light mode.
   ///
   /// When [isDark] is true, the theme is set to dark mode.
@@ -44,6 +64,8 @@ class ThemeCubit extends Cubit<ThemeState> {
       themeMode: isDark ? ThemeMode.dark : ThemeMode.light,
     );
     await _persistTheme(newState);
+    _setSystemUIOverlayStyle();
+
     emit(newState);
   }
 
@@ -62,6 +84,8 @@ class ThemeCubit extends Cubit<ThemeState> {
       themeMode: ThemeMode.system,
     );
     await _persistTheme(newState);
+    _setSystemUIOverlayStyle();
+
     emit(newState);
   }
 

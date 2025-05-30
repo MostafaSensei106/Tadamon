@@ -20,7 +20,7 @@ class _HelpUserPageViewState extends State<HelpUserPageView>
   late final List<AnimationController> _controllers;
   late final List<Animation<Offset>> _slideAnimations;
 
-  void initAnimations(final qnaList) async {
+  void initAnimations(final dynamic qnaList) async {
     _controllers = List.generate(
       qnaList.length,
       (index) => AnimationController(
