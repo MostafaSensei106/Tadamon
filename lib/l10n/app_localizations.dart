@@ -62,7 +62,9 @@ import 'app_localizations_ar.dart';
 /// property.
 abstract class AppLocalizations {
   AppLocalizations(String locale)
+
       : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+
 
   final String localeName;
 
