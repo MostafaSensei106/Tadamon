@@ -16,7 +16,7 @@ class ChatDevAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   /// Navigate back in the app by calling [Navigator.pop] on the given [context], and
   /// trigger a haptic feedback with [HapticFeedback.vibrate].
-  void leave(context) {
+  void leave( BuildContext context) {
     HapticFeedback.vibrate();
     Navigator.pop(context);
   }

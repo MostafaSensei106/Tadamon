@@ -49,12 +49,13 @@ final ThemeData darkTheme = ThemeData(
     surfaceContainer: Color(0xff291d1b),
     surfaceContainerHigh: Color(0xff342725),
     surfaceContainerHighest: Color(0xff403130),
+  
   ),
   fontFamily: 'ArabicFont',
   appBarTheme: const AppBarTheme(
     elevation: 0,
     centerTitle: true,
-    backgroundColor: Colors.transparent,
     iconTheme: IconThemeData(size: SenseiConst.iconSize),
   ),
+  
 );

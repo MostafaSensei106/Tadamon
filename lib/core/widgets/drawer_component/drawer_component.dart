@@ -4,7 +4,7 @@ import 'package:tadamon/core/config/const/sensei_const.dart';
 import 'package:tadamon/core/config/fonts/fonts.dart';
 import 'package:tadamon/core/widgets/divider.dart';
 
-class DrawerComponent extends StatelessWidget {
+class ListTileComponent extends StatelessWidget {
   final IconData leadingIcon;
   final String title;
   final String subtitle;
@@ -19,7 +19,7 @@ class DrawerComponent extends StatelessWidget {
   final bool useDivider;
   final bool useinBorderRadius;
 
-  const DrawerComponent({
+  const ListTileComponent({
     super.key,
     required this.leadingIcon,
     required this.title,
@@ -76,7 +76,7 @@ class DrawerComponent extends StatelessWidget {
 
   @override
 
-  /// Builds a [DrawerComponent].
+  /// Builds a [ListTileComponent].
   ///
   /// This function returns a [Container] widget with a margin and decoration
   /// based on the given properties.

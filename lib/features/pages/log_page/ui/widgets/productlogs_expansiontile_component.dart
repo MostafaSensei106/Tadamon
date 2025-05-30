@@ -49,7 +49,7 @@ class ProductLogsExpansionTileComponent extends StatelessWidget {
               color: Theme.of(context).colorScheme.outline.withAlpha(0x80),
             )),
         children: [
-          DrawerComponent(
+          ListTileComponent(
             leadingIcon: Icons.qr_code_rounded,
             title: "الرقم التسلسلي",
             subtitle: product.serialNumber,
@@ -61,25 +61,25 @@ class ProductLogsExpansionTileComponent extends StatelessWidget {
                     ClipboardData(text: product.serialNumber)),
                 icon: const Icon(Icons.copy)),
           ),
-          DrawerComponent(
+          ListTileComponent(
             leadingIcon: Icons.label_outline_rounded,
             title: "اسم المنتج",
             subtitle: product.name,
             useDivider: true,
           ),
-          DrawerComponent(
+          ListTileComponent(
             leadingIcon: Icons.business_rounded,
             title: "الشركة المصنعة",
             subtitle: product.manufacture,
             useDivider: true,
           ),
-          DrawerComponent(
+          ListTileComponent(
             leadingIcon: Icons.category_outlined,
             title: "التصنيف",
             subtitle: product.category,
             useDivider: true,
           ),
-          DrawerComponent(
+          ListTileComponent(
             leadingIcon: Icons.handshake_outlined,
             title: "الحالة",
             useDivider: true,
@@ -89,7 +89,7 @@ class ProductLogsExpansionTileComponent extends StatelessWidget {
                     ? "مؤمن"
                     : "غير مؤمن",
           ),
-          DrawerComponent(
+          ListTileComponent(
             leadingIcon: Icons.date_range_outlined,
             title: "التاريخ",
             subtitle: product.scannedAt.formatted,

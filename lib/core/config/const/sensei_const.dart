@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
 class SenseiConst {
-  static const String appName = " تَضَامُنٌ";
+  static const String appName = "تَضَامُنٌ";
   static const String appVersion = "1.0.0";
 
   static const String devPhoneNumber = "+201014414536";

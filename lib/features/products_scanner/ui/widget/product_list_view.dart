@@ -18,7 +18,7 @@ class ProductListView extends StatelessWidget {
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       children: [
-        DrawerComponent(
+        ListTileComponent(
           useGroupTop: true,
           useDivider: true,
           useinBorderRadius: true,
@@ -33,28 +33,28 @@ class ProductListView extends StatelessWidget {
             },
           ),
         ),
-        DrawerComponent(
+        ListTileComponent(
           useGroupMiddle: true,
           useDivider: true,
           leadingIcon: Icons.label_outline_rounded,
           title: "إسم المنتج",
           subtitle: product.name,
         ),
-        DrawerComponent(
+        ListTileComponent(
           useGroupMiddle: true,
           useDivider: true,
           leadingIcon: Icons.business_rounded,
           title: "المصنع",
           subtitle: product.manufacture,
         ),
-        DrawerComponent(
+        ListTileComponent(
           useGroupMiddle: true,
           useDivider: true,
           leadingIcon: Icons.category_outlined,
           title: "التصنيف",
           subtitle: product.category,
         ),
-        DrawerComponent(
+        ListTileComponent(
           useGroupBottom: true,
           useinBorderRadius: true,
           leadingIcon: Icons.handshake_outlined,

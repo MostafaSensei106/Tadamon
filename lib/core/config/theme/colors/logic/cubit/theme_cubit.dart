@@ -98,10 +98,12 @@ class ThemeCubit extends Cubit<ThemeState> {
         await _persistTheme(newState);
         emit(newState);
       } else {
-        emit(state.copyWith(
-          isDark: isDark,
-          themeMode: savedMode,
-        ));
+        emit(
+          state.copyWith(
+            isDark: isDark,
+            themeMode: savedMode,
+          ),
+        );
       }
     }
   }

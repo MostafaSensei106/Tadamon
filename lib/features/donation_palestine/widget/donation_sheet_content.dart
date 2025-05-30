@@ -40,28 +40,28 @@ class DonationSheetContent extends StatelessWidget {
 
   @override
 
-  /// Builds a [Column] widget that displays a list of [DrawerComponent]s each
+  /// Builds a [Column] widget that displays a list of [ListTileComponent]s each
   /// with a different organization and its corresponding URL to donate.
   ///
-  /// The first [DrawerComponent] is for the UNRWA organization, the second is
+  /// The first [ListTileComponent] is for the UNRWA organization, the second is
   /// for the Palestinian Red Crescent organization, the third is for the
   /// Baitzakat organization, and the fourth is for the Egyptian Food Bank
   /// organization.
   ///
-  /// Each [DrawerComponent] has a different icon, title, and subtitle. The
+  /// Each [ListTileComponent] has a different icon, title, and subtitle. The
   /// subtitle is a translation of "Donate through [organization name]".
   ///
-  /// The [DrawerComponent]s are arranged vertically in a [Column] widget.
+  /// The [ListTileComponent]s are arranged vertically in a [Column] widget.
   ///
-  /// The [DrawerComponent]s are wrapped in a [SingleChildScrollView] to make
+  /// The [ListTileComponent]s are wrapped in a [SingleChildScrollView] to make
   /// the bottom sheet scrollable.
   ///
-  /// The [DrawerComponent]s are also padded with a [Padding] widget to add a
+  /// The [ListTileComponent]s are also padded with a [Padding] widget to add a
   /// bottom padding of 16 logical pixels.
   Widget build(BuildContext context) {
     return Column(
       children: [
-        DrawerComponent(
+        ListTileComponent(
           leadingIcon: Icons.volunteer_activism_outlined,
           title: 'منظمة الانوروا',
           subtitle: 'نبرع هم طريق منظمة الانوروا',
@@ -73,7 +73,7 @@ class DonationSheetContent extends StatelessWidget {
             UrlRunServices.launchURL(SenseiConst.donateByUnrwaLink)
           },
         ),
-        DrawerComponent(
+        ListTileComponent(
             leadingIcon: Icons.mode_night_outlined,
             title: 'الهلال الاحمر الفلسطيني',
             subtitle: 'تبرع عن طريق الهلال الاحمر الفلسطيني',
@@ -83,7 +83,7 @@ class DonationSheetContent extends StatelessWidget {
                 {
                   HapticFeedback.vibrate(),
                   UrlRunServices.launchURL(SenseiConst.donateByPalestinercsLink)}),
-        DrawerComponent(
+        ListTileComponent(
           leadingIcon: Icons.maps_home_work_outlined,
           title: 'بيت الزكاة والصدقات المصري',
           subtitle: 'تبرع عن طريق ابيت الزكاةو الصدقات المصري',
@@ -93,7 +93,7 @@ class DonationSheetContent extends StatelessWidget {
           onTapped: () =>
               UrlRunServices.launchURL(SenseiConst.donateByBaitzakatLink),
         ),
-        DrawerComponent(
+        ListTileComponent(
           leadingIcon: Icons.food_bank_outlined,
           title: 'بنك الطعام المصري',
           subtitle: 'تبرع عن طريقة بنك الطعام المصري',

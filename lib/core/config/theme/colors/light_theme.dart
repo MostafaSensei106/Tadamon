@@ -54,7 +54,7 @@ final ThemeData lightTheme = ThemeData(
   appBarTheme: const AppBarTheme(
     elevation: 0,
     centerTitle: true,
-    backgroundColor: Colors.transparent,
     iconTheme: IconThemeData(size: SenseiConst.iconSize),
   ),
+  
 );
