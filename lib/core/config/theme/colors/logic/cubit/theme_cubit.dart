@@ -1,11 +1,9 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tadamon/core/config/theme/colors/logic/cubit/theme_shared_preferences.dart';
 import 'package:tadamon/core/config/theme/colors/logic/cubit/theme_state.dart';
-import 'package:tadamon/core/routing/app_router.dart';
 
 class ThemeCubit extends Cubit<ThemeState> {
   final ThemeSharedPreferences _themeSharedPreferences;
