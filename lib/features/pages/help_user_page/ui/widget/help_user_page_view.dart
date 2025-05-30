@@ -8,8 +8,44 @@ import 'package:tadamon/features/pages/help_user_page/logic/cubit/help_user_stat
 import 'package:tadamon/core/widgets/app_bar/side_page_app_bar.dart';
 import 'package:tadamon/generated/l10n.dart';
 
-class HelpUserPageView extends StatelessWidget {
+class HelpUserPageView extends StatefulWidget {
   const HelpUserPageView({super.key});
+
+  @override
+  State<HelpUserPageView> createState() => _HelpUserPageViewState();
+}
+
+class _HelpUserPageViewState extends State<HelpUserPageView>
+    with TickerProviderStateMixin {
+  late final List<AnimationController> _controllers;
+  late final List<Animation<Offset>> _slideAnimations;
+
+  void initAnimations(final dynamic qnaList) async {
+    _controllers = List.generate(
+      qnaList.length,
+      (index) => AnimationController(
+        vsync: this,
+        duration: Duration(milliseconds: 300 + (index * 75)),
+      ),
+    );
+
+    _slideAnimations = _controllers.map((controller) {
+      return Tween<Offset>(
+        begin: const Offset(1, 0),
+        end: Offset.zero,
+      ).animate(CurvedAnimation(
+        parent: controller,
+        curve: Curves.easeOut,
+      ));
+    }).toList();
+
+    // Delay start a bit for UX
+    Future.delayed(const Duration(milliseconds: 200), () {
+      for (var controller in _controllers) {
+        controller.forward();
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,41 +77,16 @@ class HelpUserPageView extends StatelessWidget {
           }
 
           if (state is HlepUserLoadingQnaStateSuccess) {
-            final List<AnimationController> controllers = List.generate(
-              state.qnaList.length,
-              (index) => AnimationController(
-                vsync: context as TickerProviderStateMixin,
-                duration: Duration(milliseconds: 300 + (index * 75)),
-              ),
-            );
-
-            final List<Animation<Offset>> slideAnimations = controllers.map(
-              (controller) {
-                return Tween<Offset>(
-                  begin: const Offset(1, 0),
-                  end: Offset.zero,
-                ).animate(CurvedAnimation(
-                  parent: controller,
-                  curve: Curves.easeOut,
-                ));
-              },
-            ).toList();
-
-            // Delay start a bit for UX
-            Future.delayed(const Duration(milliseconds: 200), () {
-              for (var controller in controllers) {
-                controller.forward();
-              }
-            });
+            initAnimations(state.qnaList);
             return ListView.builder(
               itemCount: state.qnaList.length,
               padding: EdgeInsets.all(SenseiConst.padding.w),
               itemBuilder: (context, index) {
                 final qna = state.qnaList[index];
                 return SlideTransition(
-                  position: slideAnimations[index],
+                  position: _slideAnimations[index],
                   child: FadeTransition(
-                    opacity: controllers[index],
+                    opacity: _controllers[index],
                     child: ExpansionTileComponent(
                       useMargin: index == 0 ? false : true,
                       leadingIcon: Icons.help_outline,
