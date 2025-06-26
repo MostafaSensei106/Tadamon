@@ -20,7 +20,7 @@ class _HelpUserPageViewState extends State<HelpUserPageView>
   late final List<AnimationController> _controllers;
   late final List<Animation<Offset>> _slideAnimations;
 
-  void initAnimations(final dynamic qnaList) async {
+  void _initAnimations(final dynamic qnaList) async {
     _controllers = List.generate(
       qnaList.length,
       (index) => AnimationController(
@@ -59,25 +59,23 @@ class _HelpUserPageViewState extends State<HelpUserPageView>
           }
 
           if (state is HelpUserErrorState) {
-            return Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Icon(Icons.error_outline, size: 48, color: Colors.red),
-                  const SizedBox(height: 16),
-                  Text(state.error),
-                  const SizedBox(height: 16),
-                  ElevatedButton(
-                    onPressed: () => context.read<HelpUserCubit>().loadQna(),
-                    child: const Text('إعادة المحاولة'),
-                  ),
-                ],
-              ),
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Icon(Icons.error_outline, size: 48, color: Colors.red),
+                const SizedBox(height: 16),
+                Text(state.error),
+                const SizedBox(height: 16),
+                ElevatedButton(
+                  onPressed: () => context.read<HelpUserCubit>().loadQna(),
+                  child: const Text('إعادة المحاولة'),
+                ),
+              ],
             );
           }
 
           if (state is HlepUserLoadingQnaStateSuccess) {
-            initAnimations(state.qnaList);
+            _initAnimations(state.qnaList);
             return ListView.builder(
               itemCount: state.qnaList.length,
               padding: EdgeInsets.all(SenseiConst.padding.w),
@@ -115,4 +113,13 @@ class _HelpUserPageViewState extends State<HelpUserPageView>
       ),
     );
   }
+
+  @override
+  void dispose() {
+    for (var controller in _controllers) {
+      controller.dispose();
+    }
+    super.dispose();
+  }
+  
 }

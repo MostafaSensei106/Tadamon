@@ -98,12 +98,12 @@ class _DonationForDevSliderState extends State<DonationForDevSlider> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       onTapDown: (_) => _pauseAutoSlide(),
       onTapUp: (_) => _resumeAutoSlide(),
       onTap: () {HapticFeedback.vibrate(); UrlRunServices.launchURL(SenseiConst.buyMeACoffeeLink);},
       child: Padding(
-        padding:  EdgeInsets.symmetric(vertical: SenseiConst.padding.h-4),
+        padding:  EdgeInsets.symmetric(vertical: SenseiConst.padding.h-8),
         child: AspectRatio(
           aspectRatio: 35 / 10, 
           child: ClipRRect(

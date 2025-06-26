@@ -40,7 +40,7 @@ class AppRouter {
         page = const HelpUserPage();
         break;
       case Routes.chatWithDev:
-        page = ChatWithDev();
+        page = const ChatWithDev();
       case Routes.appInfo:
         page = const AppInfo();
       default:
