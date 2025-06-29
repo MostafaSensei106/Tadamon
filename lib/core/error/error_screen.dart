@@ -41,8 +41,9 @@ void errorScreen() {
             mainAxisSize: MainAxisSize.min,
             children: [
               const LottieComponent(
-                  lottiePath: SenseiConst.lottieCatErrorAnimation,
-                  text: 'حدث خطأ في تطبيق تضامن'),
+                lottiePath: SenseiConst.lottieCatErrorAnimation,
+                text: 'حدث خطأ في تطبيق تضامن',
+              ),
               const SizedBox(height: 8),
               Text(
                 details.exception.toString(),

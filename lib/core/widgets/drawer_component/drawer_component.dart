@@ -75,7 +75,6 @@ class ListTileComponent extends StatelessWidget {
   }
 
   @override
-
   /// Builds a [ListTileComponent].
   ///
   /// This function returns a [Container] widget with a margin and decoration
@@ -129,23 +128,22 @@ class ListTileComponent extends StatelessWidget {
               child: ListTile(
                 horizontalTitleGap: 13.w,
                 contentPadding: EdgeInsets.symmetric(
-                    horizontal: SenseiConst.padding.w, vertical: 0),
+                  horizontal: SenseiConst.padding.w,
+                  vertical: 0,
+                ),
                 leading: Container(
                   padding: const EdgeInsets.all(SenseiConst.padding),
                   decoration: BoxDecoration(
-                    borderRadius:
-                        BorderRadius.circular(SenseiConst.inBorderRadius),
-                    color:
-                        Theme.of(context).colorScheme.surfaceContainerHighest,
+                    borderRadius: BorderRadius.circular(
+                      SenseiConst.inBorderRadius,
+                    ),
+                    color: Theme.of(
+                      context,
+                    ).colorScheme.surfaceContainerHighest,
                   ),
-                  child: Icon(
-                    leadingIcon,
-                    size: SenseiConst.iconSize.sp,
-                  ),
+                  child: Icon(leadingIcon, size: SenseiConst.iconSize.sp),
                 ),
-                title: Text(
-                  title,
-                ),
+                title: Text(title),
                 subtitle: Text(
                   subtitle,
                   overflow: TextOverflow.ellipsis,

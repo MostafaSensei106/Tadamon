@@ -38,8 +38,9 @@ class ItemsCounterView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final formatter =
-        context.findAncestorWidgetOfExactType<ItemsCounter>()?.formatNumber;
+    final formatter = context
+        .findAncestorWidgetOfExactType<ItemsCounter>()
+        ?.formatNumber;
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -50,9 +51,7 @@ class ItemsCounterView extends StatelessWidget {
           title: S.of(context).scanBarcode,
           formatter: formatter!,
         ),
-        SizedBox(
-          width: SenseiConst.margin.w,
-        ),
+        SizedBox(width: SenseiConst.margin.w),
         _buildStreamCounter(
           stream: FireStoreRepository().getProductsCount(),
           icon: Icons.checklist_rounded,

@@ -7,10 +7,7 @@ import 'package:tadamon/core/routing/routes.dart';
 import 'package:tadamon/core/widgets/button_component/button_compnent.dart';
 
 class DotIndicatorNav extends StatefulWidget {
-  const DotIndicatorNav({
-    super.key,
-    required this.pageController,
-  });
+  const DotIndicatorNav({super.key, required this.pageController});
 
   final PageController pageController;
 
@@ -48,7 +45,11 @@ class _DotIndicatorNavState extends State<DotIndicatorNav> {
   }
 
   Widget _getActionButton(
-      String key, String label, IconData icon, VoidCallback onPressed) {
+    String key,
+    String label,
+    IconData icon,
+    VoidCallback onPressed,
+  ) {
     return ButtonCompnent(
       key: ValueKey(key),
       useInBorderRadius: true,
@@ -74,8 +75,9 @@ class _DotIndicatorNavState extends State<DotIndicatorNav> {
           right: 10,
           child: Padding(
             padding: EdgeInsets.symmetric(
-                horizontal: SenseiConst.padding.w,
-                vertical: SenseiConst.padding.h),
+              horizontal: SenseiConst.padding.w,
+              vertical: SenseiConst.padding.h,
+            ),
             child: Container(
               padding: EdgeInsets.all(SenseiConst.padding.w),
               alignment: Alignment.bottomCenter,
@@ -83,8 +85,9 @@ class _DotIndicatorNavState extends State<DotIndicatorNav> {
               height: 0.08.sh,
               decoration: BoxDecoration(
                 color: Theme.of(context).colorScheme.surfaceContainer,
-                borderRadius:
-                    BorderRadius.circular(SenseiConst.outBorderRadius.r),
+                borderRadius: BorderRadius.circular(
+                  SenseiConst.outBorderRadius.r,
+                ),
                 border: Border.all(
                   color: Theme.of(context).colorScheme.outline.withAlpha(0X80),
                 ),
@@ -101,8 +104,12 @@ class _DotIndicatorNavState extends State<DotIndicatorNav> {
                           end: Offset.zero,
                         ).animate(animation),
                         child: SizedBox(
-                          width:0.3.sw,
-                          child: FadeTransition(opacity: animation, child: child)),
+                          width: 0.3.sw,
+                          child: FadeTransition(
+                            opacity: animation,
+                            child: child,
+                          ),
+                        ),
                       );
                     },
                     child: _isFirstPage
@@ -136,12 +143,12 @@ class _DotIndicatorNavState extends State<DotIndicatorNav> {
                     effect: ExpandingDotsEffect(
                       dotWidth: SenseiConst.indicatorDotSize,
                       dotHeight: SenseiConst.indicatorDotSize,
-                      dotColor: Theme.of(context)
-                          .colorScheme
-                          .onSurface
-                          .withAlpha((0.5 * 255).toInt()),
-                      activeDotColor:
-                          Theme.of(context).colorScheme.primaryContainer,
+                      dotColor: Theme.of(
+                        context,
+                      ).colorScheme.onSurface.withAlpha((0.5 * 255).toInt()),
+                      activeDotColor: Theme.of(
+                        context,
+                      ).colorScheme.primaryContainer,
                       expansionFactor: 2,
                     ),
                     onDotClicked: (index) {
@@ -162,8 +169,13 @@ class _DotIndicatorNavState extends State<DotIndicatorNav> {
                             begin: const Offset(0, 1),
                             end: Offset.zero,
                           ).animate(animation),
-                          child:
-                              SizedBox(width:0.3.sw,child: FadeTransition(opacity: animation, child: child)),
+                          child: SizedBox(
+                            width: 0.3.sw,
+                            child: FadeTransition(
+                              opacity: animation,
+                              child: child,
+                            ),
+                          ),
                         );
                       },
                       child: _isLastPage

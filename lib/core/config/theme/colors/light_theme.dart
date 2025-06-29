@@ -1,5 +1,5 @@
-
-import 'package:flutter/material.dart' show ThemeData, ColorScheme, AppBarTheme, Brightness, Color, IconThemeData;
+import 'package:flutter/material.dart'
+    show ThemeData, ColorScheme, AppBarTheme, Brightness, Color, IconThemeData;
 import 'package:tadamon/core/config/const/sensei_const.dart' show SenseiConst;
 
 final ThemeData lightTheme = ThemeData(
@@ -57,5 +57,4 @@ final ThemeData lightTheme = ThemeData(
     centerTitle: true,
     iconTheme: IconThemeData(size: SenseiConst.iconSize),
   ),
-  
 );

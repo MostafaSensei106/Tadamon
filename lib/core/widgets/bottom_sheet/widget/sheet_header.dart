@@ -34,10 +34,7 @@ class BottomSheetHeader extends StatelessWidget {
               borderRadius: BorderRadius.circular(4),
             ),
           ),
-          Text(
-            titile,
-            style: Theme.of(context).textTheme.titleMedium,
-          ),
+          Text(titile, style: Theme.of(context).textTheme.titleMedium),
           SizedBox(height: 6.h),
         ],
       ),

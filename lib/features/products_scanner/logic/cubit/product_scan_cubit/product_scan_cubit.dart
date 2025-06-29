@@ -23,16 +23,11 @@ class ProductScanCubit extends Cubit<ProductScanState> {
   /// If the context is not mounted, do nothing.
   ///
   /// This is a private method, because it is not supposed to be called from outside the cubit.
-  void _showProductInfo(
-    BuildContext context,
-    ProductModel product,
-  ) {
+  void _showProductInfo(BuildContext context, ProductModel product) {
     ModelBottomSheet.show(
       context,
       S.of(context).sheetTitleProductInfo,
-      child: ProductListView(
-        product: product,
-      ),
+      child: ProductListView(product: product),
     );
     ScannedLogsProductModel scannedProductToLogs =
         ScannedLogsProductModel.fromProduct(product);
@@ -75,8 +70,9 @@ class ProductScanCubit extends Cubit<ProductScanState> {
       if (isConnected) {
         product = await FireStoreRepository().getProductBySerialNumber(barcode);
       } else {
-        product = await ObjectboxRepository()
-            .getTadamonProductBySerialNumber(barcode);
+        product = await ObjectboxRepository().getTadamonProductBySerialNumber(
+          barcode,
+        );
       }
       if (context.mounted) {
         _showProductInfo(context, product);
@@ -122,8 +118,9 @@ class ProductScanCubit extends Cubit<ProductScanState> {
       if (isConnected) {
         product = await FireStoreRepository().getProductBySerialNumber(barcode);
       } else {
-        product = await ObjectboxRepository()
-            .getTadamonProductBySerialNumber(barcode);
+        product = await ObjectboxRepository().getTadamonProductBySerialNumber(
+          barcode,
+        );
       }
       if (context.mounted) {
         _showProductInfo(context, product);

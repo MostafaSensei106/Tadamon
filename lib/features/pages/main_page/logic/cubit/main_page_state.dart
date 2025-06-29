@@ -6,8 +6,6 @@ class MainPageState {
   const MainPageState({this.currentPage = AppPage.image});
 
   MainPageState copyWith({AppPage? currentPage}) {
-    return MainPageState(
-      currentPage: currentPage ?? this.currentPage,
-    );
+    return MainPageState(currentPage: currentPage ?? this.currentPage);
   }
 }

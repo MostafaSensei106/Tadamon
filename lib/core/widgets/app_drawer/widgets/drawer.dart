@@ -41,7 +41,6 @@ class SenseiDrawer extends StatelessWidget {
   }
 
   @override
-
   /// Builds the main drawer widget for the application.
   ///
   /// This method returns a [SizedBox] containing a [Drawer] widget with a
@@ -54,7 +53,6 @@ class SenseiDrawer extends StatelessWidget {
   /// The width of the drawer scales with the screen size, utilizing 90% of
   /// the screen width. The padding and radius values are defined in the
   /// [SenseiConst] class to ensure consistency with the app's theme.
-
   Widget build(BuildContext context) {
     return SizedBox(
       width: 0.90.sw,
@@ -71,9 +69,10 @@ class SenseiDrawer extends StatelessWidget {
             SizedBox(height: 0.25.sh, child: const DrawerHeaderWidget()),
             Padding(
               padding: EdgeInsets.only(
-                  left: SenseiConst.padding.w,
-                  right: SenseiConst.padding.w,
-                  bottom: SenseiConst.padding.h),
+                left: SenseiConst.padding.w,
+                right: SenseiConst.padding.w,
+                bottom: SenseiConst.padding.h,
+              ),
               child: AnimatedSize(
                 duration: const Duration(milliseconds: 250),
                 child: Column(
@@ -175,23 +174,31 @@ class SenseiDrawer extends StatelessWidget {
       create: (context) => LocalDBCubit()..loclaDBHasData(),
       child: BlocBuilder<LocalDBCubit, LocalDBState>(
         builder: (context, state) {
-          Widget trailingWidget =
-              const Icon(Icons.query_builder_rounded, color: Colors.red);
+          Widget trailingWidget = const Icon(
+            Icons.query_builder_rounded,
+            color: Colors.red,
+          );
           String subtitleText = S.of(context).appOffLine;
           bool groupTop = false;
           if (state is LoclaDBDataBaseHasData) {
-            trailingWidget =
-                const Icon(Icons.check_box_outlined, color: Colors.green);
+            trailingWidget = const Icon(
+              Icons.check_box_outlined,
+              color: Colors.green,
+            );
             subtitleText = S.of(context).appOnLineMassageRunning;
             groupTop = true;
           } else if (state is LoclaDBDataBaseEmpty) {
-            trailingWidget =
-                const Icon(Icons.error_outline_rounded, color: Colors.red);
+            trailingWidget = const Icon(
+              Icons.error_outline_rounded,
+              color: Colors.red,
+            );
             subtitleText = S.of(context).appOnLineMassageRunning;
             groupTop = false;
           } else {
-            trailingWidget =
-                const Icon(Icons.query_builder_rounded, color: Colors.yellow);
+            trailingWidget = const Icon(
+              Icons.query_builder_rounded,
+              color: Colors.yellow,
+            );
             subtitleText = S.of(context).appOflineLoading;
             groupTop = false;
           }
@@ -219,9 +226,9 @@ class SenseiDrawer extends StatelessWidget {
         listener: (context, state) {
           if (state is LoclaDBDataFetchingFromFireStore) {
             const DilogWatingComponent(
-                    title: 'جاري استيراد البيانات',
-                    message: 'يرجى الانتظار حتى تكتمل المزامنة...')
-                .show(context);
+              title: 'جاري استيراد البيانات',
+              message: 'يرجى الانتظار حتى تكتمل المزامنة...',
+            ).show(context);
           }
           if (state is LoclaDBDataFetchingFromFireStoreSuccess) {
             AppToast.showSuccessToast('تم تهيئة البيانات بنجاح.');
@@ -264,9 +271,9 @@ class SenseiDrawer extends StatelessWidget {
         listener: (context, state) {
           if (state is LoclaDBDataFetchingFromFireStore) {
             const DilogWatingComponent(
-                    title: 'جاري تحديث قاعدة البيانات',
-                    message: 'يرجى الانتظار حتى تكتمل المزامنة...')
-                .show(context);
+              title: 'جاري تحديث قاعدة البيانات',
+              message: 'يرجى الانتظار حتى تكتمل المزامنة...',
+            ).show(context);
           }
           if (state is LoclaDBDataFetchingFromFireStoreSuccess) {
             AppToast.showSuccessToast('تم تحديث قاعدة البيانات بنجاح.');
@@ -309,9 +316,9 @@ class SenseiDrawer extends StatelessWidget {
         listener: (context, state) {
           if (state is LoclaDBDataBaseDeleting) {
             const DilogWatingComponent(
-                    title: 'جاري حذف البيانات',
-                    message: 'يرجى الانتظار حتى تكتمل المزامنة...')
-                .show(context);
+              title: 'جاري حذف البيانات',
+              message: 'يرجى الانتظار حتى تكتمل المزامنة...',
+            ).show(context);
           }
           if (state is LoclaDBDataDeleteSuccess) {
             AppToast.showSuccessToast('تم حذف البيانات بنجاح.');
@@ -394,21 +401,22 @@ class SenseiDrawer extends StatelessWidget {
 
 Widget _buildHowToUse(BuildContext context) {
   return ListTileComponent(
-      useMargin: true,
-      useDivider: true,
-      useGroupTop: true,
-      leadingIcon: Icons.question_answer_outlined,
-      title: S.of(context).howToUse,
-      subtitle: S.of(context).howToUseMassage,
-      trailingWidget: Icon(
-        Icons.arrow_forward_ios_rounded,
-        color: Theme.of(context).colorScheme.onSurface.withAlpha(0x80),
-      ),
-      onTapped: () {
-        HapticFeedback.vibrate();
-        Navigator.pop(context);
-        Navigator.pushNamed(context, Routes.userHelp);
-      });
+    useMargin: true,
+    useDivider: true,
+    useGroupTop: true,
+    leadingIcon: Icons.question_answer_outlined,
+    title: S.of(context).howToUse,
+    subtitle: S.of(context).howToUseMassage,
+    trailingWidget: Icon(
+      Icons.arrow_forward_ios_rounded,
+      color: Theme.of(context).colorScheme.onSurface.withAlpha(0x80),
+    ),
+    onTapped: () {
+      HapticFeedback.vibrate();
+      Navigator.pop(context);
+      Navigator.pushNamed(context, Routes.userHelp);
+    },
+  );
 }
 
 Widget _buildReportProduct(BuildContext context) {
@@ -422,8 +430,11 @@ Widget _buildReportProduct(BuildContext context) {
     onTapped: () {
       HapticFeedback.vibrate();
       Navigator.pop(context);
-      ModelBottomSheet.show(context, 'بلغ عن منتج',
-          child: const ReportProductSheetContent());
+      ModelBottomSheet.show(
+        context,
+        'بلغ عن منتج',
+        child: const ReportProductSheetContent(),
+      );
     },
   );
 }
@@ -492,22 +503,23 @@ Widget _buildGithubToken(BuildContext context) {
 
 Widget _buildTelegramChannel(BuildContext context) {
   return ListTileComponent(
-      useMargin: false,
-      useDivider: false,
-      useGroupBottom: true,
-      leadingIcon: Icons.telegram_rounded,
-      title: S.of(context).telegramChannel,
-      subtitle: S.of(context).telegramChannelMassage,
-      trailingWidget: Icon(
-        Icons.link_rounded,
-        color: Theme.of(context).colorScheme.onSurface.withAlpha(0x80),
-      ),
-      onTapped: () {
-        HapticFeedback.vibrate();
-        Navigator.pop(context);
+    useMargin: false,
+    useDivider: false,
+    useGroupBottom: true,
+    leadingIcon: Icons.telegram_rounded,
+    title: S.of(context).telegramChannel,
+    subtitle: S.of(context).telegramChannelMassage,
+    trailingWidget: Icon(
+      Icons.link_rounded,
+      color: Theme.of(context).colorScheme.onSurface.withAlpha(0x80),
+    ),
+    onTapped: () {
+      HapticFeedback.vibrate();
+      Navigator.pop(context);
 
-        UrlRunServices.launchURL(SenseiConst.tadamonTelegramLink);
-      });
+      UrlRunServices.launchURL(SenseiConst.tadamonTelegramLink);
+    },
+  );
 }
 
 Widget _buildDeveloper(BuildContext context) {
@@ -525,7 +537,7 @@ Widget _buildDeveloper(BuildContext context) {
     onTapped: () => {
       HapticFeedback.vibrate(),
       Navigator.pop(context),
-      Navigator.pushNamed(context, Routes.chatWithDev)
+      Navigator.pushNamed(context, Routes.chatWithDev),
     },
   );
 }

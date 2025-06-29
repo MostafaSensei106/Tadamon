@@ -42,10 +42,17 @@ class _LogsPageViewState extends State<LogsPageView> {
             icon: Icons.search,
             suffixIcon: menuButton(context),
             hint:
-                'ابحث عن ${_selectedFilter == 'Name' ? 'اسم المنتج' : _selectedFilter == 'SerialNumber' ? 'الرقم التسلسلي' : _selectedFilter == 'Manufacture' ? 'المُصنع' : 'القسم'}...',
+                'ابحث عن ${_selectedFilter == 'Name'
+                    ? 'اسم المنتج'
+                    : _selectedFilter == 'SerialNumber'
+                    ? 'الرقم التسلسلي'
+                    : _selectedFilter == 'Manufacture'
+                    ? 'المُصنع'
+                    : 'القسم'}...',
             onChange: (value) {
-              BlocProvider.of<LogsBloc>(context)
-                  .add(GetLogsResult(value, _selectedFilter));
+              BlocProvider.of<LogsBloc>(
+                context,
+              ).add(GetLogsResult(value, _selectedFilter));
             },
           ),
         ),
@@ -85,10 +92,7 @@ class _LogsPageViewState extends State<LogsPageView> {
             value: 'SerialNumber',
             child: Row(
               children: [
-                const Icon(
-                  Icons.qr_code_rounded,
-                  size: SenseiConst.iconSize,
-                ),
+                const Icon(Icons.qr_code_rounded, size: SenseiConst.iconSize),
                 SizedBox(width: SenseiConst.padding.w),
                 Text(
                   'الرقم التسلسلي',
@@ -141,10 +145,7 @@ class _LogsPageViewState extends State<LogsPageView> {
             value: 'Manufacture',
             child: Row(
               children: [
-                const Icon(
-                  Icons.business,
-                  size: SenseiConst.iconSize,
-                ),
+                const Icon(Icons.business, size: SenseiConst.iconSize),
                 SizedBox(width: SenseiConst.padding.w),
                 Text(
                   'المُصنع',
@@ -169,10 +170,7 @@ class _LogsPageViewState extends State<LogsPageView> {
             value: 'Category',
             child: Row(
               children: [
-                const Icon(
-                  Icons.category_outlined,
-                  size: SenseiConst.iconSize,
-                ),
+                const Icon(Icons.category_outlined, size: SenseiConst.iconSize),
                 SizedBox(width: SenseiConst.padding.w),
                 Text(
                   'القسم',

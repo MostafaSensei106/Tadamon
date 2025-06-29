@@ -20,8 +20,9 @@ class FireStoreRepository {
 
   Future<List<ProductModel>> downloadAllProductsFromFirebase() async {
     try {
-      final snapshot =
-          await _firestore.collection(_tadamonProductsCollection).get();
+      final snapshot = await _firestore
+          .collection(_tadamonProductsCollection)
+          .get();
       return snapshot.docs
           .map((doc) => ProductModel.fromMap(doc.data()))
           .toList();
@@ -33,8 +34,9 @@ class FireStoreRepository {
 
   Future<List<ProductModel>> getAllProducts() async {
     try {
-      final snapshot =
-          await _firestore.collection(_tadamonProductsCollection).get();
+      final snapshot = await _firestore
+          .collection(_tadamonProductsCollection)
+          .get();
       return snapshot.docs
           .map((doc) => ProductModel.fromMap(doc.data()))
           .toList();
@@ -91,18 +93,22 @@ class FireStoreRepository {
   }
 
   Future<List<ProductSearchModel>> searchInFireStore(
-      String searchTerm, String filter) async {
+    String searchTerm,
+    String filter,
+  ) async {
     if (searchTerm.isEmpty) {
       return [];
     }
 
     searchTerm = searchTerm.toLowerCase();
-    final CollectionReference productsCollection =
-        _firestore.collection(_tadamonProductsCollection);
+    final CollectionReference productsCollection = _firestore.collection(
+      _tadamonProductsCollection,
+    );
 
     Query query = productsCollection
         .orderBy(filter)
-        .startAt([searchTerm]).endAt(["$searchTerm\uF8FF"]);
+        .startAt([searchTerm])
+        .endAt(["$searchTerm\uF8FF"]);
 
     final querySnapshot = await query.get();
 
@@ -113,8 +119,9 @@ class FireStoreRepository {
 
   Future<void> sendReportToBackEnd(Map<String, dynamic> productReport) async {
     String productName = productReport['productName'];
-    DocumentReference documentReference =
-        _firestore.collection(_productReportCollection).doc(productName);
+    DocumentReference documentReference = _firestore
+        .collection(_productReportCollection)
+        .doc(productName);
     await documentReference.set(productReport);
   }
 
@@ -124,5 +131,4 @@ class FireStoreRepository {
         .snapshots()
         .map((snapshots) => snapshots.docs.length);
   }
-
 }

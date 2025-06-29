@@ -37,9 +37,10 @@ class _ReportProductSheetContentState extends State<ReportProductSheetContent> {
               return;
             }
             context.read<ReportProductCubit>().submitReport(
-                serialNumberController.text,
-                productNameController.text,
-                status);
+              serialNumberController.text,
+              productNameController.text,
+              status,
+            );
             Navigator.pop(context);
           }
 
@@ -47,10 +48,11 @@ class _ReportProductSheetContentState extends State<ReportProductSheetContent> {
             children: [
               TextFieldComponent(
                 controller: serialNumberController,
-                onChange: (_) => context
-                    .read<ReportProductCubit>()
-                    .validateInputs(serialNumberController.text,
-                        productNameController.text),
+                onChange: (_) =>
+                    context.read<ReportProductCubit>().validateInputs(
+                      serialNumberController.text,
+                      productNameController.text,
+                    ),
                 icon: Icons.qr_code_rounded,
                 isNumeric: true,
                 hint: 'ادخل الرقم التسلسلي (6-13 أرقام)',
@@ -63,23 +65,20 @@ class _ReportProductSheetContentState extends State<ReportProductSheetContent> {
                       .scanBarcode(context, serialNumberController),
                 ),
               ),
-              SizedBox(
-                height: SenseiConst.margin.h,
-              ),
+              SizedBox(height: SenseiConst.margin.h),
               TextFieldComponent(
                 controller: productNameController,
-                onChange: (_) => context
-                    .read<ReportProductCubit>()
-                    .validateInputs(serialNumberController.text,
-                        productNameController.text),
+                onChange: (_) =>
+                    context.read<ReportProductCubit>().validateInputs(
+                      serialNumberController.text,
+                      productNameController.text,
+                    ),
                 icon: Icons.label_outline_rounded,
                 hint: 'ادخل اسم المنتج',
                 errorText: isProductNameError ? state.error : null,
                 maxLength: 50,
               ),
-              SizedBox(
-                height: SenseiConst.margin.h,
-              ),
+              SizedBox(height: SenseiConst.margin.h),
               RadioSelectionTileComponent(
                 onChanged: (value) {
                   setState(() {
@@ -87,9 +86,7 @@ class _ReportProductSheetContentState extends State<ReportProductSheetContent> {
                   });
                 },
               ),
-              SizedBox(
-                height: SenseiConst.margin.h - 4,
-              ),
+              SizedBox(height: SenseiConst.margin.h - 4),
               if (state is ReportProductIsLoading)
                 const CircularProgressIndicator(),
               SizedBox(
@@ -102,10 +99,7 @@ class _ReportProductSheetContentState extends State<ReportProductSheetContent> {
                 ),
               ),
               if (state is ReportProductIsError)
-                Text(
-                  state.error,
-                  style: const TextStyle(color: Colors.red),
-                ),
+                Text(state.error, style: const TextStyle(color: Colors.red)),
             ],
           );
         },

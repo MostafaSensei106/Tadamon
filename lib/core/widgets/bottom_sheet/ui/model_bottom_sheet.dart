@@ -20,8 +20,11 @@ class ModelBottomSheet {
   ///
   /// The [child] is displayed within a [ClipRRect] with a circular corner radius
   /// of 14 logical pixels.
-  static void show(BuildContext context, String title,
-      {required Widget child}) {
+  static void show(
+    BuildContext context,
+    String title, {
+    required Widget child,
+  }) {
     showModalBottomSheet<void>(
       context: context,
       isScrollControlled: true,
@@ -59,7 +62,10 @@ class ModelBottomSheet {
   /// The close button is also padded with a [Padding] widget to add a bottom
   /// padding of 16 logical pixels.
   static Widget _buildBottomSheet(
-      BuildContext context, String title, Widget child) {
+    BuildContext context,
+    String title,
+    Widget child,
+  ) {
     return ClipRRect(
       borderRadius: const BorderRadius.vertical(top: Radius.circular(14)),
       child: ColoredBox(
@@ -67,18 +73,18 @@ class ModelBottomSheet {
         child: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.only(
-                bottom: MediaQuery.of(context).viewInsets.bottom),
+              bottom: MediaQuery.of(context).viewInsets.bottom,
+            ),
             child: Wrap(
               children: [
                 BottomSheetHeader(titile: title),
                 Padding(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: SenseiConst.padding.w),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: SenseiConst.padding.w,
+                  ),
                   child: Column(
                     children: [
-                      BottomModelSheetContent(
-                        child: child,
-                      ),
+                      BottomModelSheetContent(child: child),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
@@ -87,14 +93,14 @@ class ModelBottomSheet {
                             text: S.of(context).close,
                             onPressed: () => {
                               HapticFeedback.vibrate(),
-                              Navigator.of(context).pop()
+                              Navigator.of(context).pop(),
                             },
                           ),
                         ],
                       ),
                     ],
                   ),
-                )
+                ),
               ],
             ),
           ),

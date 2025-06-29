@@ -1,4 +1,3 @@
-
 import 'dart:ui' show FontWeight;
 
 class FontWeightHelper {

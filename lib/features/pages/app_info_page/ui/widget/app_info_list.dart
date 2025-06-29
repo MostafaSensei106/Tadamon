@@ -32,13 +32,13 @@ class _AppInfoListState extends State<AppInfoList>
   late final List<Animation<Offset>> _slideAnimations;
 
   Map<String, String> get appInfo => {
-        'appName': widget.appName,
-        'appVersion': widget.appVersion,
-        'buildNumber': widget.buildNumber,
-        'buildSignature': widget.buildSignature,
-        'packageName': widget.packageName,
-        'installerStore': widget.installerStore,
-      };
+    'appName': widget.appName,
+    'appVersion': widget.appVersion,
+    'buildNumber': widget.buildNumber,
+    'buildSignature': widget.buildSignature,
+    'packageName': widget.packageName,
+    'installerStore': widget.installerStore,
+  };
 
   @override
   void initState() {
@@ -59,10 +59,7 @@ class _AppInfoListState extends State<AppInfoList>
       return Tween<Offset>(
         begin: const Offset(1, 0),
         end: Offset.zero,
-      ).animate(CurvedAnimation(
-        parent: controller,
-        curve: Curves.easeOut,
-      ));
+      ).animate(CurvedAnimation(parent: controller, curve: Curves.easeOut));
     }).toList();
 
     // Delay start a bit for UX
@@ -77,7 +74,8 @@ class _AppInfoListState extends State<AppInfoList>
     HapticFeedback.vibrate();
     Clipboard.setData(
       ClipboardData(
-        text: '''
+        text:
+            '''
 معلومات تطبيق تضامن:
 - اسم التطبيق: ${widget.appName}
 - إصدار التطبيق: ${widget.appVersion}
@@ -97,7 +95,9 @@ class _AppInfoListState extends State<AppInfoList>
         SlideTransition(
           position: _slideAnimations.first,
           child: FadeTransition(
-              opacity: _controllers.first, child: const AppInfoTitle()),
+            opacity: _controllers.first,
+            child: const AppInfoTitle(),
+          ),
         ),
         Expanded(
           child: ListView.builder(

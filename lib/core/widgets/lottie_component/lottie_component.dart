@@ -4,12 +4,14 @@ import 'package:lottie/lottie.dart';
 import 'package:tadamon/core/config/fonts/fonts.dart';
 
 class LottieComponent extends StatelessWidget {
-  
   final String lottiePath;
   final String text;
 
-  const LottieComponent(
-      {super.key, required this.lottiePath, required this.text});
+  const LottieComponent({
+    super.key,
+    required this.lottiePath,
+    required this.text,
+  });
 
   @override
   /// Returns a [Column] widget with a [Lottie.asset] widget and a [Text]
@@ -32,7 +34,8 @@ class LottieComponent extends StatelessWidget {
         SizedBox(height: 10.h),
         Text(
           text,
-          style: AppTextStyle.subtitle(context).copyWith(fontSize: 16.sp),),
+          style: AppTextStyle.subtitle(context).copyWith(fontSize: 16.sp),
+        ),
       ],
     );
   }

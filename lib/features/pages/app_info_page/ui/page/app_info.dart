@@ -23,7 +23,6 @@ class _AppInfoState extends State<AppInfo> {
   bool _isLoading = true;
 
   @override
-
   /// Initializes the state of the widget.
   ///
   /// This function is called when the widget is first inserted into the tree.
@@ -83,8 +82,12 @@ class _AppInfoState extends State<AppInfo> {
       body: _isLoading
           ? const Center(child: CircularProgressIndicator())
           : Padding(
-            padding:  EdgeInsets.only(left: SenseiConst.padding.w, right: SenseiConst.padding.w, bottom: SenseiConst.padding.h),
-            child: AppInfoList(
+              padding: EdgeInsets.only(
+                left: SenseiConst.padding.w,
+                right: SenseiConst.padding.w,
+                bottom: SenseiConst.padding.h,
+              ),
+              child: AppInfoList(
                 appName: _appName,
                 appVersion: _appVersion,
                 buildNumber: _buildNumber,
@@ -92,7 +95,7 @@ class _AppInfoState extends State<AppInfo> {
                 packageName: _packageName,
                 installerStore: _installerStore,
               ),
-          ),
+            ),
     );
   }
 }

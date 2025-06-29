@@ -27,10 +27,12 @@ class HelpUserCubit extends Cubit<HelpUserState> {
 
       final allQna = await QnaRepositore.getQna();
       final filteredList = allQna
-          .where((qna) =>
-              qna.question.toLowerCase().contains(query.toLowerCase()) ||
-              qna.simAnswer.toLowerCase().contains(query.toLowerCase()) ||
-              qna.fullAnswer.toLowerCase().contains(query.toLowerCase()))
+          .where(
+            (qna) =>
+                qna.question.toLowerCase().contains(query.toLowerCase()) ||
+                qna.simAnswer.toLowerCase().contains(query.toLowerCase()) ||
+                qna.fullAnswer.toLowerCase().contains(query.toLowerCase()),
+          )
           .toList();
 
       emit(HlepUserLoadingQnaStateSuccess(filteredList));

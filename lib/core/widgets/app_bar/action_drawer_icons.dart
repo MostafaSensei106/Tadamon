@@ -16,7 +16,6 @@ class ActionDrawerIcon extends StatelessWidget {
   }
 
   @override
-
   /// Returns a [Padding] widget with a [Material] widget as child.
   ///
   /// The [Material] widget is configured with a transparent color and a
@@ -40,9 +39,7 @@ class ActionDrawerIcon extends StatelessWidget {
         child: InkWell(
           borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius),
           onTap: () => openDrawer(context),
-          child: _ActionDrawerContainer(
-            child: _ActionDrawerIcon(),
-          ),
+          child: _ActionDrawerContainer(child: _ActionDrawerIcon()),
         ),
       ),
     );
@@ -52,12 +49,9 @@ class ActionDrawerIcon extends StatelessWidget {
 class _ActionDrawerContainer extends StatelessWidget {
   final Widget child;
 
-  const _ActionDrawerContainer({
-    required this.child,
-  });
+  const _ActionDrawerContainer({required this.child});
 
   @override
-
   /// Returns a [Container] widget with the given properties.
   ///
   /// The [padding] is set to [const EdgeInsets.all(8)].
@@ -73,10 +67,9 @@ class _ActionDrawerContainer extends StatelessWidget {
       padding: const EdgeInsets.all(5),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius),
-        color: Theme.of(context)
-            .colorScheme
-            .surfaceContainerHigh
-            .withAlpha((0.3 * 255).toInt()),
+        color: Theme.of(
+          context,
+        ).colorScheme.surfaceContainerHigh.withAlpha((0.3 * 255).toInt()),
       ),
       child: child,
     );

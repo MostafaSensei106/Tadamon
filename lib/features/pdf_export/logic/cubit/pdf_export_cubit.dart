@@ -9,8 +9,8 @@ class PdfExportCubit extends Cubit<PdfExportState> {
   PdfExportCubit() : super(PdfExportInitial());
 
   Future<void> exportPdf() async {
-    List<ScannedLogsProductModel> dataList =
-        ObjectboxRepository().saveLogsTOPDF();
+    List<ScannedLogsProductModel> dataList = ObjectboxRepository()
+        .saveLogsTOPDF();
     if (dataList.isEmpty) {
       AppToast.showErrorToast('No data to export');
       emit(PdfExportError());
@@ -21,7 +21,7 @@ class PdfExportCubit extends Cubit<PdfExportState> {
 
     try {
       await PdfExportServices().exportPdf(dataList);
-     // emit(PdfExportSuccess());
+      // emit(PdfExportSuccess());
     } catch (e) {
       emit(PdfExportError());
       AppToast.showErrorToast('Error: $e');

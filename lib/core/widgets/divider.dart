@@ -1,15 +1,13 @@
-
-import 'package:flutter/material.dart' show StatelessWidget, BuildContext, Widget, Theme, Divider;
+import 'package:flutter/material.dart'
+    show StatelessWidget, BuildContext, Widget, Theme, Divider;
 
 class SenseiDivider extends StatelessWidget {
   const SenseiDivider({super.key});
 
   @override
-
   /// Returns a [Divider] widget with a thickness, height, indent, and endIndent of
   /// 0, and a color of [Theme.of(context).colorScheme.outline] with an opacity
   /// of 0.8.
-  
   Widget build(BuildContext context) {
     return Divider(
       thickness: 0.2,
@@ -19,5 +17,4 @@ class SenseiDivider extends StatelessWidget {
       color: Theme.of(context).colorScheme.outline.withAlpha(0x80),
     );
   }
-  
 }

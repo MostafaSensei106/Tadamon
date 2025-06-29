@@ -15,7 +15,7 @@ class SearchPageView extends StatefulWidget {
 }
 
 class _SearchPageViewState extends State<SearchPageView> {
- final TextEditingController _searchController = TextEditingController();
+  final TextEditingController _searchController = TextEditingController();
   String _selectedFilter = 'SerialNumber';
 
   @override
@@ -42,10 +42,17 @@ class _SearchPageViewState extends State<SearchPageView> {
             icon: Icons.search,
             suffixIcon: menuButton(context),
             hint:
-                'ابحث عن ${_selectedFilter == 'Name' ? 'اسم المنتج' : _selectedFilter == 'SerialNumber' ? 'الرقم التسلسلي' : _selectedFilter == 'Manufacture' ? 'المُصنع' : 'التصنيف'}...',
+                'ابحث عن ${_selectedFilter == 'Name'
+                    ? 'اسم المنتج'
+                    : _selectedFilter == 'SerialNumber'
+                    ? 'الرقم التسلسلي'
+                    : _selectedFilter == 'Manufacture'
+                    ? 'المُصنع'
+                    : 'التصنيف'}...',
             onChange: (value) {
-              BlocProvider.of<SearchBloc>(context)
-                  .add(FetchSearchResult(value, _selectedFilter));
+              BlocProvider.of<SearchBloc>(
+                context,
+              ).add(FetchSearchResult(value, _selectedFilter));
             },
           ),
         ),
@@ -85,10 +92,7 @@ class _SearchPageViewState extends State<SearchPageView> {
             value: 'SerialNumber',
             child: Row(
               children: [
-                const Icon(
-                  Icons.qr_code_rounded,
-                  size: SenseiConst.iconSize,
-                ),
+                const Icon(Icons.qr_code_rounded, size: SenseiConst.iconSize),
                 SizedBox(width: SenseiConst.padding.w),
                 Text(
                   'الرقم التسلسلي',
@@ -141,10 +145,7 @@ class _SearchPageViewState extends State<SearchPageView> {
             value: 'Manufacture',
             child: Row(
               children: [
-                const Icon(
-                  Icons.business,
-                  size: SenseiConst.iconSize,
-                ),
+                const Icon(Icons.business, size: SenseiConst.iconSize),
                 SizedBox(width: SenseiConst.padding.w),
                 Text(
                   'المُصنع',
@@ -169,10 +170,7 @@ class _SearchPageViewState extends State<SearchPageView> {
             value: 'Category',
             child: Row(
               children: [
-                const Icon(
-                  Icons.category_outlined,
-                  size: SenseiConst.iconSize,
-                ),
+                const Icon(Icons.category_outlined, size: SenseiConst.iconSize),
                 SizedBox(width: SenseiConst.padding.w),
                 Text(
                   'التصنيف',

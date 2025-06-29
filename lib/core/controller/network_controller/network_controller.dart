@@ -1,8 +1,8 @@
-
-
-import 'package:connectivity_plus/connectivity_plus.dart' show Connectivity, ConnectivityResult;
+import 'package:connectivity_plus/connectivity_plus.dart'
+    show Connectivity, ConnectivityResult;
 import 'package:tadamon/core/widgets/app_toast/app_toast.dart' show AppToast;
-import 'package:tadamon/features/report_products/logic/services/report_service.dart' show ReportService;
+import 'package:tadamon/features/report_products/logic/services/report_service.dart'
+    show ReportService;
 
 class NetworkController {
   final Connectivity _connectivity = Connectivity();
@@ -26,8 +26,8 @@ class NetworkController {
   /// or not. If the device is connected to the internet, the method returns
   /// [true], otherwise it returns [false].
   Future<bool> checkConnection() async {
-    final List<ConnectivityResult> connectivityResult =
-        await (Connectivity().checkConnectivity());
+    final List<ConnectivityResult> connectivityResult = await (Connectivity()
+        .checkConnectivity());
     if (connectivityResult.contains(ConnectivityResult.none)) {
       return false;
     }
@@ -41,7 +41,6 @@ class NetworkController {
   /// بالانترنت'.
   void _updateConnectionStatus(ConnectivityResult result) async {
     switch (result) {
-      
       case ConnectivityResult.wifi:
         //AppToast.showToast('الجهاز متصل بالواي فاي');
         await ReportService.resendPendingReports();
@@ -59,7 +58,7 @@ class NetworkController {
 
       case ConnectivityResult.vpn:
         //AppToast.showToast('الجهاز متصل بالشبكة الافتراضية');
-                await ReportService.resendPendingReports();
+        await ReportService.resendPendingReports();
         break;
 
       case ConnectivityResult.none:

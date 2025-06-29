@@ -23,11 +23,7 @@ class MainPageContainer extends StatelessWidget {
         }
         onPageChanged(index);
       },
-      children: [
-        const HomePage(),
-        const SearchPage(),
-        const LogsPage(),
-      ],
+      children: [const HomePage(), const SearchPage(), const LogsPage()],
     );
   }
 }

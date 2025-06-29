@@ -16,7 +16,6 @@ class HomeTipState extends State<HomeTip> with SingleTickerProviderStateMixin {
   late final Animation<double> _animation;
 
   @override
-
   /// Initializes the state of the widget.
   ///
   /// This is called when the widget is inserted into the tree.
@@ -29,10 +28,7 @@ class HomeTipState extends State<HomeTip> with SingleTickerProviderStateMixin {
       vsync: this,
       duration: const Duration(milliseconds: 350),
     );
-    _animation = CurvedAnimation(
-      parent: _controller,
-      curve: Curves.easeInOut,
-    );
+    _animation = CurvedAnimation(parent: _controller, curve: Curves.easeInOut);
     _controller.forward();
   }
 
@@ -53,7 +49,6 @@ class HomeTipState extends State<HomeTip> with SingleTickerProviderStateMixin {
   }
 
   @override
-
   /// Disposes of the animation controller and calls [super.dispose].
   ///
   /// This is called when the widget is removed from the tree.
@@ -66,7 +61,6 @@ class HomeTipState extends State<HomeTip> with SingleTickerProviderStateMixin {
   }
 
   @override
-
   /// Returns a [FadeTransition] widget with a [SizeTransition] widget as child.
   ///
   /// The [FadeTransition] widget is configured with the [_animation] as opacity.
@@ -123,9 +117,7 @@ class HomeTipState extends State<HomeTip> with SingleTickerProviderStateMixin {
                 size: SenseiConst.iconSize,
                 color: Theme.of(context).colorScheme.onSurface,
               ),
-              title: Text(
-                S.of(context).appName,
-              ),
+              title: Text(S.of(context).appName),
               subtitle: Text(
                 S.of(context).appDescription,
                 style: AppTextStyle.subtitle(context),

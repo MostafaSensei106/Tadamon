@@ -35,20 +35,21 @@ class TextFieldComponent extends StatelessWidget {
 
   final ValueChanged<String>? onChange;
 
-  const TextFieldComponent(
-      {super.key,
-      required this.controller,
-      required this.icon,
-      required this.hint,
-      this.onChange,
-      this.suffixIcon,
-      this.isNumeric = false,
-      this.errorText,
-      this.readOnly = false,
-      this.maxLength = 0,
-      this.isExpands = false,
-      this.largeField = false,
-      this.useOutBorderRadius = false});
+  const TextFieldComponent({
+    super.key,
+    required this.controller,
+    required this.icon,
+    required this.hint,
+    this.onChange,
+    this.suffixIcon,
+    this.isNumeric = false,
+    this.errorText,
+    this.readOnly = false,
+    this.maxLength = 0,
+    this.isExpands = false,
+    this.largeField = false,
+    this.useOutBorderRadius = false,
+  });
 
   /// Validates the input value based on the component's configuration.
   ///
@@ -57,7 +58,6 @@ class TextFieldComponent extends StatelessWidget {
   /// Returns null if the value passes all validations.
 
   @override
-
   /// Builds a [TextFormField] based on the component's configuration.
   //
   /// The input value is validated based on the component's configuration.
@@ -89,21 +89,19 @@ class TextFieldComponent extends StatelessWidget {
       maxLines: isExpands
           ? null
           : largeField
-              ? 5
-              : 1,
+          ? 5
+          : 1,
       minLines: 1,
       enableInteractiveSelection: true,
       decoration: InputDecoration(
-        prefixIcon: Icon(
-          icon,
-          size: SenseiConst.iconSize,
-        ),
+        prefixIcon: Icon(icon, size: SenseiConst.iconSize),
         hintText: hint,
         errorText: errorText,
         suffixIcon: suffixIcon,
         hintStyle: AppTextStyle.subtitle(context),
-        errorStyle: AppTextStyle.subtitle(context)
-            .copyWith(color: Theme.of(context).colorScheme.error),
+        errorStyle: AppTextStyle.subtitle(
+          context,
+        ).copyWith(color: Theme.of(context).colorScheme.error),
         filled: true,
         fillColor: Theme.of(context).colorScheme.surfaceContainer,
         focusedBorder: OutlineInputBorder(

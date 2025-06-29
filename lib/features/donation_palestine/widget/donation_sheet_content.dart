@@ -39,7 +39,6 @@ class DonationSheetContent extends StatelessWidget {
   }
 
   @override
-
   /// Builds a [Column] widget that displays a list of [ListTileComponent]s each
   /// with a different organization and its corresponding URL to donate.
   ///
@@ -70,19 +69,20 @@ class DonationSheetContent extends StatelessWidget {
           useinBorderRadius: true,
           onTapped: () => {
             HapticFeedback.vibrate(),
-            UrlRunServices.launchURL(SenseiConst.donateByUnrwaLink)
+            UrlRunServices.launchURL(SenseiConst.donateByUnrwaLink),
           },
         ),
         ListTileComponent(
-            leadingIcon: Icons.mode_night_outlined,
-            title: 'الهلال الاحمر الفلسطيني',
-            subtitle: 'تبرع عن طريق الهلال الاحمر الفلسطيني',
-            useDivider: true,
-            useGroupMiddle: true,
-            onTapped: () =>
-                {
-                  HapticFeedback.vibrate(),
-                  UrlRunServices.launchURL(SenseiConst.donateByPalestinercsLink)}),
+          leadingIcon: Icons.mode_night_outlined,
+          title: 'الهلال الاحمر الفلسطيني',
+          subtitle: 'تبرع عن طريق الهلال الاحمر الفلسطيني',
+          useDivider: true,
+          useGroupMiddle: true,
+          onTapped: () => {
+            HapticFeedback.vibrate(),
+            UrlRunServices.launchURL(SenseiConst.donateByPalestinercsLink),
+          },
+        ),
         ListTileComponent(
           leadingIcon: Icons.maps_home_work_outlined,
           title: 'بيت الزكاة والصدقات المصري',
@@ -99,11 +99,11 @@ class DonationSheetContent extends StatelessWidget {
           subtitle: 'تبرع عن طريقة بنك الطعام المصري',
           useinBorderRadius: true,
           useGroupBottom: true,
-          onTapped: () =>
-            { 
-              HapticFeedback.vibrate(),
-               UrlRunServices.launchURL(SenseiConst.donateByEGYFoodBankLink)},
-        )
+          onTapped: () => {
+            HapticFeedback.vibrate(),
+            UrlRunServices.launchURL(SenseiConst.donateByEGYFoodBankLink),
+          },
+        ),
       ],
     );
   }

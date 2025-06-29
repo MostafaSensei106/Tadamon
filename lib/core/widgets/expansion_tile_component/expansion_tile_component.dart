@@ -30,8 +30,9 @@ class _ExpansionTileComponentState extends State<ExpansionTileComponent> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin:
-          widget.useMargin ? EdgeInsets.only(top: SenseiConst.margin.h) : null,
+      margin: widget.useMargin
+          ? EdgeInsets.only(top: SenseiConst.margin.h)
+          : null,
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.surfaceContainer,
         borderRadius: BorderRadius.circular(
@@ -47,16 +48,10 @@ class _ExpansionTileComponentState extends State<ExpansionTileComponent> {
             borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius),
             color: Theme.of(context).colorScheme.surfaceContainerHigh,
           ),
-          child: Icon(
-            widget.leadingIcon,
-            size: SenseiConst.iconSize,
-          ),
+          child: Icon(widget.leadingIcon, size: SenseiConst.iconSize),
         ),
         title: Text(widget.title),
-        subtitle: Text(
-          widget.subtitle,
-          style: AppTextStyle.subtitle(context),
-        ),
+        subtitle: Text(widget.subtitle, style: AppTextStyle.subtitle(context)),
         backgroundColor: Theme.of(context).colorScheme.surfaceContainer,
         enableFeedback: true,
         showTrailingIcon: true,

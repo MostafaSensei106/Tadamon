@@ -2,15 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:tadamon/core/config/fonts/fonts.dart';
 
 class AppBarTitle extends StatelessWidget {
-  const AppBarTitle({
-    super.key,
-    required this.title,
-  });
+  const AppBarTitle({super.key, required this.title});
 
   final String title;
 
   @override
-
   /// Returns an [AnimatedSwitcher] which displays the [title] within a [Text]
   /// widget. When the [title] changes, the widget is animated out by sliding
   /// upwards and fading out, before the new widget is animated in by sliding
@@ -27,10 +23,7 @@ class AppBarTitle extends StatelessWidget {
             begin: const Offset(0, 1),
             end: Offset.zero,
           ).animate(animation),
-          child: FadeTransition(
-            opacity: animation,
-            child: child,
-          ),
+          child: FadeTransition(opacity: animation, child: child),
         );
       },
       child: Text(

@@ -22,4 +22,3 @@ class ProductScanFromBackEnd extends ProductScanState {
   final ProductModel product;
   ProductScanFromBackEnd(this.product);
 }
-

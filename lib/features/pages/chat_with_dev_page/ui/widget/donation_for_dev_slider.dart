@@ -14,7 +14,6 @@ class DonationForDevSlider extends StatefulWidget {
 }
 
 class _DonationForDevSliderState extends State<DonationForDevSlider> {
-
   static const Duration _autoSlideDuration = Duration(seconds: 3);
   static const Duration _slideTransitionDuration = Duration(milliseconds: 400);
   late final PageController _pageController;
@@ -61,8 +60,7 @@ class _DonationForDevSliderState extends State<DonationForDevSlider> {
           curve: Curves.easeInOut,
         );
       }
-    }
-    );
+    });
   }
 
   void _pauseAutoSlide() {
@@ -101,11 +99,14 @@ class _DonationForDevSliderState extends State<DonationForDevSlider> {
     return InkWell(
       onTapDown: (_) => _pauseAutoSlide(),
       onTapUp: (_) => _resumeAutoSlide(),
-      onTap: () {HapticFeedback.vibrate(); UrlRunServices.launchURL(SenseiConst.buyMeACoffeeLink);},
+      onTap: () {
+        HapticFeedback.vibrate();
+        UrlRunServices.launchURL(SenseiConst.buyMeACoffeeLink);
+      },
       child: Padding(
-        padding:  EdgeInsets.symmetric(vertical: SenseiConst.padding.h-8),
+        padding: EdgeInsets.symmetric(vertical: SenseiConst.padding.h - 8),
         child: AspectRatio(
-          aspectRatio: 35 / 10, 
+          aspectRatio: 35 / 10,
           child: ClipRRect(
             borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius),
             child: PageView.builder(
@@ -125,6 +126,7 @@ class _DonationForDevSliderState extends State<DonationForDevSlider> {
       ),
     );
   }
+
   @override
   void dispose() {
     _pageController.dispose();

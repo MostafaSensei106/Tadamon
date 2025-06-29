@@ -18,13 +18,9 @@ import 'package:tadamon/tadamon.dart' show TadamonApp;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-  ]);
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   await ObjectBoxService.init();
 
@@ -38,8 +34,5 @@ void main() async {
 
   errorScreen();
   ReportService.initializePreferences();
-  runApp(BlocProvider.value(
-    value: themeCubit,
-    child: TadamonApp(AppRouter()),
-  ));
+  runApp(BlocProvider.value(value: themeCubit, child: TadamonApp(AppRouter())));
 }

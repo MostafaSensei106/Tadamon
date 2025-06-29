@@ -58,8 +58,9 @@ class _EditTextSheetContentState extends State<EditTextSheetContent> {
     StringBuffer buffer = StringBuffer();
     for (int i = 0; i < text.length; i++) {
       String char = text[i];
-      buffer
-          .write(arabicLetters.containsKey(char) ? arabicLetters[char] : char);
+      buffer.write(
+        arabicLetters.containsKey(char) ? arabicLetters[char] : char,
+      );
     }
 
     return buffer.toString();
@@ -119,11 +120,12 @@ class _EditTextSheetContentState extends State<EditTextSheetContent> {
         SizedBox(
           width: 1.sw,
           child: ButtonCompnent(
-              isEnabled: _processedText.isNotEmpty,
-              useInBorderRadius: true,
-              label: 'نسخ',
-              icon: Icons.copy,
-              onPressed: _copyToClipboard),
+            isEnabled: _processedText.isNotEmpty,
+            useInBorderRadius: true,
+            label: 'نسخ',
+            icon: Icons.copy,
+            onPressed: _copyToClipboard,
+          ),
         ),
       ],
     );

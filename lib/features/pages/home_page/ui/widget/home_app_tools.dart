@@ -25,9 +25,7 @@ class HomeAppTools extends StatelessWidget {
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         physics: const BouncingScrollPhysics(),
-        padding: EdgeInsets.symmetric(
-          vertical: SenseiConst.padding.h-3,
-        ),
+        padding: EdgeInsets.symmetric(vertical: SenseiConst.padding.h - 3),
         child: Row(
           children: [
             BlocProvider(

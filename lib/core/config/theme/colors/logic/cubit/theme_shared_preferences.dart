@@ -1,7 +1,6 @@
-
-
 import 'package:flutter/material.dart' show ThemeMode;
-import 'package:shared_preferences/shared_preferences.dart' show SharedPreferences;
+import 'package:shared_preferences/shared_preferences.dart'
+    show SharedPreferences;
 
 class ThemeSharedPreferences {
   static const themeKey = 'theme';
@@ -75,5 +74,4 @@ class ThemeSharedPreferences {
     final modeIndex = sharedPreferences.getInt(themeModeKey);
     return modeIndex != null ? ThemeMode.values[modeIndex] : ThemeMode.system;
   }
-  
 }

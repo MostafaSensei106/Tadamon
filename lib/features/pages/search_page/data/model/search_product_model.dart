@@ -27,5 +27,4 @@ class ProductSearchModel {
       category: doc['Category'],
     );
   }
-  
 }

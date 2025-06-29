@@ -6,7 +6,7 @@ import 'package:tadamon/core/config/fonts/fonts.dart';
 class CounterItemsComponent extends StatefulWidget {
   final IconData icon;
   final String title;
-  final int targetValue; 
+  final int targetValue;
 
   const CounterItemsComponent({
     super.key,
@@ -26,14 +26,13 @@ class _CounterItemsComponentState extends State<CounterItemsComponent>
   int _currentValue = 0;
 
   @override
-/// Initializes the state of the widget.
-///
-/// This is called when the widget is inserted into the tree.
-///
-/// It initializes the animation controller with a duration of 1000 milliseconds
-/// and sets the `vsync` to this state. It then updates the animation with the
-/// target value by calling `_updateAnimation`.
-
+  /// Initializes the state of the widget.
+  ///
+  /// This is called when the widget is inserted into the tree.
+  ///
+  /// It initializes the animation controller with a duration of 1000 milliseconds
+  /// and sets the `vsync` to this state. It then updates the animation with the
+  /// target value by calling `_updateAnimation`.
   void initState() {
     super.initState();
     _controller = AnimationController(
@@ -60,7 +59,6 @@ class _CounterItemsComponentState extends State<CounterItemsComponent>
       _updateAnimation(widget.targetValue);
     }
   }
-
 
   void _updateAnimation(int targetValue) {
     _animation =
@@ -136,10 +134,7 @@ class _CounterItemsComponentState extends State<CounterItemsComponent>
             ),
           ),
           SizedBox(height: 4.h),
-          Text(
-            widget.title,
-            textAlign: TextAlign.center,
-          ),
+          Text(widget.title, textAlign: TextAlign.center),
           SizedBox(height: 4.h),
           Text(
             _currentValue.toString(),

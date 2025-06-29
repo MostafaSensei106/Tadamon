@@ -25,7 +25,9 @@ class _GoogleNavBarState extends State<GoogleNavBar> {
   IconData _getIcon(int index) {
     switch (index) {
       case 0:
-        return widget.currentIndex == 0 ? Icons.house_rounded : Icons.house_outlined;
+        return widget.currentIndex == 0
+            ? Icons.house_rounded
+            : Icons.house_outlined;
       case 1:
         return Icons.search;
       case 2:
@@ -48,7 +50,9 @@ class _GoogleNavBarState extends State<GoogleNavBar> {
         firstCurve: const Interval(0.0, 0.5, curve: Curves.easeIn),
         secondCurve: const Interval(0.5, 1.0, curve: Curves.easeOut),
         sizeCurve: const Interval(0.0, 1.0, curve: Curves.easeInOut),
-        crossFadeState: _isVisible ? CrossFadeState.showFirst : CrossFadeState.showSecond,
+        crossFadeState: _isVisible
+            ? CrossFadeState.showFirst
+            : CrossFadeState.showSecond,
         firstChild: Padding(
           padding: EdgeInsets.symmetric(
             horizontal: SenseiConst.padding.w,
@@ -56,8 +60,9 @@ class _GoogleNavBarState extends State<GoogleNavBar> {
           ),
           child: Container(
             decoration: BoxDecoration(
-              borderRadius:
-                  BorderRadius.circular(SenseiConst.outBorderRadius.r),
+              borderRadius: BorderRadius.circular(
+                SenseiConst.outBorderRadius.r,
+              ),
               color: theme.colorScheme.surfaceContainer,
               border: Border.all(
                 strokeAlign: BorderSide.strokeAlignOutside,

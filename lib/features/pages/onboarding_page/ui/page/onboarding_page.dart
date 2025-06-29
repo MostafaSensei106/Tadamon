@@ -40,8 +40,6 @@ class _OnboardingPageState extends State<OnboardingPage> {
     );
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     if (_loading) {
@@ -81,7 +79,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                 secondTitle: 'دون اتصال بالإنترنت',
                 subtitle:
                     ' اضغط على الزر الموجود في الاسفل لتفعيل التطبيق يعمل بكفاءة سواء كنت متصلاً بالإنترنت أو لا.',
-              )
+              ),
             ],
           ),
           DotIndicatorNav(pageController: _pageController),

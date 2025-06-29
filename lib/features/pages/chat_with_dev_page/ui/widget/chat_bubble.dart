@@ -30,8 +30,9 @@ class ChatBubble extends StatelessWidget {
     return Align(
       alignment: isSentByMe ? Alignment.bottomRight : Alignment.bottomLeft,
       child: Row(
-        mainAxisAlignment:
-            isSentByMe ? MainAxisAlignment.end : MainAxisAlignment.start,
+        mainAxisAlignment: isSentByMe
+            ? MainAxisAlignment.end
+            : MainAxisAlignment.start,
         children: [
           if (!isSentByMe)
             const Padding(
@@ -44,7 +45,9 @@ class ChatBubble extends StatelessWidget {
           Container(
             constraints: BoxConstraints(maxWidth: 0.75.sw),
             padding: const EdgeInsets.symmetric(
-                horizontal: SenseiConst.padding, vertical: 4.0),
+              horizontal: SenseiConst.padding,
+              vertical: 4.0,
+            ),
             margin: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0),
             decoration: BoxDecoration(
               color: isSentByMe
@@ -64,22 +67,25 @@ class ChatBubble extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       IconButtonFilledTonalComponent(
-                          icon: Icons.ios_share_rounded,
-                          useInBorderRadius: true,
-                          color: Theme.of(context).colorScheme.secondaryFixed,
-                          onPressed: () {
-                            HapticFeedback.vibrate();
-                            ShareServices.share(SenseiConst.tadamonGitHubLink);
-                          }),
+                        icon: Icons.ios_share_rounded,
+                        useInBorderRadius: true,
+                        color: Theme.of(context).colorScheme.secondaryFixed,
+                        onPressed: () {
+                          HapticFeedback.vibrate();
+                          ShareServices.share(SenseiConst.tadamonGitHubLink);
+                        },
+                      ),
                       IconButtonFilledTonalComponent(
-                          icon: Icons.link_rounded,
-                          useInBorderRadius: true,
-                          color: Theme.of(context).colorScheme.secondaryFixed,
-                          onPressed: () {
-                            HapticFeedback.vibrate();
-                            UrlRunServices.launchURL(
-                                SenseiConst.devPortfolioLink);
-                          }),
+                        icon: Icons.link_rounded,
+                        useInBorderRadius: true,
+                        color: Theme.of(context).colorScheme.secondaryFixed,
+                        onPressed: () {
+                          HapticFeedback.vibrate();
+                          UrlRunServices.launchURL(
+                            SenseiConst.devPortfolioLink,
+                          );
+                        },
+                      ),
                     ],
                   ),
                 const SizedBox(height: 4),
@@ -94,11 +100,7 @@ class ChatBubble extends StatelessWidget {
 }
 
 class Message extends StatelessWidget {
-  const Message({
-    super.key,
-    required this.text,
-    required this.isSentByMe,
-  });
+  const Message({super.key, required this.text, required this.isSentByMe});
   final String text;
   final bool isSentByMe;
 
@@ -136,10 +138,9 @@ class DataTime extends StatelessWidget {
         style: TextStyle(
           fontSize: 12,
           color: isSentByMe
-              ? Theme.of(context)
-                  .colorScheme
-                  .onSecondaryContainer
-                  .withAlpha(0x50)
+              ? Theme.of(
+                  context,
+                ).colorScheme.onSecondaryContainer.withAlpha(0x50)
               : Theme.of(context).colorScheme.onSurface.withAlpha(0x50),
         ),
       ),

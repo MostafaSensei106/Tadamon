@@ -18,11 +18,17 @@ class ReportProductCubit extends Cubit<ReportProductState> {
   void validateInputs(String serialNumber, String productName) {
     if (isFormNotEmpty(serialNumber, productName)) {
       if (productName.length >= 50) {
-        emit(ReportProductProductNameIsNotValid(
-            'الاسم يجب أن يكون أقل من أو يساوى 50 حرف'));
+        emit(
+          ReportProductProductNameIsNotValid(
+            'الاسم يجب أن يكون أقل من أو يساوى 50 حرف',
+          ),
+        );
       } else if (!RegExp(r'^[0-9]{6,13}$').hasMatch(serialNumber)) {
-        emit(ReportProductSerialNumberIsNotValid(
-            'الرقم التسلسلي يجب أن يتكون من 6-13 أرقام'));
+        emit(
+          ReportProductSerialNumberIsNotValid(
+            'الرقم التسلسلي يجب أن يتكون من 6-13 أرقام',
+          ),
+        );
       } else {
         emit(ReportProductIsValid());
       }
@@ -32,7 +38,9 @@ class ReportProductCubit extends Cubit<ReportProductState> {
   }
 
   Future<void> scanBarcode(
-      BuildContext context, TextEditingController controller) async {
+    BuildContext context,
+    TextEditingController controller,
+  ) async {
     try {
       String scanResult = await BarcodeScanner().scanBarcodeByCamera(context);
       if (scanResult == '-1') return;
@@ -44,13 +52,16 @@ class ReportProductCubit extends Cubit<ReportProductState> {
   }
 
   Future<void> submitReport(
-      String serialNumber, String productName, String status) async {
+    String serialNumber,
+    String productName,
+    String status,
+  ) async {
     emit(ReportProductIsLoading());
     final report = {
       'serialNumber': serialNumber,
       'productName': productName,
       'status': status,
-      'timestamp': DateTime.now().formatted
+      'timestamp': DateTime.now().formatted,
     };
     try {
       await ReportService().sendProductReport(report);

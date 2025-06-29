@@ -7,12 +7,13 @@ class DilogComponent extends StatelessWidget {
   final IconData? icon;
   final List<Widget>? actions;
 
-  const DilogComponent(
-      {super.key,
-      required this.title,
-      required this.message,
-      required this.actions,
-      required this.icon});
+  const DilogComponent({
+    super.key,
+    required this.title,
+    required this.message,
+    required this.actions,
+    required this.icon,
+  });
 
   /// Show the dialog component
   ///
@@ -34,7 +35,6 @@ class DilogComponent extends StatelessWidget {
   }
 
   @override
-
   /// Builds a [DilogComponent].
   ///
   /// This function returns an [AlertDialog] widget with an icon of the given
@@ -56,10 +56,7 @@ class DilogComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return AlertDialog(
       elevation: 0,
-      icon: Icon(
-        icon,
-        size: SenseiConst.iconSize,
-      ),
+      icon: Icon(icon, size: SenseiConst.iconSize),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius),
       ),
@@ -67,8 +64,9 @@ class DilogComponent extends StatelessWidget {
       content: Container(
         padding: const EdgeInsets.all(SenseiConst.padding),
         decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.surfaceContainer,
-            borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius)),
+          color: Theme.of(context).colorScheme.surfaceContainer,
+          borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius),
+        ),
         child: Text(message),
       ),
       actions: actions,

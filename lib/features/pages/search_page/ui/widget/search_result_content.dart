@@ -21,18 +21,18 @@ class SearchResultContent extends StatelessWidget {
       child: BlocBuilder<SearchBloc, SearchState>(
         builder: (context, state) {
           if (state is SearchLoading) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
+            return const Center(child: CircularProgressIndicator());
           } else if (state is SearchLoadingSuccess) {
             if (state.products.isEmpty) {
               return _searchController.text.isEmpty
                   ? const LottieComponent(
                       lottiePath: SenseiConst.lottieSearchAnimation,
-                      text: 'نتائج البحث سوف تظهر هنا')
+                      text: 'نتائج البحث سوف تظهر هنا',
+                    )
                   : const LottieComponent(
                       lottiePath: SenseiConst.lottieNoFoundAnimation,
-                      text: 'لم يتم العثور على المنتج');
+                      text: 'لم يتم العثور على المنتج',
+                    );
             }
             return ListView.separated(
               itemCount: state.products.length,
@@ -44,14 +44,14 @@ class SearchResultContent extends StatelessWidget {
                   SizedBox(height: SenseiConst.margin.h),
             );
           } else if (state is SearchError) {
-            return Center(
-              child: Text('Error: ${state.message}'),
-            );
+            return Center(child: Text('Error: ${state.message}'));
           } else {
             return const Center(
-                child: LottieComponent(
-                    lottiePath: SenseiConst.lottieSearchAnimation,
-                    text: 'نتائج البحث سوف تظهر هنا'));
+              child: LottieComponent(
+                lottiePath: SenseiConst.lottieSearchAnimation,
+                text: 'نتائج البحث سوف تظهر هنا',
+              ),
+            );
           }
         },
       ),

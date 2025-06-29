@@ -18,9 +18,7 @@ class ImageScanner {
       );
       return image;
     } catch (e) {
-      AppToast.showErrorToast(
-        'حدث خطاء اثناء اختيار الصورة: ${e.toString()}',
-      );
+      AppToast.showErrorToast('حدث خطاء اثناء اختيار الصورة: ${e.toString()}');
       return null;
     }
   }
@@ -48,8 +46,9 @@ class ImageScanner {
 
       final InputImage inputImage = InputImage.fromFilePath(image.path);
       final BarcodeScanner barcodeScanner = BarcodeScanner();
-      final List<Barcode> barcodes =
-          await barcodeScanner.processImage(inputImage);
+      final List<Barcode> barcodes = await barcodeScanner.processImage(
+        inputImage,
+      );
       if (barcodes.isEmpty || barcodes.first.rawValue == null) {
         AppToast.showErrorToast('لا يوجد باركود في الصورة');
         return '-1';
@@ -58,7 +57,8 @@ class ImageScanner {
       final String barcodeRawValue = barcodes.first.rawValue!;
       if (!BarcodeValidator.isNumber(barcodeRawValue)) {
         AppToast.showErrorToast(
-            'الباركود :$barcodeRawValue غير صالح، يجب أن يكون رقمًا فقط');
+          'الباركود :$barcodeRawValue غير صالح، يجب أن يكون رقمًا فقط',
+        );
         return '-1';
       }
 

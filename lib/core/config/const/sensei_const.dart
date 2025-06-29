@@ -21,8 +21,10 @@ class SenseiConst {
       "https://github.com/MostafaSensei106/Tadamon/issues";
   static const String devTelegramLink = "https://t.me/Mostafa_Sensei106";
   static const String tadamonTelegramLink = "https://t.me/TadamonApp";
-  static const String tadamonGitHubLink = "https://github.com/MostafaSensei106/Tadamon";
-  static const String devPortfolioLink = "https://mostafasensei106.github.io/Sensei-Dev/";
+  static const String tadamonGitHubLink =
+      "https://github.com/MostafaSensei106/Tadamon";
+  static const String devPortfolioLink =
+      "https://mostafasensei106.github.io/Sensei-Dev/";
 
   static const String donateByUnrwaLink =
       "https://donate.unrwa.org/int/ar/general?context_form_id=form_a81687151ce354b21b331f928cf8156a8996ab77_6767a2ac5f0560.06919295";

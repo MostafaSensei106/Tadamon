@@ -5,12 +5,13 @@ import 'package:tadamon/core/widgets/icon_button_component/icon_button_component
 class IconButtonFilledTonalComponent extends IconButtonComponent {
   final bool useInBorderRadius;
   final Color color;
-  const IconButtonFilledTonalComponent(
-      {super.key,
-      this.useInBorderRadius = false,
-      required super.icon,
-      required super.onPressed,
-      required this.color});
+  const IconButtonFilledTonalComponent({
+    super.key,
+    this.useInBorderRadius = false,
+    required super.icon,
+    required super.onPressed,
+    required this.color,
+  });
 
   @override
   Widget build(BuildContext context) {

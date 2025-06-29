@@ -13,13 +13,15 @@ class CounterCubit extends Cubit<CounterState> {
 
   Future<void> fetchCounts() async {
     try {
-      _objectBoxSubscription =
-          ObjectboxRepository().getTadamonLogsProductsCount().listen((count) {
-        emit(state.copyWith(objectBoxCount: count));
-      });
+      _objectBoxSubscription = ObjectboxRepository()
+          .getTadamonLogsProductsCount()
+          .listen((count) {
+            emit(state.copyWith(objectBoxCount: count));
+          });
 
-      _fireStoreSubscription =
-          FireStoreRepository().getProductsCount().listen((count) {
+      _fireStoreSubscription = FireStoreRepository().getProductsCount().listen((
+        count,
+      ) {
         emit(state.copyWith(firebaseCount: count));
       });
     } catch (e, s) {

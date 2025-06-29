@@ -22,32 +22,42 @@ class ProductLogsExpansionTileComponent extends StatelessWidget {
             ? Container(
                 padding: EdgeInsets.all(SenseiConst.padding.w),
                 decoration: BoxDecoration(
-                    borderRadius:
-                        BorderRadius.circular(SenseiConst.inBorderRadius.r),
-                    color: Theme.of(context).colorScheme.surfaceContainerHigh),
+                  borderRadius: BorderRadius.circular(
+                    SenseiConst.inBorderRadius.r,
+                  ),
+                  color: Theme.of(context).colorScheme.surfaceContainerHigh,
+                ),
                 child: const Icon(
                   Icons.check_circle_outline_outlined,
                   size: SenseiConst.iconSize,
-                ))
+                ),
+              )
             : Container(
                 padding: EdgeInsets.all(SenseiConst.padding.w),
                 decoration: BoxDecoration(
-                    borderRadius:
-                        BorderRadius.circular(SenseiConst.inBorderRadius.r),
-                    color: Theme.of(context).colorScheme.surfaceContainerHigh),
+                  borderRadius: BorderRadius.circular(
+                    SenseiConst.inBorderRadius.r,
+                  ),
+                  color: Theme.of(context).colorScheme.surfaceContainerHigh,
+                ),
                 child: const Icon(
                   Icons.block_rounded,
                   size: SenseiConst.iconSize,
-                )),
+                ),
+              ),
         title: Text(product.name),
-        subtitle: Text(product.serialNumber,style: AppTextStyle.subtitle(context),),
+        subtitle: Text(
+          product.serialNumber,
+          style: AppTextStyle.subtitle(context),
+        ),
         enableFeedback: true,
         showTrailingIcon: true,
         shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius.r),
-            side: BorderSide(
-              color: Theme.of(context).colorScheme.outline.withAlpha(0x80),
-            )),
+          borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius.r),
+          side: BorderSide(
+            color: Theme.of(context).colorScheme.outline.withAlpha(0x80),
+          ),
+        ),
         children: [
           ListTileComponent(
             leadingIcon: Icons.qr_code_rounded,
@@ -57,9 +67,10 @@ class ProductLogsExpansionTileComponent extends StatelessWidget {
             useDivider: true,
             useMargin: false,
             trailingWidget: IconButton(
-                onPressed: () => Clipboard.setData(
-                    ClipboardData(text: product.serialNumber)),
-                icon: const Icon(Icons.copy)),
+              onPressed: () =>
+                  Clipboard.setData(ClipboardData(text: product.serialNumber)),
+              icon: const Icon(Icons.copy),
+            ),
           ),
           ListTileComponent(
             leadingIcon: Icons.label_outline_rounded,
@@ -86,8 +97,8 @@ class ProductLogsExpansionTileComponent extends StatelessWidget {
             subtitle: product.onError == "Product not found"
                 ? "المنتج غير موجود"
                 : product.trusted
-                    ? "مؤمن"
-                    : "غير مؤمن",
+                ? "مؤمن"
+                : "غير مؤمن",
           ),
           ListTileComponent(
             leadingIcon: Icons.date_range_outlined,
@@ -98,6 +109,4 @@ class ProductLogsExpansionTileComponent extends StatelessWidget {
       ),
     );
   }
-
-  
 }

@@ -7,10 +7,7 @@ import 'package:tadamon/features/products_scanner/data/models/product_model.dart
 class ProductListView extends StatelessWidget {
   final ProductModel product;
 
-  const ProductListView({
-    super.key,
-    required this.product,
-  });
+  const ProductListView({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +26,7 @@ class ProductListView extends StatelessWidget {
             icon: const Icon(Icons.copy),
             onPressed: () => {
               HapticFeedback.vibrate(),
-              Clipboard.setData(ClipboardData(text: product.serialNumber))
+              Clipboard.setData(ClipboardData(text: product.serialNumber)),
             },
           ),
         ),
@@ -62,12 +59,15 @@ class ProductListView extends StatelessWidget {
           subtitle: product.onError == "Product not found"
               ? "المنتج غير موجود"
               : product.trusted
-                  ? "مؤمن"
-                  : "غير مؤمن",
+              ? "مؤمن"
+              : "غير مؤمن",
         ),
         if (!product.trusted)
           ButtonCompnent(
-              label: '', icon: Icons.report_problem_outlined, onPressed: () {})
+            label: '',
+            icon: Icons.report_problem_outlined,
+            onPressed: () {},
+          ),
       ],
     );
   }

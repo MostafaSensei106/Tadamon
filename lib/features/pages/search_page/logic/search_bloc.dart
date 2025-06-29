@@ -11,11 +11,15 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
   }
 
   void _onFeatchSearchResult(
-      FetchSearchResult event, Emitter<SearchState> emit) async {
+    FetchSearchResult event,
+    Emitter<SearchState> emit,
+  ) async {
     emit(SearchLoading());
     try {
-      final products =
-          await repository.searchInFireStore(event.query, event.filter);
+      final products = await repository.searchInFireStore(
+        event.query,
+        event.filter,
+      );
       emit(SearchLoadingSuccess([], products: products));
     } catch (e) {
       emit(SearchError(e.toString()));

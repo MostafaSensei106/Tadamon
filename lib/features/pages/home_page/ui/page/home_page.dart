@@ -13,12 +13,7 @@ class HomePage extends StatelessWidget {
     return const Padding(
       padding: EdgeInsets.all(SenseiConst.padding),
       child: Column(
-        children: [
-          HomeTip(),
-          ImageNews(),
-          HomeAppTools(),
-          ItemsCounter(),
-        ],
+        children: [HomeTip(), ImageNews(), HomeAppTools(), ItemsCounter()],
       ),
     );
   }

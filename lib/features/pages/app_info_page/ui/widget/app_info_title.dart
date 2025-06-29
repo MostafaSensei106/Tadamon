@@ -4,19 +4,18 @@ import 'package:tadamon/core/config/const/sensei_const.dart';
 
 class AppInfoTitle extends StatelessWidget {
   const AppInfoTitle({super.key});
-  
-  @override
-/// Builds a centered column containing the app's image, title, and copyright information.
-///
-/// The column includes:
-/// - An image of the application wrapped in a [ClipRRect] with rounded corners.
-/// - A text widget displaying the app's name "تطبيق تَضَامُنٌ" in bold font.
-/// - A text widget displaying copyright information with dynamic year range based on the current year.
-///
-/// The container holding the image is styled with padding, rounded borders, and a border color
-/// derived from the current theme. The text widgets are centered and styled according to the
-/// theme's color scheme.
 
+  @override
+  /// Builds a centered column containing the app's image, title, and copyright information.
+  ///
+  /// The column includes:
+  /// - An image of the application wrapped in a [ClipRRect] with rounded corners.
+  /// - A text widget displaying the app's name "تطبيق تَضَامُنٌ" in bold font.
+  /// - A text widget displaying copyright information with dynamic year range based on the current year.
+  ///
+  /// The container holding the image is styled with padding, rounded borders, and a border color
+  /// derived from the current theme. The text widgets are centered and styled according to the
+  /// theme's color scheme.
   Widget build(BuildContext context) {
     return Center(
       child: Column(
@@ -68,4 +67,3 @@ class AppInfoTitle extends StatelessWidget {
     );
   }
 }
-

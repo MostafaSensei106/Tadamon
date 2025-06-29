@@ -25,7 +25,6 @@ class _MainPageState extends State<MainPage>
   bool get wantKeepAlive => true;
 
   @override
-
   /// Initializes the state of the widget.
   ///
   /// This is called when the widget is inserted into the tree.
@@ -38,7 +37,6 @@ class _MainPageState extends State<MainPage>
   }
 
   @override
-
   /// Disposes of the page controller and the page cubit.
   ///
   /// This is called when the widget is removed from the tree.
@@ -107,7 +105,6 @@ class _MainPageState extends State<MainPage>
   }
 
   @override
-
   /// Builds the main page of the application.
   ///
   /// This is the top most widget of the application. It is a [Scaffold] with
@@ -138,17 +135,15 @@ class _MainPageState extends State<MainPage>
             resizeToAvoidBottomInset: false,
             key: const ValueKey<String>('main_page_scaffold'),
             backgroundColor: const Color(0xffF26A5A),
-            appBar: SenseiAppBar(
-              _getAppBarTitle(state.currentPage),
-            ),
+            appBar: SenseiAppBar(_getAppBarTitle(state.currentPage)),
             drawer: const SenseiDrawer(),
             body: Container(
               decoration: BoxDecoration(
                 color: Theme.of(context).colorScheme.surface,
                 borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(SenseiConst.outBorderRadius + 7),
-                    topRight:
-                        Radius.circular(SenseiConst.outBorderRadius+ 7)),
+                  topLeft: Radius.circular(SenseiConst.outBorderRadius + 7),
+                  topRight: Radius.circular(SenseiConst.outBorderRadius + 7),
+                ),
               ),
               child: Stack(
                 children: [

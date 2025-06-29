@@ -58,7 +58,7 @@ class _TermsGateState extends State<TermsGate> with TickerProviderStateMixin {
     'تُعتبر كافة الأكواد المصدرية، التصاميم، الرسومات، الشعارات، العلامات التجارية، والمواد الأخرى المتوفرة في تطبيق "تضامن" ملكية حصرية للمطورين أو لأصحاب الحقوق المصرح لهم، ويُحظر نسخها أو استخدامها أو إعادة نشرها بدون إذن كتابي صريح.',
     'يحظر على أي جهة استغلال أو إعادة توزيع أجزاء من التطبيق أو محتوياته سواء كانت نصوصاً، صوراً، أو غيرها لأي أغراض تجارية أو غير تجارية دون الرجوع إلى حقوق الملكية الفكرية الخاصة بتطبيق "تضامن".',
     'يجب على المستخدمين الالتزام بكافة حقوق النشر وعدم تغيير أو تعديل أي إشارات أو علامات تدل على حقوق الملكية الفكرية الواردة في التطبيق.',
-    'أي انتهاك لهذه الحقوق سيُعتبر تعدياً جسيمًا على الملكية الفكرية وقد يؤدي إلى اتخاذ إجراءات قانونية صارمة بحق المخالفين دون سابق إنذار.'
+    'أي انتهاك لهذه الحقوق سيُعتبر تعدياً جسيمًا على الملكية الفكرية وقد يؤدي إلى اتخاذ إجراءات قانونية صارمة بحق المخالفين دون سابق إنذار.',
   ];
 
   @override
@@ -81,10 +81,7 @@ class _TermsGateState extends State<TermsGate> with TickerProviderStateMixin {
       return Tween<Offset>(
         begin: const Offset(1, 0),
         end: Offset.zero,
-      ).animate(CurvedAnimation(
-        parent: controller,
-        curve: Curves.easeOut,
-      ));
+      ).animate(CurvedAnimation(parent: controller, curve: Curves.easeOut));
     }).toList();
 
     // Delay start a bit for UX
@@ -127,13 +124,9 @@ class _TermsGateState extends State<TermsGate> with TickerProviderStateMixin {
     }
 
     return Scaffold(
-      appBar: const SidePageAppBar(
-        title: 'اتفاقية استخدام التطبيق',
-      ),
+      appBar: const SidePageAppBar(title: 'اتفاقية استخدام التطبيق'),
       body: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: SenseiConst.padding.w,
-        ),
+        padding: EdgeInsets.symmetric(horizontal: SenseiConst.padding.w),
         child: Column(
           children: [
             Expanded(
@@ -157,7 +150,8 @@ class _TermsGateState extends State<TermsGate> with TickerProviderStateMixin {
                               Text(
                                 '${index + 1}. ',
                                 style: const TextStyle(
-                                    fontWeight: FontWeight.bold),
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                               Expanded(child: Text(_terms[index])),
                             ],
@@ -188,8 +182,10 @@ class _TermsGateState extends State<TermsGate> with TickerProviderStateMixin {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   TextbuttonIconComponent(
-                    onPressed: () =>
-                        {HapticFeedback.vibrate(), SystemNavigator.pop()},
+                    onPressed: () => {
+                      HapticFeedback.vibrate(),
+                      SystemNavigator.pop(),
+                    },
                     text: ' الخروج من التطبيق',
                     icon: Icons.close,
                   ),
@@ -208,7 +204,7 @@ class _TermsGateState extends State<TermsGate> with TickerProviderStateMixin {
                   ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),

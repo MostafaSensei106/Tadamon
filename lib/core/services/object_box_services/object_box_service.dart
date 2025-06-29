@@ -1,7 +1,7 @@
-
-
-import 'package:tadamon/features/pages/log_page/data/models/scanned_logs_product_model.dart' show ScannedLogsProductModel;
-import 'package:tadamon/features/products_scanner/data/models/product_model.dart' show ProductModel;
+import 'package:tadamon/features/pages/log_page/data/models/scanned_logs_product_model.dart'
+    show ScannedLogsProductModel;
+import 'package:tadamon/features/products_scanner/data/models/product_model.dart'
+    show ProductModel;
 import 'package:tadamon/objectbox.g.dart' show Store, Box, openStore;
 
 class ObjectBoxService {

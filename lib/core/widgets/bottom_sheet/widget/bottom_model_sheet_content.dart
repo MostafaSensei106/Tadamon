@@ -5,11 +5,13 @@ class BottomModelSheetContent extends StatelessWidget {
   final Widget child;
   final bool useColor;
 
-  const BottomModelSheetContent(
-      {super.key, required this.child, this.useColor = false});
+  const BottomModelSheetContent({
+    super.key,
+    required this.child,
+    this.useColor = false,
+  });
 
   @override
-
   /// Returns a [Container] widget with the given properties.
   ///
   /// The [width] is set to [double.infinity] to take up the full width of the

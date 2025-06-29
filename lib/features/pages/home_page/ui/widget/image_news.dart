@@ -108,10 +108,9 @@ class ImageNewsState extends State<ImageNews> {
         effect: ExpandingDotsEffect(
           dotWidth: SenseiConst.indicatorDotSize,
           dotHeight: SenseiConst.indicatorDotSize,
-          dotColor: Theme.of(context)
-              .colorScheme
-              .onSurface
-              .withAlpha((0.5 * 255).toInt()),
+          dotColor: Theme.of(
+            context,
+          ).colorScheme.onSurface.withAlpha((0.5 * 255).toInt()),
           activeDotColor: Theme.of(context).colorScheme.primaryContainer,
           expansionFactor: 2,
         ),

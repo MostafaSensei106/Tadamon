@@ -6,13 +6,11 @@ import 'package:tadamon/core/widgets/lottie_component/lottie_component.dart';
 import 'package:tadamon/features/pages/log_page/logic/bloc/logs_bloc.dart';
 import 'package:tadamon/features/pages/log_page/logic/bloc/logs_state.dart';
 import 'package:tadamon/features/pages/log_page/ui/widgets/productlogs_expansiontile_component.dart';
+
 class LogsSearchContent extends StatelessWidget {
   final TextEditingController searchController;
 
-  const LogsSearchContent({
-    super.key,
-    required this.searchController,
-  });
+  const LogsSearchContent({super.key, required this.searchController});
 
   @override
   Widget build(BuildContext context) {

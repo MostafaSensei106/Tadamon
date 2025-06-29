@@ -31,7 +31,7 @@ class ProductModel {
       'Manufacture': manufacture,
       'Category': category,
       'Trusted': trusted,
-      'onError': onError
+      'onError': onError,
     };
   }
 

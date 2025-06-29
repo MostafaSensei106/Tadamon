@@ -1,7 +1,6 @@
 import 'package:objectbox/objectbox.dart';
 import 'package:tadamon/features/products_scanner/data/models/product_model.dart';
 
-
 @Entity()
 class ScannedLogsProductModel {
   @Id()
@@ -25,7 +24,6 @@ class ScannedLogsProductModel {
     this.onError = '',
     DateTime? scannedAt,
   }) : scannedAt = scannedAt ?? DateTime.now();
-  
 
   Map<String, dynamic> toMap() {
     return {
@@ -46,12 +44,13 @@ class ScannedLogsProductModel {
       manufacture: map['productManufacturer'],
       category: map['productCategory'],
       trusted: map['isTrusted'],
-      scannedAt:
-          DateTime.parse(map['scannedAt'] ?? DateTime.now().toIso8601String()),
+      scannedAt: DateTime.parse(
+        map['scannedAt'] ?? DateTime.now().toIso8601String(),
+      ),
     );
   }
 
- factory ScannedLogsProductModel.fromProduct(ProductModel product) {
+  factory ScannedLogsProductModel.fromProduct(ProductModel product) {
     return ScannedLogsProductModel(
       name: product.name,
       serialNumber: product.serialNumber,
@@ -60,4 +59,5 @@ class ScannedLogsProductModel {
       trusted: product.trusted,
       scannedAt: DateTime.now(),
     );
-  }}
+  }
+}

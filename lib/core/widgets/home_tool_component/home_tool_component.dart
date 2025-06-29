@@ -16,7 +16,6 @@ class HomeToolsComponent extends StatelessWidget {
   });
 
   @override
-
   /// Builds a [HomeToolsComponent].
   ///
   /// This function returns a [Padding] widget with a [Material] widget as child.
@@ -67,8 +66,9 @@ class HomeToolsComponent extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(SenseiConst.padding),
                 decoration: BoxDecoration(
-                  borderRadius:
-                      BorderRadius.circular(SenseiConst.inBorderRadius),
+                  borderRadius: BorderRadius.circular(
+                    SenseiConst.inBorderRadius,
+                  ),
                   color: Theme.of(context).colorScheme.primaryContainer,
                 ),
                 child: Icon(
@@ -92,4 +92,3 @@ class HomeToolsComponent extends StatelessWidget {
     );
   }
 }
-

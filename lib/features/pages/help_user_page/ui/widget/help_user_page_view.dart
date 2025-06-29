@@ -33,10 +33,7 @@ class _HelpUserPageViewState extends State<HelpUserPageView>
       return Tween<Offset>(
         begin: const Offset(1, 0),
         end: Offset.zero,
-      ).animate(CurvedAnimation(
-        parent: controller,
-        curve: Curves.easeOut,
-      ));
+      ).animate(CurvedAnimation(parent: controller, curve: Curves.easeOut));
     }).toList();
 
     // Delay start a bit for UX
@@ -50,8 +47,10 @@ class _HelpUserPageViewState extends State<HelpUserPageView>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:
-          SidePageAppBar(title: S.of(context).howToUse, useBackButton: true),
+      appBar: SidePageAppBar(
+        title: S.of(context).howToUse,
+        useBackButton: true,
+      ),
       body: BlocBuilder<HelpUserCubit, HelpUserState>(
         builder: (context, state) {
           if (state is HlepUserLoadingQnaState) {
@@ -95,10 +94,7 @@ class _HelpUserPageViewState extends State<HelpUserPageView>
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
                             qna.fullAnswer,
-                            style: const TextStyle(
-                              fontSize: 16,
-                              height: 1.5,
-                            ),
+                            style: const TextStyle(fontSize: 16, height: 1.5),
                           ),
                         ),
                       ],
@@ -121,5 +117,4 @@ class _HelpUserPageViewState extends State<HelpUserPageView>
     }
     super.dispose();
   }
-  
 }

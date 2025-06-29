@@ -1,15 +1,33 @@
-
-
-import 'package:flutter/material.dart' show GlobalKey, NavigatorState, ColorScheme, RouteSettings, Route, Widget, PageRouteBuilder, Offset, Theme, Tween, SlideTransition, FadeTransition;
+import 'package:flutter/material.dart'
+    show
+        GlobalKey,
+        NavigatorState,
+        ColorScheme,
+        RouteSettings,
+        Route,
+        Widget,
+        PageRouteBuilder,
+        Offset,
+        Theme,
+        Tween,
+        SlideTransition,
+        FadeTransition;
 import 'package:tadamon/core/error/no_routes.dart' show NoRoutes;
 import 'package:tadamon/core/routing/routes.dart' show Routes;
-import 'package:tadamon/features/pages/app_info_page/ui/page/app_info.dart' show AppInfo;
-import 'package:tadamon/features/pages/chat_with_dev_page/ui/page/chat_with_dev.dart' show ChatWithDev;
-import 'package:tadamon/features/pages/help_user_page/ui/page/help_user_page.dart' show HelpUserPage;
-import 'package:tadamon/features/pages/main_page/ui/page/main_page.dart' show MainPage;
-import 'package:tadamon/features/pages/onboarding_page/ui/page/onboarding_page.dart' show OnboardingPage;
-import 'package:tadamon/features/pages/palestine_map_page/ui/page/palestine_map_page.dart' show PalestineMapPage;
-import 'package:tadamon/features/pages/terms_gate_page/terms_gate.dart' show TermsGate;
+import 'package:tadamon/features/pages/app_info_page/ui/page/app_info.dart'
+    show AppInfo;
+import 'package:tadamon/features/pages/chat_with_dev_page/ui/page/chat_with_dev.dart'
+    show ChatWithDev;
+import 'package:tadamon/features/pages/help_user_page/ui/page/help_user_page.dart'
+    show HelpUserPage;
+import 'package:tadamon/features/pages/main_page/ui/page/main_page.dart'
+    show MainPage;
+import 'package:tadamon/features/pages/onboarding_page/ui/page/onboarding_page.dart'
+    show OnboardingPage;
+import 'package:tadamon/features/pages/palestine_map_page/ui/page/palestine_map_page.dart'
+    show PalestineMapPage;
+import 'package:tadamon/features/pages/terms_gate_page/terms_gate.dart'
+    show TermsGate;
 
 class AppRouter {
   static final GlobalKey<NavigatorState> navigatorKey =
@@ -60,7 +78,7 @@ class AppRouter {
   PageRouteBuilder _createPageRoute(Widget page) {
     return PageRouteBuilder(
       transitionDuration: const Duration(milliseconds: 250),
-      pageBuilder: (_, animation, __) => FadeTransition(
+      pageBuilder: (_, animation, _) => FadeTransition(
         opacity: animation,
         child: SlideTransition(
           position: Tween<Offset>(

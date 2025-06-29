@@ -47,16 +47,13 @@ class _ChatWithDevState extends State<ChatWithDev>
     },
   ];
 
-
-
   @override
   void initState() {
     super.initState();
     _initAnimations(messages);
   }
 
-
-    void _initAnimations(final dynamic messagesList) async {
+  void _initAnimations(final dynamic messagesList) async {
     _controllers = List.generate(
       messagesList.length,
       (index) => AnimationController(
@@ -69,10 +66,7 @@ class _ChatWithDevState extends State<ChatWithDev>
       return Tween<Offset>(
         begin: const Offset(1, 0),
         end: Offset.zero,
-      ).animate(CurvedAnimation(
-        parent: controller,
-        curve: Curves.easeOut,
-      ));
+      ).animate(CurvedAnimation(parent: controller, curve: Curves.easeOut));
     }).toList();
 
     // Delay start a bit for UX
@@ -82,8 +76,6 @@ class _ChatWithDevState extends State<ChatWithDev>
       }
     });
   }
-
-
 
   DateTime now = DateTime.now();
 
@@ -99,9 +91,7 @@ class _ChatWithDevState extends State<ChatWithDev>
               itemCount: messages.length,
               itemBuilder: (context, index) {
                 final dateTime = now.subtract(
-                  Duration(
-                    minutes: (messages.length - 1 - index),
-                  ),
+                  Duration(minutes: (messages.length - 1 - index)),
                 );
                 return SlideTransition(
                   position: _slideAnimations[index],

@@ -8,7 +8,8 @@ class AnimatedTriangles extends StatefulWidget {
   State<AnimatedTriangles> createState() => _AnimatedTrianglesState();
 }
 
-class _AnimatedTrianglesState extends State<AnimatedTriangles> with SingleTickerProviderStateMixin {
+class _AnimatedTrianglesState extends State<AnimatedTriangles>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   final List<Triangle> _triangles = [];
 
@@ -41,7 +42,7 @@ class _AnimatedTrianglesState extends State<AnimatedTriangles> with SingleTicker
             triangles: _triangles,
             animationValue: _controller.value,
             screenSize: MediaQuery.of(context).size,
-            trianglePaint: _trianglePaint, 
+            trianglePaint: _trianglePaint,
             borderPaint: _borderPaint,
           ),
           size: Size.infinite,
@@ -65,11 +66,11 @@ class Triangle {
   final Color color;
 
   Triangle()
-      : relativeX = Random().nextDouble(),
-        relativeY = Random().nextDouble(),
-        size = Random().nextDouble() * 60 + 30,
-        speedFactor = Random().nextDouble() * 0.5 + 0.5,
-        color = Colors.red;
+    : relativeX = Random().nextDouble(),
+      relativeY = Random().nextDouble(),
+      size = Random().nextDouble() * 60 + 30,
+      speedFactor = Random().nextDouble() * 0.5 + 0.5,
+      color = Colors.red;
 }
 
 class TrianglePainter extends CustomPainter {
@@ -84,7 +85,7 @@ class TrianglePainter extends CustomPainter {
     required this.triangles,
     required this.animationValue,
     required this.screenSize,
-    required this.trianglePaint, 
+    required this.trianglePaint,
     required this.borderPaint,
   });
 
@@ -93,7 +94,8 @@ class TrianglePainter extends CustomPainter {
     for (var triangle in triangles) {
       final baseX = triangle.relativeX * screenSize.width;
       final baseY = triangle.relativeY * screenSize.height;
-      final bounceOffset = sin(animationValue * 2 * pi * triangle.speedFactor) * 20;
+      final bounceOffset =
+          sin(animationValue * 2 * pi * triangle.speedFactor) * 20;
       final adjustedX = baseX;
       final adjustedY = baseY + bounceOffset;
 

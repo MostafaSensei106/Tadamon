@@ -22,7 +22,8 @@ class ReportService {
       }
     } else {
       AppToast.showSimpleToast(
-          'لا يوجد انترنت. سيتم إرسال البلاغ تلقائيًا لاحقًا.');
+        'لا يوجد انترنت. سيتم إرسال البلاغ تلقائيًا لاحقًا.',
+      );
       await _saveReportLocally(productReport);
     }
   }

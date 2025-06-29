@@ -1,22 +1,18 @@
-
-
 import 'dart:ui' show PlatformDispatcher;
 
-import 'package:flutter/material.dart' show  ThemeMode, Brightness;
+import 'package:flutter/material.dart' show ThemeMode, Brightness;
 import 'package:flutter_bloc/flutter_bloc.dart' show Cubit;
-import 'package:tadamon/core/config/theme/colors/logic/cubit/theme_shared_preferences.dart' show ThemeSharedPreferences;
-import 'package:tadamon/core/config/theme/colors/logic/cubit/theme_state.dart' show ThemeState;
+import 'package:tadamon/core/config/theme/colors/logic/cubit/theme_shared_preferences.dart'
+    show ThemeSharedPreferences;
+import 'package:tadamon/core/config/theme/colors/logic/cubit/theme_state.dart'
+    show ThemeState;
 
 class ThemeCubit extends Cubit<ThemeState> {
   final ThemeSharedPreferences _themeSharedPreferences;
 
-  ThemeCubit({
-    required ThemeSharedPreferences themeSharedPreferences,
-  })  : _themeSharedPreferences = themeSharedPreferences,
-        super(const ThemeState(
-          isDark: false,
-          themeMode: ThemeMode.system,
-        ));
+  ThemeCubit({required ThemeSharedPreferences themeSharedPreferences})
+    : _themeSharedPreferences = themeSharedPreferences,
+      super(const ThemeState(isDark: false, themeMode: ThemeMode.system));
 
   /// Persists the given [ThemeState] to SharedPreferences.
   ///
@@ -54,7 +50,8 @@ class ThemeCubit extends Cubit<ThemeState> {
   /// Emits a new [ThemeState] with the chosen [isDark] and
   /// [ThemeMode.system].
   Future<void> setSystemTheme() async {
-    final isDark = PlatformDispatcher.instance.platformBrightness == Brightness.dark;
+    final isDark =
+        PlatformDispatcher.instance.platformBrightness == Brightness.dark;
     final newState = state.copyWith(
       isDark: isDark,
       themeMode: ThemeMode.system,
@@ -96,12 +93,7 @@ class ThemeCubit extends Cubit<ThemeState> {
         await _persistTheme(newState);
         emit(newState);
       } else {
-        emit(
-          state.copyWith(
-            isDark: isDark,
-            themeMode: savedMode,
-          ),
-        );
+        emit(state.copyWith(isDark: isDark, themeMode: savedMode));
       }
     }
   }

@@ -21,98 +21,115 @@ export 'package:objectbox/objectbox.dart'; // so that callers only have to impor
 
 final _entities = <obx_int.ModelEntity>[
   obx_int.ModelEntity(
-      id: const obx_int.IdUid(2, 9154515039850596748),
-      name: 'ProductModel',
-      lastPropertyId: const obx_int.IdUid(7, 141492184540685496),
-      flags: 0,
-      properties: <obx_int.ModelProperty>[
-        obx_int.ModelProperty(
-            id: const obx_int.IdUid(1, 8119442383458368338),
-            name: 'id',
-            type: 6,
-            flags: 1),
-        obx_int.ModelProperty(
-            id: const obx_int.IdUid(2, 8044557498577198452),
-            name: 'name',
-            type: 9,
-            flags: 0),
-        obx_int.ModelProperty(
-            id: const obx_int.IdUid(3, 3326366019492487330),
-            name: 'serialNumber',
-            type: 9,
-            flags: 0),
-        obx_int.ModelProperty(
-            id: const obx_int.IdUid(4, 8958825450245008746),
-            name: 'manufacture',
-            type: 9,
-            flags: 0),
-        obx_int.ModelProperty(
-            id: const obx_int.IdUid(5, 7773340386920764557),
-            name: 'category',
-            type: 9,
-            flags: 0),
-        obx_int.ModelProperty(
-            id: const obx_int.IdUid(6, 2418869364513338900),
-            name: 'trusted',
-            type: 1,
-            flags: 0),
-        obx_int.ModelProperty(
-            id: const obx_int.IdUid(7, 141492184540685496),
-            name: 'onError',
-            type: 9,
-            flags: 0)
-      ],
-      relations: <obx_int.ModelRelation>[],
-      backlinks: <obx_int.ModelBacklink>[]),
+    id: const obx_int.IdUid(2, 9154515039850596748),
+    name: 'ProductModel',
+    lastPropertyId: const obx_int.IdUid(7, 141492184540685496),
+    flags: 0,
+    properties: <obx_int.ModelProperty>[
+      obx_int.ModelProperty(
+        id: const obx_int.IdUid(1, 8119442383458368338),
+        name: 'id',
+        type: 6,
+        flags: 1,
+      ),
+      obx_int.ModelProperty(
+        id: const obx_int.IdUid(2, 8044557498577198452),
+        name: 'name',
+        type: 9,
+        flags: 0,
+      ),
+      obx_int.ModelProperty(
+        id: const obx_int.IdUid(3, 3326366019492487330),
+        name: 'serialNumber',
+        type: 9,
+        flags: 0,
+      ),
+      obx_int.ModelProperty(
+        id: const obx_int.IdUid(4, 8958825450245008746),
+        name: 'manufacture',
+        type: 9,
+        flags: 0,
+      ),
+      obx_int.ModelProperty(
+        id: const obx_int.IdUid(5, 7773340386920764557),
+        name: 'category',
+        type: 9,
+        flags: 0,
+      ),
+      obx_int.ModelProperty(
+        id: const obx_int.IdUid(6, 2418869364513338900),
+        name: 'trusted',
+        type: 1,
+        flags: 0,
+      ),
+      obx_int.ModelProperty(
+        id: const obx_int.IdUid(7, 141492184540685496),
+        name: 'onError',
+        type: 9,
+        flags: 0,
+      ),
+    ],
+    relations: <obx_int.ModelRelation>[],
+    backlinks: <obx_int.ModelBacklink>[],
+  ),
   obx_int.ModelEntity(
-      id: const obx_int.IdUid(4, 9160064887395371876),
-      name: 'ScannedLogsProductModel',
-      lastPropertyId: const obx_int.IdUid(8, 2925683875874442903),
-      flags: 0,
-      properties: <obx_int.ModelProperty>[
-        obx_int.ModelProperty(
-            id: const obx_int.IdUid(1, 1385172095795576905),
-            name: 'id',
-            type: 6,
-            flags: 1),
-        obx_int.ModelProperty(
-            id: const obx_int.IdUid(2, 8460290129714846462),
-            name: 'name',
-            type: 9,
-            flags: 0),
-        obx_int.ModelProperty(
-            id: const obx_int.IdUid(3, 3102439661023963751),
-            name: 'serialNumber',
-            type: 9,
-            flags: 0),
-        obx_int.ModelProperty(
-            id: const obx_int.IdUid(4, 8580526240427098784),
-            name: 'manufacture',
-            type: 9,
-            flags: 0),
-        obx_int.ModelProperty(
-            id: const obx_int.IdUid(5, 867992797942690652),
-            name: 'category',
-            type: 9,
-            flags: 0),
-        obx_int.ModelProperty(
-            id: const obx_int.IdUid(6, 2757222515576532312),
-            name: 'trusted',
-            type: 1,
-            flags: 0),
-        obx_int.ModelProperty(
-            id: const obx_int.IdUid(7, 7202032809465492346),
-            name: 'onError',
-            type: 9,
-            flags: 0),
-        obx_int.ModelProperty(
-            id: const obx_int.IdUid(8, 2925683875874442903),
-            name: 'scannedAt',
-            type: 10,
-            flags: 0)
-      ],
-      relations: <obx_int.ModelRelation>[],
-      backlinks: <obx_int.ModelBacklink>[])
+    id: const obx_int.IdUid(4, 9160064887395371876),
+    name: 'ScannedLogsProductModel',
+    lastPropertyId: const obx_int.IdUid(8, 2925683875874442903),
+    flags: 0,
+    properties: <obx_int.ModelProperty>[
+      obx_int.ModelProperty(
+        id: const obx_int.IdUid(1, 1385172095795576905),
+        name: 'id',
+        type: 6,
+        flags: 1,
+      ),
+      obx_int.ModelProperty(
+        id: const obx_int.IdUid(2, 8460290129714846462),
+        name: 'name',
+        type: 9,
+        flags: 0,
+      ),
+      obx_int.ModelProperty(
+        id: const obx_int.IdUid(3, 3102439661023963751),
+        name: 'serialNumber',
+        type: 9,
+        flags: 0,
+      ),
+      obx_int.ModelProperty(
+        id: const obx_int.IdUid(4, 8580526240427098784),
+        name: 'manufacture',
+        type: 9,
+        flags: 0,
+      ),
+      obx_int.ModelProperty(
+        id: const obx_int.IdUid(5, 867992797942690652),
+        name: 'category',
+        type: 9,
+        flags: 0,
+      ),
+      obx_int.ModelProperty(
+        id: const obx_int.IdUid(6, 2757222515576532312),
+        name: 'trusted',
+        type: 1,
+        flags: 0,
+      ),
+      obx_int.ModelProperty(
+        id: const obx_int.IdUid(7, 7202032809465492346),
+        name: 'onError',
+        type: 9,
+        flags: 0,
+      ),
+      obx_int.ModelProperty(
+        id: const obx_int.IdUid(8, 2925683875874442903),
+        name: 'scannedAt',
+        type: 10,
+        flags: 0,
+      ),
+    ],
+    relations: <obx_int.ModelRelation>[],
+    backlinks: <obx_int.ModelBacklink>[],
+  ),
 ];
 
 /// Shortcut for [obx.Store.new] that passes [getObjectBoxModel] and for Flutter
@@ -126,173 +143,204 @@ final _entities = <obx_int.ModelEntity>[
 /// For Flutter apps, also calls `loadObjectBoxLibraryAndroidCompat()` from
 /// the ObjectBox Flutter library to fix loading the native ObjectBox library
 /// on Android 6 and older.
-Future<obx.Store> openStore(
-    {String? directory,
-    int? maxDBSizeInKB,
-    int? maxDataSizeInKB,
-    int? fileMode,
-    int? maxReaders,
-    bool queriesCaseSensitiveDefault = true,
-    String? macosApplicationGroup}) async {
+Future<obx.Store> openStore({
+  String? directory,
+  int? maxDBSizeInKB,
+  int? maxDataSizeInKB,
+  int? fileMode,
+  int? maxReaders,
+  bool queriesCaseSensitiveDefault = true,
+  String? macosApplicationGroup,
+}) async {
   await loadObjectBoxLibraryAndroidCompat();
-  return obx.Store(getObjectBoxModel(),
-      directory: directory ?? (await defaultStoreDirectory()).path,
-      maxDBSizeInKB: maxDBSizeInKB,
-      maxDataSizeInKB: maxDataSizeInKB,
-      fileMode: fileMode,
-      maxReaders: maxReaders,
-      queriesCaseSensitiveDefault: queriesCaseSensitiveDefault,
-      macosApplicationGroup: macosApplicationGroup);
+  return obx.Store(
+    getObjectBoxModel(),
+    directory: directory ?? (await defaultStoreDirectory()).path,
+    maxDBSizeInKB: maxDBSizeInKB,
+    maxDataSizeInKB: maxDataSizeInKB,
+    fileMode: fileMode,
+    maxReaders: maxReaders,
+    queriesCaseSensitiveDefault: queriesCaseSensitiveDefault,
+    macosApplicationGroup: macosApplicationGroup,
+  );
 }
 
 /// Returns the ObjectBox model definition for this project for use with
 /// [obx.Store.new].
 obx_int.ModelDefinition getObjectBoxModel() {
   final model = obx_int.ModelInfo(
-      entities: _entities,
-      lastEntityId: const obx_int.IdUid(4, 9160064887395371876),
-      lastIndexId: const obx_int.IdUid(0, 0),
-      lastRelationId: const obx_int.IdUid(0, 0),
-      lastSequenceId: const obx_int.IdUid(0, 0),
-      retiredEntityUids: const [6072440110067899483, 6674380074645599672],
-      retiredIndexUids: const [],
-      retiredPropertyUids: const [
-        3257500603860786490,
-        7184596676276845706,
-        4125859010512694816,
-        7999642378580237386,
-        1774581651058165040,
-        6648500980729496271,
-        5083381345625000545,
-        8316824247462543173,
-        2878691409008529064,
-        8553239779623812279,
-        136166845008193984,
-        4333210679318052728,
-        667664151190914925,
-        6348219516869610320,
-        8259691590146978420
-      ],
-      retiredRelationUids: const [],
-      modelVersion: 5,
-      modelVersionParserMinimum: 5,
-      version: 1);
+    entities: _entities,
+    lastEntityId: const obx_int.IdUid(4, 9160064887395371876),
+    lastIndexId: const obx_int.IdUid(0, 0),
+    lastRelationId: const obx_int.IdUid(0, 0),
+    lastSequenceId: const obx_int.IdUid(0, 0),
+    retiredEntityUids: const [6072440110067899483, 6674380074645599672],
+    retiredIndexUids: const [],
+    retiredPropertyUids: const [
+      3257500603860786490,
+      7184596676276845706,
+      4125859010512694816,
+      7999642378580237386,
+      1774581651058165040,
+      6648500980729496271,
+      5083381345625000545,
+      8316824247462543173,
+      2878691409008529064,
+      8553239779623812279,
+      136166845008193984,
+      4333210679318052728,
+      667664151190914925,
+      6348219516869610320,
+      8259691590146978420,
+    ],
+    retiredRelationUids: const [],
+    modelVersion: 5,
+    modelVersionParserMinimum: 5,
+    version: 1,
+  );
 
   final bindings = <Type, obx_int.EntityDefinition>{
     ProductModel: obx_int.EntityDefinition<ProductModel>(
-        model: _entities[0],
-        toOneRelations: (ProductModel object) => [],
-        toManyRelations: (ProductModel object) => {},
-        getId: (ProductModel object) => object.id,
-        setId: (ProductModel object, int id) {
-          object.id = id;
-        },
-        objectToFB: (ProductModel object, fb.Builder fbb) {
-          final nameOffset = fbb.writeString(object.name);
-          final serialNumberOffset = fbb.writeString(object.serialNumber);
-          final manufactureOffset = fbb.writeString(object.manufacture);
-          final categoryOffset = fbb.writeString(object.category);
-          final onErrorOffset = fbb.writeString(object.onError);
-          fbb.startTable(8);
-          fbb.addInt64(0, object.id);
-          fbb.addOffset(1, nameOffset);
-          fbb.addOffset(2, serialNumberOffset);
-          fbb.addOffset(3, manufactureOffset);
-          fbb.addOffset(4, categoryOffset);
-          fbb.addBool(5, object.trusted);
-          fbb.addOffset(6, onErrorOffset);
-          fbb.finish(fbb.endTable());
-          return object.id;
-        },
-        objectFromFB: (obx.Store store, ByteData fbData) {
-          final buffer = fb.BufferContext(fbData);
-          final rootOffset = buffer.derefObject(0);
-          final idParam =
-              const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0);
-          final nameParam = const fb.StringReader(asciiOptimization: true)
-              .vTableGet(buffer, rootOffset, 6, '');
-          final serialNumberParam =
-              const fb.StringReader(asciiOptimization: true)
-                  .vTableGet(buffer, rootOffset, 8, '');
-          final manufactureParam =
-              const fb.StringReader(asciiOptimization: true)
-                  .vTableGet(buffer, rootOffset, 10, '');
-          final categoryParam = const fb.StringReader(asciiOptimization: true)
-              .vTableGet(buffer, rootOffset, 12, '');
-          final trustedParam =
-              const fb.BoolReader().vTableGet(buffer, rootOffset, 14, false);
-          final onErrorParam = const fb.StringReader(asciiOptimization: true)
-              .vTableGet(buffer, rootOffset, 16, '');
-          final object = ProductModel(
-              id: idParam,
-              name: nameParam,
-              serialNumber: serialNumberParam,
-              manufacture: manufactureParam,
-              category: categoryParam,
-              trusted: trustedParam,
-              onError: onErrorParam);
+      model: _entities[0],
+      toOneRelations: (ProductModel object) => [],
+      toManyRelations: (ProductModel object) => {},
+      getId: (ProductModel object) => object.id,
+      setId: (ProductModel object, int id) {
+        object.id = id;
+      },
+      objectToFB: (ProductModel object, fb.Builder fbb) {
+        final nameOffset = fbb.writeString(object.name);
+        final serialNumberOffset = fbb.writeString(object.serialNumber);
+        final manufactureOffset = fbb.writeString(object.manufacture);
+        final categoryOffset = fbb.writeString(object.category);
+        final onErrorOffset = fbb.writeString(object.onError);
+        fbb.startTable(8);
+        fbb.addInt64(0, object.id);
+        fbb.addOffset(1, nameOffset);
+        fbb.addOffset(2, serialNumberOffset);
+        fbb.addOffset(3, manufactureOffset);
+        fbb.addOffset(4, categoryOffset);
+        fbb.addBool(5, object.trusted);
+        fbb.addOffset(6, onErrorOffset);
+        fbb.finish(fbb.endTable());
+        return object.id;
+      },
+      objectFromFB: (obx.Store store, ByteData fbData) {
+        final buffer = fb.BufferContext(fbData);
+        final rootOffset = buffer.derefObject(0);
+        final idParam = const fb.Int64Reader().vTableGet(
+          buffer,
+          rootOffset,
+          4,
+          0,
+        );
+        final nameParam = const fb.StringReader(
+          asciiOptimization: true,
+        ).vTableGet(buffer, rootOffset, 6, '');
+        final serialNumberParam = const fb.StringReader(
+          asciiOptimization: true,
+        ).vTableGet(buffer, rootOffset, 8, '');
+        final manufactureParam = const fb.StringReader(
+          asciiOptimization: true,
+        ).vTableGet(buffer, rootOffset, 10, '');
+        final categoryParam = const fb.StringReader(
+          asciiOptimization: true,
+        ).vTableGet(buffer, rootOffset, 12, '');
+        final trustedParam = const fb.BoolReader().vTableGet(
+          buffer,
+          rootOffset,
+          14,
+          false,
+        );
+        final onErrorParam = const fb.StringReader(
+          asciiOptimization: true,
+        ).vTableGet(buffer, rootOffset, 16, '');
+        final object = ProductModel(
+          id: idParam,
+          name: nameParam,
+          serialNumber: serialNumberParam,
+          manufacture: manufactureParam,
+          category: categoryParam,
+          trusted: trustedParam,
+          onError: onErrorParam,
+        );
 
-          return object;
-        }),
+        return object;
+      },
+    ),
     ScannedLogsProductModel: obx_int.EntityDefinition<ScannedLogsProductModel>(
-        model: _entities[1],
-        toOneRelations: (ScannedLogsProductModel object) => [],
-        toManyRelations: (ScannedLogsProductModel object) => {},
-        getId: (ScannedLogsProductModel object) => object.id,
-        setId: (ScannedLogsProductModel object, int id) {
-          object.id = id;
-        },
-        objectToFB: (ScannedLogsProductModel object, fb.Builder fbb) {
-          final nameOffset = fbb.writeString(object.name);
-          final serialNumberOffset = fbb.writeString(object.serialNumber);
-          final manufactureOffset = fbb.writeString(object.manufacture);
-          final categoryOffset = fbb.writeString(object.category);
-          final onErrorOffset = fbb.writeString(object.onError);
-          fbb.startTable(9);
-          fbb.addInt64(0, object.id);
-          fbb.addOffset(1, nameOffset);
-          fbb.addOffset(2, serialNumberOffset);
-          fbb.addOffset(3, manufactureOffset);
-          fbb.addOffset(4, categoryOffset);
-          fbb.addBool(5, object.trusted);
-          fbb.addOffset(6, onErrorOffset);
-          fbb.addInt64(7, object.scannedAt.millisecondsSinceEpoch);
-          fbb.finish(fbb.endTable());
-          return object.id;
-        },
-        objectFromFB: (obx.Store store, ByteData fbData) {
-          final buffer = fb.BufferContext(fbData);
-          final rootOffset = buffer.derefObject(0);
-          final idParam =
-              const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0);
-          final nameParam = const fb.StringReader(asciiOptimization: true)
-              .vTableGet(buffer, rootOffset, 6, '');
-          final serialNumberParam =
-              const fb.StringReader(asciiOptimization: true)
-                  .vTableGet(buffer, rootOffset, 8, '');
-          final manufactureParam =
-              const fb.StringReader(asciiOptimization: true)
-                  .vTableGet(buffer, rootOffset, 10, '');
-          final categoryParam = const fb.StringReader(asciiOptimization: true)
-              .vTableGet(buffer, rootOffset, 12, '');
-          final trustedParam =
-              const fb.BoolReader().vTableGet(buffer, rootOffset, 14, false);
-          final onErrorParam = const fb.StringReader(asciiOptimization: true)
-              .vTableGet(buffer, rootOffset, 16, '');
-          final scannedAtParam = DateTime.fromMillisecondsSinceEpoch(
-              const fb.Int64Reader().vTableGet(buffer, rootOffset, 18, 0));
-          final object = ScannedLogsProductModel(
-              id: idParam,
-              name: nameParam,
-              serialNumber: serialNumberParam,
-              manufacture: manufactureParam,
-              category: categoryParam,
-              trusted: trustedParam,
-              onError: onErrorParam,
-              scannedAt: scannedAtParam);
+      model: _entities[1],
+      toOneRelations: (ScannedLogsProductModel object) => [],
+      toManyRelations: (ScannedLogsProductModel object) => {},
+      getId: (ScannedLogsProductModel object) => object.id,
+      setId: (ScannedLogsProductModel object, int id) {
+        object.id = id;
+      },
+      objectToFB: (ScannedLogsProductModel object, fb.Builder fbb) {
+        final nameOffset = fbb.writeString(object.name);
+        final serialNumberOffset = fbb.writeString(object.serialNumber);
+        final manufactureOffset = fbb.writeString(object.manufacture);
+        final categoryOffset = fbb.writeString(object.category);
+        final onErrorOffset = fbb.writeString(object.onError);
+        fbb.startTable(9);
+        fbb.addInt64(0, object.id);
+        fbb.addOffset(1, nameOffset);
+        fbb.addOffset(2, serialNumberOffset);
+        fbb.addOffset(3, manufactureOffset);
+        fbb.addOffset(4, categoryOffset);
+        fbb.addBool(5, object.trusted);
+        fbb.addOffset(6, onErrorOffset);
+        fbb.addInt64(7, object.scannedAt.millisecondsSinceEpoch);
+        fbb.finish(fbb.endTable());
+        return object.id;
+      },
+      objectFromFB: (obx.Store store, ByteData fbData) {
+        final buffer = fb.BufferContext(fbData);
+        final rootOffset = buffer.derefObject(0);
+        final idParam = const fb.Int64Reader().vTableGet(
+          buffer,
+          rootOffset,
+          4,
+          0,
+        );
+        final nameParam = const fb.StringReader(
+          asciiOptimization: true,
+        ).vTableGet(buffer, rootOffset, 6, '');
+        final serialNumberParam = const fb.StringReader(
+          asciiOptimization: true,
+        ).vTableGet(buffer, rootOffset, 8, '');
+        final manufactureParam = const fb.StringReader(
+          asciiOptimization: true,
+        ).vTableGet(buffer, rootOffset, 10, '');
+        final categoryParam = const fb.StringReader(
+          asciiOptimization: true,
+        ).vTableGet(buffer, rootOffset, 12, '');
+        final trustedParam = const fb.BoolReader().vTableGet(
+          buffer,
+          rootOffset,
+          14,
+          false,
+        );
+        final onErrorParam = const fb.StringReader(
+          asciiOptimization: true,
+        ).vTableGet(buffer, rootOffset, 16, '');
+        final scannedAtParam = DateTime.fromMillisecondsSinceEpoch(
+          const fb.Int64Reader().vTableGet(buffer, rootOffset, 18, 0),
+        );
+        final object = ScannedLogsProductModel(
+          id: idParam,
+          name: nameParam,
+          serialNumber: serialNumberParam,
+          manufacture: manufactureParam,
+          category: categoryParam,
+          trusted: trustedParam,
+          onError: onErrorParam,
+          scannedAt: scannedAtParam,
+        );
 
-          return object;
-        })
+        return object;
+      },
+    ),
   };
 
   return obx_int.ModelDefinition(model, bindings);
@@ -301,65 +349,80 @@ obx_int.ModelDefinition getObjectBoxModel() {
 /// [ProductModel] entity fields to define ObjectBox queries.
 class ProductModel_ {
   /// See [ProductModel.id].
-  static final id =
-      obx.QueryIntegerProperty<ProductModel>(_entities[0].properties[0]);
+  static final id = obx.QueryIntegerProperty<ProductModel>(
+    _entities[0].properties[0],
+  );
 
   /// See [ProductModel.name].
-  static final name =
-      obx.QueryStringProperty<ProductModel>(_entities[0].properties[1]);
+  static final name = obx.QueryStringProperty<ProductModel>(
+    _entities[0].properties[1],
+  );
 
   /// See [ProductModel.serialNumber].
-  static final serialNumber =
-      obx.QueryStringProperty<ProductModel>(_entities[0].properties[2]);
+  static final serialNumber = obx.QueryStringProperty<ProductModel>(
+    _entities[0].properties[2],
+  );
 
   /// See [ProductModel.manufacture].
-  static final manufacture =
-      obx.QueryStringProperty<ProductModel>(_entities[0].properties[3]);
+  static final manufacture = obx.QueryStringProperty<ProductModel>(
+    _entities[0].properties[3],
+  );
 
   /// See [ProductModel.category].
-  static final category =
-      obx.QueryStringProperty<ProductModel>(_entities[0].properties[4]);
+  static final category = obx.QueryStringProperty<ProductModel>(
+    _entities[0].properties[4],
+  );
 
   /// See [ProductModel.trusted].
-  static final trusted =
-      obx.QueryBooleanProperty<ProductModel>(_entities[0].properties[5]);
+  static final trusted = obx.QueryBooleanProperty<ProductModel>(
+    _entities[0].properties[5],
+  );
 
   /// See [ProductModel.onError].
-  static final onError =
-      obx.QueryStringProperty<ProductModel>(_entities[0].properties[6]);
+  static final onError = obx.QueryStringProperty<ProductModel>(
+    _entities[0].properties[6],
+  );
 }
 
 /// [ScannedLogsProductModel] entity fields to define ObjectBox queries.
 class ScannedLogsProductModel_ {
   /// See [ScannedLogsProductModel.id].
   static final id = obx.QueryIntegerProperty<ScannedLogsProductModel>(
-      _entities[1].properties[0]);
+    _entities[1].properties[0],
+  );
 
   /// See [ScannedLogsProductModel.name].
   static final name = obx.QueryStringProperty<ScannedLogsProductModel>(
-      _entities[1].properties[1]);
+    _entities[1].properties[1],
+  );
 
   /// See [ScannedLogsProductModel.serialNumber].
   static final serialNumber = obx.QueryStringProperty<ScannedLogsProductModel>(
-      _entities[1].properties[2]);
+    _entities[1].properties[2],
+  );
 
   /// See [ScannedLogsProductModel.manufacture].
   static final manufacture = obx.QueryStringProperty<ScannedLogsProductModel>(
-      _entities[1].properties[3]);
+    _entities[1].properties[3],
+  );
 
   /// See [ScannedLogsProductModel.category].
   static final category = obx.QueryStringProperty<ScannedLogsProductModel>(
-      _entities[1].properties[4]);
+    _entities[1].properties[4],
+  );
 
   /// See [ScannedLogsProductModel.trusted].
   static final trusted = obx.QueryBooleanProperty<ScannedLogsProductModel>(
-      _entities[1].properties[5]);
+    _entities[1].properties[5],
+  );
 
   /// See [ScannedLogsProductModel.onError].
   static final onError = obx.QueryStringProperty<ScannedLogsProductModel>(
-      _entities[1].properties[6]);
+    _entities[1].properties[6],
+  );
 
   /// See [ScannedLogsProductModel.scannedAt].
   static final scannedAt = obx.QueryDateProperty<ScannedLogsProductModel>(
-      _entities[1].properties[7]);
+    _entities[1].properties[7],
+  );
 }
