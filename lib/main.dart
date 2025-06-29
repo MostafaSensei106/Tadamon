@@ -4,7 +4,8 @@ import 'package:flutter/widgets.dart' show WidgetsFlutterBinding, runApp;
 import 'package:flutter_bloc/flutter_bloc.dart' show BlocProvider;
 import 'package:tadamon/core/config/theme/colors/logic/cubit/theme_cubit.dart'
     show ThemeCubit;
-import 'package:tadamon/core/config/theme/colors/logic/cubit/theme_shared_preferences.dart' show ThemeSharedPreferences;
+import 'package:tadamon/core/config/theme/colors/logic/cubit/theme_shared_preferences.dart'
+    show ThemeSharedPreferences;
 import 'package:tadamon/core/error/error_screen.dart' show errorScreen;
 import 'package:tadamon/core/routing/app_router.dart' show AppRouter;
 import 'package:tadamon/core/services/object_box_services/object_box_service.dart'
@@ -28,8 +29,8 @@ void main() async {
   await ObjectBoxService.init();
 
   final themeCubit = ThemeCubit(
-      themeSharedPreferences: ThemeSharedPreferences(),
-      context: AppRouter.navigatorKey.currentContext!);
+    themeSharedPreferences: ThemeSharedPreferences(),
+  );
 
   // await FirebaseAppCheck.instance.activate(
   //   androidProvider: AndroidProvider.playIntegrity,
