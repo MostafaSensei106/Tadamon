@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart';
+
+import 'package:flutter/material.dart' show StatelessWidget, BuildContext, Widget, Theme, Divider;
 
 class SenseiDivider extends StatelessWidget {
   const SenseiDivider({super.key});

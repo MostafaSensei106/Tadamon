@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' show BuildContext, Widget, IconData, TextButton, BorderRadius, RoundedRectangleBorder, Theme, BorderSide, Icon, Text;
 import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/core/widgets/textbutton_component/textbutton_component.dart';
+import 'package:tadamon/core/widgets/textbutton_component/textbutton_component.dart' show TextButtonComponent;
 
 class TextbuttonIconComponent extends TextButtonComponent {
   final IconData icon;

@@ -1,7 +1,24 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/core/config/fonts/fonts.dart';
+import 'package:flutter/material.dart'
+    show
+        StatelessWidget,
+        TextEditingController,
+        IconData,
+        Widget,
+        ValueChanged,
+        BuildContext,
+        Radius,
+        AutovalidateMode,
+        TextInputType,
+        Icon,
+        Theme,
+        BorderRadius,
+        BorderSide,
+        OutlineInputBorder,
+        InputDecoration,
+        FocusScope,
+        TextFormField;
+import 'package:tadamon/core/config/const/sensei_const.dart' show SenseiConst;
+import 'package:tadamon/core/config/fonts/fonts.dart' show AppTextStyle;
 
 class TextFieldComponent extends StatelessWidget {
   final TextEditingController controller;
@@ -69,20 +86,24 @@ class TextFieldComponent extends StatelessWidget {
       onTapOutside: (event) => FocusScope.of(context).unfocus(),
       onChanged: onChange,
       readOnly: readOnly,
-      maxLines: isExpands ? null : largeField ? 5 : 1,
+      maxLines: isExpands
+          ? null
+          : largeField
+              ? 5
+              : 1,
       minLines: 1,
       enableInteractiveSelection: true,
       decoration: InputDecoration(
         prefixIcon: Icon(
           icon,
-          size: SenseiConst.iconSize.sp,
+          size: SenseiConst.iconSize,
         ),
         hintText: hint,
         errorText: errorText,
         suffixIcon: suffixIcon,
         hintStyle: AppTextStyle.subtitle(context),
-        errorStyle:AppTextStyle.subtitle(context).copyWith(color: Theme.of(context).colorScheme.error),
-        
+        errorStyle: AppTextStyle.subtitle(context)
+            .copyWith(color: Theme.of(context).colorScheme.error),
         filled: true,
         fillColor: Theme.of(context).colorScheme.surfaceContainer,
         focusedBorder: OutlineInputBorder(
@@ -103,4 +124,3 @@ class TextFieldComponent extends StatelessWidget {
     );
   }
 }
-

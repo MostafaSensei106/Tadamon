@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart';
+
+import 'package:flutter/material.dart' show Navigator, RoutePredicate, BuildContext;
 
 extension NavigationExtension on BuildContext {
   /// Push the route with the given [routeName] onto the navigator that most

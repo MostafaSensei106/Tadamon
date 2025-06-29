@@ -1,5 +1,7 @@
-import 'package:tadamon/core/widgets/app_toast/app_toast.dart';
-import 'package:url_launcher/url_launcher.dart';
+
+
+import 'package:tadamon/core/widgets/app_toast/app_toast.dart' show AppToast;
+import 'package:url_launcher/url_launcher.dart' show launchUrl, LaunchMode, canLaunchUrl;
 
 class UrlRunServices {
   /// A function to launch a URL.

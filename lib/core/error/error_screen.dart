@@ -1,6 +1,19 @@
-import 'package:flutter/material.dart';
-import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/core/widgets/lottie_component/lottie_component.dart';
+import 'package:flutter/material.dart' show Material, Colors;
+import 'package:flutter/widgets.dart'
+    show
+        ErrorWidget,
+        Center,
+        EdgeInsets,
+        SizedBox,
+        TextStyle,
+        MainAxisSize,
+        TextAlign,
+        Text,
+        Column,
+        Padding;
+import 'package:tadamon/core/config/const/sensei_const.dart' show SenseiConst;
+import 'package:tadamon/core/widgets/lottie_component/lottie_component.dart'
+    show LottieComponent;
 
 /// This function is used to catch any errors that may occur in the app and show an
 /// error screen with a cat animation.

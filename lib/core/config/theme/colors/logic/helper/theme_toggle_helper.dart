@@ -1,6 +1,9 @@
-import 'package:flutter/material.dart';
+import 'dart:ui' show Brightness;
+
+import 'package:flutter/widgets.dart' show BuildContext, MediaQuery;
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tadamon/core/config/theme/colors/logic/cubit/theme_cubit.dart';
+import 'package:tadamon/core/config/theme/colors/logic/cubit/theme_cubit.dart'
+    show ThemeCubit;
 
 /// Toggles the theme between dark and light mode.
 ///

@@ -1,5 +1,7 @@
-import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
+
+
+import 'package:equatable/equatable.dart' show Equatable;
+import 'package:flutter/material.dart' show ThemeMode;
 
 class ThemeState extends Equatable {
   final bool isDark;

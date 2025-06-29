@@ -1,5 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:tadamon/generated/l10n.dart';
+
+
+import 'package:flutter/material.dart' show StatelessWidget, BuildContext, Widget, EdgeInsets, SizedBox, TextStyle, Text, AppBar, MainAxisAlignment, Icons, Theme, Icon, FontWeight, ModalRoute, FontStyle, Colors, ElevatedButton, BorderRadius, RoundedRectangleBorder, Navigator, Column, Padding, Center, Scaffold;
+import 'package:tadamon/generated/l10n.dart' show S;
 
 class NoRoutes extends StatelessWidget {
   const NoRoutes({super.key});

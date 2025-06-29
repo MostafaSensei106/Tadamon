@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' show StatelessWidget, VoidCallback, BuildContext, Widget, TextButton, MaterialTapTargetSize, BorderRadius, RoundedRectangleBorder, SystemMouseCursors, Text;
 import 'package:tadamon/core/config/const/sensei_const.dart';
 
 class TextButtonComponent extends StatelessWidget {

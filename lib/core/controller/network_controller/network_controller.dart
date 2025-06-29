@@ -1,6 +1,8 @@
-import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:tadamon/core/widgets/app_toast/app_toast.dart';
-import 'package:tadamon/features/report_products/logic/services/report_service.dart';
+
+
+import 'package:connectivity_plus/connectivity_plus.dart' show Connectivity, ConnectivityResult;
+import 'package:tadamon/core/widgets/app_toast/app_toast.dart' show AppToast;
+import 'package:tadamon/features/report_products/logic/services/report_service.dart' show ReportService;
 
 class NetworkController {
   final Connectivity _connectivity = Connectivity();

@@ -1,12 +1,16 @@
-import 'dart:io';
-import 'package:flutter/services.dart';
-import 'package:open_file/open_file.dart';
+
+import 'dart:io' show File;
+import 'dart:typed_data' show Uint8List;
+
+import 'package:flutter/services.dart' show rootBundle;
+import 'package:open_file/open_file.dart' show OpenFile;
 import 'package:path_provider/path_provider.dart' as path;
 import 'package:pdf/widgets.dart' as pw;
-import 'package:tadamon/core/config/const/sensei_const.dart';
+import 'package:tadamon/core/config/const/sensei_const.dart' show SenseiConst;
 import 'package:tadamon/core/extensions/date_format_extension.dart';
-import 'package:tadamon/core/widgets/app_toast/app_toast.dart';
-import 'package:tadamon/features/pages/log_page/data/models/scanned_logs_product_model.dart';
+import 'package:tadamon/core/widgets/app_toast/app_toast.dart' show AppToast;
+import 'package:tadamon/features/pages/log_page/data/models/scanned_logs_product_model.dart' show ScannedLogsProductModel;
+
 
 class PdfExportServices {
   /// Exports the given list of [ScannedLogsProductModel] to a pdf file named

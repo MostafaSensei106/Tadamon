@@ -1,4 +1,7 @@
-import 'package:flutter/material.dart';
+
+
+import 'package:flutter/material.dart' show Theme;
+import 'package:flutter/widgets.dart' show TextStyle, BuildContext, FontWeight;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppTextStyle {

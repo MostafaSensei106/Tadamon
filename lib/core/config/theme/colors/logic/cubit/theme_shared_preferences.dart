@@ -1,5 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+
+
+import 'package:flutter/material.dart' show ThemeMode;
+import 'package:shared_preferences/shared_preferences.dart' show SharedPreferences;
 
 class ThemeSharedPreferences {
   static const themeKey = 'theme';
