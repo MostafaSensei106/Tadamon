@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:tadamon/core/config/const/app_enums.dart'
+    show ListTileGroupType;
 import 'package:tadamon/core/widgets/button_component/button_compnent.dart';
 import 'package:tadamon/core/widgets/drawer_component/drawer_component.dart';
 import 'package:tadamon/features/pages/app_info_page/ui/widget/app_info_title.dart';
@@ -111,14 +113,15 @@ class _AppInfoListState extends State<AppInfoList>
                   opacity: _controllers[index],
                   child: Column(
                     children: [
-                      ListTileComponent(
-                        leadingIcon: _getIcons(key),
+                      ListTileIconComponent(
+                        leading: _getIcons(key),
                         title: _getTitle(key),
                         subtitle: value,
-                        useDivider: index < appInfo.length - 1,
-                        useGroupTop: index == 0,
-                        useGroupMiddle: index > 0 && index < appInfo.length - 1,
-                        useGroupBottom: index == appInfo.length - 1,
+                        groupType: index == 0
+                            ? ListTileGroupType.top
+                            : index < appInfo.length - 1
+                            ? ListTileGroupType.middle
+                            : ListTileGroupType.bottom,
                       ),
                     ],
                   ),

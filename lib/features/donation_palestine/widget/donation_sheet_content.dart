@@ -1,10 +1,16 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/core/services/url_services/url_services.dart';
-import 'package:tadamon/core/widgets/bottom_sheet/ui/model_bottom_sheet.dart';
-import 'package:tadamon/core/widgets/drawer_component/drawer_component.dart';
-import 'package:tadamon/generated/l10n.dart';
+import 'package:flutter/material.dart' show Icons;
+import 'package:flutter/widgets.dart'
+    show StatelessWidget, BuildContext, Widget, Column;
+import 'package:tadamon/core/config/const/app_enums.dart'
+    show ListTileGroupType;
+import 'package:tadamon/core/config/const/sensei_const.dart' show SenseiConst;
+import 'package:tadamon/core/services/url_services/url_services.dart'
+    show UrlRunServices;
+import 'package:tadamon/core/widgets/bottom_sheet/ui/model_bottom_sheet.dart'
+    show ModelBottomSheet;
+import 'package:tadamon/core/widgets/drawer_component/drawer_component.dart'
+    show ListTileIconComponent;
+import 'package:tadamon/generated/l10n.dart' show S;
 
 class DonationSheetContent extends StatelessWidget {
   const DonationSheetContent({super.key});
@@ -39,70 +45,61 @@ class DonationSheetContent extends StatelessWidget {
   }
 
   @override
-  /// Builds a [Column] widget that displays a list of [ListTileComponent]s each
+  /// Builds a [Column] widget that displays a list of [ListTileIconComponent]s each
   /// with a different organization and its corresponding URL to donate.
   ///
-  /// The first [ListTileComponent] is for the UNRWA organization, the second is
+  /// The first [ListTileIconComponent] is for the UNRWA organization, the second is
   /// for the Palestinian Red Crescent organization, the third is for the
   /// Baitzakat organization, and the fourth is for the Egyptian Food Bank
   /// organization.
   ///
-  /// Each [ListTileComponent] has a different icon, title, and subtitle. The
+  /// Each [ListTileIconComponent] has a different icon, title, and subtitle. The
   /// subtitle is a translation of "Donate through [organization name]".
   ///
-  /// The [ListTileComponent]s are arranged vertically in a [Column] widget.
+  /// The [ListTileIconComponent]s are arranged vertically in a [Column] widget.
   ///
-  /// The [ListTileComponent]s are wrapped in a [SingleChildScrollView] to make
+  /// The [ListTileIconComponent]s are wrapped in a [SingleChildScrollView] to make
   /// the bottom sheet scrollable.
   ///
-  /// The [ListTileComponent]s are also padded with a [Padding] widget to add a
+  /// The [ListTileIconComponent]s are also padded with a [Padding] widget to add a
   /// bottom padding of 16 logical pixels.
   Widget build(BuildContext context) {
     return Column(
       children: [
-        ListTileComponent(
-          leadingIcon: Icons.volunteer_activism_outlined,
+        ListTileIconComponent(
+          leading: Icons.volunteer_activism_outlined,
           title: 'منظمة الانوروا',
           subtitle: 'نبرع هم طريق منظمة الانوروا',
-          useDivider: true,
-          useGroupTop: true,
+
           useinBorderRadius: true,
-          onTapped: () => {
-            HapticFeedback.vibrate(),
+          onTap: () => {
             UrlRunServices.launchURL(SenseiConst.donateByUnrwaLink),
           },
+          groupType: ListTileGroupType.top,
         ),
-        ListTileComponent(
-          leadingIcon: Icons.mode_night_outlined,
+        ListTileIconComponent(
+          leading: Icons.mode_night_outlined,
           title: 'الهلال الاحمر الفلسطيني',
           subtitle: 'تبرع عن طريق الهلال الاحمر الفلسطيني',
-          useDivider: true,
-          useGroupMiddle: true,
-          onTapped: () => {
-            HapticFeedback.vibrate(),
+          onTap: () => {
             UrlRunServices.launchURL(SenseiConst.donateByPalestinercsLink),
           },
+          groupType: ListTileGroupType.middle,
         ),
-        ListTileComponent(
-          leadingIcon: Icons.maps_home_work_outlined,
+        ListTileIconComponent(
+          leading: Icons.maps_home_work_outlined,
           title: 'بيت الزكاة والصدقات المصري',
           subtitle: 'تبرع عن طريق ابيت الزكاةو الصدقات المصري',
-          useDivider: true,
-          useGroupMiddle: true,
-          useinBorderRadius: true,
-          onTapped: () =>
-              UrlRunServices.launchURL(SenseiConst.donateByBaitzakatLink),
+          onTap: () =>
+              UrlRunServices.launchURL(SenseiConst.donateByBaitzakatLink), groupType: ListTileGroupType.middle,
         ),
-        ListTileComponent(
-          leadingIcon: Icons.food_bank_outlined,
+        ListTileIconComponent(
+          leading: Icons.food_bank_outlined,
           title: 'بنك الطعام المصري',
           subtitle: 'تبرع عن طريقة بنك الطعام المصري',
-          useinBorderRadius: true,
-          useGroupBottom: true,
-          onTapped: () => {
-            HapticFeedback.vibrate(),
+          onTap: () => {
             UrlRunServices.launchURL(SenseiConst.donateByEGYFoodBankLink),
-          },
+          }, groupType: ListTileGroupType.bottom,
         ),
       ],
     );

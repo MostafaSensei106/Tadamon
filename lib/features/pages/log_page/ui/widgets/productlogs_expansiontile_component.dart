@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tadamon/core/config/const/app_enums.dart'
+    show ListTileGroupType;
 import 'package:tadamon/core/config/const/sensei_const.dart';
 import 'package:tadamon/core/config/fonts/fonts.dart';
 import 'package:tadamon/core/extensions/date_format_extension.dart';
@@ -59,51 +61,50 @@ class ProductLogsExpansionTileComponent extends StatelessWidget {
           ),
         ),
         children: [
-          ListTileComponent(
-            leadingIcon: Icons.qr_code_rounded,
+          ListTileIconComponent(
+            leading: Icons.qr_code_rounded,
             title: "الرقم التسلسلي",
             subtitle: product.serialNumber,
-            useGroupTop: true,
-            useDivider: true,
-            useMargin: false,
-            trailingWidget: IconButton(
+            trailing: IconButton(
               onPressed: () =>
                   Clipboard.setData(ClipboardData(text: product.serialNumber)),
               icon: const Icon(Icons.copy),
             ),
+            groupType: ListTileGroupType.top,
           ),
-          ListTileComponent(
-            leadingIcon: Icons.label_outline_rounded,
+          ListTileIconComponent(
+            leading: Icons.label_outline_rounded,
             title: "اسم المنتج",
             subtitle: product.name,
-            useDivider: true,
+            groupType: ListTileGroupType.middle,
           ),
-          ListTileComponent(
-            leadingIcon: Icons.business_rounded,
+          ListTileIconComponent(
+            leading: Icons.business_rounded,
             title: "الشركة المصنعة",
             subtitle: product.manufacture,
-            useDivider: true,
+            groupType: ListTileGroupType.middle,
           ),
-          ListTileComponent(
-            leadingIcon: Icons.category_outlined,
+          ListTileIconComponent(
+            leading: Icons.category_outlined,
             title: "التصنيف",
             subtitle: product.category,
-            useDivider: true,
+            groupType: ListTileGroupType.middle,
           ),
-          ListTileComponent(
-            leadingIcon: Icons.handshake_outlined,
+          ListTileIconComponent(
+            leading: Icons.handshake_outlined,
             title: "الحالة",
-            useDivider: true,
             subtitle: product.onError == "Product not found"
                 ? "المنتج غير موجود"
                 : product.trusted
                 ? "مؤمن"
                 : "غير مؤمن",
+            groupType: ListTileGroupType.middle,
           ),
-          ListTileComponent(
-            leadingIcon: Icons.date_range_outlined,
+          ListTileIconComponent(
+            leading: Icons.date_range_outlined,
             title: "التاريخ",
             subtitle: product.scannedAt.formatted,
+            groupType: ListTileGroupType.bottom,
           ),
         ],
       ),

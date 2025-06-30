@@ -1,26 +1,26 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter/material.dart' show Icons, Theme, Drawer, ThemeMode, Switch, Colors;
+import 'package:flutter/widgets.dart' show StatelessWidget, WidgetStateProperty, BuildContext, Icon, WidgetState, Widget, ContinuousRectangleBorder, SizedBox, BorderRadius, Radius, EdgeInsets, Column, AnimatedSize, Padding, ListView, ValueKey, Navigator;
+import 'package:flutter_bloc/flutter_bloc.dart' show BlocBuilder, ReadContext, BlocProvider, BlocListener, BlocConsumer;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/core/config/theme/colors/logic/cubit/theme_cubit.dart';
-import 'package:tadamon/core/config/theme/colors/logic/cubit/theme_state.dart';
-import 'package:tadamon/core/config/theme/colors/logic/helper/theme_toggle_helper.dart';
-
-import 'package:tadamon/core/routing/routes.dart';
-import 'package:tadamon/core/services/url_services/url_services.dart';
-import 'package:tadamon/core/widgets/bottom_sheet/ui/model_bottom_sheet.dart';
-import 'package:tadamon/core/widgets/button_component/button_compnent.dart';
-import 'package:tadamon/core/widgets/dilog_components/dilog_waiting_component.dart';
-import 'package:tadamon/core/widgets/app_toast/app_toast.dart';
-import 'package:tadamon/core/widgets/drawer_component/drawer_component.dart';
-import 'package:tadamon/core/widgets/app_drawer/widgets/drawer_header.dart';
-import 'package:tadamon/features/pdf_export/logic/cubit/pdf_export_cubit.dart';
-import 'package:tadamon/features/pdf_export/logic/cubit/pdf_export_state.dart';
-import 'package:tadamon/features/products_scanner/data/repository/objectbox_repositories.dart';
-import 'package:tadamon/features/products_scanner/logic/cubit/localdb_cubit/localdb_cubit.dart';
-import 'package:tadamon/features/report_products/widgets/report_products_seet_content/report_product_sheet_content.dart';
-import 'package:tadamon/generated/l10n.dart';
+import 'package:tadamon/core/config/const/app_enums.dart' show ListTileGroupType;
+import 'package:tadamon/core/config/const/sensei_const.dart' show SenseiConst;
+import 'package:tadamon/core/config/theme/colors/logic/cubit/theme_cubit.dart' show ThemeCubit;
+import 'package:tadamon/core/config/theme/colors/logic/cubit/theme_state.dart' show ThemeState;
+import 'package:tadamon/core/config/theme/colors/logic/helper/theme_toggle_helper.dart' show toggleTheme;
+import 'package:tadamon/core/routing/routes.dart' show Routes;
+import 'package:tadamon/core/services/url_services/url_services.dart' show UrlRunServices;
+import 'package:tadamon/core/widgets/app_drawer/widgets/drawer_header.dart' show DrawerHeaderWidget;
+import 'package:tadamon/core/widgets/app_toast/app_toast.dart' show AppToast;
+import 'package:tadamon/core/widgets/bottom_sheet/ui/model_bottom_sheet.dart' show ModelBottomSheet;
+import 'package:tadamon/core/widgets/button_component/button_compnent.dart' show ButtonCompnent;
+import 'package:tadamon/core/widgets/dilog_components/dilog_waiting_component.dart' show DilogWatingComponent;
+import 'package:tadamon/core/widgets/drawer_component/drawer_component.dart' show ListTileIconComponent;
+import 'package:tadamon/features/pdf_export/logic/cubit/pdf_export_cubit.dart' show PdfExportCubit;
+import 'package:tadamon/features/pdf_export/logic/cubit/pdf_export_state.dart' show PdfExportState, PdfExportLoading;
+import 'package:tadamon/features/products_scanner/data/repository/objectbox_repositories.dart' show ObjectboxRepository;
+import 'package:tadamon/features/products_scanner/logic/cubit/localdb_cubit/localdb_cubit.dart' show LocalDBCubit, LocalDBState, LoclaDBDataBaseHasData, LoclaDBDataBaseEmpty, LoclaDBDataFetchingFromFireStore, LoclaDBDataFetchingFromFireStoreSuccess, LoclaDBDataFetchingFromFireStoreFailure, LoclaDBDataDeleteFailure, LoclaDBDataBaseDeleting, LoclaDBDataDeleteSuccess;
+import 'package:tadamon/features/report_products/widgets/report_products_seet_content/report_product_sheet_content.dart' show ReportProductSheetContent;
+import 'package:tadamon/generated/l10n.dart' show S;
 
 class SenseiDrawer extends StatelessWidget {
   const SenseiDrawer({super.key});
@@ -107,22 +107,21 @@ class SenseiDrawer extends StatelessWidget {
     return BlocBuilder<ThemeCubit, ThemeState>(
       buildWhen: (previous, current) => previous.themeMode != current.themeMode,
       builder: (context, state) {
-        return ListTileComponent(
-          useMargin: false,
-          useDivider: state.themeMode != ThemeMode.system,
-          useGroupTop: state.themeMode != ThemeMode.system,
-          leadingIcon: Icons.brightness_auto_outlined,
+        return ListTileIconComponent(
+          groupType: state.themeMode != ThemeMode.system
+              ? ListTileGroupType.top
+              : ListTileGroupType.none,
+          leading: Icons.brightness_auto_outlined,
           title: S.of(context).systemTheme,
           subtitle: S.of(context).followSystemTheme,
-          trailingWidget: Switch(
+          trailing: Switch(
             thumbIcon: thumbIcon(context),
             value: state.themeMode == ThemeMode.system,
             onChanged: (bool value) {
               toggleTheme(value, context);
             },
           ),
-          onTapped: () {
-            HapticFeedback.vibrate();
+          onTap: () {
             bool newValue = !(state.themeMode == ThemeMode.system);
             toggleTheme(newValue, context);
           },
@@ -139,10 +138,10 @@ class SenseiDrawer extends StatelessWidget {
       builder: (context, state) {
         return state.themeMode == ThemeMode.system
             ? const SizedBox.shrink()
-            : ListTileComponent(
+            : ListTileIconComponent(
                 key: ValueKey(state.isDark),
-                useGroupBottom: true,
-                leadingIcon: state.isDark
+                groupType: ListTileGroupType.bottom,
+                leading: state.isDark
                     ? Icons.light_mode_outlined
                     : Icons.dark_mode_outlined,
                 title: state.isDark
@@ -151,19 +150,16 @@ class SenseiDrawer extends StatelessWidget {
                 subtitle: state.isDark
                     ? S.of(context).switchToLightTheme
                     : S.of(context).switchToDarkTheme,
-                trailingWidget: Switch(
+                trailing: Switch(
                   thumbIcon: thumbIcon(context),
                   value: state.isDark,
                   onChanged: (bool value) {
                     context.read<ThemeCubit>().toggleTheme(value);
                   },
                 ),
-                onTapped: () {
-                  HapticFeedback.vibrate();
+                onTap: () {
                   context.read<ThemeCubit>().toggleTheme(!state.isDark);
                 },
-                useMargin: false,
-                useDivider: false,
               );
       },
     );
@@ -179,39 +175,33 @@ class SenseiDrawer extends StatelessWidget {
             color: Colors.red,
           );
           String subtitleText = S.of(context).appOffLine;
-          bool groupTop = false;
           if (state is LoclaDBDataBaseHasData) {
             trailingWidget = const Icon(
               Icons.check_box_outlined,
               color: Colors.green,
             );
             subtitleText = S.of(context).appOnLineMassageRunning;
-            groupTop = true;
           } else if (state is LoclaDBDataBaseEmpty) {
             trailingWidget = const Icon(
               Icons.error_outline_rounded,
               color: Colors.red,
             );
             subtitleText = S.of(context).appOnLineMassageRunning;
-            groupTop = false;
           } else {
             trailingWidget = const Icon(
               Icons.query_builder_rounded,
               color: Colors.yellow,
             );
             subtitleText = S.of(context).appOflineLoading;
-            groupTop = false;
           }
-          return ListTileComponent(
-            useMargin: true,
-            useDivider: groupTop,
-            useGroupTop: groupTop,
-            leadingIcon: state is LoclaDBDataBaseHasData
+          return ListTileIconComponent(
+            leading: state is LoclaDBDataBaseHasData
                 ? Icons.cloud_done_outlined
                 : Icons.cloud_off_rounded,
             title: S.of(context).appOffLine,
             subtitle: subtitleText,
-            trailingWidget: trailingWidget,
+            trailing: trailingWidget,
+            groupType: ListTileGroupType.top,
           );
         },
       ),
@@ -250,7 +240,6 @@ class SenseiDrawer extends StatelessWidget {
                   label: 'تشغيل الاونلاين',
                   icon: Icons.cloud_download_outlined,
                   onPressed: () {
-                    HapticFeedback.vibrate();
                     context.read<LocalDBCubit>().fetchDataFromFireStore();
                   },
                 ),
@@ -289,14 +278,12 @@ class SenseiDrawer extends StatelessWidget {
         child: BlocBuilder<LocalDBCubit, LocalDBState>(
           builder: (context, state) {
             if (state is LoclaDBDataBaseHasData) {
-              return ListTileComponent(
-                useDivider: true,
-                useGroupMiddle: true,
-                leadingIcon: Icons.dataset_linked_outlined,
+              return ListTileIconComponent(
+                groupType: ListTileGroupType.middle,
+                leading: Icons.dataset_linked_outlined,
                 title: 'تحديث قاعدة البيانات',
                 subtitle: 'تحديث قاعدة البيانات',
-                onTapped: () {
-                  HapticFeedback.vibrate();
+                onTap: () {
                   context.read<LocalDBCubit>().updateDataBaseFromFireStore();
                 },
               );
@@ -334,15 +321,14 @@ class SenseiDrawer extends StatelessWidget {
         child: BlocBuilder<LocalDBCubit, LocalDBState>(
           builder: (context, state) {
             if (state is LoclaDBDataBaseHasData) {
-              return ListTileComponent(
-                useGroupBottom: true,
-                leadingIcon: Icons.delete_forever_outlined,
+              return ListTileIconComponent(
+                leading: Icons.delete_forever_outlined,
                 title: 'حذف البيانات',
                 subtitle: 'سوف يتم حذف جميع المنتجات المحفوظة',
-                onTapped: () {
-                  HapticFeedback.vibrate();
+                onTap: () {
                   context.read<LocalDBCubit>().deleteAllLocalProducts();
                 },
+                groupType: ListTileGroupType.single,
               );
             }
             return const SizedBox.shrink();
@@ -353,18 +339,15 @@ class SenseiDrawer extends StatelessWidget {
   }
 
   Widget _buildClearLogs(BuildContext context) {
-    return ListTileComponent(
-      useMargin: true,
-      useDivider: true,
-      useGroupTop: true,
-      leadingIcon: Icons.clear_all_rounded,
+    return ListTileIconComponent(
+      leading: Icons.clear_all_rounded,
       title: S.of(context).clearLogs,
       subtitle: S.of(context).clearLogs,
-      onTapped: () {
-        HapticFeedback.vibrate();
+      onTap: () {
         Navigator.of(context).pop();
         ObjectboxRepository().clearTadamonLogsFromLocalDB();
       },
+      groupType: ListTileGroupType.single,
     );
   }
 
@@ -380,18 +363,15 @@ class SenseiDrawer extends StatelessWidget {
               message: 'الرجاء الانتظار',
             );
           }
-          return ListTileComponent(
-            useMargin: false,
-            useDivider: false,
-            useGroupBottom: true,
-            leadingIcon: Icons.picture_as_pdf_rounded,
+          return ListTileIconComponent(
+            leading: Icons.picture_as_pdf_rounded,
             title: 'تصدير السجلات',
             subtitle: 'تصطير السجلات علي شكل PDF',
-            onTapped: () {
-              HapticFeedback.vibrate();
+            onTap: () {
               Navigator.of(context).pop();
               context.read<PdfExportCubit>().exportPdf();
             },
+            groupType: ListTileGroupType.single,
           );
         },
       ),
@@ -400,19 +380,16 @@ class SenseiDrawer extends StatelessWidget {
 }
 
 Widget _buildHowToUse(BuildContext context) {
-  return ListTileComponent(
-    useMargin: true,
-    useDivider: true,
-    useGroupTop: true,
-    leadingIcon: Icons.question_answer_outlined,
+  return ListTileIconComponent(
+    groupType: ListTileGroupType.top,
+    leading: Icons.question_answer_outlined,
     title: S.of(context).howToUse,
     subtitle: S.of(context).howToUseMassage,
-    trailingWidget: Icon(
+    trailing: Icon(
       Icons.arrow_forward_ios_rounded,
       color: Theme.of(context).colorScheme.onSurface.withAlpha(0x80),
     ),
-    onTapped: () {
-      HapticFeedback.vibrate();
+    onTap: () {
       Navigator.pop(context);
       Navigator.pushNamed(context, Routes.userHelp);
     },
@@ -420,15 +397,12 @@ Widget _buildHowToUse(BuildContext context) {
 }
 
 Widget _buildReportProduct(BuildContext context) {
-  return ListTileComponent(
-    useMargin: false,
-    useDivider: false,
-    useGroupBottom: true,
-    leadingIcon: Icons.production_quantity_limits_outlined,
+  return ListTileIconComponent(
+    groupType: ListTileGroupType.bottom,
+    leading: Icons.production_quantity_limits_outlined,
     title: S.of(context).reportProduct,
     subtitle: S.of(context).reportProductMassage,
-    onTapped: () {
-      HapticFeedback.vibrate();
+    onTap: () {
       Navigator.pop(context);
       ModelBottomSheet.show(
         context,
@@ -440,19 +414,16 @@ Widget _buildReportProduct(BuildContext context) {
 }
 
 Widget _buildReadMe(BuildContext context) {
-  return ListTileComponent(
-    useMargin: true,
-    useDivider: true,
-    useGroupTop: true,
-    leadingIcon: Icons.description_outlined,
+  return ListTileIconComponent(
+    groupType: ListTileGroupType.top,
+    leading: Icons.description_outlined,
     title: S.of(context).readMe,
     subtitle: S.of(context).readMeMassage,
-    trailingWidget: Icon(
+    trailing: Icon(
       Icons.link_rounded,
       color: Theme.of(context).colorScheme.onSurface.withAlpha(0x80),
     ),
-    onTapped: () {
-      HapticFeedback.vibrate();
+    onTap: () {
       Navigator.pop(context);
       UrlRunServices.launchURL(SenseiConst.devReadMeLink);
     },
@@ -460,19 +431,16 @@ Widget _buildReadMe(BuildContext context) {
 }
 
 Widget _buildLetestUpdate(BuildContext context) {
-  return ListTileComponent(
-    useMargin: false,
-    useDivider: true,
-    useGroupMiddle: true,
-    leadingIcon: Icons.update_outlined,
+  return ListTileIconComponent(
+    groupType: ListTileGroupType.middle,
+    leading: Icons.update_outlined,
     title: S.of(context).letastUpdate,
     subtitle: S.of(context).letestUpdateMassage,
-    trailingWidget: Icon(
+    trailing: Icon(
       Icons.link_rounded,
       color: Theme.of(context).colorScheme.onSurface.withAlpha(0x80),
     ),
-    onTapped: () {
-      HapticFeedback.vibrate();
+    onTap: () {
       Navigator.pop(context);
 
       UrlRunServices.launchURL(SenseiConst.devReleaseAppLink);
@@ -481,19 +449,16 @@ Widget _buildLetestUpdate(BuildContext context) {
 }
 
 Widget _buildGithubToken(BuildContext context) {
-  return ListTileComponent(
-    useMargin: false,
-    useDivider: true,
-    useGroupMiddle: true,
-    leadingIcon: Icons.live_help_outlined,
+  return ListTileIconComponent(
+    groupType: ListTileGroupType.middle,
+    leading: Icons.live_help_outlined,
     title: S.of(context).githubTiket,
     subtitle: S.of(context).githubTiketMassage,
-    trailingWidget: Icon(
+    trailing: Icon(
       Icons.link_rounded,
       color: Theme.of(context).colorScheme.onSurface.withAlpha(0x80),
     ),
-    onTapped: () {
-      HapticFeedback.vibrate();
+    onTap: () {
       Navigator.pop(context);
 
       UrlRunServices.launchURL(SenseiConst.devGitHubIssuesLink);
@@ -502,19 +467,16 @@ Widget _buildGithubToken(BuildContext context) {
 }
 
 Widget _buildTelegramChannel(BuildContext context) {
-  return ListTileComponent(
-    useMargin: false,
-    useDivider: false,
-    useGroupBottom: true,
-    leadingIcon: Icons.telegram_rounded,
+  return ListTileIconComponent(
+    groupType: ListTileGroupType.middle,
+    leading: Icons.telegram_rounded,
     title: S.of(context).telegramChannel,
     subtitle: S.of(context).telegramChannelMassage,
-    trailingWidget: Icon(
+    trailing: Icon(
       Icons.link_rounded,
       color: Theme.of(context).colorScheme.onSurface.withAlpha(0x80),
     ),
-    onTapped: () {
-      HapticFeedback.vibrate();
+    onTap: () {
       Navigator.pop(context);
 
       UrlRunServices.launchURL(SenseiConst.tadamonTelegramLink);
@@ -523,19 +485,16 @@ Widget _buildTelegramChannel(BuildContext context) {
 }
 
 Widget _buildDeveloper(BuildContext context) {
-  return ListTileComponent(
-    useMargin: true,
-    useDivider: true,
-    useGroupTop: true,
-    leadingIcon: Icons.verified_outlined,
+  return ListTileIconComponent(
+    groupType: ListTileGroupType.top,
+    leading: Icons.verified_outlined,
     title: S.of(context).developer,
     subtitle: S.of(context).mostafaMahmoud,
-    trailingWidget: Icon(
+    trailing: Icon(
       Icons.arrow_forward_ios_rounded,
       color: Theme.of(context).colorScheme.onSurface.withAlpha(0x80),
     ),
-    onTapped: () => {
-      HapticFeedback.vibrate(),
+    onTap: () => {
       Navigator.pop(context),
       Navigator.pushNamed(context, Routes.chatWithDev),
     },
@@ -543,19 +502,16 @@ Widget _buildDeveloper(BuildContext context) {
 }
 
 Widget _buildAbout(BuildContext context) {
-  return ListTileComponent(
-    useMargin: false,
-    useDivider: false,
-    useGroupBottom: true,
-    leadingIcon: Icons.info_outline,
-    trailingWidget: Icon(
+  return ListTileIconComponent(
+    groupType: ListTileGroupType.bottom,
+    leading: Icons.info_outline,
+    trailing: Icon(
       Icons.arrow_forward_ios_rounded,
       color: Theme.of(context).colorScheme.onSurface.withAlpha(0x80),
     ),
     title: S.of(context).about,
     subtitle: S.of(context).about,
-    onTapped: () => {
-      HapticFeedback.vibrate(),
+    onTap: () => {
       Navigator.pop(context),
       Navigator.pushNamed(context, Routes.appInfo),
     },

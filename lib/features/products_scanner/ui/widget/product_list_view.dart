@@ -1,8 +1,12 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:tadamon/core/widgets/button_component/button_compnent.dart';
-import 'package:tadamon/core/widgets/drawer_component/drawer_component.dart';
-import 'package:tadamon/features/products_scanner/data/models/product_model.dart';
+
+import 'package:flutter/material.dart' show Icons, IconButton;
+import 'package:flutter/services.dart' show Clipboard, ClipboardData;
+import 'package:flutter/widgets.dart' show StatelessWidget, BuildContext, Widget, NeverScrollableScrollPhysics, Icon, SizedBox, ListView;
+import 'package:tadamon/core/config/const/app_enums.dart' show ListTileGroupType;
+import 'package:tadamon/core/widgets/button_component/button_compnent.dart' show ButtonCompnent;
+import 'package:tadamon/core/widgets/drawer_component/drawer_component.dart' show ListTileIconComponent;
+import 'package:tadamon/features/products_scanner/data/models/product_model.dart' show ProductModel;
+
 
 class ProductListView extends StatelessWidget {
   final ProductModel product;
@@ -15,58 +19,54 @@ class ProductListView extends StatelessWidget {
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       children: [
-        ListTileComponent(
-          useGroupTop: true,
-          useDivider: true,
+        ListTileIconComponent(
           useinBorderRadius: true,
-          leadingIcon: Icons.qr_code_rounded,
+          leading: Icons.qr_code_rounded,
           title: "الرقم التسلسلي",
           subtitle: product.serialNumber,
-          trailingWidget: IconButton(
+          groupType: ListTileGroupType.top,
+          trailing: IconButton(
             icon: const Icon(Icons.copy),
             onPressed: () => {
-              HapticFeedback.vibrate(),
               Clipboard.setData(ClipboardData(text: product.serialNumber)),
             },
           ),
         ),
-        ListTileComponent(
-          useGroupMiddle: true,
-          useDivider: true,
-          leadingIcon: Icons.label_outline_rounded,
+        ListTileIconComponent(
+          leading: Icons.label_outline_rounded,
           title: "إسم المنتج",
-          subtitle: product.name,
+          subtitle: product.name, groupType: ListTileGroupType.middle,
         ),
-        ListTileComponent(
-          useGroupMiddle: true,
-          useDivider: true,
-          leadingIcon: Icons.business_rounded,
+        ListTileIconComponent(
+          leading: Icons.business_rounded,
           title: "المصنع",
-          subtitle: product.manufacture,
+          subtitle: product.manufacture, groupType: ListTileGroupType.middle,
         ),
-        ListTileComponent(
-          useGroupMiddle: true,
-          useDivider: true,
-          leadingIcon: Icons.category_outlined,
+        ListTileIconComponent(
+
+          leading: Icons.category_outlined,
           title: "التصنيف",
-          subtitle: product.category,
+          subtitle: product.category, groupType: ListTileGroupType.middle,
         ),
-        ListTileComponent(
-          useGroupBottom: true,
+        ListTileIconComponent(
           useinBorderRadius: true,
-          leadingIcon: Icons.handshake_outlined,
+          leading: Icons.handshake_outlined,
           title: "الحالة",
           subtitle: product.onError == "Product not found"
               ? "المنتج غير موجود"
               : product.trusted
               ? "مؤمن"
-              : "غير مؤمن",
+              : "غير مؤمن", groupType: 
+              ListTileGroupType.bottom,
         ),
         if (!product.trusted)
-          ButtonCompnent(
-            label: '',
-            icon: Icons.report_problem_outlined,
-            onPressed: () {},
+          SizedBox(
+            width: double.infinity,
+            child: ButtonCompnent(
+              label: '',
+              icon: Icons.report_problem_outlined,
+              onPressed: () {},
+            ),
           ),
       ],
     );

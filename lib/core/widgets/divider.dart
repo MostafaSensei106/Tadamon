@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart'
     show StatelessWidget, BuildContext, Widget, Theme, Divider;
 
-class SenseiDivider extends StatelessWidget {
-  const SenseiDivider({super.key});
+class FullAppDividerComponents extends StatelessWidget {
+  const FullAppDividerComponents({super.key});
 
   @override
   /// Returns a [Divider] widget with a thickness, height, indent, and endIndent of
