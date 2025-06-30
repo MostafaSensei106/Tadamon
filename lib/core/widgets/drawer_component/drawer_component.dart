@@ -1,5 +1,24 @@
 import 'package:flutter/material.dart'
-    show BorderRadius, BoxDecoration, BuildContext, Colors, Column, Container, EdgeInsets, Icon, IconData, InkWell, ListTile, Material, Radius, StatelessWidget, Text, TextOverflow, Theme, VoidCallback, Widget;
+    show
+        BorderRadius,
+        BoxDecoration,
+        BuildContext,
+        Colors,
+        Column,
+        Container,
+        EdgeInsets,
+        Icon,
+        IconData,
+        InkWell,
+        ListTile,
+        Material,
+        Radius,
+        StatelessWidget,
+        Text,
+        TextOverflow,
+        Theme,
+        VoidCallback,
+        Widget;
 import 'package:flutter/services.dart' show HapticFeedback;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -27,7 +46,8 @@ class ListTileIconComponent extends StatelessWidget {
     this.trailing,
     this.onTap,
     this.useinBorderRadius = false,
-    required this.groupType, this.selected,
+    required this.groupType,
+    this.selected,
   });
 
   /// Calculates the border radius for the [ListTile] based on the [ListTileGroupType]
@@ -71,7 +91,9 @@ class ListTileIconComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     final borderRadius = _getBorderRadius();
     return Container(
-      margin: groupType == ListTileGroupType.top
+      margin:
+          groupType == ListTileGroupType.top ||
+              groupType == ListTileGroupType.single
           ? EdgeInsets.only(top: SenseiConst.margin.h)
           : null,
       decoration: BoxDecoration(
@@ -89,7 +111,7 @@ class ListTileIconComponent extends StatelessWidget {
               },
               borderRadius: borderRadius,
               child: ListTile(
-                leading: Icon(leading) ,
+                leading: Icon(leading),
                 title: Text(title),
                 subtitle: subtitle != null
                     ? Text(subtitle!, overflow: TextOverflow.ellipsis)
@@ -103,7 +125,8 @@ class ListTileIconComponent extends StatelessWidget {
               ),
             ),
           ),
-          if (groupType == ListTileGroupType.middle)
+          if (groupType == ListTileGroupType.middle ||
+              groupType == ListTileGroupType.top)
             const FullAppDividerComponents(),
         ],
       ),

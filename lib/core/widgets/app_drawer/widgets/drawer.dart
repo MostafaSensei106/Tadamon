@@ -1,25 +1,70 @@
-import 'package:flutter/material.dart' show Icons, Theme, Drawer, ThemeMode, Switch, Colors;
-import 'package:flutter/widgets.dart' show StatelessWidget, WidgetStateProperty, BuildContext, Icon, WidgetState, Widget, ContinuousRectangleBorder, SizedBox, BorderRadius, Radius, EdgeInsets, Column, AnimatedSize, Padding, ListView, ValueKey, Navigator;
-import 'package:flutter_bloc/flutter_bloc.dart' show BlocBuilder, ReadContext, BlocProvider, BlocListener, BlocConsumer;
+import 'package:flutter/material.dart'
+    show Icons, Theme, Drawer, ThemeMode, Switch, Colors;
+import 'package:flutter/widgets.dart'
+    show
+        StatelessWidget,
+        WidgetStateProperty,
+        BuildContext,
+        Icon,
+        WidgetState,
+        Widget,
+        ContinuousRectangleBorder,
+        SizedBox,
+        BorderRadius,
+        Radius,
+        EdgeInsets,
+        Column,
+        AnimatedSize,
+        Padding,
+        ListView,
+        ValueKey,
+        Navigator;
+import 'package:flutter_bloc/flutter_bloc.dart'
+    show BlocBuilder, ReadContext, BlocProvider, BlocListener, BlocConsumer;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:tadamon/core/config/const/app_enums.dart' show ListTileGroupType;
+import 'package:tadamon/core/config/const/app_enums.dart'
+    show ListTileGroupType, bottom;
 import 'package:tadamon/core/config/const/sensei_const.dart' show SenseiConst;
-import 'package:tadamon/core/config/theme/colors/logic/cubit/theme_cubit.dart' show ThemeCubit;
-import 'package:tadamon/core/config/theme/colors/logic/cubit/theme_state.dart' show ThemeState;
-import 'package:tadamon/core/config/theme/colors/logic/helper/theme_toggle_helper.dart' show toggleTheme;
+import 'package:tadamon/core/config/theme/colors/logic/cubit/theme_cubit.dart'
+    show ThemeCubit;
+import 'package:tadamon/core/config/theme/colors/logic/cubit/theme_state.dart'
+    show ThemeState;
+import 'package:tadamon/core/config/theme/colors/logic/helper/theme_toggle_helper.dart'
+    show toggleTheme;
 import 'package:tadamon/core/routing/routes.dart' show Routes;
-import 'package:tadamon/core/services/url_services/url_services.dart' show UrlRunServices;
-import 'package:tadamon/core/widgets/app_drawer/widgets/drawer_header.dart' show DrawerHeaderWidget;
+import 'package:tadamon/core/services/url_services/url_services.dart'
+    show UrlRunServices;
+import 'package:tadamon/core/widgets/app_drawer/widgets/drawer_header.dart'
+    show DrawerHeaderWidget;
 import 'package:tadamon/core/widgets/app_toast/app_toast.dart' show AppToast;
-import 'package:tadamon/core/widgets/bottom_sheet/ui/model_bottom_sheet.dart' show ModelBottomSheet;
-import 'package:tadamon/core/widgets/button_component/button_compnent.dart' show ButtonCompnent;
-import 'package:tadamon/core/widgets/dilog_components/dilog_waiting_component.dart' show DilogWatingComponent;
-import 'package:tadamon/core/widgets/drawer_component/drawer_component.dart' show ListTileIconComponent;
-import 'package:tadamon/features/pdf_export/logic/cubit/pdf_export_cubit.dart' show PdfExportCubit;
-import 'package:tadamon/features/pdf_export/logic/cubit/pdf_export_state.dart' show PdfExportState, PdfExportLoading;
-import 'package:tadamon/features/products_scanner/data/repository/objectbox_repositories.dart' show ObjectboxRepository;
-import 'package:tadamon/features/products_scanner/logic/cubit/localdb_cubit/localdb_cubit.dart' show LocalDBCubit, LocalDBState, LoclaDBDataBaseHasData, LoclaDBDataBaseEmpty, LoclaDBDataFetchingFromFireStore, LoclaDBDataFetchingFromFireStoreSuccess, LoclaDBDataFetchingFromFireStoreFailure, LoclaDBDataDeleteFailure, LoclaDBDataBaseDeleting, LoclaDBDataDeleteSuccess;
-import 'package:tadamon/features/report_products/widgets/report_products_seet_content/report_product_sheet_content.dart' show ReportProductSheetContent;
+import 'package:tadamon/core/widgets/bottom_sheet/ui/model_bottom_sheet.dart'
+    show ModelBottomSheet;
+import 'package:tadamon/core/widgets/button_component/button_compnent.dart'
+    show ButtonCompnent;
+import 'package:tadamon/core/widgets/dilog_components/dilog_waiting_component.dart'
+    show DilogWatingComponent;
+import 'package:tadamon/core/widgets/drawer_component/drawer_component.dart'
+    show ListTileIconComponent;
+import 'package:tadamon/features/pdf_export/logic/cubit/pdf_export_cubit.dart'
+    show PdfExportCubit;
+import 'package:tadamon/features/pdf_export/logic/cubit/pdf_export_state.dart'
+    show PdfExportState, PdfExportLoading;
+import 'package:tadamon/features/products_scanner/data/repository/objectbox_repositories.dart'
+    show ObjectboxRepository;
+import 'package:tadamon/features/products_scanner/logic/cubit/localdb_cubit/localdb_cubit.dart'
+    show
+        LocalDBCubit,
+        LocalDBState,
+        LoclaDBDataBaseHasData,
+        LoclaDBDataBaseEmpty,
+        LoclaDBDataFetchingFromFireStore,
+        LoclaDBDataFetchingFromFireStoreSuccess,
+        LoclaDBDataFetchingFromFireStoreFailure,
+        LoclaDBDataDeleteFailure,
+        LoclaDBDataBaseDeleting,
+        LoclaDBDataDeleteSuccess;
+import 'package:tadamon/features/report_products/widgets/report_products_seet_content/report_product_sheet_content.dart'
+    show ReportProductSheetContent;
 import 'package:tadamon/generated/l10n.dart' show S;
 
 class SenseiDrawer extends StatelessWidget {
@@ -82,7 +127,7 @@ class SenseiDrawer extends StatelessWidget {
                     _buildAppOffline(context),
                     _buildEnableOnline(context),
                     _buildUpdateLocalHiveDataBase(context),
-                    _buildDeleteLocalHiveData(context),
+                    _buildDeleteLocalData(context),
                     _buildHowToUse(context),
                     _buildReportProduct(context),
                     _buildClearLogs(context),
@@ -110,7 +155,7 @@ class SenseiDrawer extends StatelessWidget {
         return ListTileIconComponent(
           groupType: state.themeMode != ThemeMode.system
               ? ListTileGroupType.top
-              : ListTileGroupType.none,
+              : ListTileGroupType.single,
           leading: Icons.brightness_auto_outlined,
           title: S.of(context).systemTheme,
           subtitle: S.of(context).followSystemTheme,
@@ -295,7 +340,7 @@ class SenseiDrawer extends StatelessWidget {
     );
   }
 
-  Widget _buildDeleteLocalHiveData(BuildContext context) {
+  Widget _buildDeleteLocalData(BuildContext context) {
     return BlocProvider(
       create: (_) => LocalDBCubit()..loclaDBHasData(),
       child: BlocListener<LocalDBCubit, LocalDBState>(
@@ -328,7 +373,7 @@ class SenseiDrawer extends StatelessWidget {
                 onTap: () {
                   context.read<LocalDBCubit>().deleteAllLocalProducts();
                 },
-                groupType: ListTileGroupType.single,
+                groupType: ListTileGroupType.bottom,
               );
             }
             return const SizedBox.shrink();
@@ -347,7 +392,7 @@ class SenseiDrawer extends StatelessWidget {
         Navigator.of(context).pop();
         ObjectboxRepository().clearTadamonLogsFromLocalDB();
       },
-      groupType: ListTileGroupType.single,
+      groupType: ListTileGroupType.top,
     );
   }
 
@@ -371,7 +416,7 @@ class SenseiDrawer extends StatelessWidget {
               Navigator.of(context).pop();
               context.read<PdfExportCubit>().exportPdf();
             },
-            groupType: ListTileGroupType.single,
+            groupType: ListTileGroupType.bottom,
           );
         },
       ),
@@ -468,7 +513,7 @@ Widget _buildGithubToken(BuildContext context) {
 
 Widget _buildTelegramChannel(BuildContext context) {
   return ListTileIconComponent(
-    groupType: ListTileGroupType.middle,
+    groupType: ListTileGroupType.bottom,
     leading: Icons.telegram_rounded,
     title: S.of(context).telegramChannel,
     subtitle: S.of(context).telegramChannelMassage,

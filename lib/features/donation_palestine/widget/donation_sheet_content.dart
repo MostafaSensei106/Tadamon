@@ -91,7 +91,8 @@ class DonationSheetContent extends StatelessWidget {
           title: 'بيت الزكاة والصدقات المصري',
           subtitle: 'تبرع عن طريق ابيت الزكاةو الصدقات المصري',
           onTap: () =>
-              UrlRunServices.launchURL(SenseiConst.donateByBaitzakatLink), groupType: ListTileGroupType.middle,
+              UrlRunServices.launchURL(SenseiConst.donateByBaitzakatLink),
+          groupType: ListTileGroupType.middle,
         ),
         ListTileIconComponent(
           leading: Icons.food_bank_outlined,
@@ -99,7 +100,8 @@ class DonationSheetContent extends StatelessWidget {
           subtitle: 'تبرع عن طريقة بنك الطعام المصري',
           onTap: () => {
             UrlRunServices.launchURL(SenseiConst.donateByEGYFoodBankLink),
-          }, groupType: ListTileGroupType.bottom,
+          },
+          groupType: ListTileGroupType.bottom,
         ),
       ],
     );
