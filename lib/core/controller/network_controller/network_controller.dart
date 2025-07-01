@@ -3,7 +3,7 @@ import 'package:connectivity_plus/connectivity_plus.dart'
 
 import '../../../features/report_products/logic/services/report_service.dart'
     show ReportService;
-import '../../widgets/app_toast/app_toast.dart' show  showErrorToast;
+import '../../widgets/app_toast/app_toast.dart' show showErrorToast;
 
 class NetworkController {
   final Connectivity _connectivity = Connectivity();
@@ -27,8 +27,7 @@ class NetworkController {
   /// or not. If the device is connected to the internet, the method returns
   /// [true], otherwise it returns [false].
   Future<bool> checkConnection() async {
-    final connectivityResult = await (Connectivity()
-        .checkConnectivity());
+    final connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult.contains(ConnectivityResult.none)) {
       return false;
     }

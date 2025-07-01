@@ -16,9 +16,9 @@ class ItemsCounter extends StatelessWidget {
 
   @override
   Widget build(final BuildContext context) => BlocProvider(
-      create: (final context) => CounterCubit()..fetchCounts(),
-      child: const ItemsCounterView(),
-    );
+    create: (final context) => CounterCubit()..fetchCounts(),
+    child: const ItemsCounterView(),
+  );
 
   String formatNumber(final int number) {
     if (number >= 1000000000) {
@@ -68,34 +68,34 @@ class ItemsCounterView extends StatelessWidget {
     required final String title,
     required final String Function(int) formatter,
   }) => StreamBuilder<int>(
-      stream: stream,
-      builder: (final context, final snapshot) {
-        if (snapshot.hasError) {
-          return Expanded(
-            child: CounterItemsComponent(
-              icon: Icons.error_outline_rounded,
-              title: title,
-              targetValue: 0,
-            ),
-          );
-        } else if (!snapshot.hasData || snapshot.data == null) {
-          return Expanded(
-            child: CounterItemsComponent(
-              icon: Icons.timer_outlined,
-              title: title,
-              targetValue: 0,
-            ),
-          );
-        }
-
-        final count = snapshot.data!;
+    stream: stream,
+    builder: (final context, final snapshot) {
+      if (snapshot.hasError) {
         return Expanded(
           child: CounterItemsComponent(
-            icon: icon,
+            icon: Icons.error_outline_rounded,
             title: title,
-            targetValue: count,
+            targetValue: 0,
           ),
         );
-      },
-    );
+      } else if (!snapshot.hasData || snapshot.data == null) {
+        return Expanded(
+          child: CounterItemsComponent(
+            icon: Icons.timer_outlined,
+            title: title,
+            targetValue: 0,
+          ),
+        );
+      }
+
+      final count = snapshot.data!;
+      return Expanded(
+        child: CounterItemsComponent(
+          icon: icon,
+          title: title,
+          targetValue: count,
+        ),
+      );
+    },
+  );
 }

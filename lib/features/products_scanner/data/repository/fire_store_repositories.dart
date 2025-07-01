@@ -14,7 +14,7 @@ class FireStoreRepository {
           .collection(_tadamonProductsCollection)
           .add(product.toMap());
     } catch (e) {
-      AppToast.showErrorToast(e.toString());
+      showErrorToast(e.toString());
     }
   }
 
@@ -27,7 +27,7 @@ class FireStoreRepository {
           .map((final doc) => ProductModel.fromMap(doc.data()))
           .toList();
     } catch (e) {
-      AppToast.showErrorToast(e.toString());
+      showErrorToast(e.toString());
       return [];
     }
   }
@@ -41,19 +41,22 @@ class FireStoreRepository {
           .map((final doc) => ProductModel.fromMap(doc.data()))
           .toList();
     } catch (e) {
-      AppToast.showErrorToast(e.toString());
+      showErrorToast(e.toString());
       return [];
     }
   }
 
-  Future<void> updateProduct(final String documnetId, final ProductModel product) async {
+  Future<void> updateProduct(
+    final String documnetId,
+    final ProductModel product,
+  ) async {
     try {
       await _firestore
           .collection(_tadamonProductsCollection)
           .doc(documnetId)
           .update(product.toMap());
     } catch (e) {
-      AppToast.showErrorToast(e.toString());
+      showErrorToast(e.toString());
     }
   }
 
@@ -64,7 +67,7 @@ class FireStoreRepository {
           .doc(documnetId)
           .delete();
     } catch (e) {
-      AppToast.showErrorToast(e.toString());
+      showErrorToast(e.toString());
     }
   }
 
@@ -88,7 +91,7 @@ class FireStoreRepository {
         );
       }
     } catch (e) {
-      AppToast.showErrorToast(e.toString());
+      showErrorToast(e.toString());
     }
   }
 
@@ -117,7 +120,9 @@ class FireStoreRepository {
         .toList();
   }
 
-  Future<void> sendReportToBackEnd(final Map<String, dynamic> productReport) async {
+  Future<void> sendReportToBackEnd(
+    final Map<String, dynamic> productReport,
+  ) async {
     final String productName = productReport['productName'];
     final DocumentReference documentReference = _firestore
         .collection(_productReportCollection)
@@ -126,7 +131,7 @@ class FireStoreRepository {
   }
 
   Stream<int> getProductsCount() => _firestore
-        .collection(_tadamonProductsCollection)
-        .snapshots()
-        .map((final snapshots) => snapshots.docs.length);
+      .collection(_tadamonProductsCollection)
+      .snapshots()
+      .map((final snapshots) => snapshots.docs.length);
 }

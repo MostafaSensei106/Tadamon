@@ -3,13 +3,12 @@ import 'package:flutter/material.dart' show Icons, ClipRRect;
 import 'package:flutter/widgets.dart'
     show StatelessWidget, BuildContext, Widget, Column;
 import 'package:pdf/widgets.dart' show Padding, Wrap;
-import '../../../core/config/const/app_enums.dart'
-    show ListTileGroupType;
+import '../../../core/config/const/app_enums.dart' show ListTileGroupType;
 import '../../../core/config/const/sensei_const.dart' show SenseiConst;
-import '../../../core/services/url_services/url_services.dart'
-    show  launchURL;
+import '../../../core/services/url_services/url_services.dart' show launchURL;
+
 import '../../../core/widgets/bottom_sheet/ui/model_bottom_sheet.dart'
-    show ModelBottomSheet;
+    show showBottomSheet;
 import '../../../core/widgets/drawer_component/drawer_component.dart'
     show ListTileIconComponent;
 import '../../../generated/l10n.dart' show S;
@@ -39,7 +38,7 @@ class DonationSheetContent extends StatelessWidget {
   /// The [DonationSheetContent] is also padded with a [Padding] widget to add
   /// a bottom padding of 16 logical pixels.
   static void showDonationBottomSheet(final BuildContext context) {
-    ModelBottomSheet.show(
+    showBottomSheet(
       context,
       S.of(context).donate,
       child: const DonationSheetContent(),
@@ -66,45 +65,38 @@ class DonationSheetContent extends StatelessWidget {
   /// The [ListTileIconComponent]s are also padded with a [Padding] widget to add a
   /// bottom padding of 16 logical pixels.
   Widget build(final BuildContext context) => Column(
-      children: [
-        ListTileIconComponent(
-          leading: Icons.volunteer_activism_outlined,
-          title: 'منظمة الانوروا',
-          subtitle: 'نبرع هم طريق منظمة الانوروا',
+    children: [
+      ListTileIconComponent(
+        leading: Icons.volunteer_activism_outlined,
+        title: 'منظمة الانوروا',
+        subtitle: 'نبرع هم طريق منظمة الانوروا',
 
-          useinBorderRadius: true,
-          onTap: () => {
-            launchURL(SenseiConst.donateByUnrwaLink),
-          },
-          groupType: ListTileGroupType.top,
-        ),
-        ListTileIconComponent(
-          leading: Icons.mode_night_outlined,
-          title: 'الهلال الاحمر الفلسطيني',
-          subtitle: 'تبرع عن طريق الهلال الاحمر الفلسطيني',
-          onTap: () => {
-            launchURL(SenseiConst.donateByPalestinercsLink),
-          },
-          groupType: ListTileGroupType.middle,
-        ),
-        ListTileIconComponent(
-          leading: Icons.maps_home_work_outlined,
-          title: 'بيت الزكاة والصدقات المصري',
-          subtitle: 'تبرع عن طريق ابيت الزكاةو الصدقات المصري',
-          onTap: () =>
-            launchURL(SenseiConst.donateByBaitzakatLink),
-          groupType: ListTileGroupType.middle,
-        ),
-        ListTileIconComponent(
-          leading: Icons.food_bank_outlined,
-          title: 'بنك الطعام المصري',
-          subtitle: 'تبرع عن طريقة بنك الطعام المصري',
-          onTap: () => {
-            launchURL(SenseiConst.donateByEGYFoodBankLink),
-          },
-          useinBorderRadius: true,
-          groupType: ListTileGroupType.bottom,
-        ),
-      ],
-    );
+        useinBorderRadius: true,
+        onTap: () => {launchURL(SenseiConst.donateByUnrwaLink)},
+        groupType: ListTileGroupType.top,
+      ),
+      ListTileIconComponent(
+        leading: Icons.mode_night_outlined,
+        title: 'الهلال الاحمر الفلسطيني',
+        subtitle: 'تبرع عن طريق الهلال الاحمر الفلسطيني',
+        onTap: () => {launchURL(SenseiConst.donateByPalestinercsLink)},
+        groupType: ListTileGroupType.middle,
+      ),
+      ListTileIconComponent(
+        leading: Icons.maps_home_work_outlined,
+        title: 'بيت الزكاة والصدقات المصري',
+        subtitle: 'تبرع عن طريق ابيت الزكاةو الصدقات المصري',
+        onTap: () => launchURL(SenseiConst.donateByBaitzakatLink),
+        groupType: ListTileGroupType.middle,
+      ),
+      ListTileIconComponent(
+        leading: Icons.food_bank_outlined,
+        title: 'بنك الطعام المصري',
+        subtitle: 'تبرع عن طريقة بنك الطعام المصري',
+        onTap: () => {launchURL(SenseiConst.donateByEGYFoodBankLink)},
+        useinBorderRadius: true,
+        groupType: ListTileGroupType.bottom,
+      ),
+    ],
+  );
 }

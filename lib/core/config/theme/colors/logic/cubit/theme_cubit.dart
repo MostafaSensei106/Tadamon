@@ -2,13 +2,10 @@ import 'dart:ui' show PlatformDispatcher;
 
 import 'package:flutter/material.dart' show ThemeMode, Brightness;
 import 'package:flutter_bloc/flutter_bloc.dart' show Cubit;
-import 'theme_shared_preferences.dart'
-    show ThemeSharedPreferences;
-import 'theme_state.dart'
-    show ThemeState;
+import 'theme_shared_preferences.dart' show ThemeSharedPreferences;
+import 'theme_state.dart' show ThemeState;
 
 class ThemeCubit extends Cubit<ThemeState> {
-
   ThemeCubit({required final ThemeSharedPreferences themeSharedPreferences})
     : _themeSharedPreferences = themeSharedPreferences,
       super(const ThemeState(isDark: false, themeMode: ThemeMode.system));
@@ -20,7 +17,7 @@ class ThemeCubit extends Cubit<ThemeState> {
   /// SharedPreferences, and is intended to be called whenever the user
   /// changes the theme.
   Future<void> _persistTheme(final ThemeState state) async {
-    await _themeSharedPreferences.setTheme(isDark:state.isDark);
+    await _themeSharedPreferences.setTheme(isDark: state.isDark);
     await _themeSharedPreferences.setThemeMode(state.themeMode);
   }
 

@@ -11,7 +11,7 @@ class SearchInitial extends SearchState {}
 class SearchLoading extends SearchState {}
 
 class SearchLoadingSuccess extends SearchState {
-
+  // ignore: avoid_unused_constructor_parameters, prefer_final_parameters
   SearchLoadingSuccess(List list, {required this.products});
   final List<ProductSearchModel> products;
 
@@ -20,7 +20,6 @@ class SearchLoadingSuccess extends SearchState {
 }
 
 class SearchError extends SearchState {
-
   SearchError(this.message);
   final String message;
 

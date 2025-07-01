@@ -11,7 +11,6 @@ class LogsInitial extends LogsState {}
 class LogsLoading extends LogsState {}
 
 class LogsLoadingSuccess extends LogsState {
-
   LogsLoadingSuccess({required this.products});
   final List<ScannedLogsProductModel> products;
 

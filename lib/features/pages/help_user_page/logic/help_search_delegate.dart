@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import '../data/model/qna_model.dart';
 
 class HelpSearchDelegate extends SearchDelegate<QnaModel?> {
-
   HelpSearchDelegate({required this.qnaList, required this.onSearch});
   final List<QnaModel> qnaList;
   final Function(String) onSearch;
@@ -18,24 +17,24 @@ class HelpSearchDelegate extends SearchDelegate<QnaModel?> {
 
   @override
   List<Widget> buildActions(final BuildContext context) => [
-      IconButton(
-        icon: const Icon(Icons.exit_to_app_rounded),
-        onPressed: () {
-          if (query.isEmpty) {
-            close(context, null);
-          } else {
-            query = '';
-            onSearch(query);
-          }
-        },
-      ),
-    ];
+    IconButton(
+      icon: const Icon(Icons.exit_to_app_rounded),
+      onPressed: () {
+        if (query.isEmpty) {
+          close(context, null);
+        } else {
+          query = '';
+          onSearch(query);
+        }
+      },
+    ),
+  ];
 
   @override
   Widget buildLeading(final BuildContext context) => IconButton(
-      icon: const Icon(Icons.double_arrow_rounded),
-      onPressed: () => close(context, null),
-    );
+    icon: const Icon(Icons.double_arrow_rounded),
+    onPressed: () => close(context, null),
+  );
 
   @override
   Widget buildResults(final BuildContext context) => _buildSearchResults();

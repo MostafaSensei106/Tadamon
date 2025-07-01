@@ -9,7 +9,8 @@ import '../../../features/pages/log_page/data/models/scanned_logs_product_model.
     show ScannedLogsProductModel;
 import '../../config/const/sensei_const.dart' show SenseiConst;
 import '../../extensions/date_format_extension.dart';
-import '../../widgets/app_toast/app_toast.dart' show  showSuccessToast, showErrorToast;
+import '../../widgets/app_toast/app_toast.dart'
+    show showSuccessToast, showErrorToast;
 
 class PdfExportServices {
   /// Exports the given list of [ScannedLogsProductModel] to a pdf file named
@@ -56,7 +57,10 @@ class PdfExportServices {
                 headerStyle: const pw.TextStyle(fontSize: 14),
                 headerDecoration: const pw.BoxDecoration(),
                 data: data
-                    .map((final row) => row.map((final cell) => cell.toString()).toList())
+                    .map(
+                      (final row) =>
+                          row.map((final cell) => cell.toString()).toList(),
+                    )
                     .toList(),
                 border: pw.TableBorder.symmetric(),
                 cellAlignment: pw.Alignment.center,

@@ -9,10 +9,10 @@ class FullAppDividerComponents extends StatelessWidget {
   /// 0, and a color of [Theme.of(context).colorScheme.outline] with an opacity
   /// of 0.8.
   Widget build(final BuildContext context) => Divider(
-      thickness: 0.2,
-      height: 0,
-      indent: 0,
-      endIndent: 0,
-      color: Theme.of(context).colorScheme.outline.withAlpha(0x80),
-    );
+    thickness: 0.2,
+    height: 0,
+    indent: 0,
+    endIndent: 0,
+    color: Theme.of(context).colorScheme.outline.withAlpha(0x80),
+  );
 }

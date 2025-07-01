@@ -23,27 +23,27 @@ class ChatDevAppBar extends StatelessWidget implements PreferredSizeWidget {
   /// arrow icon. When the icon is tapped, it triggers the [leave] function to navigate back in
   /// the app. The [AppBar] has no elevation and a white background.
   Widget build(final BuildContext context) => AppBar(
-      title: Text(title, style: TextStyle(fontSize: 20.sp)),
-      leadingWidth: 102.w,
-      titleSpacing: 0,
-      centerTitle: true,
-      elevation: 0,
-      forceMaterialTransparency: true,
-      leading: _buildSidePageAppBarIcon(
-        context,
-        Icons.keyboard_double_arrow_right_rounded,
-      ),
-      actions: [
-        _buildActionBarIcon(context, Icons.call_outlined, () {
-          HapticFeedback.vibrate();
-          makePhoneCall(SenseiConst.devPhoneNumber);
-        }),
-        _buildActionBarIcon(context, Icons.telegram_outlined, () {
-          HapticFeedback.vibrate();
-          launchURL(SenseiConst.devTelegramLink);
-        }),
-      ],
-    );
+    title: Text(title, style: TextStyle(fontSize: 20.sp)),
+    leadingWidth: 102.w,
+    titleSpacing: 0,
+    centerTitle: true,
+    elevation: 0,
+    forceMaterialTransparency: true,
+    leading: _buildSidePageAppBarIcon(
+      context,
+      Icons.keyboard_double_arrow_right_rounded,
+    ),
+    actions: [
+      _buildActionBarIcon(context, Icons.call_outlined, () {
+        HapticFeedback.vibrate();
+        makePhoneCall(SenseiConst.devPhoneNumber);
+      }),
+      _buildActionBarIcon(context, Icons.telegram_outlined, () {
+        HapticFeedback.vibrate();
+        launchURL(SenseiConst.devTelegramLink);
+      }),
+    ],
+  );
 
   /// Returns a [Padding] widget containing a [Material] widget with an [InkWell] child.
   ///
@@ -55,57 +55,58 @@ class ChatDevAppBar extends StatelessWidget implements PreferredSizeWidget {
   /// with the provided [icon] parameter, sized according to [SenseiConst.iconSize] and colored
   /// using [Theme.of(context).colorScheme.onSurface].
 
-  Widget _buildSidePageAppBarIcon(final BuildContext context, final IconData icon) => Padding(
-      padding: const EdgeInsets.all(SenseiConst.padding),
-      child: Row(
-        children: [
-          IconButton.filled(
-            style: IconButton.styleFrom(
-              backgroundColor: Theme.of(context).colorScheme.surfaceContainer,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(
-                  SenseiConst.outBorderRadius,
-                ),
-              ),
-              padding: const EdgeInsets.all(4),
+  Widget _buildSidePageAppBarIcon(
+    final BuildContext context,
+    final IconData icon,
+  ) => Padding(
+    padding: const EdgeInsets.all(SenseiConst.padding),
+    child: Row(
+      children: [
+        IconButton.filled(
+          style: IconButton.styleFrom(
+            backgroundColor: Theme.of(context).colorScheme.surfaceContainer,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius),
             ),
-            onPressed: () => leave(context),
-            icon: Icon(icon, size: SenseiConst.iconSize),
-            color: Theme.of(context).colorScheme.onSurface,
+            padding: const EdgeInsets.all(4),
           ),
-          Stack(
-            children: [
-              const CircleAvatar(
-                backgroundImage: AssetImage(SenseiConst.mostafaSenseiogoImage),
-              ),
-              Positioned(
-                bottom: 0,
-                right: 0,
-                child: Container(
-                  width: 10.w,
-                  height: 10.w,
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Theme.of(context).colorScheme.surface,
-                    ),
-                    shape: BoxShape.circle,
-                    color: Colors.green,
+          onPressed: () => leave(context),
+          icon: Icon(icon, size: SenseiConst.iconSize),
+          color: Theme.of(context).colorScheme.onSurface,
+        ),
+        Stack(
+          children: [
+            const CircleAvatar(
+              backgroundImage: AssetImage(SenseiConst.mostafaSenseiogoImage),
+            ),
+            Positioned(
+              bottom: 0,
+              right: 0,
+              child: Container(
+                width: 10.w,
+                height: 10.w,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Theme.of(context).colorScheme.surface,
                   ),
+                  shape: BoxShape.circle,
+                  color: Colors.green,
                 ),
               ),
-            ],
-          ),
-        ],
-      ),
-    );
+            ),
+          ],
+        ),
+      ],
+    ),
+  );
 
   Widget _buildActionBarIcon(
     final BuildContext context,
     final IconData icon,
     final VoidCallback onPressed,
   ) => IconButton(
-      icon: Icon(icon),
-      color: Theme.of(context).colorScheme.onSurface,
-      onPressed: onPressed,
-    );
+    icon: Icon(icon),
+    color: Theme.of(context).colorScheme.onSurface,
+    onPressed: onPressed,
+  );
 }

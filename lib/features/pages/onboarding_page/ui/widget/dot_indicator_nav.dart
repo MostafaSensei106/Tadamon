@@ -50,12 +50,12 @@ class _DotIndicatorNavState extends State<DotIndicatorNav> {
     final IconData icon,
     final VoidCallback onPressed,
   ) => ButtonCompnent(
-      key: ValueKey(key),
-      useInBorderRadius: true,
-      label: label,
-      icon: icon,
-      onPressed: onPressed,
-    );
+    key: ValueKey(key),
+    useInBorderRadius: true,
+    label: label,
+    icon: icon,
+    onPressed: onPressed,
+  );
 
   void _handleNavigation(final VoidCallback action) {
     HapticFeedback.vibrate();
@@ -64,36 +64,97 @@ class _DotIndicatorNavState extends State<DotIndicatorNav> {
 
   @override
   Widget build(final BuildContext context) => AnimatedBuilder(
-      animation: widget.pageController,
-      builder: (final context, final child) => Positioned(
-          bottom: 0,
-          left: 10,
-          right: 10,
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: SenseiConst.padding.w,
-              vertical: SenseiConst.padding.h,
+    animation: widget.pageController,
+    builder: (final context, final child) => Positioned(
+      bottom: 0,
+      left: 10,
+      right: 10,
+      child: Padding(
+        padding: EdgeInsets.symmetric(
+          horizontal: SenseiConst.padding.w,
+          vertical: SenseiConst.padding.h,
+        ),
+        child: Container(
+          padding: EdgeInsets.all(SenseiConst.padding.w),
+          alignment: Alignment.bottomCenter,
+          width: 1.sw,
+          height: 0.08.sh,
+          decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.surfaceContainer,
+            borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius.r),
+            border: Border.all(
+              color: Theme.of(context).colorScheme.outline.withAlpha(0X80),
             ),
-            child: Container(
-              padding: EdgeInsets.all(SenseiConst.padding.w),
-              alignment: Alignment.bottomCenter,
-              width: 1.sw,
-              height: 0.08.sh,
-              decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.surfaceContainer,
-                borderRadius: BorderRadius.circular(
-                  SenseiConst.outBorderRadius.r,
-                ),
-                border: Border.all(
-                  color: Theme.of(context).colorScheme.outline.withAlpha(0X80),
-                ),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              AnimatedSwitcher(
+                duration: const Duration(milliseconds: 350),
+                transitionBuilder: (final child, final animation) =>
+                    SlideTransition(
+                      position: Tween<Offset>(
+                        begin: const Offset(0, 1),
+                        end: Offset.zero,
+                      ).animate(animation),
+                      child: SizedBox(
+                        width: 0.3.sw,
+                        child: FadeTransition(opacity: animation, child: child),
+                      ),
+                    ),
+                child: _isFirstPage
+                    ? _getActionButton(
+                        'skip',
+                        'تخطي',
+                        Icons.keyboard_double_arrow_right_rounded,
+                        () => _handleNavigation(() {
+                          Navigator.pushNamedAndRemoveUntil(
+                            context,
+                            Routes.termsGate,
+                            (final route) => false,
+                          );
+                        }),
+                      )
+                    : _getActionButton(
+                        'previous',
+                        'السابق',
+                        Icons.keyboard_double_arrow_right_rounded,
+                        () => _handleNavigation(() {
+                          widget.pageController.previousPage(
+                            duration: const Duration(milliseconds: 350),
+                            curve: Curves.easeInOut,
+                          );
+                        }),
+                      ),
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  AnimatedSwitcher(
+              SmoothPageIndicator(
+                controller: widget.pageController,
+                count: 4,
+                effect: ExpandingDotsEffect(
+                  dotWidth: SenseiConst.indicatorDotSize,
+                  dotHeight: SenseiConst.indicatorDotSize,
+                  dotColor: Theme.of(
+                    context,
+                  ).colorScheme.onSurface.withAlpha((0.5 * 255).toInt()),
+                  activeDotColor: Theme.of(
+                    context,
+                  ).colorScheme.primaryContainer,
+                  expansionFactor: 2,
+                ),
+                onDotClicked: (final index) {
+                  widget.pageController.animateToPage(
+                    index,
                     duration: const Duration(milliseconds: 350),
-                    transitionBuilder: (final child, final animation) => SlideTransition(
+                    curve: Curves.easeInOut,
+                  );
+                },
+              ),
+              Directionality(
+                textDirection: TextDirection.ltr,
+                child: AnimatedSwitcher(
+                  duration: const Duration(milliseconds: 350),
+                  transitionBuilder: (final child, final animation) =>
+                      SlideTransition(
                         position: Tween<Offset>(
                           begin: const Offset(0, 1),
                           end: Offset.zero,
@@ -106,100 +167,36 @@ class _DotIndicatorNavState extends State<DotIndicatorNav> {
                           ),
                         ),
                       ),
-                    child: _isFirstPage
-                        ? _getActionButton(
-                            'skip',
-                            'تخطي',
-                            Icons.keyboard_double_arrow_right_rounded,
-                            () => _handleNavigation(() {
-                              Navigator.pushNamedAndRemoveUntil(
-                                context,
-                                Routes.termsGate,
-                                (final route) => false,
-                              );
-                            }),
-                          )
-                        : _getActionButton(
-                            'previous',
-                            'السابق',
-                            Icons.keyboard_double_arrow_right_rounded,
-                            () => _handleNavigation(() {
-                              widget.pageController.previousPage(
-                                duration: const Duration(milliseconds: 350),
-                                curve: Curves.easeInOut,
-                              );
-                            }),
-                          ),
-                  ),
-                  SmoothPageIndicator(
-                    controller: widget.pageController,
-                    count: 4,
-                    effect: ExpandingDotsEffect(
-                      dotWidth: SenseiConst.indicatorDotSize,
-                      dotHeight: SenseiConst.indicatorDotSize,
-                      dotColor: Theme.of(
-                        context,
-                      ).colorScheme.onSurface.withAlpha((0.5 * 255).toInt()),
-                      activeDotColor: Theme.of(
-                        context,
-                      ).colorScheme.primaryContainer,
-                      expansionFactor: 2,
-                    ),
-                    onDotClicked: (final index) {
-                      widget.pageController.animateToPage(
-                        index,
-                        duration: const Duration(milliseconds: 350),
-                        curve: Curves.easeInOut,
-                      );
-                    },
-                  ),
-                  Directionality(
-                    textDirection: TextDirection.ltr,
-                    child: AnimatedSwitcher(
-                      duration: const Duration(milliseconds: 350),
-                      transitionBuilder: (final child, final animation) => SlideTransition(
-                          position: Tween<Offset>(
-                            begin: const Offset(0, 1),
-                            end: Offset.zero,
-                          ).animate(animation),
-                          child: SizedBox(
-                            width: 0.3.sw,
-                            child: FadeTransition(
-                              opacity: animation,
-                              child: child,
-                            ),
-                          ),
+                  child: _isLastPage
+                      ? _getActionButton(
+                          'start',
+                          'بدء',
+                          Icons.keyboard_double_arrow_left_rounded,
+                          () => _handleNavigation(() {
+                            Navigator.pushNamedAndRemoveUntil(
+                              context,
+                              Routes.termsGate,
+                              (final route) => false,
+                            );
+                          }),
+                        )
+                      : _getActionButton(
+                          'next',
+                          'التالي',
+                          Icons.keyboard_double_arrow_left_rounded,
+                          () => _handleNavigation(() {
+                            widget.pageController.nextPage(
+                              duration: const Duration(milliseconds: 350),
+                              curve: Curves.easeInOut,
+                            );
+                          }),
                         ),
-                      child: _isLastPage
-                          ? _getActionButton(
-                              'start',
-                              'بدء',
-                              Icons.keyboard_double_arrow_left_rounded,
-                              () => _handleNavigation(() {
-                                Navigator.pushNamedAndRemoveUntil(
-                                  context,
-                                  Routes.termsGate,
-                                  (final route) => false,
-                                );
-                              }),
-                            )
-                          : _getActionButton(
-                              'next',
-                              'التالي',
-                              Icons.keyboard_double_arrow_left_rounded,
-                              () => _handleNavigation(() {
-                                widget.pageController.nextPage(
-                                  duration: const Duration(milliseconds: 350),
-                                  curve: Curves.easeInOut,
-                                );
-                              }),
-                            ),
-                    ),
-                  ),
-                ],
+                ),
               ),
-            ),
+            ],
           ),
         ),
-    );
+      ),
+    ),
+  );
 }

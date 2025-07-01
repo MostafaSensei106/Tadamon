@@ -11,9 +11,9 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(final BuildContext context) => const Padding(
-      padding: EdgeInsets.all(SenseiConst.padding),
-      child: Column(
-        children: [HomeTip(), ImageNews(), HomeAppTools(), ItemsCounter()],
-      ),
-    );
+    padding: EdgeInsets.all(SenseiConst.padding),
+    child: Column(
+      children: [HomeTip(), ImageNews(), HomeAppTools(), ItemsCounter()],
+    ),
+  );
 }

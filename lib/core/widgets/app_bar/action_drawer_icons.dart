@@ -33,20 +33,19 @@ class ActionDrawerIcon extends StatelessWidget {
   /// The [_ActionDrawerContainer] widget has a [_ActionDrawerIcon] widget as
   /// child, which is a [Icon] widget with the [Icons.more_vert_rounded] icon.
   Widget build(final BuildContext context) => Padding(
-      padding: const EdgeInsets.all(SenseiConst.padding),
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius),
-          onTap: () => openDrawer(context),
-          child: _ActionDrawerContainer(child: _ActionDrawerIcon()),
-        ),
+    padding: const EdgeInsets.all(SenseiConst.padding),
+    child: Material(
+      color: Colors.transparent,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius),
+        onTap: () => openDrawer(context),
+        child: _ActionDrawerContainer(child: _ActionDrawerIcon()),
       ),
-    );
+    ),
+  );
 }
 
 class _ActionDrawerContainer extends StatelessWidget {
-
   const _ActionDrawerContainer({required this.child});
   final Widget child;
 
@@ -62,22 +61,22 @@ class _ActionDrawerContainer extends StatelessWidget {
   ///
   /// The [child] is passed as-is.
   Widget build(final BuildContext context) => Container(
-      padding: const EdgeInsets.all(5),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius),
-        color: Theme.of(
-          context,
-        ).colorScheme.surfaceContainerHigh.withAlpha((0.3 * 255).toInt()),
-      ),
-      child: child,
-    );
+    padding: const EdgeInsets.all(5),
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius),
+      color: Theme.of(
+        context,
+      ).colorScheme.surfaceContainerHigh.withAlpha((0.3 * 255).toInt()),
+    ),
+    child: child,
+  );
 }
 
 class _ActionDrawerIcon extends StatelessWidget {
   @override
   Widget build(final BuildContext context) => Icon(
-      Icons.more_horiz_rounded,
-      size: SenseiConst.iconSize.sp,
-      color: Colors.white,
-    );
+    Icons.more_horiz_rounded,
+    size: SenseiConst.iconSize.sp,
+    color: Colors.white,
+  );
 }

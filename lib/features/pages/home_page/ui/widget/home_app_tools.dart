@@ -16,72 +16,71 @@ class HomeAppTools extends StatelessWidget {
 
   @override
   Widget build(final BuildContext context) => Container(
-      margin: EdgeInsets.only(top: SenseiConst.margin.h),
-      padding: EdgeInsets.symmetric(horizontal: 2.w),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius),
-        color: Theme.of(context).colorScheme.surfaceContainer,
-      ),
-      child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        physics: const BouncingScrollPhysics(),
-        padding: EdgeInsets.symmetric(vertical: SenseiConst.padding.h - 3),
-        child: Row(
-          children: [
-            BlocProvider(
-              create: (_) => ProductScanCubit(),
-              child: BlocBuilder<ProductScanCubit, ProductScanState>(
-                builder: (final context, final state) => HomeToolsComponent(
-                    icon: Icons.qr_code_rounded,
-                    title: S.of(context).scanBarcode,
-                    onTapped: () => context
-                        .read<ProductScanCubit>()
-                        .scanBarcodeByCamera(context),
-                  ),
+    margin: EdgeInsets.only(top: SenseiConst.margin.h),
+    padding: EdgeInsets.symmetric(horizontal: 2.w),
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius),
+      color: Theme.of(context).colorScheme.surfaceContainer,
+    ),
+    child: SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      physics: const BouncingScrollPhysics(),
+      padding: EdgeInsets.symmetric(vertical: SenseiConst.padding.h - 3),
+      child: Row(
+        children: [
+          BlocProvider(
+            create: (_) => ProductScanCubit(),
+            child: BlocBuilder<ProductScanCubit, ProductScanState>(
+              builder: (final context, final state) => HomeToolsComponent(
+                icon: Icons.qr_code_rounded,
+                title: S.of(context).scanBarcode,
+                onTapped: () => context
+                    .read<ProductScanCubit>()
+                    .scanBarcodeByCamera(context),
               ),
             ),
-            SizedBox(width: 8.w),
-            BlocProvider(
-              create: (_) => ProductScanCubit(),
-              child: BlocBuilder<ProductScanCubit, ProductScanState>(
-                builder: (final context, final state) => HomeToolsComponent(
-                    icon: Icons.image_search_rounded,
-                    title: S.of(context).imageAnalysis,
-                    onTapped: () => context
-                        .read<ProductScanCubit>()
-                        .imageAnalysisScan(context),
-                  ),
+          ),
+          SizedBox(width: 8.w),
+          BlocProvider(
+            create: (_) => ProductScanCubit(),
+            child: BlocBuilder<ProductScanCubit, ProductScanState>(
+              builder: (final context, final state) => HomeToolsComponent(
+                icon: Icons.image_search_rounded,
+                title: S.of(context).imageAnalysis,
+                onTapped: () =>
+                    context.read<ProductScanCubit>().imageAnalysisScan(context),
               ),
             ),
-            SizedBox(width: 8.w),
-            HomeToolsComponent(
-              icon: Icons.short_text_outlined,
-              title: S.of(context).editText,
-              onTapped: () {
-                HapticFeedback.vibrate();
-                EditTextSheetContent.showEditTextBottomSheet(context);
-              },
-            ),
-            SizedBox(width: 8.w),
-            HomeToolsComponent(
-              icon: Icons.map_outlined,
-              title: S.of(context).palatineMap,
-              onTapped: () {
-                HapticFeedback.vibrate();
-                Navigator.pushNamed(context, Routes.palatineMap);
-              },
-            ),
-            SizedBox(width: 8.w),
-            HomeToolsComponent(
-              icon: Icons.volunteer_activism_outlined,
-              title: S.of(context).donate,
-              onTapped: () {
-                HapticFeedback.vibrate();
-                DonationSheetContent.showDonationBottomSheet(context);
-              },
-            ),
-          ],
-        ),
+          ),
+          SizedBox(width: 8.w),
+          HomeToolsComponent(
+            icon: Icons.short_text_outlined,
+            title: S.of(context).editText,
+            onTapped: () {
+              HapticFeedback.vibrate();
+              EditTextSheetContent.showEditTextBottomSheet(context);
+            },
+          ),
+          SizedBox(width: 8.w),
+          HomeToolsComponent(
+            icon: Icons.map_outlined,
+            title: S.of(context).palatineMap,
+            onTapped: () {
+              HapticFeedback.vibrate();
+              Navigator.pushNamed(context, Routes.palatineMap);
+            },
+          ),
+          SizedBox(width: 8.w),
+          HomeToolsComponent(
+            icon: Icons.volunteer_activism_outlined,
+            title: S.of(context).donate,
+            onTapped: () {
+              HapticFeedback.vibrate();
+              DonationSheetContent.showDonationBottomSheet(context);
+            },
+          ),
+        ],
       ),
-    );
+    ),
+  );
 }

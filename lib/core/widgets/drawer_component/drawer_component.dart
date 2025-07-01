@@ -22,16 +22,16 @@ import 'package:flutter/material.dart'
 import 'package:flutter/services.dart' show HapticFeedback;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../config/const/app_enums.dart'
-    show ListTileGroupType;
+import '../../config/const/app_enums.dart' show ListTileGroupType;
 import '../../config/const/sensei_const.dart';
-import '../divider.dart'
-    show FullAppDividerComponents;
+import '../divider.dart' show FullAppDividerComponents;
 
 class ListTileIconComponent extends StatelessWidget {
-
   const ListTileIconComponent({
-    required this.leading, required this.title, required this.groupType, super.key,
+    required this.leading,
+    required this.title,
+    required this.groupType,
+    super.key,
     this.subtitle,
     this.trailing,
     this.onTap,
@@ -127,9 +127,7 @@ class ListTileIconComponent extends StatelessWidget {
                     : null,
                 trailing: trailing,
                 horizontalTitleGap: 13,
-                contentPadding: const EdgeInsets.symmetric(
-                  horizontal: 8,
-                ),
+                contentPadding: const EdgeInsets.symmetric(horizontal: 8),
               ),
             ),
           ),

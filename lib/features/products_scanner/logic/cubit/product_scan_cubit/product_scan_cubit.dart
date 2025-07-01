@@ -1,6 +1,6 @@
-import 'package:bloc/bloc.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide showBottomSheet;
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/controller/network_controller/network_controller.dart';
 import '../../../../../core/widgets/app_toast/app_toast.dart';
@@ -24,14 +24,16 @@ class ProductScanCubit extends Cubit<ProductScanState> {
   /// If the context is not mounted, do nothing.
   ///
   /// This is a private method, because it is not supposed to be called from outside the cubit.
-  void _showProductInfo(final BuildContext context, final ProductModel product) {
-    ModelBottomSheet.show(
+  void _showProductInfo(
+    final BuildContext context,
+    final ProductModel product,
+  ) {
+    showBottomSheet(
       context,
       S.of(context).sheetTitleProductInfo,
       child: ProductListView(product: product),
     );
-    final scannedProductToLogs =
-        ScannedLogsProductModel.fromProduct(product);
+    final scannedProductToLogs = ScannedLogsProductModel.fromProduct(product);
     ObjectboxRepository().saveProductToTadamonLogs(scannedProductToLogs);
   }
 
@@ -80,7 +82,7 @@ class ProductScanCubit extends Cubit<ProductScanState> {
         emit(ProductScanSuccess());
       }
     } catch (e) {
-      AppToast.showErrorToast('Error in scanBarcodeCamera: $e');
+      showErrorToast('Error in scanBarcodeCamera: $e');
       emit(ProductScanError(e.toString()));
     }
   }
@@ -112,7 +114,9 @@ class ProductScanCubit extends Cubit<ProductScanState> {
 
       final barcode = await ImageScanner().scanBarcodeFromImage(context);
 
-      if (barcode == '-404' || barcode == '-1') return;
+      if (barcode == '-404' || barcode == '-1') {
+        return;
+      }
 
       final isConnected = await NetworkController().checkConnection();
 
@@ -128,7 +132,7 @@ class ProductScanCubit extends Cubit<ProductScanState> {
         emit(ProductScanSuccess());
       }
     } catch (e) {
-      AppToast.showErrorToast('Error in imageAnalysisScan: $e');
+      showErrorToast('Error in imageAnalysisScan: $e');
       emit(ProductScanError(e.toString()));
     }
   }

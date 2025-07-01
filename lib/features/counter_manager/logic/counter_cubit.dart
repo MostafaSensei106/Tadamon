@@ -27,7 +27,7 @@ class CounterCubit extends Cubit<CounterState> {
         emit(state.copyWith(firebaseCount: count));
       });
     } catch (e, s) {
-      AppToast.showErrorToast('Error fetching counts: $e\n$s');
+      showErrorToast('Error fetching counts: $e\n$s');
     }
   }
 

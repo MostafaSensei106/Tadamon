@@ -6,9 +6,10 @@ import '../../../../../../core/config/const/sensei_const.dart';
 import '../../../../../../generated/l10n.dart';
 
 class GoogleNavBar extends StatefulWidget {
-
   const GoogleNavBar({
-    required this.currentIndex, required this.onItemTapped, super.key,
+    required this.currentIndex,
+    required this.onItemTapped,
+    super.key,
   });
   final int currentIndex;
   final ValueChanged<int> onItemTapped;

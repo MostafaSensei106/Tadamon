@@ -34,18 +34,18 @@ class _AnimatedTrianglesState extends State<AnimatedTriangles>
 
   @override
   Widget build(final BuildContext context) => AnimatedBuilder(
-      animation: _controller,
-      builder: (final context, final child) => CustomPaint(
-          painter: TrianglePainter(
-            triangles: _triangles,
-            animationValue: _controller.value,
-            screenSize: MediaQuery.of(context).size,
-            trianglePaint: _trianglePaint,
-            borderPaint: _borderPaint,
-          ),
-          size: Size.infinite,
-        ),
-    );
+    animation: _controller,
+    builder: (final context, final child) => CustomPaint(
+      painter: TrianglePainter(
+        triangles: _triangles,
+        animationValue: _controller.value,
+        screenSize: MediaQuery.of(context).size,
+        trianglePaint: _trianglePaint,
+        borderPaint: _borderPaint,
+      ),
+      size: Size.infinite,
+    ),
+  );
 
   @override
   void dispose() {
@@ -55,7 +55,6 @@ class _AnimatedTrianglesState extends State<AnimatedTriangles>
 }
 
 class Triangle {
-
   Triangle()
     : relativeX = Random().nextDouble(),
       relativeY = Random().nextDouble(),
@@ -70,7 +69,6 @@ class Triangle {
 }
 
 class TrianglePainter extends CustomPainter {
-
   TrianglePainter({
     required this.triangles,
     required this.animationValue,
@@ -106,11 +104,13 @@ class TrianglePainter extends CustomPainter {
         ..lineTo(adjustedX - triangle.size / 2, adjustedY - height / 3)
         ..close();
 
-      canvas.drawPath(path, trianglePaint);
-      canvas.drawPath(path, borderPaint);
+      canvas
+        ..drawPath(path, trianglePaint)
+        ..drawPath(path, borderPaint);
     }
   }
 
   @override
-  bool shouldRepaint(covariant final TrianglePainter oldDelegate) => oldDelegate.animationValue != animationValue;
+  bool shouldRepaint(covariant final TrianglePainter oldDelegate) =>
+      oldDelegate.animationValue != animationValue;
 }

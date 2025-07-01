@@ -44,11 +44,15 @@ class ReportProductCubit extends Cubit<ReportProductState> {
   ) async {
     try {
       final scanResult = await BarcodeScanner().scanBarcodeByCamera(context);
-      if (scanResult == '-1') return;
-      if (scanResult == '-404') return;
+      if (scanResult == '-1') {
+        return;
+      }
+      if (scanResult == '-404') {
+        return;
+      }
       controller.text = scanResult;
     } catch (e) {
-      AppToast.showErrorToast(e.toString());
+      showErrorToast(e.toString());
     }
   }
 
@@ -67,7 +71,7 @@ class ReportProductCubit extends Cubit<ReportProductState> {
     try {
       await ReportService().sendProductReport(report);
     } catch (e) {
-      AppToast.showErrorToast('حدث خطاء اثناء ارسال التقرير: $e');
+      showErrorToast('حدث خطاء اثناء ارسال التقرير: $e');
     }
   }
 }

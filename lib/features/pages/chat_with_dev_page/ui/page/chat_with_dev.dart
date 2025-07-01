@@ -63,10 +63,14 @@ class _ChatWithDevState extends State<ChatWithDev>
       ),
     );
 
-    _slideAnimations = _controllers.map((final controller) => Tween<Offset>(
-        begin: const Offset(1, 0),
-        end: Offset.zero,
-      ).animate(CurvedAnimation(parent: controller, curve: Curves.easeOut))).toList();
+    _slideAnimations = _controllers
+        .map(
+          (final controller) => Tween<Offset>(
+            begin: const Offset(1, 0),
+            end: Offset.zero,
+          ).animate(CurvedAnimation(parent: controller, curve: Curves.easeOut)),
+        )
+        .toList();
 
     // Delay start a bit for UX
     Future.delayed(const Duration(milliseconds: 200), () {
@@ -80,76 +84,76 @@ class _ChatWithDevState extends State<ChatWithDev>
 
   @override
   Widget build(final BuildContext context) => Scaffold(
-      appBar: ChatDevAppBar(title: S.of(context).mostafaMahmoud),
-      body: Column(
-        children: [
-          Expanded(
-            child: ListView.builder(
-              padding: EdgeInsets.symmetric(horizontal: SenseiConst.padding.w),
-              itemCount: messages.length,
-              itemBuilder: (final context, final index) {
-                final dateTime = now.subtract(
-                  Duration(minutes: (messages.length - 1 - index)),
-                );
-                return SlideTransition(
-                  position: _slideAnimations[index],
-                  child: FadeTransition(
-                    opacity: _controllers[index],
-                    child: ChatBubble(
-                      text: messages[index]['text'],
-                      isSentByMe: messages[index]['isSentByMe'],
-                      isSupportDevButton:
-                          messages[index]['isSupportDevButton'] ?? false,
-                      isShareButton: messages[index]['isShareButton'] ?? false,
-                      time: dateTime,
+    appBar: ChatDevAppBar(title: S.of(context).mostafaMahmoud),
+    body: Column(
+      children: [
+        Expanded(
+          child: ListView.builder(
+            padding: EdgeInsets.symmetric(horizontal: SenseiConst.padding.w),
+            itemCount: messages.length,
+            itemBuilder: (final context, final index) {
+              final dateTime = now.subtract(
+                Duration(minutes: (messages.length - 1 - index)),
+              );
+              return SlideTransition(
+                position: _slideAnimations[index],
+                child: FadeTransition(
+                  opacity: _controllers[index],
+                  child: ChatBubble(
+                    text: messages[index]['text'],
+                    isSentByMe: messages[index]['isSentByMe'],
+                    isSupportDevButton:
+                        messages[index]['isSupportDevButton'] ?? false,
+                    isShareButton: messages[index]['isShareButton'] ?? false,
+                    time: dateTime,
+                  ),
+                ),
+              );
+            },
+          ),
+        ),
+        SlideTransition(
+          position: _slideAnimations.last,
+          child: FadeTransition(
+            opacity: _controllers.last,
+            child: Padding(
+              padding: const EdgeInsets.only(
+                left: SenseiConst.padding,
+                right: SenseiConst.padding,
+                bottom: 5.0,
+                top: 5.0,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                spacing: SenseiConst.padding,
+                children: [
+                  Expanded(
+                    child: TextFieldComponent(
+                      controller: _controller,
+                      icon: Icons.message_outlined,
+                      useOutBorderRadius: true,
+                      hint: '...اكتب رسالة',
                     ),
                   ),
-                );
-              },
-            ),
-          ),
-          SlideTransition(
-            position: _slideAnimations.last,
-            child: FadeTransition(
-              opacity: _controllers.last,
-              child: Padding(
-                padding: const EdgeInsets.only(
-                  left: SenseiConst.padding,
-                  right: SenseiConst.padding,
-                  bottom: 5.0,
-                  top: 5.0,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  spacing: SenseiConst.padding,
-                  children: [
-                    Expanded(
-                      child: TextFieldComponent(
-                        controller: _controller,
-                        icon: Icons.message_outlined,
-                        useOutBorderRadius: true,
-                        hint: '...اكتب رسالة',
-                      ),
+                  SizedBox(
+                    width: 50.w,
+                    height: 50.h,
+                    child: IconButtonFilledTonalComponent(
+                      icon: Icons.send_rounded,
+                      onPressed: () {
+                        sendMessage();
+                      },
+                      color: Theme.of(context).colorScheme.secondaryFixed,
                     ),
-                    SizedBox(
-                      width: 50.w,
-                      height: 50.h,
-                      child: IconButtonFilledTonalComponent(
-                        icon: Icons.send_rounded,
-                        onPressed: () {
-                          sendMessage();
-                        },
-                        color: Theme.of(context).colorScheme.secondaryFixed,
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),
-        ],
-      ),
-    );
+        ),
+      ],
+    ),
+  );
 
   Future<void> sendMessage() async {
     try {
@@ -164,7 +168,7 @@ class _ChatWithDevState extends State<ChatWithDev>
         _controller.clear();
       }
     } catch (e) {
-      AppToast.showErrorToast(e.toString());
+      showErrorToast(e.toString());
     }
   }
 

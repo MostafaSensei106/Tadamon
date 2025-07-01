@@ -13,20 +13,17 @@ import 'package:flutter/material.dart'
         SlideTransition,
         FadeTransition;
 
-import '../../features/pages/app_info_page/ui/page/app_info.dart'
-    show AppInfo;
+import '../../features/pages/app_info_page/ui/page/app_info.dart' show AppInfo;
 import '../../features/pages/chat_with_dev_page/ui/page/chat_with_dev.dart'
     show ChatWithDev;
 import '../../features/pages/help_user_page/ui/page/help_user_page.dart'
     show HelpUserPage;
-import '../../features/pages/main_page/ui/page/main_page.dart'
-    show MainPage;
+import '../../features/pages/main_page/ui/page/main_page.dart' show MainPage;
 import '../../features/pages/onboarding_page/ui/page/onboarding_page.dart'
     show OnboardingPage;
 import '../../features/pages/palestine_map_page/ui/page/palestine_map_page.dart'
     show PalestineMapPage;
-import '../../features/pages/terms_gate_page/terms_gate.dart'
-    show TermsGate;
+import '../../features/pages/terms_gate_page/terms_gate.dart' show TermsGate;
 import '../error/no_routes.dart' show NoRoutes;
 import 'routes.dart' show Routes;
 
@@ -77,16 +74,16 @@ class AppRouter {
   /// 200 milliseconds.
 
   PageRouteBuilder _createPageRoute(final Widget page) => PageRouteBuilder(
-      transitionDuration: const Duration(milliseconds: 250),
-      pageBuilder: (_, final animation, _) => FadeTransition(
-        opacity: animation,
-        child: SlideTransition(
-          position: Tween<Offset>(
-            begin: const Offset(1, 0),
-            end: Offset.zero,
-          ).animate(animation),
-          child: page,
-        ),
+    transitionDuration: const Duration(milliseconds: 250),
+    pageBuilder: (_, final animation, _) => FadeTransition(
+      opacity: animation,
+      child: SlideTransition(
+        position: Tween<Offset>(
+          begin: const Offset(1, 0),
+          end: Offset.zero,
+        ).animate(animation),
+        child: page,
       ),
-    );
+    ),
+  );
 }

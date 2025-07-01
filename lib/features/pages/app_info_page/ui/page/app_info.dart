@@ -74,26 +74,23 @@ class _AppInfoState extends State<AppInfo> {
 
   @override
   Widget build(final BuildContext context) => Scaffold(
-      appBar: const SidePageAppBar(
-        title: 'معلومات التطبيق',
-        useBackButton: true,
-      ),
-      body: _isLoading
-          ? const Center(child: CircularProgressIndicator())
-          : Padding(
-              padding: EdgeInsets.only(
-                left: SenseiConst.padding.w,
-                right: SenseiConst.padding.w,
-                bottom: SenseiConst.padding.h,
-              ),
-              child: AppInfoList(
-                appName: _appName,
-                appVersion: _appVersion,
-                buildNumber: _buildNumber,
-                buildSignature: _buildSignature,
-                packageName: _packageName,
-                installerStore: _installerStore,
-              ),
+    appBar: const SidePageAppBar(title: 'معلومات التطبيق', useBackButton: true),
+    body: _isLoading
+        ? const Center(child: CircularProgressIndicator())
+        : Padding(
+            padding: EdgeInsets.only(
+              left: SenseiConst.padding.w,
+              right: SenseiConst.padding.w,
+              bottom: SenseiConst.padding.h,
             ),
-    );
+            child: AppInfoList(
+              appName: _appName,
+              appVersion: _appVersion,
+              buildNumber: _buildNumber,
+              buildSignature: _buildSignature,
+              packageName: _packageName,
+              installerStore: _installerStore,
+            ),
+          ),
+  );
 }

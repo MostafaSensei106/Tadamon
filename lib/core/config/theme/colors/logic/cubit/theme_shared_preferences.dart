@@ -47,7 +47,7 @@ class ThemeSharedPreferences {
   /// This function is intended to be called when the user has finished the
   /// onboarding process, and is used to determine whether the onboarding
   /// process should be shown or not.
-  Future<void> setFirstRun({required final bool 2}) async {
+  Future<void> setFirstRun({required final bool value}) async {
     final sharedPreferences = await SharedPreferences.getInstance();
     await sharedPreferences.setBool(firstRunKey, value);
   }

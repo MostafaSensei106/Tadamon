@@ -22,20 +22,20 @@ class BottomSheetHeader extends StatelessWidget {
   /// The header is centered horizontally.
   ///
   Widget build(final BuildContext context) => Center(
-      child: Column(
-        children: [
-          Container(
-            margin: EdgeInsets.symmetric(vertical: SenseiConst.margin.h),
-            width: 80.w,
-            height: 5.h,
-            decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.primaryFixedDim,
-              borderRadius: BorderRadius.circular(4),
-            ),
+    child: Column(
+      children: [
+        Container(
+          margin: EdgeInsets.symmetric(vertical: SenseiConst.margin.h),
+          width: 80.w,
+          height: 5.h,
+          decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.primaryFixedDim,
+            borderRadius: BorderRadius.circular(4),
           ),
-          Text(titile, style: Theme.of(context).textTheme.titleMedium),
-          SizedBox(height: 6.h),
-        ],
-      ),
-    );
+        ),
+        Text(titile, style: Theme.of(context).textTheme.titleMedium),
+        SizedBox(height: 6.h),
+      ],
+    ),
+  );
 }

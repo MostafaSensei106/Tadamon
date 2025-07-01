@@ -11,7 +11,7 @@ class ObjectboxRepository {
           .downloadAllProductsFromFirebase();
       ObjectBoxService.instance.tadamonProductsBox.putMany(products);
     } catch (e) {
-      AppToast.showErrorToast('حدث خطأ أثناء تحميل المنتجات من قاعدة البيانات');
+      showErrorToast('حدث خطأ أثناء تحميل المنتجات من قاعدة البيانات');
     }
   }
 
@@ -25,7 +25,9 @@ class ObjectboxRepository {
     return box.isNotEmpty;
   }
 
-  Future<dynamic> getTadamonProductBySerialNumber(final String serialNumber) async {
+  Future<dynamic> getTadamonProductBySerialNumber(
+    final String serialNumber,
+  ) async {
     final box = ObjectBoxService.instance.tadamonProductsBox.getAll();
     try {
       final data = box.firstWhere(
@@ -41,7 +43,7 @@ class ObjectboxRepository {
       );
       return ProductModel.fromMap(data.toMap());
     } catch (e) {
-      AppToast.showErrorToast('Error in getTadamonProductBySerialNumber :$e');
+      showErrorToast('Error in getTadamonProductBySerialNumber :$e');
     }
   }
 
@@ -49,7 +51,7 @@ class ObjectboxRepository {
     try {
       ObjectBoxService.instance.tadamonProductsBox.removeAll();
     } catch (e) {
-      AppToast.showErrorToast(
+      showErrorToast(
         'An error occurred while deleting products from the local database',
       );
     }
@@ -58,24 +60,26 @@ class ObjectboxRepository {
   Future<void> clearTadamonLogsFromLocalDB() async {
     try {
       if (ObjectBoxService.instance.tadamonLogsBox.isEmpty()) {
-        AppToast.showErrorToast('NO DATA TO BE CLEARED');
+        showErrorToast('NO DATA TO BE CLEARED');
       } else {
         ObjectBoxService.instance.tadamonLogsBox.removeAll();
-        AppToast.showSuccessToast('DATA HAS BEEN DELETED');
+        showSuccessToast('DATA HAS BEEN DELETED');
       }
     } catch (e) {
-      AppToast.showErrorToast(
+      showErrorToast(
         'An error occurred while deleting Logs from the local database',
       );
     }
   }
 
-  Future<void> saveProductToTadamonLogs(final ScannedLogsProductModel product) async {
+  Future<void> saveProductToTadamonLogs(
+    final ScannedLogsProductModel product,
+  ) async {
     try {
       ObjectBoxService.instance.tadamonLogsBox.put(product);
-      AppToast.showSuccessToast('Product saved successfully');
+      showSuccessToast('Product saved successfully');
     } catch (e) {
-      AppToast.showErrorToast('An error occurred while saving the product: $e');
+      showErrorToast('An error occurred while saving the product: $e');
     }
   }
 
@@ -96,7 +100,9 @@ class ObjectboxRepository {
   List<ScannedLogsProductModel> saveLogsTOPDF() {
     final box = ObjectBoxService.instance.tadamonLogsBox.getAll();
     return box
-        .map((final product) => ScannedLogsProductModel.fromMap(product.toMap()))
+        .map(
+          (final product) => ScannedLogsProductModel.fromMap(product.toMap()),
+        )
         .toList();
   }
 

@@ -13,9 +13,10 @@ import 'package:flutter/material.dart'
 import '../../config/const/sensei_const.dart';
 
 class TextButtonComponent extends StatelessWidget {
-
   const TextButtonComponent({
-    required this.text, required this.onPressed, super.key,
+    required this.text,
+    required this.onPressed,
+    super.key,
     this.isClose = false,
     this.useInBorderRadius = false,
   });
@@ -26,18 +27,18 @@ class TextButtonComponent extends StatelessWidget {
 
   @override
   Widget build(final BuildContext context) => TextButton(
-      onPressed: onPressed,
-      style: TextButton.styleFrom(
-        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-        shape: RoundedRectangleBorder(
-          borderRadius: useInBorderRadius
-              ? BorderRadius.circular(SenseiConst.inBorderRadius)
-              : BorderRadius.circular(SenseiConst.outBorderRadius),
-        ),
-        elevation: 0,
-        enableFeedback: true,
-        enabledMouseCursor: SystemMouseCursors.click,
+    onPressed: onPressed,
+    style: TextButton.styleFrom(
+      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+      shape: RoundedRectangleBorder(
+        borderRadius: useInBorderRadius
+            ? BorderRadius.circular(SenseiConst.inBorderRadius)
+            : BorderRadius.circular(SenseiConst.outBorderRadius),
       ),
-      child: Text(text),
-    );
+      elevation: 0,
+      enableFeedback: true,
+      enabledMouseCursor: SystemMouseCursors.click,
+    ),
+    child: Text(text),
+  );
 }

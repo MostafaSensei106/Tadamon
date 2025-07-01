@@ -1,7 +1,7 @@
 import 'package:url_launcher/url_launcher.dart'
     show launchUrl, LaunchMode, canLaunchUrl;
 
-import '../../widgets/app_toast/app_toast.dart' show AppToast;
+import '../../widgets/app_toast/app_toast.dart' show showErrorToast;
 
 /// Launches a URL in an external application.
 ///
@@ -15,7 +15,7 @@ Future<void> launchURL(final String url) async {
       throw Exception('Could not launch $url');
     }
   } catch (e) {
-    AppToast.showErrorToast(e.toString());
+    showErrorToast(e.toString());
   }
 }
 

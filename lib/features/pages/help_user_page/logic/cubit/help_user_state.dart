@@ -13,7 +13,6 @@ class HelpUserInitial extends HelpUserState {}
 class HlepUserLoadingQnaState extends HelpUserState {}
 
 class HlepUserLoadingQnaStateSuccess extends HelpUserState {
-
   const HlepUserLoadingQnaStateSuccess(this.qnaList);
   final List<QnaModel> qnaList;
 
@@ -22,7 +21,6 @@ class HlepUserLoadingQnaStateSuccess extends HelpUserState {
 }
 
 class HelpUserErrorState extends HelpUserState {
-
   const HelpUserErrorState(this.error);
   final String error;
 

@@ -11,7 +11,8 @@ class LogsPage extends StatelessWidget {
 
   @override
   Widget build(final BuildContext context) => BlocProvider(
-      create: (final context) => LogsBloc(ObjectboxRepository())..add(GetAllLogs()),
-      child: const LogsPageView(),
-    );
+    create: (final context) =>
+        LogsBloc(ObjectboxRepository())..add(GetAllLogs()),
+    child: const LogsPageView(),
+  );
 }

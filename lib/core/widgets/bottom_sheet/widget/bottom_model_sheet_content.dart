@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import '../../../config/const/sensei_const.dart';
 
 class BottomModelSheetContent extends StatelessWidget {
-
   const BottomModelSheetContent({
-    required this.child, super.key,
+    required this.child,
+    super.key,
     this.useColor = false,
   });
   final Widget child;
@@ -24,13 +24,13 @@ class BottomModelSheetContent extends StatelessWidget {
   /// The [child] is wrapped in a [SingleChildScrollView] widget to allow for
   /// scrolling if the content is larger than the screen size.
   Widget build(final BuildContext context) => Container(
-      width: double.infinity,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius),
-        color: useColor
-            ? Theme.of(context).colorScheme.surfaceContainer
-            : Colors.transparent,
-      ),
-      child: SingleChildScrollView(child: child),
-    );
+    width: double.infinity,
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius),
+      color: useColor
+          ? Theme.of(context).colorScheme.surfaceContainer
+          : Colors.transparent,
+    ),
+    child: SingleChildScrollView(child: child),
+  );
 }

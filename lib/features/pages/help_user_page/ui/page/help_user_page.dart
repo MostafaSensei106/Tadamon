@@ -7,7 +7,7 @@ class HelpUserPage extends StatelessWidget {
   const HelpUserPage({super.key});
   @override
   Widget build(final BuildContext context) => BlocProvider(
-      create: (final context) => HelpUserCubit(),
-      child: const HelpUserPageView(),
-    );
+    create: (final context) => HelpUserCubit(),
+    child: const HelpUserPageView(),
+  );
 }

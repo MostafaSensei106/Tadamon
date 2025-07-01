@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide showBottomSheet;
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../core/config/const/sensei_const.dart';
@@ -14,7 +14,7 @@ class EditTextSheetContent extends StatefulWidget {
   State<EditTextSheetContent> createState() => _EditTextSheetContentState();
 
   static void showEditTextBottomSheet(final BuildContext context) {
-    ModelBottomSheet.show(
+    showBottomSheet(
       context,
       S.of(context).editText,
       child: const EditTextSheetContent(),
@@ -80,52 +80,52 @@ class _EditTextSheetContentState extends State<EditTextSheetContent> {
 
   @override
   Widget build(final BuildContext context) => Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        TextFieldComponent(
-          controller: _controller,
-          icon: Icons.text_fields_rounded,
-          hint: 'أدخل النص',
-          onChange: (final value) => _processText(value),
-          suffixIcon: _controller.text.isNotEmpty
-              ? IconButton(
-                  onPressed: () => _controller.clear(),
-                  icon: const Icon(Icons.clear),
-                )
-              : null,
+    mainAxisSize: MainAxisSize.min,
+    children: [
+      TextFieldComponent(
+        controller: _controller,
+        icon: Icons.text_fields_rounded,
+        hint: 'أدخل النص',
+        onChange: (final value) => _processText(value),
+        suffixIcon: _controller.text.isNotEmpty
+            ? IconButton(
+                onPressed: () => _controller.clear(),
+                icon: const Icon(Icons.clear),
+              )
+            : null,
+      ),
+      SizedBox(height: SenseiConst.margin.h),
+      TextFieldComponent(
+        controller: TextEditingController(text: _processedText),
+        icon: Icons.text_format,
+        hint: 'النص بعد إزالة النقاط',
+        largeField: true,
+        onChange: (final String value) {},
+        readOnly: true,
+        suffixIcon: _processedText.isNotEmpty
+            ? IconButton(
+                onPressed: () {
+                  HapticFeedback.vibrate();
+                  _controller.clear();
+                  setState(() {
+                    _processedText = '';
+                  });
+                },
+                icon: const Icon(Icons.clear),
+              )
+            : null,
+      ),
+      SizedBox(height: SenseiConst.margin.h - 4),
+      SizedBox(
+        width: 1.sw,
+        child: ButtonCompnent(
+          isEnabled: _processedText.isNotEmpty,
+          useInBorderRadius: true,
+          label: 'نسخ',
+          icon: Icons.copy,
+          onPressed: _copyToClipboard,
         ),
-        SizedBox(height: SenseiConst.margin.h),
-        TextFieldComponent(
-          controller: TextEditingController(text: _processedText),
-          icon: Icons.text_format,
-          hint: 'النص بعد إزالة النقاط',
-          largeField: true,
-          onChange: (final String value) {},
-          readOnly: true,
-          suffixIcon: _processedText.isNotEmpty
-              ? IconButton(
-                  onPressed: () {
-                    HapticFeedback.vibrate();
-                    _controller.clear();
-                    setState(() {
-                      _processedText = '';
-                    });
-                  },
-                  icon: const Icon(Icons.clear),
-                )
-              : null,
-        ),
-        SizedBox(height: SenseiConst.margin.h - 4),
-        SizedBox(
-          width: 1.sw,
-          child: ButtonCompnent(
-            isEnabled: _processedText.isNotEmpty,
-            useInBorderRadius: true,
-            label: 'نسخ',
-            icon: Icons.copy,
-            onPressed: _copyToClipboard,
-          ),
-        ),
-      ],
-    );
+      ),
+    ],
+  );
 }

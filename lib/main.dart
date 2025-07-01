@@ -2,8 +2,7 @@ import 'package:firebase_core/firebase_core.dart' show Firebase;
 import 'package:flutter/services.dart' show SystemChrome, DeviceOrientation;
 import 'package:flutter/widgets.dart' show WidgetsFlutterBinding, runApp;
 import 'package:flutter_bloc/flutter_bloc.dart' show BlocProvider;
-import 'core/config/theme/colors/logic/cubit/theme_cubit.dart'
-    show ThemeCubit;
+import 'core/config/theme/colors/logic/cubit/theme_cubit.dart' show ThemeCubit;
 import 'core/config/theme/colors/logic/cubit/theme_shared_preferences.dart'
     show ThemeSharedPreferences;
 import 'core/error/error_screen.dart' show errorScreen;

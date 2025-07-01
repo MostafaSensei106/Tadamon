@@ -5,14 +5,16 @@ import 'logs_event.dart';
 import 'logs_state.dart';
 
 class LogsBloc extends Bloc<LogsEvent, LogsState> {
-
   LogsBloc(this.repository) : super(LogsInitial()) {
     on<GetAllLogs>(_onGetAllLogs);
     on<GetLogsResult>(_onFeatchSearchResult);
   }
   final ObjectboxRepository repository;
 
-  void _onGetAllLogs(final GetAllLogs event, final Emitter<LogsState> emit) async {
+  void _onGetAllLogs(
+    final GetAllLogs event,
+    final Emitter<LogsState> emit,
+  ) async {
     emit(LogsLoading());
     try {
       final products = await repository.getAllTadamonLogs();

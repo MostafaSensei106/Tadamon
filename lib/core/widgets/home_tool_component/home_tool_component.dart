@@ -4,9 +4,11 @@ import '../../config/const/sensei_const.dart';
 import '../../config/fonts/fonts.dart';
 
 class HomeToolsComponent extends StatelessWidget {
-
   const HomeToolsComponent({
-    required this.icon, required this.title, required this.onTapped, super.key,
+    required this.icon,
+    required this.title,
+    required this.onTapped,
+    super.key,
   });
   final IconData icon;
   final String title;
@@ -49,40 +51,38 @@ class HomeToolsComponent extends StatelessWidget {
   ///    The [Text] widget is configured with a maxLines of 2, and an
   ///    [overflow] of [TextOverflow.fade].
   Widget build(final BuildContext context) => Material(
-      color: Colors.transparent,
-      child: InkWell(
-        borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius),
-        onTap: onTapped,
-        child: Container(
-          padding: const EdgeInsets.all(3),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                padding: const EdgeInsets.all(SenseiConst.padding),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(
-                    SenseiConst.inBorderRadius,
-                  ),
-                  color: Theme.of(context).colorScheme.primaryContainer,
-                ),
-                child: Icon(
-                  icon,
-                  size: SenseiConst.iconSize.sp,
-                  color: Theme.of(context).colorScheme.onPrimaryContainer,
-                ),
+    color: Colors.transparent,
+    child: InkWell(
+      borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius),
+      onTap: onTapped,
+      child: Container(
+        padding: const EdgeInsets.all(3),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              padding: const EdgeInsets.all(SenseiConst.padding),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius),
+                color: Theme.of(context).colorScheme.primaryContainer,
               ),
-              SizedBox(height: SenseiConst.padding.h),
-              Text(
-                title,
-                textAlign: TextAlign.center,
-                maxLines: 2,
-                overflow: TextOverflow.fade,
-                style: AppTextStyle(context).subtitle,
+              child: Icon(
+                icon,
+                size: SenseiConst.iconSize.sp,
+                color: Theme.of(context).colorScheme.onPrimaryContainer,
               ),
-            ],
-          ),
+            ),
+            SizedBox(height: SenseiConst.padding.h),
+            Text(
+              title,
+              textAlign: TextAlign.center,
+              maxLines: 2,
+              overflow: TextOverflow.fade,
+              style: AppTextStyle(context).subtitle,
+            ),
+          ],
         ),
       ),
-    );
+    ),
+  );
 }

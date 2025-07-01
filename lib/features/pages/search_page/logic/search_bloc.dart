@@ -5,7 +5,6 @@ import 'search_event.dart';
 import 'search_state.dart';
 
 class SearchBloc extends Bloc<SearchEvent, SearchState> {
-
   SearchBloc(this.repository) : super(SearchInitial()) {
     on<FetchSearchResult>(_onFeatchSearchResult);
   }

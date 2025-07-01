@@ -4,22 +4,24 @@ import 'dilog_component.dart';
 
 class DilogWatingComponent extends DilogComponent {
   const DilogWatingComponent({
-    required super.title, required super.message, super.key,
+    required super.title,
+    required super.message,
+    super.key,
     super.icon,
     super.actions,
   });
 
   @override
   Widget build(final BuildContext context) => AlertDialog(
-      icon: const Icon(Icons.info_outline_rounded, size: SenseiConst.iconSize),
-      title: Text(title),
-      content: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const LinearProgressIndicator(),
-          const SizedBox(height: 16),
-          Text(message),
-        ],
-      ),
-    );
+    icon: const Icon(Icons.info_outline_rounded, size: SenseiConst.iconSize),
+    title: Text(title),
+    content: Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        const LinearProgressIndicator(),
+        const SizedBox(height: 16),
+        Text(message),
+      ],
+    ),
+  );
 }

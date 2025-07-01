@@ -49,12 +49,12 @@ class BarcodeScanner {
         cancelButtonText: S.of(context).close,
       );
       if (barcodeScanRes == '-1') {
-        AppToast.showErrorToast('لم يتم قراءة اي باركود');
+        showInfoToast('لم يتم قراءة اي باركود');
         return '-1';
       }
 
-      if (!BarcodeValidator.isNumber(barcodeScanRes!)) {
-        AppToast.showErrorToast(
+      if (!isBarcodeNumber(barcodeScanRes!)) {
+        showWarningToast(
           'الباركود :$barcodeScanRes غير صالح، يجب أن يكون رقمًا فقط',
         );
         return '-404';

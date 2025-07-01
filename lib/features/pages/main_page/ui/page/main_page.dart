@@ -132,38 +132,38 @@ class _MainPageState extends State<MainPage>
       value: _pageCubit,
       child: BlocBuilder<PageCubit, MainPageState>(
         builder: (final context, final state) => Scaffold(
-            resizeToAvoidBottomInset: false,
-            key: const ValueKey<String>('main_page_scaffold'),
-            backgroundColor: const Color(0xffF26A5A),
-            appBar: SenseiAppBar(_getAppBarTitle(state.currentPage)),
-            drawer: const SenseiDrawer(),
-            body: Container(
-              decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.surface,
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(SenseiConst.outBorderRadius + 7),
-                  topRight: Radius.circular(SenseiConst.outBorderRadius + 7),
-                ),
-              ),
-              child: Stack(
-                children: [
-                  MainPageContainer(
-                    pageController: _pageController,
-                    onPageChanged: _onPageChanged,
-                  ),
-                  Positioned(
-                    bottom: 0,
-                    left: 60,
-                    right: 60,
-                    child: GoogleNavBar(
-                      onItemTapped: onItemTapped,
-                      currentIndex: state.currentPage.index,
-                    ),
-                  ),
-                ],
+          resizeToAvoidBottomInset: false,
+          key: const ValueKey<String>('main_page_scaffold'),
+          backgroundColor: const Color(0xffF26A5A),
+          appBar: SenseiAppBar(_getAppBarTitle(state.currentPage)),
+          drawer: const SenseiDrawer(),
+          body: Container(
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.surface,
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(SenseiConst.outBorderRadius + 7),
+                topRight: Radius.circular(SenseiConst.outBorderRadius + 7),
               ),
             ),
+            child: Stack(
+              children: [
+                MainPageContainer(
+                  pageController: _pageController,
+                  onPageChanged: _onPageChanged,
+                ),
+                Positioned(
+                  bottom: 0,
+                  left: 60,
+                  right: 60,
+                  child: GoogleNavBar(
+                    onItemTapped: onItemTapped,
+                    currentIndex: state.currentPage.index,
+                  ),
+                ),
+              ],
+            ),
           ),
+        ),
       ),
     );
   }

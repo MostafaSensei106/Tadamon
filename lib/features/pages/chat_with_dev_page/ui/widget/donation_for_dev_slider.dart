@@ -74,54 +74,54 @@ class _DonationForDevSliderState extends State<DonationForDevSlider> {
   }
 
   Widget _buildImageSlide(final String imageAsset) => Image.asset(
-      imageAsset,
-      fit: BoxFit.cover,
-      errorBuilder: (final context, final error, final stackTrace) => Container(
-        decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.surfaceContainerHigh,
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              Icons.image_not_supported_outlined,
-              color: Theme.of(context).colorScheme.error,
-              size: SenseiConst.iconSize,
-            ),
-            const Text('فشل تحميل الصورة'),
-          ],
-        ),
+    imageAsset,
+    fit: BoxFit.cover,
+    errorBuilder: (final context, final error, final stackTrace) => Container(
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.surfaceContainerHigh,
       ),
-    );
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(
+            Icons.image_not_supported_outlined,
+            color: Theme.of(context).colorScheme.error,
+            size: SenseiConst.iconSize,
+          ),
+          const Text('فشل تحميل الصورة'),
+        ],
+      ),
+    ),
+  );
 
   @override
   Widget build(final BuildContext context) => InkWell(
-      onTapDown: (_) => _pauseAutoSlide(),
-      onTapUp: (_) => _resumeAutoSlide(),
-      onTap: () {
-        HapticFeedback.vibrate();
-        launchURL(SenseiConst.buyMeACoffeeLink);
-      },
-      child: Padding(
-        padding: EdgeInsets.symmetric(vertical: SenseiConst.padding.h - 8),
-        child: AspectRatio(
-          aspectRatio: 35 / 10,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius),
-            child: PageView.builder(
-              controller: _pageController,
-              physics: const ScrollPhysics(),
-              itemCount: _imagesPaths.length,
-              itemBuilder: (final context, final index) =>
-                  _buildImageSlide(_imagesPaths[index]),
-              onPageChanged: (final index) {
-                setState(() => _currentPage = index);
-              },
-            ),
+    onTapDown: (_) => _pauseAutoSlide(),
+    onTapUp: (_) => _resumeAutoSlide(),
+    onTap: () {
+      HapticFeedback.vibrate();
+      launchURL(SenseiConst.buyMeACoffeeLink);
+    },
+    child: Padding(
+      padding: EdgeInsets.symmetric(vertical: SenseiConst.padding.h - 8),
+      child: AspectRatio(
+        aspectRatio: 35 / 10,
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius),
+          child: PageView.builder(
+            controller: _pageController,
+            physics: const ScrollPhysics(),
+            itemCount: _imagesPaths.length,
+            itemBuilder: (final context, final index) =>
+                _buildImageSlide(_imagesPaths[index]),
+            onPageChanged: (final index) {
+              setState(() => _currentPage = index);
+            },
           ),
         ),
       ),
-    );
+    ),
+  );
 
   @override
   void dispose() {

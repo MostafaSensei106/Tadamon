@@ -3,8 +3,7 @@ import 'dart:ui' show Brightness;
 import 'package:flutter/material.dart' show ThemeMode;
 import 'package:flutter/widgets.dart' show BuildContext, MediaQuery;
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../cubit/theme_cubit.dart'
-    show ThemeCubit;
+import '../cubit/theme_cubit.dart' show ThemeCubit;
 
 import '../cubit/theme_state.dart' show ThemeState;
 

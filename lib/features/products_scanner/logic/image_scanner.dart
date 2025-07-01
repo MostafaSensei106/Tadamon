@@ -19,7 +19,7 @@ class ImageScanner {
       );
       return image;
     } catch (e) {
-      AppToast.showErrorToast('حدث خطاء اثناء اختيار الصورة: ${e.toString()}');
+      showErrorToast('حدث خطاء اثناء اختيار الصورة: ${e.toString()}');
       return null;
     }
   }
@@ -41,23 +41,21 @@ class ImageScanner {
   Future<String> _getBarcodeFromImage(final XFile? image) async {
     try {
       if (image == null) {
-        AppToast.showErrorToast('لم يتم اختيار الصورة');
+        showErrorToast('لم يتم اختيار الصورة');
         return '-1';
       }
 
       final inputImage = InputImage.fromFilePath(image.path);
       final barcodeScanner = BarcodeScanner();
-      final barcodes = await barcodeScanner.processImage(
-        inputImage,
-      );
+      final barcodes = await barcodeScanner.processImage(inputImage);
       if (barcodes.isEmpty || barcodes.first.rawValue == null) {
-        AppToast.showErrorToast('لا يوجد باركود في الصورة');
+        showErrorToast('لا يوجد باركود في الصورة');
         return '-1';
       }
 
       final barcodeRawValue = barcodes.first.rawValue!;
-      if (!BarcodeValidator.isNumber(barcodeRawValue)) {
-        AppToast.showErrorToast(
+      if (!isBarcodeNumber(barcodeRawValue)) {
+        showErrorToast(
           'الباركود :$barcodeRawValue غير صالح، يجب أن يكون رقمًا فقط',
         );
         return '-1';
@@ -65,7 +63,7 @@ class ImageScanner {
 
       return barcodeRawValue;
     } catch (e) {
-      AppToast.showErrorToast('حدث خطأ أثناء معالجة الصورة: ${e.toString()}');
+      showErrorToast('حدث خطأ أثناء معالجة الصورة: ${e.toString()}');
       return '-404';
     }
   }
@@ -92,7 +90,7 @@ class ImageScanner {
       final barcode = await _getBarcodeFromImage(image);
       return barcode;
     } catch (e) {
-      AppToast.showErrorToast('حدث خطاء اثناء تحليل الصورة: ${e.toString()}');
+      showErrorToast('حدث خطاء اثناء تحليل الصورة: ${e.toString()}');
       return '-404';
     }
   }

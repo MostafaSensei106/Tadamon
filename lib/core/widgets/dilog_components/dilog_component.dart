@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import '../../config/const/sensei_const.dart';
 
 class DilogComponent extends StatelessWidget {
-
   const DilogComponent({
-    required this.title, required this.message, required this.actions, required this.icon, super.key,
+    required this.title,
+    required this.message,
+    required this.actions,
+    required this.icon,
+    super.key,
   });
   final String title;
   final String message;
@@ -20,11 +23,11 @@ class DilogComponent extends StatelessWidget {
     showDialog(
       context: context,
       builder: (final BuildContext context) => DilogComponent(
-          title: title,
-          message: message,
-          actions: actions,
-          icon: icon,
-        ),
+        title: title,
+        message: message,
+        actions: actions,
+        icon: icon,
+      ),
     );
   }
 
@@ -48,20 +51,20 @@ class DilogComponent extends StatelessWidget {
   /// The [Container] widget has a [Text] widget as child, which is
   /// configured with the given [message] and no style.
   Widget build(final BuildContext context) => AlertDialog(
-      elevation: 0,
-      icon: Icon(icon, size: SenseiConst.iconSize),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius),
+    elevation: 0,
+    icon: Icon(icon, size: SenseiConst.iconSize),
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius),
+    ),
+    title: Text(title),
+    content: Container(
+      padding: const EdgeInsets.all(SenseiConst.padding),
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.surfaceContainer,
+        borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius),
       ),
-      title: Text(title),
-      content: Container(
-        padding: const EdgeInsets.all(SenseiConst.padding),
-        decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.surfaceContainer,
-          borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius),
-        ),
-        child: Text(message),
-      ),
-      actions: actions,
-    );
+      child: Text(message),
+    ),
+    actions: actions,
+  );
 }

@@ -78,10 +78,14 @@ class _TermsGateState extends State<TermsGate> with TickerProviderStateMixin {
       ),
     );
 
-    _slideAnimations = _controllers.map((final controller) => Tween<Offset>(
-        begin: const Offset(1, 0),
-        end: Offset.zero,
-      ).animate(CurvedAnimation(parent: controller, curve: Curves.easeOut))).toList();
+    _slideAnimations = _controllers
+        .map(
+          (final controller) => Tween<Offset>(
+            begin: const Offset(1, 0),
+            end: Offset.zero,
+          ).animate(CurvedAnimation(parent: controller, curve: Curves.easeOut)),
+        )
+        .toList();
 
     // Delay start a bit for UX
     Future.delayed(const Duration(milliseconds: 200), () {
@@ -132,32 +136,32 @@ class _TermsGateState extends State<TermsGate> with TickerProviderStateMixin {
               child: ListView.builder(
                 itemCount: _terms.length,
                 itemBuilder: (final context, final index) => SlideTransition(
-                    position: _slideAnimations[index],
-                    child: FadeTransition(
-                      opacity: _controllers[index],
-                      child: Card(
-                        margin: index == 0
-                            ? EdgeInsets.only(top: SenseiConst.margin.h)
-                            : null,
-                        elevation: 0,
-                        child: Padding(
-                          padding: const EdgeInsets.all(SenseiConst.padding),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                '${index + 1}. ',
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                ),
+                  position: _slideAnimations[index],
+                  child: FadeTransition(
+                    opacity: _controllers[index],
+                    child: Card(
+                      margin: index == 0
+                          ? EdgeInsets.only(top: SenseiConst.margin.h)
+                          : null,
+                      elevation: 0,
+                      child: Padding(
+                        padding: const EdgeInsets.all(SenseiConst.padding),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              '${index + 1}. ',
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
                               ),
-                              Expanded(child: Text(_terms[index])),
-                            ],
-                          ),
+                            ),
+                            Expanded(child: Text(_terms[index])),
+                          ],
                         ),
                       ),
                     ),
                   ),
+                ),
               ),
             ),
             Row(

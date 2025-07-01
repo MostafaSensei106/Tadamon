@@ -9,9 +9,11 @@ import '../../../../../core/widgets/icon_button_component/icon_button_filledtona
 import 'donation_for_dev_slider.dart';
 
 class ChatBubble extends StatelessWidget {
-
   const ChatBubble({
-    required this.text, required this.isSentByMe, required this.time, super.key,
+    required this.text,
+    required this.isSentByMe,
+    required this.time,
+    super.key,
     this.isSupportDevButton = false,
     this.isShareButton = false,
   });
@@ -77,9 +79,7 @@ class ChatBubble extends StatelessWidget {
                         color: Theme.of(context).colorScheme.secondaryFixed,
                         onPressed: () {
                           HapticFeedback.vibrate();
-                          launchURL(
-                            SenseiConst.devPortfolioLink,
-                          );
+                          launchURL(SenseiConst.devPortfolioLink);
                         },
                       ),
                     ],
@@ -102,20 +102,22 @@ class Message extends StatelessWidget {
 
   @override
   Widget build(final BuildContext context) => Text(
-      text,
-      textAlign: TextAlign.start,
-      style: TextStyle(
-        textBaseline: TextBaseline.alphabetic,
-        color: isSentByMe
-            ? Theme.of(context).colorScheme.onSecondaryContainer
-            : Theme.of(context).colorScheme.onSurface,
-      ),
-    );
+    text,
+    textAlign: TextAlign.start,
+    style: TextStyle(
+      textBaseline: TextBaseline.alphabetic,
+      color: isSentByMe
+          ? Theme.of(context).colorScheme.onSecondaryContainer
+          : Theme.of(context).colorScheme.onSurface,
+    ),
+  );
 }
 
 class DataTime extends StatelessWidget {
   const DataTime({
-    required this.formattedTime, required this.isSentByMe, super.key,
+    required this.formattedTime,
+    required this.isSentByMe,
+    super.key,
   });
 
   final String formattedTime;
@@ -123,17 +125,15 @@ class DataTime extends StatelessWidget {
 
   @override
   Widget build(final BuildContext context) => Align(
-      alignment: Alignment.bottomLeft,
-      child: Text(
-        formattedTime,
-        style: TextStyle(
-          fontSize: 12,
-          color: isSentByMe
-              ? Theme.of(
-                  context,
-                ).colorScheme.onSecondaryContainer.withAlpha(0x50)
-              : Theme.of(context).colorScheme.onSurface.withAlpha(0x50),
-        ),
+    alignment: Alignment.bottomLeft,
+    child: Text(
+      formattedTime,
+      style: TextStyle(
+        fontSize: 12,
+        color: isSentByMe
+            ? Theme.of(context).colorScheme.onSecondaryContainer.withAlpha(0x50)
+            : Theme.of(context).colorScheme.onSurface.withAlpha(0x50),
       ),
-    );
+    ),
+  );
 }

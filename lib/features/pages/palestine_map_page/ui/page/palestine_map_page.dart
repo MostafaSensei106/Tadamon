@@ -9,22 +9,23 @@ class PalestineMapPage extends StatelessWidget {
 
   @override
   Widget build(final BuildContext context) => Scaffold(
-      appBar: SidePageAppBar(
-        title: S.of(context).palatineMap,
-        useBackButton: true,
+    appBar: SidePageAppBar(
+      title: S.of(context).palatineMap,
+      useBackButton: true,
+    ),
+    body: ClipRRect(
+      borderRadius: BorderRadius.only(
+        topLeft: Radius.circular(SenseiConst.outBorderRadius.r + 7),
+        topRight: Radius.circular(SenseiConst.outBorderRadius.r + 7),
       ),
-      body: ClipRRect(
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(SenseiConst.outBorderRadius.r + 7),
-          topRight: Radius.circular(SenseiConst.outBorderRadius.r + 7),
-        ),
-        child: InteractiveViewer(
-          child: Image.asset(
-            SenseiConst.palestineMapImage,
-            width: 1.sh,
-            height: 1.sh,
-            fit: BoxFit.cover,
-            errorBuilder: (final context, final error, final stackTrace) => Center(
+      child: InteractiveViewer(
+        child: Image.asset(
+          SenseiConst.palestineMapImage,
+          width: 1.sh,
+          height: 1.sh,
+          fit: BoxFit.cover,
+          errorBuilder: (final context, final error, final stackTrace) =>
+              Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -41,8 +42,8 @@ class PalestineMapPage extends StatelessWidget {
                   ],
                 ),
               ),
-          ),
         ),
       ),
-    );
+    ),
+  );
 }

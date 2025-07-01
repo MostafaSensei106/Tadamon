@@ -6,7 +6,6 @@ abstract class SearchEvent extends Equatable {
 }
 
 class FetchSearchResult extends SearchEvent {
-
   FetchSearchResult(this.query, this.filter);
   final String query, filter;
 

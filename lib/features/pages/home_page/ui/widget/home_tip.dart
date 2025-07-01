@@ -91,39 +91,39 @@ class HomeTipState extends State<HomeTip> with SingleTickerProviderStateMixin {
   /// The [ListTile] widget has a [Text] widget as subtitle, which is
   /// configured with the [S.of(context).AppDescription] text.
   Widget build(final BuildContext context) => FadeTransition(
-      opacity: _animation,
-      child: SizeTransition(
-        sizeFactor: _animation,
-        axisAlignment: -1.0,
-        child: GestureDetector(
-          onDoubleTap: _onClosePressed,
-          child: Container(
-            margin: const EdgeInsets.only(bottom: SenseiConst.margin),
-            padding: const EdgeInsets.all(SenseiConst.padding),
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: Theme.of(context).colorScheme.outline.withAlpha(0x80),
-              ),
-              borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius),
-              color: Theme.of(context).colorScheme.surfaceContainer,
+    opacity: _animation,
+    child: SizeTransition(
+      sizeFactor: _animation,
+      axisAlignment: -1.0,
+      child: GestureDetector(
+        onDoubleTap: _onClosePressed,
+        child: Container(
+          margin: const EdgeInsets.only(bottom: SenseiConst.margin),
+          padding: const EdgeInsets.all(SenseiConst.padding),
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: Theme.of(context).colorScheme.outline.withAlpha(0x80),
             ),
-            child: ListTile(
-              subtitleTextStyle: TextStyle(
-                color: Theme.of(context).colorScheme.onSurface,
-              ),
-              leading: Icon(
-                Icons.lightbulb_outline_rounded,
-                size: SenseiConst.iconSize,
-                color: Theme.of(context).colorScheme.onSurface,
-              ),
-              title: Text(S.of(context).appName),
-              subtitle: Text(
-                S.of(context).appDescription,
-                style: AppTextStyle(context).subtitle,
-              ),
+            borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius),
+            color: Theme.of(context).colorScheme.surfaceContainer,
+          ),
+          child: ListTile(
+            subtitleTextStyle: TextStyle(
+              color: Theme.of(context).colorScheme.onSurface,
+            ),
+            leading: Icon(
+              Icons.lightbulb_outline_rounded,
+              size: SenseiConst.iconSize,
+              color: Theme.of(context).colorScheme.onSurface,
+            ),
+            title: Text(S.of(context).appName),
+            subtitle: Text(
+              S.of(context).appDescription,
+              style: AppTextStyle(context).subtitle,
             ),
           ),
         ),
       ),
-    );
+    ),
+  );
 }

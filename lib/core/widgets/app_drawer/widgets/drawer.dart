@@ -54,8 +54,8 @@ import '../../../config/theme/colors/logic/helper/theme_toggle_helper.dart'
     show toggleTheme;
 import '../../../routing/routes.dart' show Routes;
 import '../../../services/url_services/url_services.dart' show launchURL;
-import '../../app_toast/app_toast.dart' show AppToast;
-import '../../bottom_sheet/ui/model_bottom_sheet.dart' show ModelBottomSheet;
+import '../../app_toast/app_toast.dart' show showSuccessToast, showErrorToast;
+import '../../bottom_sheet/ui/model_bottom_sheet.dart' show showBottomSheet;
 import '../../button_component/button_compnent.dart' show ButtonCompnent;
 import '../../dilog_components/dilog_waiting_component.dart'
     show DilogWatingComponent;
@@ -255,11 +255,11 @@ class SenseiDrawer extends StatelessWidget {
           ).show(context);
         }
         if (state is LoclaDBDataFetchingFromFireStoreSuccess) {
-          AppToast.showSuccessToast('تم تهيئة البيانات بنجاح.');
+          showSuccessToast('تم تهيئة البيانات بنجاح.');
           Navigator.of(context).pop();
           Navigator.of(context).pop();
         } else if (state is LoclaDBDataFetchingFromFireStoreFailure) {
-          AppToast.showErrorToast('حدث خطأ في استيراد البيانات.');
+          showErrorToast('حدث خطأ في استيراد البيانات.');
           Navigator.of(context).pop();
           Navigator.of(context).pop();
         }
@@ -298,12 +298,12 @@ class SenseiDrawer extends StatelessWidget {
               ).show(context);
             }
             if (state is LoclaDBDataFetchingFromFireStoreSuccess) {
-              AppToast.showSuccessToast('تم تحديث قاعدة البيانات بنجاح.');
+              showSuccessToast('تم تحديث قاعدة البيانات بنجاح.');
               Navigator.of(context).pop();
               Navigator.of(context).pop();
             }
             if (state is LoclaDBDataDeleteFailure) {
-              AppToast.showErrorToast('حدث خطاء في تحديث قاعدة البيانات.');
+              showErrorToast('حدث خطاء في تحديث قاعدة البيانات.');
               Navigator.of(context).pop();
               Navigator.of(context).pop();
             }
@@ -339,12 +339,12 @@ class SenseiDrawer extends StatelessWidget {
           ).show(context);
         }
         if (state is LoclaDBDataDeleteSuccess) {
-          AppToast.showSuccessToast('تم حذف البيانات بنجاح.');
+          showSuccessToast('تم حذف البيانات بنجاح.');
           Navigator.of(context).pop();
           Navigator.of(context).pop();
         }
         if (state is LoclaDBDataDeleteFailure) {
-          AppToast.showErrorToast('حدث خطأ في حذف البيانات.');
+          showErrorToast('حدث خطأ في حذف البيانات.');
           Navigator.of(context).pop();
           Navigator.of(context).pop();
         }
@@ -427,7 +427,7 @@ Widget _buildReportProduct(final BuildContext context) => ListTileIconComponent(
   subtitle: S.of(context).reportProductMassage,
   onTap: () {
     Navigator.pop(context);
-    ModelBottomSheet.show(
+    showBottomSheet(
       context,
       'بلغ عن منتج',
       child: const ReportProductSheetContent(),

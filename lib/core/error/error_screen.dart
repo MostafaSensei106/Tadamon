@@ -12,8 +12,7 @@ import 'package:flutter/widgets.dart'
         Column,
         Padding;
 import '../config/const/sensei_const.dart' show SenseiConst;
-import '../widgets/lottie_component/lottie_component.dart'
-    show LottieComponent;
+import '../widgets/lottie_component/lottie_component.dart' show LottieComponent;
 
 /// This function is used to catch any errors that may occur in the app and show an
 /// error screen with a cat animation.
@@ -33,25 +32,25 @@ import '../widgets/lottie_component/lottie_component.dart'
 /// occurs.
 void errorScreen() {
   ErrorWidget.builder = (final details) => Material(
-      child: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const LottieComponent(
-                lottiePath: SenseiConst.lottieCatErrorAnimation,
-                text: 'حدث خطأ في تطبيق تضامن',
-              ),
-              const SizedBox(height: 8),
-              Text(
-                details.exception.toString(),
-                textAlign: TextAlign.center,
-                style: const TextStyle(color: Colors.grey),
-              ),
-            ],
-          ),
+    child: Center(
+      child: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const LottieComponent(
+              lottiePath: SenseiConst.lottieCatErrorAnimation,
+              text: 'حدث خطأ في تطبيق تضامن',
+            ),
+            const SizedBox(height: 8),
+            Text(
+              details.exception.toString(),
+              textAlign: TextAlign.center,
+              style: const TextStyle(color: Colors.grey),
+            ),
+          ],
         ),
       ),
-    );
+    ),
+  );
 }

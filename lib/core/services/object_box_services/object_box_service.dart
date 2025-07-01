@@ -5,7 +5,6 @@ import '../../../features/products_scanner/data/models/product_model.dart'
 import '../../../objectbox.g.dart' show Store, Box, openStore;
 
 class ObjectBoxService {
-
   ObjectBoxService._internal();
   static final ObjectBoxService _instance = ObjectBoxService._internal();
   late final Store store;

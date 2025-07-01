@@ -20,68 +20,69 @@ class _LogsPageViewState extends State<LogsPageView> {
 
   @override
   Widget build(final BuildContext context) => Padding(
-      padding: const EdgeInsets.all(SenseiConst.padding),
-      child: Column(
-        children: [
-          searchBar(context),
-          SizedBox(height: SenseiConst.margin.h),
-          LogsSearchContent(searchController: _searchController),
-        ],
-      ),
-    );
+    padding: const EdgeInsets.all(SenseiConst.padding),
+    child: Column(
+      children: [
+        searchBar(context),
+        SizedBox(height: SenseiConst.margin.h),
+        LogsSearchContent(searchController: _searchController),
+      ],
+    ),
+  );
 
   Row searchBar(final BuildContext context) => Row(
-      children: [
-        Expanded(
-          child: TextFieldComponent(
-            useOutBorderRadius: true,
-            controller: _searchController,
-            icon: Icons.search,
-            suffixIcon: menuButton(context),
-            hint:
-                'ابحث عن ${_selectedFilter == 'Name'
-                    ? 'اسم المنتج'
-                    : _selectedFilter == 'SerialNumber'
-                    ? 'الرقم التسلسلي'
-                    : _selectedFilter == 'Manufacture'
-                    ? 'المُصنع'
-                    : 'القسم'}...',
-            onChange: (final value) {
-              BlocProvider.of<LogsBloc>(
-                context,
-              ).add(GetLogsResult(value, _selectedFilter));
-            },
+    children: [
+      Expanded(
+        child: TextFieldComponent(
+          useOutBorderRadius: true,
+          controller: _searchController,
+          icon: Icons.search,
+          suffixIcon: menuButton(context),
+          hint:
+              'ابحث عن ${_selectedFilter == 'Name'
+                  ? 'اسم المنتج'
+                  : _selectedFilter == 'SerialNumber'
+                  ? 'الرقم التسلسلي'
+                  : _selectedFilter == 'Manufacture'
+                  ? 'المُصنع'
+                  : 'القسم'}...',
+          onChange: (final value) {
+            BlocProvider.of<LogsBloc>(
+              context,
+            ).add(GetLogsResult(value, _selectedFilter));
+          },
+        ),
+      ),
+    ],
+  );
+
+  PopupMenuButton<String> menuButton(final BuildContext context) =>
+      PopupMenuButton<String>(
+        onSelected: (final value) {
+          setState(() {
+            _selectedFilter = value;
+          });
+        },
+        icon: Icon(
+          Icons.filter_list,
+          size: SenseiConst.iconSize,
+          color: _selectedFilter != 'SerialNumber'
+              ? Theme.of(context).colorScheme.primary
+              : null,
+        ),
+        elevation: 0,
+        enableFeedback: true,
+        borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius.r),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius.r),
+          side: BorderSide(
+            color: Theme.of(context).colorScheme.outline.withAlpha(0x80),
           ),
         ),
-      ],
-    );
-
-  PopupMenuButton<String> menuButton(final BuildContext context) => PopupMenuButton<String>(
-      onSelected: (final value) {
-        setState(() {
-          _selectedFilter = value;
-        });
-      },
-      icon: Icon(
-        Icons.filter_list,
-        size: SenseiConst.iconSize,
-        color: _selectedFilter != 'SerialNumber'
-            ? Theme.of(context).colorScheme.primary
-            : null,
-      ),
-      elevation: 0,
-      enableFeedback: true,
-      borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius.r),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius.r),
-        side: BorderSide(
-          color: Theme.of(context).colorScheme.outline.withAlpha(0x80),
-        ),
-      ),
-      padding: EdgeInsets.zero,
-      tooltip: 'فلتر البحث',
-      color: Theme.of(context).colorScheme.surface,
-      itemBuilder: (final context) => [
+        padding: EdgeInsets.zero,
+        tooltip: 'فلتر البحث',
+        color: Theme.of(context).colorScheme.surface,
+        itemBuilder: (final context) => [
           PopupMenuItem(
             value: 'SerialNumber',
             child: Row(
@@ -186,7 +187,7 @@ class _LogsPageViewState extends State<LogsPageView> {
             ),
           ),
         ],
-    );
+      );
 
   @override
   void dispose() {

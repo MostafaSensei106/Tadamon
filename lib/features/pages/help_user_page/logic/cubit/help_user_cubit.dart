@@ -10,7 +10,7 @@ class HelpUserCubit extends Cubit<HelpUserState> {
   Future<void> loadQna() async {
     try {
       emit(HlepUserLoadingQnaState());
-      final qnaList = await QnaRepositore.getQna();
+      final qnaList = await getQna();
       emit(HlepUserLoadingQnaStateSuccess(qnaList));
     } catch (e) {
       emit(HelpUserErrorState(e.toString()));
@@ -20,12 +20,12 @@ class HelpUserCubit extends Cubit<HelpUserState> {
   void searchQA(final String query) async {
     try {
       if (query.isEmpty) {
-        final qnaList = await QnaRepositore.getQna();
+        final qnaList = await getQna();
         emit(HlepUserLoadingQnaStateSuccess(qnaList));
         return;
       }
 
-      final allQna = await QnaRepositore.getQna();
+      final allQna = await getQna();
       final filteredList = allQna
           .where(
             (final qna) =>

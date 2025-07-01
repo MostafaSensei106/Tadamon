@@ -6,7 +6,6 @@ abstract class MainPageEvent extends Equatable {
 }
 
 class PageChanged extends MainPageEvent {
-
   PageChanged(this.index);
   final int index;
 

@@ -4,9 +4,11 @@ import '../../config/const/sensei_const.dart';
 import '../../config/fonts/fonts.dart';
 
 class CounterItemsComponent extends StatefulWidget {
-
   const CounterItemsComponent({
-    required this.icon, required this.title, required this.targetValue, super.key,
+    required this.icon,
+    required this.title,
+    required this.targetValue,
+    super.key,
   });
   final IconData icon;
   final String title;
@@ -108,34 +110,34 @@ class _CounterItemsComponentState extends State<CounterItemsComponent>
   ///    [TextStyle] with a [fontSize] of 18 logical pixels, a [fontWeight] of
   ///    [FontWeight.bold], and a [textAlign] of [TextAlign.center].
   Widget build(final BuildContext context) => Container(
-      margin: EdgeInsets.only(top: SenseiConst.margin.h),
-      padding: const EdgeInsets.all(SenseiConst.padding),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius),
-        color: Theme.of(context).colorScheme.surfaceContainer,
-      ),
-      child: Column(
-        children: [
-          Container(
-            padding: const EdgeInsets.all(SenseiConst.padding),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius),
-              color: Theme.of(context).colorScheme.primaryContainer,
-            ),
-            child: Icon(
-              widget.icon,
-              size: SenseiConst.iconSize.sp,
-              color: Theme.of(context).colorScheme.onPrimaryContainer,
-            ),
+    margin: EdgeInsets.only(top: SenseiConst.margin.h),
+    padding: const EdgeInsets.all(SenseiConst.padding),
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius),
+      color: Theme.of(context).colorScheme.surfaceContainer,
+    ),
+    child: Column(
+      children: [
+        Container(
+          padding: const EdgeInsets.all(SenseiConst.padding),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius),
+            color: Theme.of(context).colorScheme.primaryContainer,
           ),
-          SizedBox(height: 4.h),
-          Text(widget.title, textAlign: TextAlign.center),
-          SizedBox(height: 4.h),
-          Text(
-            _currentValue.toString(),
-            style: AppTextStyle(context).subtitle.copyWith(fontSize: 16.sp),
+          child: Icon(
+            widget.icon,
+            size: SenseiConst.iconSize.sp,
+            color: Theme.of(context).colorScheme.onPrimaryContainer,
           ),
-        ],
-      ),
-    );
+        ),
+        SizedBox(height: 4.h),
+        Text(widget.title, textAlign: TextAlign.center),
+        SizedBox(height: 4.h),
+        Text(
+          _currentValue.toString(),
+          style: AppTextStyle(context).subtitle.copyWith(fontSize: 16.sp),
+        ),
+      ],
+    ),
+  );
 }

@@ -50,7 +50,9 @@ class ImageNewsState extends State<ImageNews> {
 
   void _startAutoSlide() {
     _autoSlideTimer = Timer.periodic(_autoSlideDuration, (_) {
-      if (!mounted) return;
+      if (!mounted) {
+        return;
+      }
 
       if (_currentPage < _imageUrls.length - 1) {
         _pageController.nextPage(
@@ -76,87 +78,87 @@ class ImageNewsState extends State<ImageNews> {
   }
 
   Widget _buildImageSlide(final String imageUrl) => CachedNetworkImage(
-      imageUrl: imageUrl,
-      fit: BoxFit.cover,
-      filterQuality: FilterQuality.medium,
-      errorWidget: (final context, final url, final error) => Container(
-        decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.surfaceContainerHigh,
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              Icons.image_not_supported_outlined,
-              color: Theme.of(context).colorScheme.error,
-              size: SenseiConst.iconSize,
-            ),
-            const Text('فشل تحميل الصورة'),
-          ],
-        ),
+    imageUrl: imageUrl,
+    fit: BoxFit.cover,
+    filterQuality: FilterQuality.medium,
+    errorWidget: (final context, final url, final error) => Container(
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.surfaceContainerHigh,
       ),
-    );
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(
+            Icons.image_not_supported_outlined,
+            color: Theme.of(context).colorScheme.error,
+            size: SenseiConst.iconSize,
+          ),
+          const Text('فشل تحميل الصورة'),
+        ],
+      ),
+    ),
+  );
 
   Widget _buildPageIndicator() => Padding(
-      padding: EdgeInsets.only(bottom: SenseiConst.padding.h),
-      child: SmoothPageIndicator(
-        controller: _pageController,
-        count: _imageUrls.length,
-        effect: ExpandingDotsEffect(
-          dotWidth: SenseiConst.indicatorDotSize,
-          dotHeight: SenseiConst.indicatorDotSize,
-          dotColor: Theme.of(
-            context,
-          ).colorScheme.onSurface.withAlpha((0.5 * 255).toInt()),
-          activeDotColor: Theme.of(context).colorScheme.primaryContainer,
-          expansionFactor: 2,
-        ),
-        onDotClicked: (final index) {
-          _pageController.animateToPage(
-            index,
-            duration: _slideTransitionDuration,
-            curve: Curves.easeInOut,
-          );
-        },
+    padding: EdgeInsets.only(bottom: SenseiConst.padding.h),
+    child: SmoothPageIndicator(
+      controller: _pageController,
+      count: _imageUrls.length,
+      effect: ExpandingDotsEffect(
+        dotWidth: SenseiConst.indicatorDotSize,
+        dotHeight: SenseiConst.indicatorDotSize,
+        dotColor: Theme.of(
+          context,
+        ).colorScheme.onSurface.withAlpha((0.5 * 255).toInt()),
+        activeDotColor: Theme.of(context).colorScheme.primaryContainer,
+        expansionFactor: 2,
       ),
-    );
+      onDotClicked: (final index) {
+        _pageController.animateToPage(
+          index,
+          duration: _slideTransitionDuration,
+          curve: Curves.easeInOut,
+        );
+      },
+    ),
+  );
 
   @override
   Widget build(final BuildContext context) => GestureDetector(
-      onTapDown: (_) => _pauseAutoSlide(),
-      onTapUp: (_) => _resumeAutoSlide(),
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius),
-          color: Theme.of(context).colorScheme.surfaceContainer,
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Padding(
-              padding: EdgeInsets.all(SenseiConst.padding.w),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius),
-                child: AspectRatio(
-                  aspectRatio: 16 / 9,
-                  child: PageView.builder(
-                    controller: _pageController,
-                    physics: const ScrollPhysics(),
-                    itemCount: _imageUrls.length,
-                    itemBuilder: (final context, final index) =>
-                        _buildImageSlide(_imageUrls[index]),
-                    onPageChanged: (final index) {
-                      setState(() => _currentPage = index);
-                    },
-                  ),
+    onTapDown: (_) => _pauseAutoSlide(),
+    onTapUp: (_) => _resumeAutoSlide(),
+    child: Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius),
+        color: Theme.of(context).colorScheme.surfaceContainer,
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Padding(
+            padding: EdgeInsets.all(SenseiConst.padding.w),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius),
+              child: AspectRatio(
+                aspectRatio: 16 / 9,
+                child: PageView.builder(
+                  controller: _pageController,
+                  physics: const ScrollPhysics(),
+                  itemCount: _imageUrls.length,
+                  itemBuilder: (final context, final index) =>
+                      _buildImageSlide(_imageUrls[index]),
+                  onPageChanged: (final index) {
+                    setState(() => _currentPage = index);
+                  },
                 ),
               ),
             ),
-            _buildPageIndicator(),
-          ],
-        ),
+          ),
+          _buildPageIndicator(),
+        ],
       ),
-    );
+    ),
+  );
 
   @override
   void dispose() {

@@ -12,25 +12,27 @@ class ReportService {
     pref = await SharedPreferences.getInstance();
   }
 
-  Future<void> sendProductReport(final Map<String, dynamic> productReport) async {
+  Future<void> sendProductReport(
+    final Map<String, dynamic> productReport,
+  ) async {
     if (await NetworkController().checkConnection()) {
       try {
         await FireStoreRepository().sendReportToBackEnd(productReport);
-        AppToast.showSuccessToast('لقد تلقينا بلاغك');
+        showSuccessToast('لقد تلقينا بلاغك');
       } catch (e) {
-        AppToast.showErrorToast('حث خطاء');
+        showErrorToast('حث خطاء');
       }
     } else {
-      AppToast.showSimpleToast(
-        'لا يوجد انترنت. سيتم إرسال البلاغ تلقائيًا لاحقًا.',
-      );
+      showSimpleToast('لا يوجد انترنت. سيتم إرسال البلاغ تلقائيًا لاحقًا.');
       await _saveReportLocally(productReport);
     }
   }
 
-  Future<void> _saveReportLocally(final Map<String, dynamic> productReport) async {
-    final localReports = pref.getStringList('localReports') ?? [];
-    localReports.add(jsonEncode(productReport));
+  Future<void> _saveReportLocally(
+    final Map<String, dynamic> productReport,
+  ) async {
+    final localReports = pref.getStringList('localReports') ?? []
+      ..add(jsonEncode(productReport));
     await pref.setStringList('localReports', localReports);
   }
 
@@ -47,16 +49,18 @@ class ReportService {
       try {
         await FireStoreRepository().sendReportToBackEnd(report);
         await _clearLocalReports(report);
-        AppToast.showSimpleToast('تم إرسال بلاغ معلق');
+        showSimpleToast('تم إرسال بلاغ معلق');
       } catch (e) {
-        AppToast.showErrorToast(e.toString());
+        showErrorToast(e.toString());
       }
     }
   }
 
-  static Future<void> _clearLocalReports(final Map<String, dynamic> report) async {
-    final localReports = pref.getStringList('localReports') ?? [];
-    localReports.remove(jsonEncode(report));
+  static Future<void> _clearLocalReports(
+    final Map<String, dynamic> report,
+  ) async {
+    final localReports = pref.getStringList('localReports') ?? []
+      ..remove(jsonEncode(report));
     await pref.setStringList('localReports', localReports);
   }
 }

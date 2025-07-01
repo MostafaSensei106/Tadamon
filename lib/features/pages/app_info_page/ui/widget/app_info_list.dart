@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '../../../../../core/config/const/app_enums.dart'
-    show ListTileGroupType;
+import '../../../../../core/config/const/app_enums.dart' show ListTileGroupType;
 import '../../../../../core/widgets/button_component/button_compnent.dart';
 import '../../../../../core/widgets/drawer_component/drawer_component.dart';
 import 'app_info_title.dart';
 
 class AppInfoList extends StatefulWidget {
-
   const AppInfoList({
-    required this.appName, required this.appVersion, required this.buildNumber, required this.buildSignature, required this.packageName, required this.installerStore, super.key,
+    required this.appName,
+    required this.appVersion,
+    required this.buildNumber,
+    required this.buildSignature,
+    required this.packageName,
+    required this.installerStore,
+    super.key,
   });
   final String appName;
   final String appVersion;
@@ -51,10 +55,14 @@ class _AppInfoListState extends State<AppInfoList>
       ),
     );
 
-    _slideAnimations = _controllers.map((final controller) => Tween<Offset>(
-        begin: const Offset(1, 0),
-        end: Offset.zero,
-      ).animate(CurvedAnimation(parent: controller, curve: Curves.easeOut))).toList();
+    _slideAnimations = _controllers
+        .map(
+          (final controller) => Tween<Offset>(
+            begin: const Offset(1, 0),
+            end: Offset.zero,
+          ).animate(CurvedAnimation(parent: controller, curve: Curves.easeOut)),
+        )
+        .toList();
 
     // Delay start a bit for UX
     Future.delayed(const Duration(milliseconds: 200), () {
@@ -84,60 +92,60 @@ class _AppInfoListState extends State<AppInfoList>
 
   @override
   Widget build(final BuildContext context) => Column(
-      children: [
-        SlideTransition(
-          position: _slideAnimations.first,
-          child: FadeTransition(
-            opacity: _controllers.first,
-            child: const AppInfoTitle(),
-          ),
+    children: [
+      SlideTransition(
+        position: _slideAnimations.first,
+        child: FadeTransition(
+          opacity: _controllers.first,
+          child: const AppInfoTitle(),
         ),
-        Expanded(
-          child: ListView.builder(
-            itemCount: appInfo.length,
-            itemBuilder: (final context, final index) {
-              final key = appInfo.keys.elementAt(index);
-              final value = appInfo[key] ?? 'غير معروف';
-              return SlideTransition(
-                position: _slideAnimations[index],
-                child: FadeTransition(
-                  opacity: _controllers[index],
-                  child: Column(
-                    children: [
-                      ListTileIconComponent(
-                        leading: _getIcons(key),
-                        title: _getTitle(key),
-                        subtitle: value,
-                        groupType: index == 0
-                            ? ListTileGroupType.top
-                            : index < appInfo.length - 1
-                            ? ListTileGroupType.middle
-                            : ListTileGroupType.bottom,
-                      ),
-                    ],
-                  ),
+      ),
+      Expanded(
+        child: ListView.builder(
+          itemCount: appInfo.length,
+          itemBuilder: (final context, final index) {
+            final key = appInfo.keys.elementAt(index);
+            final value = appInfo[key] ?? 'غير معروف';
+            return SlideTransition(
+              position: _slideAnimations[index],
+              child: FadeTransition(
+                opacity: _controllers[index],
+                child: Column(
+                  children: [
+                    ListTileIconComponent(
+                      leading: _getIcons(key),
+                      title: _getTitle(key),
+                      subtitle: value,
+                      groupType: index == 0
+                          ? ListTileGroupType.top
+                          : index < appInfo.length - 1
+                          ? ListTileGroupType.middle
+                          : ListTileGroupType.bottom,
+                    ),
+                  ],
                 ),
-              );
-            },
-          ),
-        ),
-        SlideTransition(
-          position: _slideAnimations.last,
-          child: FadeTransition(
-            opacity: _controllers.last,
-            child: SizedBox(
-              width: double.infinity,
-              child: ButtonCompnent(
-                label: 'نسخ معلومات التطبيق',
-                icon: Icons.copy_all_rounded,
-                useMargin: true,
-                onPressed: () => copyToClipboard(),
               ),
+            );
+          },
+        ),
+      ),
+      SlideTransition(
+        position: _slideAnimations.last,
+        child: FadeTransition(
+          opacity: _controllers.last,
+          child: SizedBox(
+            width: double.infinity,
+            child: ButtonCompnent(
+              label: 'نسخ معلومات التطبيق',
+              icon: Icons.copy_all_rounded,
+              useMargin: true,
+              onPressed: () => copyToClipboard(),
             ),
           ),
         ),
-      ],
-    );
+      ),
+    ],
+  );
 
   IconData _getIcons(final String key) {
     switch (key) {

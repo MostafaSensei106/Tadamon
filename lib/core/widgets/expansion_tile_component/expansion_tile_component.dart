@@ -5,9 +5,12 @@ import '../../config/const/sensei_const.dart';
 import '../../config/fonts/fonts.dart';
 
 class ExpansionTileComponent extends StatefulWidget {
-
   const ExpansionTileComponent({
-    required this.leadingIcon, required this.title, required this.subtitle, required this.children, super.key,
+    required this.leadingIcon,
+    required this.title,
+    required this.subtitle,
+    required this.children,
+    super.key,
     this.useInBorderRadius = false,
     this.useMargin = false,
   });
@@ -42,14 +45,9 @@ class _ExpansionTileComponentState extends State<ExpansionTileComponent> {
         borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius),
         color: Theme.of(context).colorScheme.surfaceContainerHigh,
       ),
-      child: Icon(
-        widget.leadingIcon,
-        size: SenseiConst.iconSize,
-      ),
+      child: Icon(widget.leadingIcon, size: SenseiConst.iconSize),
     );
-    final tileTitle = Text(
-      widget.title,
-    );
+    final tileTitle = Text(widget.title);
     final tileSubtitle = Text(
       widget.subtitle,
       style: AppTextStyle(context).subtitle,

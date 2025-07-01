@@ -12,12 +12,12 @@ class DrawerHeaderWidget extends StatelessWidget {
   ///
   /// The child of the [DrawerHeader] widget is null.
   Widget build(final BuildContext context) => const DrawerHeader(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage(SenseiConst.drawerImage),
-          fit: BoxFit.cover,
-        ),
+    decoration: BoxDecoration(
+      image: DecorationImage(
+        image: AssetImage(SenseiConst.drawerImage),
+        fit: BoxFit.cover,
       ),
-      child: null,
-    );
+    ),
+    child: null,
+  );
 }
