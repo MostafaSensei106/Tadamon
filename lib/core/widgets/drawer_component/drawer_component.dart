@@ -111,7 +111,13 @@ class ListTileIconComponent extends StatelessWidget {
               },
               borderRadius: borderRadius,
               child: ListTile(
-                leading: Icon(leading),
+                leading: Container(
+                  padding: const EdgeInsets.all(SenseiConst.padding),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius),
+                    color: Theme.of(context).colorScheme.surfaceContainerHigh,
+                  ),
+                  child: Icon(leading,size: SenseiConst.iconSize,)),
                 title: Text(title),
                 subtitle: subtitle != null
                     ? Text(subtitle!, overflow: TextOverflow.ellipsis)
