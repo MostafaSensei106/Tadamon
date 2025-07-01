@@ -49,7 +49,7 @@ class ProductLogsExpansionTileComponent extends StatelessWidget {
         title: Text(product.name),
         subtitle: Text(
           product.serialNumber,
-          style: AppTextStyle.subtitle(context),
+          style: AppTextStyle(context).subtitle,
         ),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius.r),

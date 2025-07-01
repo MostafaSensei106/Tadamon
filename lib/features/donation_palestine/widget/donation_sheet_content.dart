@@ -1,13 +1,13 @@
-import 'package:flutter/cupertino.dart' show ClipRRect, Padding, Wrap, SingleChildScrollView;
+import 'package:flutter/cupertino.dart' show SingleChildScrollView;
 import 'package:flutter/material.dart' show Icons, ClipRRect;
 import 'package:flutter/widgets.dart'
-    show StatelessWidget, BuildContext, Widget, Column, ClipRRect;
-import 'package:pdf/widgets.dart' show ClipRRect, Padding, Wrap;
+    show StatelessWidget, BuildContext, Widget, Column;
+import 'package:pdf/widgets.dart' show Padding, Wrap;
 import '../../../core/config/const/app_enums.dart'
     show ListTileGroupType;
 import '../../../core/config/const/sensei_const.dart' show SenseiConst;
 import '../../../core/services/url_services/url_services.dart'
-    show UrlRunServices;
+    show  launchURL;
 import '../../../core/widgets/bottom_sheet/ui/model_bottom_sheet.dart'
     show ModelBottomSheet;
 import '../../../core/widgets/drawer_component/drawer_component.dart'
@@ -74,7 +74,7 @@ class DonationSheetContent extends StatelessWidget {
 
           useinBorderRadius: true,
           onTap: () => {
-            UrlRunServices.launchURL(SenseiConst.donateByUnrwaLink),
+            launchURL(SenseiConst.donateByUnrwaLink),
           },
           groupType: ListTileGroupType.top,
         ),
@@ -83,7 +83,7 @@ class DonationSheetContent extends StatelessWidget {
           title: 'الهلال الاحمر الفلسطيني',
           subtitle: 'تبرع عن طريق الهلال الاحمر الفلسطيني',
           onTap: () => {
-            UrlRunServices.launchURL(SenseiConst.donateByPalestinercsLink),
+            launchURL(SenseiConst.donateByPalestinercsLink),
           },
           groupType: ListTileGroupType.middle,
         ),
@@ -92,7 +92,7 @@ class DonationSheetContent extends StatelessWidget {
           title: 'بيت الزكاة والصدقات المصري',
           subtitle: 'تبرع عن طريق ابيت الزكاةو الصدقات المصري',
           onTap: () =>
-              UrlRunServices.launchURL(SenseiConst.donateByBaitzakatLink),
+            launchURL(SenseiConst.donateByBaitzakatLink),
           groupType: ListTileGroupType.middle,
         ),
         ListTileIconComponent(
@@ -100,7 +100,7 @@ class DonationSheetContent extends StatelessWidget {
           title: 'بنك الطعام المصري',
           subtitle: 'تبرع عن طريقة بنك الطعام المصري',
           onTap: () => {
-            UrlRunServices.launchURL(SenseiConst.donateByEGYFoodBankLink),
+            launchURL(SenseiConst.donateByEGYFoodBankLink),
           },
           useinBorderRadius: true,
           groupType: ListTileGroupType.bottom,

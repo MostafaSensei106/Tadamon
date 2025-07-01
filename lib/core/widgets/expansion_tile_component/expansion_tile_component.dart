@@ -24,41 +24,59 @@ class ExpansionTileComponent extends StatefulWidget {
 
 class _ExpansionTileComponentState extends State<ExpansionTileComponent> {
   @override
-  Widget build(final BuildContext context) => Container(
-      margin: widget.useMargin
-          ? EdgeInsets.only(top: SenseiConst.margin.h)
-          : null,
-      decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.surfaceContainer,
-        borderRadius: BorderRadius.circular(
-          widget.useInBorderRadius
-              ? SenseiConst.inBorderRadius
-              : SenseiConst.outBorderRadius,
-        ),
-      ),
-      child: ExpansionTile(
-        leading: Container(
-          padding: const EdgeInsets.all(SenseiConst.padding),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius),
-            color: Theme.of(context).colorScheme.surfaceContainerHigh,
-          ),
-          child: Icon(widget.leadingIcon, size: SenseiConst.iconSize),
-        ),
-        title: Text(widget.title),
-        subtitle: Text(widget.subtitle, style: AppTextStyle.subtitle(context)),
-        backgroundColor: Theme.of(context).colorScheme.surfaceContainer,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(
-            widget.useInBorderRadius
-                ? SenseiConst.inBorderRadius
-                : SenseiConst.outBorderRadius,
-          ),
-          side: BorderSide(
-            color: Theme.of(context).colorScheme.outline.withAlpha(0x80),
-          ),
-        ),
-        children: widget.children,
+  Widget build(final BuildContext context) {
+    final tileMargin = widget.useMargin
+        ? EdgeInsets.only(top: SenseiConst.margin.h)
+        : null;
+    final tileDecoration = BoxDecoration(
+      color: Theme.of(context).colorScheme.surfaceContainer,
+      borderRadius: BorderRadius.circular(
+        widget.useInBorderRadius
+            ? SenseiConst.inBorderRadius
+            : SenseiConst.outBorderRadius,
       ),
     );
+    final tileLeading = Container(
+      padding: const EdgeInsets.all(SenseiConst.padding),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius),
+        color: Theme.of(context).colorScheme.surfaceContainerHigh,
+      ),
+      child: Icon(
+        widget.leadingIcon,
+        size: SenseiConst.iconSize,
+      ),
+    );
+    final tileTitle = Text(
+      widget.title,
+    );
+    final tileSubtitle = Text(
+      widget.subtitle,
+      style: AppTextStyle(context).subtitle,
+    );
+    final tileChildren = widget.children;
+    final tileShape = RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(
+        widget.useInBorderRadius
+            ? SenseiConst.inBorderRadius
+            : SenseiConst.outBorderRadius,
+      ),
+      side: BorderSide(
+        color: Theme.of(context).colorScheme.outline.withAlpha(0x80),
+      ),
+    );
+
+    return Container(
+      margin: tileMargin,
+      decoration: tileDecoration,
+      child: ExpansionTile(
+        leading: tileLeading,
+        title: tileTitle,
+        subtitle: tileSubtitle,
+        backgroundColor: Theme.of(context).colorScheme.surfaceContainer,
+        shape: tileShape,
+        children: tileChildren,
+      ),
+    );
+  }
 }

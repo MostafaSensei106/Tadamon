@@ -3,7 +3,7 @@ import 'package:connectivity_plus/connectivity_plus.dart'
 
 import '../../../features/report_products/logic/services/report_service.dart'
     show ReportService;
-import '../../widgets/app_toast/app_toast.dart' show AppToast;
+import '../../widgets/app_toast/app_toast.dart' show  showErrorToast;
 
 class NetworkController {
   final Connectivity _connectivity = Connectivity();
@@ -67,7 +67,7 @@ class NetworkController {
         break;
 
       default:
-        AppToast.showErrorToast('حدث خطأ ما');
+        showErrorToast('حدث خطأ ما');
         break;
     }
   }

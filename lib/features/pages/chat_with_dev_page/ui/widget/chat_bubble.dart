@@ -77,7 +77,7 @@ class ChatBubble extends StatelessWidget {
                         color: Theme.of(context).colorScheme.secondaryFixed,
                         onPressed: () {
                           HapticFeedback.vibrate();
-                          UrlRunServices.launchURL(
+                          launchURL(
                             SenseiConst.devPortfolioLink,
                           );
                         },

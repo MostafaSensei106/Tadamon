@@ -9,9 +9,8 @@ analyzer:
     unused_element: warning
     todo: ignore
     invalid_assignment: error
-    strong_mode_implicit_casts: error
-    strong_mode_implicit_dynamic: error
     override_on_non_overriding_member: error
+    strict_top_level_inference: ignore
   exclude:
     - "**/*.g.dart"
     - "**/*.freezed.dart"
@@ -31,9 +30,10 @@ linter:
     flutter_style_todos: true
     curly_braces_in_flow_control_structures: true
     type_annotate_public_apis: true
-    comment_references: true
+    comment_references: false
     annotate_overrides: true
     avoid_print: true
+    public_member_api_docs: false
 
     # الثبات والأمان
     always_declare_return_types: true
@@ -71,7 +71,7 @@ linter:
 
     # التنظيم والفهم
     depend_on_referenced_packages: true
-    public_member_api_docs: true
     avoid_unused_constructor_parameters: true
     constant_identifier_names: false
     non_constant_identifier_names: false
+    

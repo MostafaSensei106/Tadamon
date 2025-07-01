@@ -20,7 +20,7 @@ class ThemeCubit extends Cubit<ThemeState> {
   /// SharedPreferences, and is intended to be called whenever the user
   /// changes the theme.
   Future<void> _persistTheme(final ThemeState state) async {
-    await _themeSharedPreferences.setTheme(state.isDark);
+    await _themeSharedPreferences.setTheme(isDark:state.isDark);
     await _themeSharedPreferences.setThemeMode(state.themeMode);
   }
 
@@ -33,7 +33,7 @@ class ThemeCubit extends Cubit<ThemeState> {
   ///
   /// Emits a new [ThemeState] with the chosen [isDark] and
   /// [ThemeMode].
-  Future<void> toggleTheme(final bool isDark) async {
+  Future<void> toggleTheme({required final bool isDark}) async {
     final newState = state.copyWith(
       isDark: isDark,
       themeMode: isDark ? ThemeMode.dark : ThemeMode.light,
@@ -77,7 +77,7 @@ class ThemeCubit extends Cubit<ThemeState> {
 
     if (isFirstRun == null || isFirstRun) {
       await setSystemTheme();
-      await _themeSharedPreferences.setFirstRun(false);
+      await _themeSharedPreferences.setFirstRun(value: false);
     } else {
       final isDark = await _themeSharedPreferences.getTheme();
       final savedMode = await _themeSharedPreferences.getThemeMode();

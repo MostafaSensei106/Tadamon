@@ -94,10 +94,8 @@ class TextFieldComponent extends StatelessWidget {
         hintText: hint,
         errorText: errorText,
         suffixIcon: suffixIcon,
-        hintStyle: AppTextStyle.subtitle(context),
-        errorStyle: AppTextStyle.subtitle(
-          context,
-        ).copyWith(color: Theme.of(context).colorScheme.error),
+        hintStyle: AppTextStyle(context).subtitle,
+        errorStyle: AppTextStyle(context).subtitle.copyWith(color: Theme.of(context).colorScheme.error),
         filled: true,
         fillColor: Theme.of(context).colorScheme.surfaceContainer,
         focusedBorder: OutlineInputBorder(

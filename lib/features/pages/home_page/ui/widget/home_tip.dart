@@ -119,7 +119,7 @@ class HomeTipState extends State<HomeTip> with SingleTickerProviderStateMixin {
               title: Text(S.of(context).appName),
               subtitle: Text(
                 S.of(context).appDescription,
-                style: AppTextStyle.subtitle(context),
+                style: AppTextStyle(context).subtitle,
               ),
             ),
           ),

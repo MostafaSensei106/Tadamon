@@ -12,7 +12,7 @@ class SearchLoading extends SearchState {}
 
 class SearchLoadingSuccess extends SearchState {
 
-  SearchLoadingSuccess({required this.products});
+  SearchLoadingSuccess(List list, {required this.products});
   final List<ProductSearchModel> products;
 
   @override

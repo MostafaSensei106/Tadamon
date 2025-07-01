@@ -36,11 +36,11 @@ class ChatDevAppBar extends StatelessWidget implements PreferredSizeWidget {
       actions: [
         _buildActionBarIcon(context, Icons.call_outlined, () {
           HapticFeedback.vibrate();
-          UrlRunServices.makePhoneCall(SenseiConst.devPhoneNumber);
+          makePhoneCall(SenseiConst.devPhoneNumber);
         }),
         _buildActionBarIcon(context, Icons.telegram_outlined, () {
           HapticFeedback.vibrate();
-          UrlRunServices.launchURL(SenseiConst.devTelegramLink);
+          launchURL(SenseiConst.devTelegramLink);
         }),
       ],
     );

@@ -78,7 +78,7 @@ class HomeToolsComponent extends StatelessWidget {
                 textAlign: TextAlign.center,
                 maxLines: 2,
                 overflow: TextOverflow.fade,
-                style: AppTextStyle.subtitle(context),
+                style: AppTextStyle(context).subtitle,
               ),
             ],
           ),

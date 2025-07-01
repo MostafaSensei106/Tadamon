@@ -22,7 +22,7 @@ import 'generated/l10n.dart' show S;
 import 'package:toastification/toastification.dart' show ToastificationWrapper;
 
 class TadamonApp extends StatelessWidget {
-  TadamonApp({super.key});
+  TadamonApp(AppRouter appRouter, {super.key});
   final AppRouter appRouter = AppRouter();
 
   @override

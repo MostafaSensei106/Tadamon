@@ -26,7 +26,7 @@ class AppBarTitle extends StatelessWidget {
       child: Text(
         title,
         key: ValueKey<String>(title),
-        style: AppTextStyle.headline2(context).copyWith(color: Colors.white),
+        style: AppTextStyle(context).headline1.copyWith(color: Colors.white),
       ),
     );
 }

@@ -46,7 +46,9 @@ class _DonationForDevSliderState extends State<DonationForDevSlider> {
 
   void _startAutoSlide() {
     _autoSlideTimer = Timer.periodic(_autoSlideDuration, (_) {
-      if (!mounted) return;
+      if (!mounted) {
+        return;
+      }
 
       if (_currentPage < _imagesPaths.length - 1) {
         _pageController.nextPage(
@@ -98,7 +100,7 @@ class _DonationForDevSliderState extends State<DonationForDevSlider> {
       onTapUp: (_) => _resumeAutoSlide(),
       onTap: () {
         HapticFeedback.vibrate();
-        UrlRunServices.launchURL(SenseiConst.buyMeACoffeeLink);
+        launchURL(SenseiConst.buyMeACoffeeLink);
       },
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: SenseiConst.padding.h - 8),

@@ -9,7 +9,7 @@ import '../../../features/pages/log_page/data/models/scanned_logs_product_model.
     show ScannedLogsProductModel;
 import '../../config/const/sensei_const.dart' show SenseiConst;
 import '../../extensions/date_format_extension.dart';
-import '../../widgets/app_toast/app_toast.dart' show AppToast;
+import '../../widgets/app_toast/app_toast.dart' show  showSuccessToast, showErrorToast;
 
 class PdfExportServices {
   /// Exports the given list of [ScannedLogsProductModel] to a pdf file named
@@ -71,9 +71,9 @@ class PdfExportServices {
       final file = File('${dir.path}/$fileName.pdf');
       await file.writeAsBytes(await pdf.save());
       await OpenFile.open(file.path);
-      AppToast.showSuccessToast('تم حفظ الملف بنجاح');
+      showSuccessToast('تم حفظ الملف بنجاح');
     } catch (e) {
-      AppToast.showErrorToast('Failed to generate the pdf');
+      showErrorToast('Failed to generate the pdf');
     }
   }
 }

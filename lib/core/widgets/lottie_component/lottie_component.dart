@@ -30,7 +30,7 @@ class LottieComponent extends StatelessWidget {
         SizedBox(height: 10.h),
         Text(
           text,
-          style: AppTextStyle.subtitle(context).copyWith(fontSize: 16.sp),
+          style: AppTextStyle(context).subtitle.copyWith(fontSize: 16.sp),
         ),
       ],
     );

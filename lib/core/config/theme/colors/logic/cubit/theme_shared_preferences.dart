@@ -7,17 +7,17 @@ class ThemeSharedPreferences {
   static const themeModeKey = 'themeMode';
   static const firstRunKey = 'firstRun';
 
-  /// Persists the given [value] to SharedPreferences as the app's theme.
+  /// Persists the given [isDark] to SharedPreferences as the app's theme.
   ///
-  /// [value] is `true` if the app should use the dark theme, and `false`
+  /// [isDark] is `true` if the app should use the dark theme, and `false`
   /// otherwise.
   ///
   /// This function will save the current theme state to the device's
   /// SharedPreferences, and is intended to be called whenever the user
   /// changes the theme.
-  Future<void> setTheme(final bool value) async {
+  Future<void> setTheme({required final bool isDark}) async {
     final sharedPreferences = await SharedPreferences.getInstance();
-    await sharedPreferences.setBool(themeKey, value);
+    await sharedPreferences.setBool(themeKey, isDark);
   }
 
   /// Retrieves the current theme from SharedPreferences as a boolean value.
@@ -47,7 +47,7 @@ class ThemeSharedPreferences {
   /// This function is intended to be called when the user has finished the
   /// onboarding process, and is used to determine whether the onboarding
   /// process should be shown or not.
-  Future<void> setFirstRun(final bool value) async {
+  Future<void> setFirstRun({required final bool 2}) async {
     final sharedPreferences = await SharedPreferences.getInstance();
     await sharedPreferences.setBool(firstRunKey, value);
   }

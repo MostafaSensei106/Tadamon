@@ -11,38 +11,38 @@ environment:
   sdk: ^3.8.1
 
 dependencies:
-  flutter:
-    sdk: flutter
-  flutter_localizations:
-    sdk: flutter
-  google_nav_bar: ^5.0.7
-  shared_preferences: ^2.5.2
-  url_launcher: ^6.3.1
-  google_mlkit_barcode_scanning: ^0.14.1
-  image_picker: ^1.1.2
-  flutter_bloc: ^9.0.0
-  equatable: ^2.0.5
-  flutter_screenutil: ^5.9.3
   cached_network_image: ^3.4.1
-  smooth_page_indicator: ^1.2.0+3
-  simple_barcode_scanner: ^0.3.0
-  firebase_core: ^3.8.1
   cloud_firestore: ^5.6.0
   connectivity_plus: ^6.1.1
-  flutter_native_splash: ^2.4.4
-  flutter_launcher_icons: ^0.14.3
-  path_provider: ^2.1.5
-  lottie: ^3.3.1
-  objectbox: ^4.1.0
-  objectbox_flutter_libs: ^4.1.0 
-  toastification: ^3.0.1
-  pdf: ^3.11.3
-  open_file: ^3.5.10
+  equatable: ^2.0.5
   file_picker: ^10.1.2
   firebase_app_check: ^0.3.2+4
-  share_plus: ^11.0.0
-  package_info_plus: ^8.3.0
+  firebase_core: ^3.8.1
+  flutter:
+    sdk: flutter
+  flutter_bloc: ^9.0.0
+  flutter_launcher_icons: ^0.14.3
+  flutter_localizations:
+    sdk: flutter
+  flutter_native_splash: ^2.4.4
+  flutter_screenutil: ^5.9.3
+  google_mlkit_barcode_scanning: ^0.14.1
+  google_nav_bar: ^5.0.7
+  image_picker: ^1.1.2
   intl: ^0.20.2
+  lottie: ^3.3.1
+  objectbox: ^4.1.0
+  objectbox_flutter_libs: ^4.1.0
+  open_file: ^3.5.10
+  package_info_plus: ^8.3.0
+  path_provider: ^2.1.5
+  pdf: ^3.11.3
+  share_plus: ^11.0.0
+  shared_preferences: ^2.5.2
+  simple_barcode_scanner: ^0.3.0
+  smooth_page_indicator: ^1.2.0+3
+  toastification: ^3.0.1
+  url_launcher: ^6.3.1
 
 
 dev_dependencies:

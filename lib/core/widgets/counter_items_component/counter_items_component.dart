@@ -133,7 +133,7 @@ class _CounterItemsComponentState extends State<CounterItemsComponent>
           SizedBox(height: 4.h),
           Text(
             _currentValue.toString(),
-            style: AppTextStyle.subtitle(context).copyWith(fontSize: 16.sp),
+            style: AppTextStyle(context).subtitle.copyWith(fontSize: 16.sp),
           ),
         ],
       ),

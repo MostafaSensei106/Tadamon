@@ -156,7 +156,7 @@ class _ChatWithDevState extends State<ChatWithDev>
       HapticFeedback.vibrate();
       final message = _controller.text;
       if (message.isNotEmpty) {
-        await UrlRunServices.sendEmail(
+        await sendEmail(
           toEmail: 'mostafa438886@fci.bu.edu.eg',
           subject: 'مرحبا، MR: Mostafa Sensei',
           body: message,
