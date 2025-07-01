@@ -7,7 +7,7 @@ extension DateFormatExtension on DateTime {
   /// The formatted date as a string.
   String get formatted {
     /// The formatter that formats the date in the specific way.
-    final DateFormat formatter = DateFormat(kDateFormat, kLocale);
+    final formatter = DateFormat(kDateFormat, kLocale);
     return formatter.format(this);
   }
 }

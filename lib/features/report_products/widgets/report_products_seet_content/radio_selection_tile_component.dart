@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:tadamon/core/widgets/expansion_tile_component/expansion_tile_component.dart';
+import '../../../../core/widgets/expansion_tile_component/expansion_tile_component.dart';
 
 class RadioSelectionTileComponent extends StatefulWidget {
-  final Function(String)? onChanged;
 
   const RadioSelectionTileComponent({super.key, this.onChanged});
+  final Function(String)? onChanged;
 
   @override
   State<RadioSelectionTileComponent> createState() =>
@@ -16,8 +16,7 @@ class _RadioSelectionTileComponentState
   String selectedValue = 'لا أعرف';
 
   @override
-  Widget build(BuildContext context) {
-    return ExpansionTileComponent(
+  Widget build(final BuildContext context) => ExpansionTileComponent(
       leadingIcon: Icons.handshake_outlined,
       useInBorderRadius: true,
       title: 'الحالة',
@@ -28,19 +27,16 @@ class _RadioSelectionTileComponentState
         buildRadio('لا يدعم الكيان الصهيوني'),
       ],
     );
-  }
 
-  Widget buildRadio(String title) {
-    return RadioListTile<String>(
+  Widget buildRadio(final String title) => RadioListTile<String>(
       title: Text(title),
       value: title,
       groupValue: selectedValue,
-      onChanged: (value) {
+      onChanged: (final value) {
         setState(() {
           selectedValue = value!;
         });
         widget.onChanged?.call(value!);
       },
     );
-  }
 }

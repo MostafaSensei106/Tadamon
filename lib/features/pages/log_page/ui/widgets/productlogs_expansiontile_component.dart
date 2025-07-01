@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:tadamon/core/config/const/app_enums.dart'
+import '../../../../../core/config/const/app_enums.dart'
     show ListTileGroupType;
-import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/core/config/fonts/fonts.dart';
-import 'package:tadamon/core/extensions/date_format_extension.dart';
-import 'package:tadamon/core/widgets/drawer_component/drawer_component.dart';
-import 'package:tadamon/features/pages/log_page/data/models/scanned_logs_product_model.dart';
+import '../../../../../core/config/const/sensei_const.dart';
+import '../../../../../core/config/fonts/fonts.dart';
+import '../../../../../core/extensions/date_format_extension.dart';
+import '../../../../../core/widgets/drawer_component/drawer_component.dart';
+import '../../data/models/scanned_logs_product_model.dart';
 
 class ProductLogsExpansionTileComponent extends StatelessWidget {
+  const ProductLogsExpansionTileComponent({required this.product, super.key});
   final ScannedLogsProductModel product;
-  const ProductLogsExpansionTileComponent({super.key, required this.product});
   @override
-  Widget build(BuildContext context) {
-    return Container(
+  Widget build(final BuildContext context) => Container(
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.surfaceContainer,
         borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius.r),
@@ -52,8 +51,6 @@ class ProductLogsExpansionTileComponent extends StatelessWidget {
           product.serialNumber,
           style: AppTextStyle.subtitle(context),
         ),
-        enableFeedback: true,
-        showTrailingIcon: true,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius.r),
           side: BorderSide(
@@ -63,7 +60,7 @@ class ProductLogsExpansionTileComponent extends StatelessWidget {
         children: [
           ListTileIconComponent(
             leading: Icons.qr_code_rounded,
-            title: "الرقم التسلسلي",
+            title: 'الرقم التسلسلي',
             subtitle: product.serialNumber,
             trailing: IconButton(
               onPressed: () =>
@@ -74,40 +71,39 @@ class ProductLogsExpansionTileComponent extends StatelessWidget {
           ),
           ListTileIconComponent(
             leading: Icons.label_outline_rounded,
-            title: "اسم المنتج",
+            title: 'اسم المنتج',
             subtitle: product.name,
             groupType: ListTileGroupType.middle,
           ),
           ListTileIconComponent(
             leading: Icons.business_rounded,
-            title: "الشركة المصنعة",
+            title: 'الشركة المصنعة',
             subtitle: product.manufacture,
             groupType: ListTileGroupType.middle,
           ),
           ListTileIconComponent(
             leading: Icons.category_outlined,
-            title: "التصنيف",
+            title: 'التصنيف',
             subtitle: product.category,
             groupType: ListTileGroupType.middle,
           ),
           ListTileIconComponent(
             leading: Icons.handshake_outlined,
-            title: "الحالة",
-            subtitle: product.onError == "Product not found"
-                ? "المنتج غير موجود"
+            title: 'الحالة',
+            subtitle: product.onError == 'Product not found'
+                ? 'المنتج غير موجود'
                 : product.trusted
-                ? "مؤمن"
-                : "غير مؤمن",
+                ? 'مؤمن'
+                : 'غير مؤمن',
             groupType: ListTileGroupType.middle,
           ),
           ListTileIconComponent(
             leading: Icons.date_range_outlined,
-            title: "التاريخ",
+            title: 'التاريخ',
             subtitle: product.scannedAt.formatted,
             groupType: ListTileGroupType.bottom,
           ),
         ],
       ),
     );
-  }
 }

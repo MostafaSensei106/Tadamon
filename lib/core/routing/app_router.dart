@@ -12,22 +12,23 @@ import 'package:flutter/material.dart'
         Tween,
         SlideTransition,
         FadeTransition;
-import 'package:tadamon/core/error/no_routes.dart' show NoRoutes;
-import 'package:tadamon/core/routing/routes.dart' show Routes;
-import 'package:tadamon/features/pages/app_info_page/ui/page/app_info.dart'
+
+import '../../features/pages/app_info_page/ui/page/app_info.dart'
     show AppInfo;
-import 'package:tadamon/features/pages/chat_with_dev_page/ui/page/chat_with_dev.dart'
+import '../../features/pages/chat_with_dev_page/ui/page/chat_with_dev.dart'
     show ChatWithDev;
-import 'package:tadamon/features/pages/help_user_page/ui/page/help_user_page.dart'
+import '../../features/pages/help_user_page/ui/page/help_user_page.dart'
     show HelpUserPage;
-import 'package:tadamon/features/pages/main_page/ui/page/main_page.dart'
+import '../../features/pages/main_page/ui/page/main_page.dart'
     show MainPage;
-import 'package:tadamon/features/pages/onboarding_page/ui/page/onboarding_page.dart'
+import '../../features/pages/onboarding_page/ui/page/onboarding_page.dart'
     show OnboardingPage;
-import 'package:tadamon/features/pages/palestine_map_page/ui/page/palestine_map_page.dart'
+import '../../features/pages/palestine_map_page/ui/page/palestine_map_page.dart'
     show PalestineMapPage;
-import 'package:tadamon/features/pages/terms_gate_page/terms_gate.dart'
+import '../../features/pages/terms_gate_page/terms_gate.dart'
     show TermsGate;
+import '../error/no_routes.dart' show NoRoutes;
+import 'routes.dart' show Routes;
 
 class AppRouter {
   static final GlobalKey<NavigatorState> navigatorKey =
@@ -36,12 +37,12 @@ class AppRouter {
   static ColorScheme get theme {
     final context = navigatorKey.currentContext;
     if (context == null) {
-      throw Exception("Navigator context is not available");
+      throw Exception('Navigator context is not available');
     }
     return Theme.of(context).colorScheme;
   }
 
-  Route<dynamic> generateRoute(RouteSettings settings) {
+  Route<dynamic> generateRoute(final RouteSettings settings) {
     Widget page;
     switch (settings.name) {
       case Routes.onBoarding:
@@ -75,10 +76,9 @@ class AppRouter {
   /// from the right edge of the screen. The transition duration is set to
   /// 200 milliseconds.
 
-  PageRouteBuilder _createPageRoute(Widget page) {
-    return PageRouteBuilder(
+  PageRouteBuilder _createPageRoute(final Widget page) => PageRouteBuilder(
       transitionDuration: const Duration(milliseconds: 250),
-      pageBuilder: (_, animation, _) => FadeTransition(
+      pageBuilder: (_, final animation, _) => FadeTransition(
         opacity: animation,
         child: SlideTransition(
           position: Tween<Offset>(
@@ -89,5 +89,4 @@ class AppRouter {
         ),
       ),
     );
-  }
 }

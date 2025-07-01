@@ -15,8 +15,8 @@ class ThemeSharedPreferences {
   /// This function will save the current theme state to the device's
   /// SharedPreferences, and is intended to be called whenever the user
   /// changes the theme.
-  Future<void> setTheme(bool value) async {
-    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+  Future<void> setTheme(final bool value) async {
+    final sharedPreferences = await SharedPreferences.getInstance();
     await sharedPreferences.setBool(themeKey, value);
   }
 
@@ -27,7 +27,7 @@ class ThemeSharedPreferences {
   ///
   /// If the theme is not set, the default value is `false` (i.e. the light theme).
   Future<bool> getTheme() async {
-    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    final sharedPreferences = await SharedPreferences.getInstance();
     return sharedPreferences.getBool(themeKey) ?? false;
   }
 
@@ -37,7 +37,7 @@ class ThemeSharedPreferences {
   /// `false` if it's not, or `null` if the value has not been set.
 
   Future<bool?> isFirstRun() async {
-    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    final sharedPreferences = await SharedPreferences.getInstance();
     return sharedPreferences.getBool(firstRunKey);
   }
 
@@ -47,8 +47,8 @@ class ThemeSharedPreferences {
   /// This function is intended to be called when the user has finished the
   /// onboarding process, and is used to determine whether the onboarding
   /// process should be shown or not.
-  Future<void> setFirstRun(bool value) async {
-    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+  Future<void> setFirstRun(final bool value) async {
+    final sharedPreferences = await SharedPreferences.getInstance();
     await sharedPreferences.setBool(firstRunKey, value);
   }
 
@@ -58,8 +58,8 @@ class ThemeSharedPreferences {
   /// SharedPreferences, allowing the app to remember and restore the
   /// user's preferred theme mode (light, dark, or system) upon reopening.
 
-  Future<void> setThemeMode(ThemeMode mode) async {
-    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+  Future<void> setThemeMode(final ThemeMode mode) async {
+    final sharedPreferences = await SharedPreferences.getInstance();
     await sharedPreferences.setInt(themeModeKey, mode.index);
   }
 
@@ -70,7 +70,7 @@ class ThemeSharedPreferences {
   /// defaults to [ThemeMode.system].
 
   Future<ThemeMode> getThemeMode() async {
-    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    final sharedPreferences = await SharedPreferences.getInstance();
     final modeIndex = sharedPreferences.getInt(themeModeKey);
     return modeIndex != null ? ThemeMode.values[modeIndex] : ThemeMode.system;
   }

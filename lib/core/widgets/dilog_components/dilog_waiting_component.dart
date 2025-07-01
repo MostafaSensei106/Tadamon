@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/core/widgets/dilog_components/dilog_component.dart';
+import '../../config/const/sensei_const.dart';
+import 'dilog_component.dart';
 
 class DilogWatingComponent extends DilogComponent {
   const DilogWatingComponent({
-    super.key,
-    required super.title,
-    required super.message,
+    required super.title, required super.message, super.key,
     super.icon,
     super.actions,
   });
 
   @override
-  Widget build(BuildContext context) {
-    return AlertDialog(
+  Widget build(final BuildContext context) => AlertDialog(
       icon: const Icon(Icons.info_outline_rounded, size: SenseiConst.iconSize),
       title: Text(title),
       content: Column(
@@ -25,5 +22,4 @@ class DilogWatingComponent extends DilogComponent {
         ],
       ),
     );
-  }
 }

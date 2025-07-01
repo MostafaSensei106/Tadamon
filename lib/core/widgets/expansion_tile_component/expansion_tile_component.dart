@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/core/config/fonts/fonts.dart';
+import '../../config/const/sensei_const.dart';
+import '../../config/fonts/fonts.dart';
 
 class ExpansionTileComponent extends StatefulWidget {
+
+  const ExpansionTileComponent({
+    required this.leadingIcon, required this.title, required this.subtitle, required this.children, super.key,
+    this.useInBorderRadius = false,
+    this.useMargin = false,
+  });
   final IconData leadingIcon;
   final String title;
   final String subtitle;
@@ -12,24 +18,13 @@ class ExpansionTileComponent extends StatefulWidget {
   final bool useInBorderRadius;
   final bool useMargin;
 
-  const ExpansionTileComponent({
-    super.key,
-    required this.leadingIcon,
-    required this.title,
-    required this.subtitle,
-    required this.children,
-    this.useInBorderRadius = false,
-    this.useMargin = false,
-  });
-
   @override
   State<ExpansionTileComponent> createState() => _ExpansionTileComponentState();
 }
 
 class _ExpansionTileComponentState extends State<ExpansionTileComponent> {
   @override
-  Widget build(BuildContext context) {
-    return Container(
+  Widget build(final BuildContext context) => Container(
       margin: widget.useMargin
           ? EdgeInsets.only(top: SenseiConst.margin.h)
           : null,
@@ -53,8 +48,6 @@ class _ExpansionTileComponentState extends State<ExpansionTileComponent> {
         title: Text(widget.title),
         subtitle: Text(widget.subtitle, style: AppTextStyle.subtitle(context)),
         backgroundColor: Theme.of(context).colorScheme.surfaceContainer,
-        enableFeedback: true,
-        showTrailingIcon: true,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(
             widget.useInBorderRadius
@@ -68,5 +61,4 @@ class _ExpansionTileComponentState extends State<ExpansionTileComponent> {
         children: widget.children,
       ),
     );
-  }
 }

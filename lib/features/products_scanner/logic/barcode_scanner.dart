@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:simple_barcode_scanner/simple_barcode_scanner.dart';
-import 'package:tadamon/core/widgets/app_toast/app_toast.dart';
-import 'package:tadamon/features/products_scanner/logic/barcode_validator.dart';
-import 'package:tadamon/generated/l10n.dart';
+
+import '../../../core/widgets/app_toast/app_toast.dart';
+import '../../../generated/l10n.dart';
+import 'barcode_validator.dart';
 
 class BarcodeScanner {
   /// Scans the barcode using the default camera.
@@ -31,9 +32,9 @@ class BarcodeScanner {
   ///
   /// The [BuildContext] is used to show the error toast.
   ///
-  Future<String> scanBarcodeByCamera(BuildContext context) async {
+  Future<String> scanBarcodeByCamera(final BuildContext context) async {
     try {
-      String? barcodeScanRes = await SimpleBarcodeScanner.scanBarcode(
+      final barcodeScanRes = await SimpleBarcodeScanner.scanBarcode(
         context,
         barcodeAppBar: BarcodeAppBar(
           appBarTitle: S.of(context).scanBarcode,
@@ -43,9 +44,7 @@ class BarcodeScanner {
         ),
         isShowFlashIcon: true,
         delayMillis: 150,
-        cameraFace: CameraFace.back,
         scanFormat: ScanFormat.ONLY_BARCODE,
-        scanType: ScanType.barcode,
         lineColor: '#FF0000',
         cancelButtonText: S.of(context).close,
       );

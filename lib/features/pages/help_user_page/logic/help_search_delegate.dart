@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:tadamon/features/pages/help_user_page/data/model/qna_model.dart';
+import '../data/model/qna_model.dart';
 
 class HelpSearchDelegate extends SearchDelegate<QnaModel?> {
-  final List<QnaModel> qnaList;
-  final Function(String) onSearch;
 
   HelpSearchDelegate({required this.qnaList, required this.onSearch});
+  final List<QnaModel> qnaList;
+  final Function(String) onSearch;
 
   @override
   String get searchFieldLabel => 'ابحث عن سؤال...';
@@ -17,8 +17,7 @@ class HelpSearchDelegate extends SearchDelegate<QnaModel?> {
   //     );
 
   @override
-  List<Widget> buildActions(BuildContext context) {
-    return [
+  List<Widget> buildActions(final BuildContext context) => [
       IconButton(
         icon: const Icon(Icons.exit_to_app_rounded),
         onPressed: () {
@@ -31,23 +30,18 @@ class HelpSearchDelegate extends SearchDelegate<QnaModel?> {
         },
       ),
     ];
-  }
 
   @override
-  Widget buildLeading(BuildContext context) {
-    return IconButton(
+  Widget buildLeading(final BuildContext context) => IconButton(
       icon: const Icon(Icons.double_arrow_rounded),
       onPressed: () => close(context, null),
     );
-  }
 
   @override
-  Widget buildResults(BuildContext context) {
-    return _buildSearchResults();
-  }
+  Widget buildResults(final BuildContext context) => _buildSearchResults();
 
   @override
-  Widget buildSuggestions(BuildContext context) {
+  Widget buildSuggestions(final BuildContext context) {
     onSearch(query);
     return _buildSearchResults();
   }
@@ -69,7 +63,7 @@ class HelpSearchDelegate extends SearchDelegate<QnaModel?> {
     return ListView.builder(
       itemCount: qnaList.length,
       padding: const EdgeInsets.symmetric(vertical: 8),
-      itemBuilder: (context, index) {
+      itemBuilder: (final context, final index) {
         final qna = qnaList[index];
         return ListTile(
           leading: const Icon(Icons.help_outline),

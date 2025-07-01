@@ -10,24 +10,20 @@ import 'package:flutter/material.dart'
         BorderSide,
         Icon,
         Text;
-import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/core/widgets/textbutton_component/textbutton_component.dart'
+import '../../config/const/sensei_const.dart';
+import 'textbutton_component.dart'
     show TextButtonComponent;
 
 class TextbuttonIconComponent extends TextButtonComponent {
-  final IconData icon;
 
   const TextbuttonIconComponent({
-    super.key,
-    required super.onPressed,
-    required super.text,
+    required super.onPressed, required super.text, required this.icon, super.key,
     super.useInBorderRadius = false,
-    required this.icon,
   });
+  final IconData icon;
 
   @override
-  Widget build(BuildContext context) {
-    return TextButton.icon(
+  Widget build(final BuildContext context) => TextButton.icon(
       style: TextButton.styleFrom(
         shape: RoundedRectangleBorder(
           borderRadius: useInBorderRadius
@@ -42,5 +38,4 @@ class TextbuttonIconComponent extends TextButtonComponent {
       onPressed: onPressed,
       label: Text(text),
     );
-  }
 }

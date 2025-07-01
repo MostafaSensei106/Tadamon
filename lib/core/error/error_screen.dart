@@ -11,8 +11,8 @@ import 'package:flutter/widgets.dart'
         Text,
         Column,
         Padding;
-import 'package:tadamon/core/config/const/sensei_const.dart' show SenseiConst;
-import 'package:tadamon/core/widgets/lottie_component/lottie_component.dart'
+import '../config/const/sensei_const.dart' show SenseiConst;
+import '../widgets/lottie_component/lottie_component.dart'
     show LottieComponent;
 
 /// This function is used to catch any errors that may occur in the app and show an
@@ -32,8 +32,7 @@ import 'package:tadamon/core/widgets/lottie_component/lottie_component.dart'
 /// The [Material] widget is used to display the error screen when an error
 /// occurs.
 void errorScreen() {
-  ErrorWidget.builder = (details) {
-    return Material(
+  ErrorWidget.builder = (final details) => Material(
       child: Center(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
@@ -55,5 +54,4 @@ void errorScreen() {
         ),
       ),
     );
-  };
 }

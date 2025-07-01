@@ -8,10 +8,10 @@ abstract class LogsEvent extends Equatable {
 class GetAllLogs extends LogsEvent {}
 
 class GetLogsResult extends LogsEvent {
-  final String query;
-  final String filter;
 
   GetLogsResult(this.query, this.filter);
+  final String query;
+  final String filter;
 
   @override
   List<Object> get props => [query, filter];

@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/core/routing/routes.dart';
-import 'package:tadamon/core/widgets/button_component/button_compnent.dart';
-import 'package:tadamon/core/widgets/textbutton_component/textbuttonicon_component.dart';
-import 'package:tadamon/core/widgets/app_bar/side_page_app_bar.dart';
+
+import '../../../core/config/const/sensei_const.dart';
+import '../../../core/routing/routes.dart';
+import '../../../core/widgets/app_bar/side_page_app_bar.dart';
+import '../../../core/widgets/button_component/button_compnent.dart';
+import '../../../core/widgets/textbutton_component/textbuttonicon_component.dart';
 
 class TermsGate extends StatefulWidget {
   const TermsGate({super.key});
@@ -71,18 +72,16 @@ class _TermsGateState extends State<TermsGate> with TickerProviderStateMixin {
   void _initAnimations() {
     _controllers = List.generate(
       _terms.length,
-      (index) => AnimationController(
+      (final index) => AnimationController(
         vsync: this,
         duration: Duration(milliseconds: 250 + (index * 100)),
       ),
     );
 
-    _slideAnimations = _controllers.map((controller) {
-      return Tween<Offset>(
+    _slideAnimations = _controllers.map((final controller) => Tween<Offset>(
         begin: const Offset(1, 0),
         end: Offset.zero,
-      ).animate(CurvedAnimation(parent: controller, curve: Curves.easeOut));
-    }).toList();
+      ).animate(CurvedAnimation(parent: controller, curve: Curves.easeOut))).toList();
 
     // Delay start a bit for UX
     Future.delayed(const Duration(milliseconds: 200), () {
@@ -93,8 +92,8 @@ class _TermsGateState extends State<TermsGate> with TickerProviderStateMixin {
   }
 
   Future<void> _checkAgreement() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    bool agreed = prefs.getBool('agreed_to_terms') ?? false;
+    final prefs = await SharedPreferences.getInstance();
+    final agreed = prefs.getBool('agreed_to_terms') ?? false;
     if (agreed) {
       _navigateToHome();
     } else {
@@ -103,7 +102,7 @@ class _TermsGateState extends State<TermsGate> with TickerProviderStateMixin {
   }
 
   Future<void> _agree() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final prefs = await SharedPreferences.getInstance();
     await prefs.setBool('agreed_to_terms', true);
     _navigateToHome();
   }
@@ -113,12 +112,12 @@ class _TermsGateState extends State<TermsGate> with TickerProviderStateMixin {
     Navigator.pushNamedAndRemoveUntil(
       context,
       Routes.mainPage,
-      (route) => false,
+      (final route) => false,
     );
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     if (_loading) {
       return const Scaffold(body: Center(child: CircularProgressIndicator()));
     }
@@ -132,8 +131,7 @@ class _TermsGateState extends State<TermsGate> with TickerProviderStateMixin {
             Expanded(
               child: ListView.builder(
                 itemCount: _terms.length,
-                itemBuilder: (context, index) {
-                  return SlideTransition(
+                itemBuilder: (final context, final index) => SlideTransition(
                     position: _slideAnimations[index],
                     child: FadeTransition(
                       opacity: _controllers[index],
@@ -159,15 +157,14 @@ class _TermsGateState extends State<TermsGate> with TickerProviderStateMixin {
                         ),
                       ),
                     ),
-                  );
-                },
+                  ),
               ),
             ),
             Row(
               children: [
                 Checkbox(
                   value: _isChecked,
-                  onChanged: (value) {
+                  onChanged: (final value) {
                     setState(() {
                       _isChecked = value ?? false;
                     });

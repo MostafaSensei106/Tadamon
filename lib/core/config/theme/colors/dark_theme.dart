@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart'
     show ThemeData, ColorScheme, AppBarTheme, Brightness, Color, IconThemeData;
-import 'package:tadamon/core/config/const/sensei_const.dart' show SenseiConst;
+import '../../const/sensei_const.dart' show SenseiConst;
 
 final ThemeData darkTheme = ThemeData(
   colorScheme: const ColorScheme(

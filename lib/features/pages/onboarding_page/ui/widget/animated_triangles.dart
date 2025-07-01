@@ -27,17 +27,15 @@ class _AnimatedTrianglesState extends State<AnimatedTriangles>
       duration: const Duration(seconds: 5),
     )..repeat(reverse: true);
 
-    for (int i = 0; i < 15; i++) {
+    for (var i = 0; i < 15; i++) {
       _triangles.add(Triangle());
     }
   }
 
   @override
-  Widget build(BuildContext context) {
-    return AnimatedBuilder(
+  Widget build(final BuildContext context) => AnimatedBuilder(
       animation: _controller,
-      builder: (context, child) {
-        return CustomPaint(
+      builder: (final context, final child) => CustomPaint(
           painter: TrianglePainter(
             triangles: _triangles,
             animationValue: _controller.value,
@@ -46,10 +44,8 @@ class _AnimatedTrianglesState extends State<AnimatedTriangles>
             borderPaint: _borderPaint,
           ),
           size: Size.infinite,
-        );
-      },
+        ),
     );
-  }
 
   @override
   void dispose() {
@@ -59,11 +55,6 @@ class _AnimatedTrianglesState extends State<AnimatedTriangles>
 }
 
 class Triangle {
-  final double relativeX;
-  final double relativeY;
-  final double size;
-  final double speedFactor;
-  final Color color;
 
   Triangle()
     : relativeX = Random().nextDouble(),
@@ -71,15 +62,14 @@ class Triangle {
       size = Random().nextDouble() * 60 + 30,
       speedFactor = Random().nextDouble() * 0.5 + 0.5,
       color = Colors.red;
+  final double relativeX;
+  final double relativeY;
+  final double size;
+  final double speedFactor;
+  final Color color;
 }
 
 class TrianglePainter extends CustomPainter {
-  final List<Triangle> triangles;
-  final double animationValue;
-  final Size screenSize;
-
-  final Paint trianglePaint;
-  final Paint borderPaint;
 
   TrianglePainter({
     required this.triangles,
@@ -88,9 +78,15 @@ class TrianglePainter extends CustomPainter {
     required this.trianglePaint,
     required this.borderPaint,
   });
+  final List<Triangle> triangles;
+  final double animationValue;
+  final Size screenSize;
+
+  final Paint trianglePaint;
+  final Paint borderPaint;
 
   @override
-  void paint(Canvas canvas, Size size) {
+  void paint(final Canvas canvas, final Size size) {
     for (var triangle in triangles) {
       final baseX = triangle.relativeX * screenSize.width;
       final baseY = triangle.relativeY * screenSize.height;
@@ -116,7 +112,5 @@ class TrianglePainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(covariant TrianglePainter oldDelegate) {
-    return oldDelegate.animationValue != animationValue;
-  }
+  bool shouldRepaint(covariant final TrianglePainter oldDelegate) => oldDelegate.animationValue != animationValue;
 }

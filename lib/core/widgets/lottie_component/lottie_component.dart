@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
-import 'package:tadamon/core/config/fonts/fonts.dart';
+import '../../config/fonts/fonts.dart';
 
 class LottieComponent extends StatelessWidget {
-  final String lottiePath;
-  final String text;
 
   const LottieComponent({
-    super.key,
-    required this.lottiePath,
-    required this.text,
+    required this.lottiePath, required this.text, super.key,
   });
+  final String lottiePath;
+  final String text;
 
   @override
   /// Returns a [Column] widget with a [Lottie.asset] widget and a [Text]
@@ -19,10 +17,8 @@ class LottieComponent extends StatelessWidget {
   /// given [lottiePath], and a width and height of 200 logical pixels. The
   /// [Text] widget is configured with the given [text], and a font size of
   /// 16 logical pixels, and a color of the primary color of the theme.
-  Widget build(BuildContext context) {
-    return Column(
+  Widget build(final BuildContext context) => Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Lottie.asset(
           lottiePath,
@@ -38,5 +34,4 @@ class LottieComponent extends StatelessWidget {
         ),
       ],
     );
-  }
 }

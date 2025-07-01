@@ -2,18 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/generated/l10n.dart';
+import '../../../../../../core/config/const/sensei_const.dart';
+import '../../../../../../generated/l10n.dart';
 
 class GoogleNavBar extends StatefulWidget {
-  final int currentIndex;
-  final ValueChanged<int> onItemTapped;
 
   const GoogleNavBar({
-    super.key,
-    required this.currentIndex,
-    required this.onItemTapped,
+    required this.currentIndex, required this.onItemTapped, super.key,
   });
+  final int currentIndex;
+  final ValueChanged<int> onItemTapped;
 
   @override
   State<GoogleNavBar> createState() => _GoogleNavBarState();
@@ -22,7 +20,7 @@ class GoogleNavBar extends StatefulWidget {
 class _GoogleNavBarState extends State<GoogleNavBar> {
   bool _isVisible = true;
 
-  IconData _getIcon(int index) {
+  IconData _getIcon(final int index) {
     switch (index) {
       case 0:
         return widget.currentIndex == 0
@@ -38,7 +36,7 @@ class _GoogleNavBarState extends State<GoogleNavBar> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     final theme = Theme.of(context);
     return GestureDetector(
       onDoubleTap: () {

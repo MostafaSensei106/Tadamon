@@ -1,18 +1,19 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tadamon/features/pages/search_page/logic/search_event.dart';
-import 'package:tadamon/features/pages/search_page/logic/search_state.dart';
-import 'package:tadamon/features/products_scanner/data/repository/fire_store_repositories.dart';
+
+import '../../../products_scanner/data/repository/fire_store_repositories.dart';
+import 'search_event.dart';
+import 'search_state.dart';
 
 class SearchBloc extends Bloc<SearchEvent, SearchState> {
-  final FireStoreRepository repository;
 
   SearchBloc(this.repository) : super(SearchInitial()) {
     on<FetchSearchResult>(_onFeatchSearchResult);
   }
+  final FireStoreRepository repository;
 
   void _onFeatchSearchResult(
-    FetchSearchResult event,
-    Emitter<SearchState> emit,
+    final FetchSearchResult event,
+    final Emitter<SearchState> emit,
   ) async {
     emit(SearchLoading());
     try {
@@ -20,7 +21,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         event.query,
         event.filter,
       );
-      emit(SearchLoadingSuccess([], products: products));
+      emit(SearchLoadingSuccess(const [], products: products));
     } catch (e) {
       emit(SearchError(e.toString()));
     }

@@ -1,10 +1,11 @@
 import 'dart:async';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+
+import '../../../../../core/config/const/sensei_const.dart';
 
 class ImageNews extends StatefulWidget {
   const ImageNews({super.key});
@@ -36,7 +37,7 @@ class ImageNewsState extends State<ImageNews> {
   }
 
   void _initializeSlider() {
-    _pageController = PageController(initialPage: 0);
+    _pageController = PageController();
     _startAutoSlide();
 
     _pageController.addListener(() {
@@ -74,12 +75,11 @@ class ImageNewsState extends State<ImageNews> {
     _startAutoSlide();
   }
 
-  Widget _buildImageSlide(String imageUrl) {
-    return CachedNetworkImage(
+  Widget _buildImageSlide(final String imageUrl) => CachedNetworkImage(
       imageUrl: imageUrl,
       fit: BoxFit.cover,
       filterQuality: FilterQuality.medium,
-      errorWidget: (context, url, error) => Container(
+      errorWidget: (final context, final url, final error) => Container(
         decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.surfaceContainerHigh,
         ),
@@ -95,12 +95,9 @@ class ImageNewsState extends State<ImageNews> {
           ],
         ),
       ),
-      useOldImageOnUrlChange: false,
     );
-  }
 
-  Widget _buildPageIndicator() {
-    return Padding(
+  Widget _buildPageIndicator() => Padding(
       padding: EdgeInsets.only(bottom: SenseiConst.padding.h),
       child: SmoothPageIndicator(
         controller: _pageController,
@@ -114,7 +111,7 @@ class ImageNewsState extends State<ImageNews> {
           activeDotColor: Theme.of(context).colorScheme.primaryContainer,
           expansionFactor: 2,
         ),
-        onDotClicked: (index) {
+        onDotClicked: (final index) {
           _pageController.animateToPage(
             index,
             duration: _slideTransitionDuration,
@@ -123,11 +120,9 @@ class ImageNewsState extends State<ImageNews> {
         },
       ),
     );
-  }
 
   @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
+  Widget build(final BuildContext context) => GestureDetector(
       onTapDown: (_) => _pauseAutoSlide(),
       onTapUp: (_) => _resumeAutoSlide(),
       child: Container(
@@ -146,13 +141,11 @@ class ImageNewsState extends State<ImageNews> {
                   aspectRatio: 16 / 9,
                   child: PageView.builder(
                     controller: _pageController,
-                    pageSnapping: true,
-                    scrollDirection: Axis.horizontal,
                     physics: const ScrollPhysics(),
                     itemCount: _imageUrls.length,
-                    itemBuilder: (context, index) =>
+                    itemBuilder: (final context, final index) =>
                         _buildImageSlide(_imageUrls[index]),
-                    onPageChanged: (index) {
+                    onPageChanged: (final index) {
                       setState(() => _currentPage = index);
                     },
                   ),
@@ -164,7 +157,6 @@ class ImageNewsState extends State<ImageNews> {
         ),
       ),
     );
-  }
 
   @override
   void dispose() {

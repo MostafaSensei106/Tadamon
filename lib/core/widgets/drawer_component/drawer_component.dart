@@ -22,13 +22,23 @@ import 'package:flutter/material.dart'
 import 'package:flutter/services.dart' show HapticFeedback;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:tadamon/core/config/const/app_enums.dart'
+import '../../config/const/app_enums.dart'
     show ListTileGroupType;
-import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/core/widgets/divider.dart'
+import '../../config/const/sensei_const.dart';
+import '../divider.dart'
     show FullAppDividerComponents;
 
 class ListTileIconComponent extends StatelessWidget {
+
+  const ListTileIconComponent({
+    required this.leading, required this.title, required this.groupType, super.key,
+    this.subtitle,
+    this.trailing,
+    this.onTap,
+    this.useinBorderRadius = false,
+    this.selected,
+    this.useMargin = true,
+  });
   final IconData leading;
   final String title;
   final String? subtitle;
@@ -36,19 +46,8 @@ class ListTileIconComponent extends StatelessWidget {
   final VoidCallback? onTap;
   final bool? selected;
   final bool useinBorderRadius;
+  final bool useMargin;
   final ListTileGroupType groupType;
-
-  const ListTileIconComponent({
-    super.key,
-    required this.leading,
-    required this.title,
-    this.subtitle,
-    this.trailing,
-    this.onTap,
-    this.useinBorderRadius = false,
-    required this.groupType,
-    this.selected,
-  });
 
   /// Calculates the border radius for the [ListTile] based on the [ListTileGroupType]
   /// and [useinBorderRadius].
@@ -88,12 +87,13 @@ class ListTileIconComponent extends StatelessWidget {
   /// The border radius is configured based on the [groupType] and
   /// [useinBorderRadius] properties, and the background color is set
   /// according to the current theme's color scheme.
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     final borderRadius = _getBorderRadius();
     return Container(
       margin:
-          groupType == ListTileGroupType.top ||
-              groupType == ListTileGroupType.single
+          useMargin &&
+              (groupType == ListTileGroupType.top ||
+                  groupType == ListTileGroupType.single)
           ? EdgeInsets.only(top: SenseiConst.margin.h)
           : null,
       decoration: BoxDecoration(
@@ -114,10 +114,13 @@ class ListTileIconComponent extends StatelessWidget {
                 leading: Container(
                   padding: const EdgeInsets.all(SenseiConst.padding),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius),
+                    borderRadius: BorderRadius.circular(
+                      SenseiConst.inBorderRadius,
+                    ),
                     color: Theme.of(context).colorScheme.surfaceContainerHigh,
                   ),
-                  child: Icon(leading,size: SenseiConst.iconSize,)),
+                  child: Icon(leading, size: SenseiConst.iconSize),
+                ),
                 title: Text(title),
                 subtitle: subtitle != null
                     ? Text(subtitle!, overflow: TextOverflow.ellipsis)
@@ -126,7 +129,6 @@ class ListTileIconComponent extends StatelessWidget {
                 horizontalTitleGap: 13,
                 contentPadding: const EdgeInsets.symmetric(
                   horizontal: 8,
-                  vertical: 0,
                 ),
               ),
             ),

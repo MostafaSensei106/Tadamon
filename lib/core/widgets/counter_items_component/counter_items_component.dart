@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/core/config/fonts/fonts.dart';
+import '../../config/const/sensei_const.dart';
+import '../../config/fonts/fonts.dart';
 
 class CounterItemsComponent extends StatefulWidget {
+
+  const CounterItemsComponent({
+    required this.icon, required this.title, required this.targetValue, super.key,
+  });
   final IconData icon;
   final String title;
   final int targetValue;
-
-  const CounterItemsComponent({
-    super.key,
-    required this.icon,
-    required this.title,
-    required this.targetValue,
-  });
 
   @override
   State<CounterItemsComponent> createState() => _CounterItemsComponentState();
@@ -53,14 +50,14 @@ class _CounterItemsComponentState extends State<CounterItemsComponent>
   /// This is important in case the target value changes while the animation is
   /// still running. In that case, the animation should be updated to animate
   /// to the new target value.
-  void didUpdateWidget(CounterItemsComponent oldWidget) {
+  void didUpdateWidget(final CounterItemsComponent oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (widget.targetValue != oldWidget.targetValue) {
       _updateAnimation(widget.targetValue);
     }
   }
 
-  void _updateAnimation(int targetValue) {
+  void _updateAnimation(final int targetValue) {
     _animation =
         IntTween(begin: _currentValue, end: targetValue).animate(_controller)
           ..addListener(() {
@@ -110,8 +107,7 @@ class _CounterItemsComponentState extends State<CounterItemsComponent>
   /// 5. A [Text] widget with the current value of the counter, a style of a
   ///    [TextStyle] with a [fontSize] of 18 logical pixels, a [fontWeight] of
   ///    [FontWeight.bold], and a [textAlign] of [TextAlign.center].
-  Widget build(BuildContext context) {
-    return Container(
+  Widget build(final BuildContext context) => Container(
       margin: EdgeInsets.only(top: SenseiConst.margin.h),
       padding: const EdgeInsets.all(SenseiConst.padding),
       decoration: BoxDecoration(
@@ -119,7 +115,6 @@ class _CounterItemsComponentState extends State<CounterItemsComponent>
         color: Theme.of(context).colorScheme.surfaceContainer,
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
             padding: const EdgeInsets.all(SenseiConst.padding),
@@ -143,5 +138,4 @@ class _CounterItemsComponentState extends State<CounterItemsComponent>
         ],
       ),
     );
-  }
 }

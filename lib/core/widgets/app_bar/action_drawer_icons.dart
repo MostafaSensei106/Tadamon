@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:tadamon/core/config/const/sensei_const.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../config/const/sensei_const.dart';
 
 class ActionDrawerIcon extends StatelessWidget {
   const ActionDrawerIcon({super.key});
@@ -10,7 +11,7 @@ class ActionDrawerIcon extends StatelessWidget {
   ///
   /// Calls [HapticFeedback.vibrate] to generate a haptic feedback,
   /// then calls [Scaffold.of(context).openDrawer] to open the drawer.
-  void openDrawer(BuildContext context) {
+  void openDrawer(final BuildContext context) {
     HapticFeedback.vibrate();
     Scaffold.of(context).openDrawer();
   }
@@ -31,8 +32,7 @@ class ActionDrawerIcon extends StatelessWidget {
   ///
   /// The [_ActionDrawerContainer] widget has a [_ActionDrawerIcon] widget as
   /// child, which is a [Icon] widget with the [Icons.more_vert_rounded] icon.
-  Widget build(BuildContext context) {
-    return Padding(
+  Widget build(final BuildContext context) => Padding(
       padding: const EdgeInsets.all(SenseiConst.padding),
       child: Material(
         color: Colors.transparent,
@@ -43,13 +43,12 @@ class ActionDrawerIcon extends StatelessWidget {
         ),
       ),
     );
-  }
 }
 
 class _ActionDrawerContainer extends StatelessWidget {
-  final Widget child;
 
   const _ActionDrawerContainer({required this.child});
+  final Widget child;
 
   @override
   /// Returns a [Container] widget with the given properties.
@@ -62,8 +61,7 @@ class _ActionDrawerContainer extends StatelessWidget {
   /// value of 0.3.
   ///
   /// The [child] is passed as-is.
-  Widget build(BuildContext context) {
-    return Container(
+  Widget build(final BuildContext context) => Container(
       padding: const EdgeInsets.all(5),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius),
@@ -73,16 +71,13 @@ class _ActionDrawerContainer extends StatelessWidget {
       ),
       child: child,
     );
-  }
 }
 
 class _ActionDrawerIcon extends StatelessWidget {
   @override
-  Widget build(BuildContext context) {
-    return Icon(
+  Widget build(final BuildContext context) => Icon(
       Icons.more_horiz_rounded,
       size: SenseiConst.iconSize.sp,
       color: Colors.white,
     );
-  }
 }

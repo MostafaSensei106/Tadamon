@@ -27,7 +27,7 @@ class S {
 
   static const AppLocalizationDelegate delegate = AppLocalizationDelegate();
 
-  static Future<S> load(Locale locale) {
+  static Future<S> load(final Locale locale) {
     final name = (locale.countryCode?.isEmpty ?? false)
         ? locale.languageCode
         : locale.toString();
@@ -41,7 +41,7 @@ class S {
     });
   }
 
-  static S of(BuildContext context) {
+  static S of(final BuildContext context) {
     final instance = S.maybeOf(context);
     assert(
       instance != null,
@@ -50,546 +50,434 @@ class S {
     return instance!;
   }
 
-  static S? maybeOf(BuildContext context) {
-    return Localizations.of<S>(context, S);
-  }
+  static S? maybeOf(final BuildContext context) => Localizations.of<S>(context, S);
 
   /// `تضامن`
-  String get appName {
-    return Intl.message(
+  String get appName => Intl.message(
       'تضامن',
       name: 'appName',
       desc: 'اسم التطبيق',
       args: [],
     );
-  }
 
   /// `اللهم الطف بإخواننا، وثبّت أقدامهم، وانصرهم، وأعزّ بفضلك من نصرهم، وأذلّ بقدرتك من خذلهم.`
-  String get appDescription {
-    return Intl.message(
+  String get appDescription => Intl.message(
       'اللهم الطف بإخواننا، وثبّت أقدامهم، وانصرهم، وأعزّ بفضلك من نصرهم، وأذلّ بقدرتك من خذلهم.',
       name: 'appDescription',
       desc: 'وصف التطبيق',
       args: [],
     );
-  }
 
   /// `خطأ في التطبيق`
-  String get errorHandle {
-    return Intl.message(
+  String get errorHandle => Intl.message(
       'خطأ في التطبيق',
       name: 'errorHandle',
       desc: 'خطأ في  تطبيق  تضامن',
       args: [],
     );
-  }
 
   /// `لم يتم العثور على الصفحة`
-  String get noPage {
-    return Intl.message(
+  String get noPage => Intl.message(
       'لم يتم العثور على الصفحة',
       name: 'noPage',
       desc: 'لم يتم العثور على الصفحة',
       args: [],
     );
-  }
 
   /// `لم يتم العثور على الصفحة`
-  String get noRoutes {
-    return Intl.message(
+  String get noRoutes => Intl.message(
       'لم يتم العثور على الصفحة',
       name: 'noRoutes',
       desc: 'لم يتم العثور على الصفحة',
       args: [],
     );
-  }
 
   /// ` الرجوع`
-  String get back {
-    return Intl.message(' الرجوع', name: 'back', desc: 'زر الرجوع', args: []);
-  }
+  String get back => Intl.message(' الرجوع', name: 'back', desc: 'زر الرجوع', args: []);
 
   /// `الرئيسية`
-  String get home {
-    return Intl.message(
+  String get home => Intl.message(
       'الرئيسية',
       name: 'home',
       desc: 'العنوان الرئيسي في التطبيق',
       args: [],
     );
-  }
 
   /// `بحث`
-  String get search {
-    return Intl.message('بحث', name: 'search', desc: 'زر البحث', args: []);
-  }
+  String get search => Intl.message('بحث', name: 'search', desc: 'زر البحث', args: []);
 
   /// `السجلات`
-  String get logs {
-    return Intl.message(
+  String get logs => Intl.message(
       'السجلات',
       name: 'logs',
       desc: 'صفحة السجلات',
       args: [],
     );
-  }
 
   /// `فحص الباركود`
-  String get scanBarcode {
-    return Intl.message(
+  String get scanBarcode => Intl.message(
       'فحص الباركود',
       name: 'scanBarcode',
       desc: 'زر فحص الباركود',
       args: [],
     );
-  }
 
   /// `تحليل الصور`
-  String get imageAnalysis {
-    return Intl.message(
+  String get imageAnalysis => Intl.message(
       'تحليل الصور',
       name: 'imageAnalysis',
       desc: 'تحليل الصور',
       args: [],
     );
-  }
 
   /// `تعديل النص`
-  String get editText {
-    return Intl.message(
+  String get editText => Intl.message(
       'تعديل النص',
       name: 'editText',
       desc: 'تعديل النصوص',
       args: [],
     );
-  }
 
   /// `خريطة فلسطين`
-  String get palatineMap {
-    return Intl.message(
+  String get palatineMap => Intl.message(
       'خريطة فلسطين',
       name: 'palatineMap',
       desc: 'خريطة فلسطين',
       args: [],
     );
-  }
 
   /// `تبرع لغزة`
-  String get donate {
-    return Intl.message(
+  String get donate => Intl.message(
       'تبرع لغزة',
       name: 'donate',
       desc: 'زر التبرع لغزة',
       args: [],
     );
-  }
 
   /// `المنتجات التي تمت مراجعتها`
-  String get scanedProducts {
-    return Intl.message(
+  String get scanedProducts => Intl.message(
       'المنتجات التي تمت مراجعتها',
       name: 'scanedProducts',
       desc: 'عدد المنتجات التي تمت مراجعتها',
       args: [],
     );
-  }
 
   /// `المنتجات التي تم دعمها`
-  String get supportedProducts {
-    return Intl.message(
+  String get supportedProducts => Intl.message(
       'المنتجات التي تم دعمها',
       name: 'supportedProducts',
       desc: 'عدد المنتجات التي تم دعمها',
       args: [],
     );
-  }
 
   /// `لون واجهة التطبيق`
-  String get systemTheme {
-    return Intl.message(
+  String get systemTheme => Intl.message(
       'لون واجهة التطبيق',
       name: 'systemTheme',
       desc: 'إعدادات لون الواجهة',
       args: [],
     );
-  }
 
   /// `مطابقة لون النظام`
-  String get followSystemTheme {
-    return Intl.message(
+  String get followSystemTheme => Intl.message(
       'مطابقة لون النظام',
       name: 'followSystemTheme',
       desc: 'مطابقة لون التطبيق مع النظام',
       args: [],
     );
-  }
 
   /// `الوضع الداكن`
-  String get darkTheme {
-    return Intl.message(
+  String get darkTheme => Intl.message(
       'الوضع الداكن',
       name: 'darkTheme',
       desc: 'الوضع الداكن',
       args: [],
     );
-  }
 
   /// `الوضع الفاتح`
-  String get lightTheme {
-    return Intl.message(
+  String get lightTheme => Intl.message(
       'الوضع الفاتح',
       name: 'lightTheme',
       desc: 'الوضع الفاتح',
       args: [],
     );
-  }
 
   /// `التبديل إلى الوضع الداكن`
-  String get switchToDarkTheme {
-    return Intl.message(
+  String get switchToDarkTheme => Intl.message(
       'التبديل إلى الوضع الداكن',
       name: 'switchToDarkTheme',
       desc: 'التبديل إلى الوضع الداكن',
       args: [],
     );
-  }
 
   /// `التبديل إلى الوضع الفاتح`
-  String get switchToLightTheme {
-    return Intl.message(
+  String get switchToLightTheme => Intl.message(
       'التبديل إلى الوضع الفاتح',
       name: 'switchToLightTheme',
       desc: 'التبديل إلى الوضع الفاتح',
       args: [],
     );
-  }
 
   /// `تضامن دون إنترنت`
-  String get appOffLine {
-    return Intl.message(
+  String get appOffLine => Intl.message(
       'تضامن دون إنترنت',
       name: 'appOffLine',
       desc: 'حالة التطبيق عند عدم الاتصال بالإنترنت',
       args: [],
     );
-  }
 
   /// `التطبيق غير متصل.`
-  String get appOffLineMassageDontRunning {
-    return Intl.message(
+  String get appOffLineMassageDontRunning => Intl.message(
       'التطبيق غير متصل.',
       name: 'appOffLineMassageDontRunning',
       desc: 'رسالة عدم الاتصال بالإنترنت',
       args: [],
     );
-  }
 
   /// `التطبيق يعمل بنجاح.`
-  String get appOnLineMassageRunning {
-    return Intl.message(
+  String get appOnLineMassageRunning => Intl.message(
       'التطبيق يعمل بنجاح.',
       name: 'appOnLineMassageRunning',
       desc: 'رسالة نجاح تشغيل التطبيق',
       args: [],
     );
-  }
 
   /// `انتظر ...`
-  String get appOflineLoading {
-    return Intl.message(
+  String get appOflineLoading => Intl.message(
       'انتظر ...',
       name: 'appOflineLoading',
       desc: 'تحميل بيانات التطبيق دون اتصال',
       args: [],
     );
-  }
 
   /// `تحميل قائمة المنتجات`
-  String get enableOnline {
-    return Intl.message(
+  String get enableOnline => Intl.message(
       'تحميل قائمة المنتجات',
       name: 'enableOnline',
       desc: 'تحميل قائمة المنتجات',
       args: [],
     );
-  }
 
   /// `تشغيل التطبيق بدون إنترنت.`
-  String get enableOnlineMassage {
-    return Intl.message(
+  String get enableOnlineMassage => Intl.message(
       'تشغيل التطبيق بدون إنترنت.',
       name: 'enableOnlineMassage',
       desc: 'رسالة عند تشغيل التطبيق بدون إنترنت',
       args: [],
     );
-  }
 
   /// `حذف السجلات`
-  String get clearLogs {
-    return Intl.message(
+  String get clearLogs => Intl.message(
       'حذف السجلات',
       name: 'clearLogs',
       desc: 'حذف السجلات',
       args: [],
     );
-  }
 
   /// `مسح سجلات المنتجات في التطبيق.`
-  String get clearLogsMassage {
-    return Intl.message(
+  String get clearLogsMassage => Intl.message(
       'مسح سجلات المنتجات في التطبيق.',
       name: 'clearLogsMassage',
       desc: 'مسح سجلات المنتجات في التطبيق',
       args: [],
     );
-  }
 
   /// `الأسئلة الشائعة`
-  String get howToUse {
-    return Intl.message(
+  String get howToUse => Intl.message(
       'الأسئلة الشائعة',
       name: 'howToUse',
       desc: 'الأسئلة الشائعة',
       args: [],
     );
-  }
 
   /// `تعرف على طريقة استخدام التطبيق.`
-  String get howToUseMassage {
-    return Intl.message(
+  String get howToUseMassage => Intl.message(
       'تعرف على طريقة استخدام التطبيق.',
       name: 'howToUseMassage',
       desc: 'طريقة استخدام التطبيق',
       args: [],
     );
-  }
 
   /// `الإبلاغ عن منتج`
-  String get reportProduct {
-    return Intl.message(
+  String get reportProduct => Intl.message(
       'الإبلاغ عن منتج',
       name: 'reportProduct',
       desc: 'الإبلاغ عن منتج',
       args: [],
     );
-  }
 
   /// `ساعدنا في تحسين التطبيق.`
-  String get reportProductMassage {
-    return Intl.message(
+  String get reportProductMassage => Intl.message(
       'ساعدنا في تحسين التطبيق.',
       name: 'reportProductMassage',
       desc: 'مساعدة في تحسين التطبيق',
       args: [],
     );
-  }
 
   /// `تجريبي`
-  String get test {
-    return Intl.message('تجريبي', name: 'test', desc: 'اختبار', args: []);
-  }
+  String get test => Intl.message('تجريبي', name: 'test', desc: 'اختبار', args: []);
 
   /// `تفاصيل المنتج`
-  String get sheetTitleProductInfo {
-    return Intl.message(
+  String get sheetTitleProductInfo => Intl.message(
       'تفاصيل المنتج',
       name: 'sheetTitleProductInfo',
       desc: 'عنوان تفاصيل المنتج',
       args: [],
     );
-  }
 
   /// `المطور`
-  String get developer {
-    return Intl.message(
+  String get developer => Intl.message(
       'المطور',
       name: 'developer',
       desc: 'اسم المطور',
       args: [],
     );
-  }
 
   /// `Mostafa Mahmoud`
-  String get mostafaMahmoud {
-    return Intl.message(
+  String get mostafaMahmoud => Intl.message(
       'Mostafa Mahmoud',
       name: 'mostafaMahmoud',
       desc: 'اسم المطور بالكامل',
       args: [],
     );
-  }
 
   /// `ReadMe`
-  String get readMe {
-    return Intl.message(
+  String get readMe => Intl.message(
       'ReadMe',
       name: 'readMe',
       desc: 'زر قراءة مستند المشروع',
       args: [],
     );
-  }
 
   /// `رابط إلى مستودع التطبيق على جيت هاب.`
-  String get readMeMassage {
-    return Intl.message(
+  String get readMeMassage => Intl.message(
       'رابط إلى مستودع التطبيق على جيت هاب.',
       name: 'readMeMassage',
       desc: 'رابط إلى مستودع التطبيق على جيت هاب',
       args: [],
     );
-  }
 
   /// `آخر التحديثات`
-  String get letastUpdate {
-    return Intl.message(
+  String get letastUpdate => Intl.message(
       'آخر التحديثات',
       name: 'letastUpdate',
       desc: 'آخر التحديثات',
       args: [],
     );
-  }
 
   /// `اطلع على التحديثات وسجل التغييرات.`
-  String get letestUpdateMassage {
-    return Intl.message(
+  String get letestUpdateMassage => Intl.message(
       'اطلع على التحديثات وسجل التغييرات.',
       name: 'letestUpdateMassage',
       desc: 'تفاصيل آخر تحديث',
       args: [],
     );
-  }
 
   /// `تذكرة على جيت هاب`
-  String get githubTiket {
-    return Intl.message(
+  String get githubTiket => Intl.message(
       'تذكرة على جيت هاب',
       name: 'githubTiket',
       desc: 'إنشاء تذكرة على جيت هاب',
       args: [],
     );
-  }
 
   /// `الإبلاغ عن خطأ أو اقتراح ميزة جديدة.`
-  String get githubTiketMassage {
-    return Intl.message(
+  String get githubTiketMassage => Intl.message(
       'الإبلاغ عن خطأ أو اقتراح ميزة جديدة.',
       name: 'githubTiketMassage',
       desc: 'الإبلاغ عن خطأ أو اقتراح ميزة جديدة',
       args: [],
     );
-  }
 
   /// `قناة تلغرام`
-  String get telegramChannel {
-    return Intl.message(
+  String get telegramChannel => Intl.message(
       'قناة تلغرام',
       name: 'telegramChannel',
       desc: 'قناة تلغرام',
       args: [],
     );
-  }
 
   /// `رابط إلى قناة تلغرام.`
-  String get telegramChannelMassage {
-    return Intl.message(
+  String get telegramChannelMassage => Intl.message(
       'رابط إلى قناة تلغرام.',
       name: 'telegramChannelMassage',
       desc: 'رابط إلى قناة تلغرام',
       args: [],
     );
-  }
 
   /// `معلومات عن التطبيق`
-  String get about {
-    return Intl.message(
+  String get about => Intl.message(
       'معلومات عن التطبيق',
       name: 'about',
       desc: 'صفحة معلومات عن التطبيق',
       args: [],
     );
-  }
 
   /// `حول تطبيق تضامن.`
-  String get aboutTadamon {
-    return Intl.message(
+  String get aboutTadamon => Intl.message(
       'حول تطبيق تضامن.',
       name: 'aboutTadamon',
       desc: 'حول تطبيق تضامن',
       args: [],
     );
-  }
 
   /// `رسالة من المطور`
-  String get contactDev {
-    return Intl.message(
+  String get contactDev => Intl.message(
       'رسالة من المطور',
       name: 'contactDev',
       desc: 'زر التواصل مع المطور',
       args: [],
     );
-  }
 
   /// `لا توجد رسالة حالياً.`
-  String get devMassage {
-    return Intl.message(
+  String get devMassage => Intl.message(
       'لا توجد رسالة حالياً.',
       name: 'devMassage',
       desc: 'رسالة المطور',
       args: [],
     );
-  }
 
   /// `شكراً لاستخدام تطبيق تضامن.`
-  String get devThx {
-    return Intl.message(
+  String get devThx => Intl.message(
       'شكراً لاستخدام تطبيق تضامن.',
       name: 'devThx',
       desc: 'شكر من المطور',
       args: [],
     );
-  }
 
   /// `ادعم المطور.`
-  String get devDonate {
-    return Intl.message(
+  String get devDonate => Intl.message(
       'ادعم المطور.',
       name: 'devDonate',
       desc: 'التبرع للمطور',
       args: [],
     );
-  }
 
   /// `تابعني على مواقع التواصل الاجتماعي.`
-  String get contactDevMassage {
-    return Intl.message(
+  String get contactDevMassage => Intl.message(
       'تابعني على مواقع التواصل الاجتماعي.',
       name: 'contactDevMassage',
       desc: 'طرق التواصل مع المطور',
       args: [],
     );
-  }
 
   /// `إغلاق`
-  String get close {
-    return Intl.message('إغلاق', name: 'close', desc: 'زر الإغلاق', args: []);
-  }
+  String get close => Intl.message('إغلاق', name: 'close', desc: 'زر الإغلاق', args: []);
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
   const AppLocalizationDelegate();
 
-  List<Locale> get supportedLocales {
-    return const <Locale>[Locale.fromSubtags(languageCode: 'ar')];
-  }
+  List<Locale> get supportedLocales => const <Locale>[Locale.fromSubtags(languageCode: 'ar')];
 
   @override
-  bool isSupported(Locale locale) => _isSupported(locale);
+  bool isSupported(final Locale locale) => _isSupported(locale);
   @override
-  Future<S> load(Locale locale) => S.load(locale);
+  Future<S> load(final Locale locale) => S.load(locale);
   @override
-  bool shouldReload(AppLocalizationDelegate old) => false;
+  bool shouldReload(final AppLocalizationDelegate old) => false;
 
-  bool _isSupported(Locale locale) {
+  bool _isSupported(final Locale locale) {
     for (var supportedLocale in supportedLocales) {
       if (supportedLocale.languageCode == locale.languageCode) {
         return true;

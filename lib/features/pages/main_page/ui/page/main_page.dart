@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/core/widgets/app_drawer/widgets/drawer.dart';
-import 'package:tadamon/core/widgets/app_bar/app_bar.dart';
-import 'package:tadamon/features/pages/main_page/ui/widget/google_nav_bar/google_nav_bar.dart';
-import 'package:tadamon/features/pages/main_page/logic/cubit/main_page_cubit.dart';
-import 'package:tadamon/features/pages/main_page/logic/cubit/main_page_state.dart';
-import 'package:tadamon/features/pages/main_page/ui/widget/main_page_container.dart';
-import 'package:tadamon/generated/l10n.dart';
+
+import '../../../../../core/config/const/sensei_const.dart';
+import '../../../../../core/widgets/app_bar/app_bar.dart';
+import '../../../../../core/widgets/app_drawer/widgets/drawer.dart';
+import '../../../../../generated/l10n.dart';
+import '../../logic/cubit/main_page_cubit.dart';
+import '../../logic/cubit/main_page_state.dart';
+import '../widget/google_nav_bar/google_nav_bar.dart';
+import '../widget/main_page_container.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -65,7 +66,7 @@ class _MainPageState extends State<MainPage>
   /// The [index] parameter corresponds to the index of the page that
   /// the user has navigated to in the `PageView`.
 
-  void _onPageChanged(int index) {
+  void _onPageChanged(final int index) {
     _pageCubit.changePage(AppPage.values[index]);
   }
 
@@ -75,7 +76,7 @@ class _MainPageState extends State<MainPage>
   /// It animates the page to the selected index using the `PageController`.
   ///
   /// The [index] parameter is the index of the page that the user navigated to.
-  void onItemTapped(int index) {
+  void onItemTapped(final int index) {
     _pageController.animateToPage(
       index,
       duration: const Duration(milliseconds: 300),
@@ -91,7 +92,7 @@ class _MainPageState extends State<MainPage>
   ///
   /// The [page] parameter represents the current page in the application.
 
-  String _getAppBarTitle(AppPage page) {
+  String _getAppBarTitle(final AppPage page) {
     switch (_pageCubit.state.currentPage.index) {
       case 0:
         return S.of(context).home;
@@ -125,13 +126,12 @@ class _MainPageState extends State<MainPage>
   ///
   /// The [_getAppBarTitle] method is used to get the title of the app bar
   /// based on the current page index of the [PageCubit] state.
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     super.build(context);
     return BlocProvider.value(
       value: _pageCubit,
       child: BlocBuilder<PageCubit, MainPageState>(
-        builder: (context, state) {
-          return Scaffold(
+        builder: (final context, final state) => Scaffold(
             resizeToAvoidBottomInset: false,
             key: const ValueKey<String>('main_page_scaffold'),
             backgroundColor: const Color(0xffF26A5A),
@@ -163,8 +163,7 @@ class _MainPageState extends State<MainPage>
                 ],
               ),
             ),
-          );
-        },
+          ),
       ),
     );
   }

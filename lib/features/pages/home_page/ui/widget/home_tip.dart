@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/core/config/fonts/fonts.dart';
-import 'package:tadamon/generated/l10n.dart';
+import '../../../../../core/config/const/sensei_const.dart';
+import '../../../../../core/config/fonts/fonts.dart';
+import '../../../../../generated/l10n.dart';
 
 class HomeTip extends StatefulWidget {
   const HomeTip({super.key});
@@ -90,8 +90,7 @@ class HomeTipState extends State<HomeTip> with SingleTickerProviderStateMixin {
   ///
   /// The [ListTile] widget has a [Text] widget as subtitle, which is
   /// configured with the [S.of(context).AppDescription] text.
-  Widget build(BuildContext context) {
-    return FadeTransition(
+  Widget build(final BuildContext context) => FadeTransition(
       opacity: _animation,
       child: SizeTransition(
         sizeFactor: _animation,
@@ -127,5 +126,4 @@ class HomeTipState extends State<HomeTip> with SingleTickerProviderStateMixin {
         ),
       ),
     );
-  }
 }

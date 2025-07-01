@@ -1,36 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:tadamon/core/config/const/sensei_const.dart';
+import '../../config/const/sensei_const.dart';
 
 class DilogComponent extends StatelessWidget {
+
+  const DilogComponent({
+    required this.title, required this.message, required this.actions, required this.icon, super.key,
+  });
   final String title;
   final String message;
   final IconData? icon;
   final List<Widget>? actions;
-
-  const DilogComponent({
-    super.key,
-    required this.title,
-    required this.message,
-    required this.actions,
-    required this.icon,
-  });
 
   /// Show the dialog component
   ///
   /// This function will show the DilogComponent in the given context.
   /// It will create a new instance of DilogComponent with the given
   /// title, message, actions and icon.
-  void show(BuildContext context) {
+  void show(final BuildContext context) {
     showDialog(
       context: context,
-      builder: (BuildContext context) {
-        return DilogComponent(
+      builder: (final BuildContext context) => DilogComponent(
           title: title,
           message: message,
           actions: actions,
           icon: icon,
-        );
-      },
+        ),
     );
   }
 
@@ -53,8 +47,7 @@ class DilogComponent extends StatelessWidget {
   ///
   /// The [Container] widget has a [Text] widget as child, which is
   /// configured with the given [message] and no style.
-  Widget build(BuildContext context) {
-    return AlertDialog(
+  Widget build(final BuildContext context) => AlertDialog(
       elevation: 0,
       icon: Icon(icon, size: SenseiConst.iconSize),
       shape: RoundedRectangleBorder(
@@ -71,5 +64,4 @@ class DilogComponent extends StatelessWidget {
       ),
       actions: actions,
     );
-  }
 }

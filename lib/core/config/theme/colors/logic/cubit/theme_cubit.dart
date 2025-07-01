@@ -2,24 +2,24 @@ import 'dart:ui' show PlatformDispatcher;
 
 import 'package:flutter/material.dart' show ThemeMode, Brightness;
 import 'package:flutter_bloc/flutter_bloc.dart' show Cubit;
-import 'package:tadamon/core/config/theme/colors/logic/cubit/theme_shared_preferences.dart'
+import 'theme_shared_preferences.dart'
     show ThemeSharedPreferences;
-import 'package:tadamon/core/config/theme/colors/logic/cubit/theme_state.dart'
+import 'theme_state.dart'
     show ThemeState;
 
 class ThemeCubit extends Cubit<ThemeState> {
-  final ThemeSharedPreferences _themeSharedPreferences;
 
-  ThemeCubit({required ThemeSharedPreferences themeSharedPreferences})
+  ThemeCubit({required final ThemeSharedPreferences themeSharedPreferences})
     : _themeSharedPreferences = themeSharedPreferences,
       super(const ThemeState(isDark: false, themeMode: ThemeMode.system));
+  final ThemeSharedPreferences _themeSharedPreferences;
 
   /// Persists the given [ThemeState] to SharedPreferences.
   ///
   /// This function will save the current theme state to the device's
   /// SharedPreferences, and is intended to be called whenever the user
   /// changes the theme.
-  Future<void> _persistTheme(ThemeState state) async {
+  Future<void> _persistTheme(final ThemeState state) async {
     await _themeSharedPreferences.setTheme(state.isDark);
     await _themeSharedPreferences.setThemeMode(state.themeMode);
   }
@@ -33,7 +33,7 @@ class ThemeCubit extends Cubit<ThemeState> {
   ///
   /// Emits a new [ThemeState] with the chosen [isDark] and
   /// [ThemeMode].
-  Future<void> toggleTheme(bool isDark) async {
+  Future<void> toggleTheme(final bool isDark) async {
     final newState = state.copyWith(
       isDark: isDark,
       themeMode: isDark ? ThemeMode.dark : ThemeMode.light,

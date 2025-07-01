@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/core/widgets/expansion_tile_component/expansion_tile_component.dart';
-import 'package:tadamon/features/pages/help_user_page/logic/cubit/help_user_cubit.dart';
-import 'package:tadamon/features/pages/help_user_page/logic/cubit/help_user_state.dart';
-import 'package:tadamon/core/widgets/app_bar/side_page_app_bar.dart';
-import 'package:tadamon/generated/l10n.dart';
+
+import '../../../../../core/config/const/sensei_const.dart';
+import '../../../../../core/widgets/app_bar/side_page_app_bar.dart';
+import '../../../../../core/widgets/expansion_tile_component/expansion_tile_component.dart';
+import '../../../../../generated/l10n.dart';
+import '../../logic/cubit/help_user_cubit.dart';
+import '../../logic/cubit/help_user_state.dart';
 
 class HelpUserPageView extends StatefulWidget {
   const HelpUserPageView({super.key});
@@ -20,21 +21,19 @@ class _HelpUserPageViewState extends State<HelpUserPageView>
   late final List<AnimationController> _controllers;
   late final List<Animation<Offset>> _slideAnimations;
 
-  void _initAnimations(final dynamic qnaList) async {
+  void _initAnimations(final qnaList) async {
     _controllers = List.generate(
       qnaList.length,
-      (index) => AnimationController(
+      (final index) => AnimationController(
         vsync: this,
         duration: Duration(milliseconds: 300 + (index * 75)),
       ),
     );
 
-    _slideAnimations = _controllers.map((controller) {
-      return Tween<Offset>(
+    _slideAnimations = _controllers.map((final controller) => Tween<Offset>(
         begin: const Offset(1, 0),
         end: Offset.zero,
-      ).animate(CurvedAnimation(parent: controller, curve: Curves.easeOut));
-    }).toList();
+      ).animate(CurvedAnimation(parent: controller, curve: Curves.easeOut))).toList();
 
     // Delay start a bit for UX
     Future.delayed(const Duration(milliseconds: 200), () {
@@ -45,14 +44,13 @@ class _HelpUserPageViewState extends State<HelpUserPageView>
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(final BuildContext context) => Scaffold(
       appBar: SidePageAppBar(
         title: S.of(context).howToUse,
         useBackButton: true,
       ),
       body: BlocBuilder<HelpUserCubit, HelpUserState>(
-        builder: (context, state) {
+        builder: (final context, final state) {
           if (state is HlepUserLoadingQnaState) {
             return const Center(child: CircularProgressIndicator());
           }
@@ -78,7 +76,7 @@ class _HelpUserPageViewState extends State<HelpUserPageView>
             return ListView.builder(
               itemCount: state.qnaList.length,
               padding: EdgeInsets.all(SenseiConst.padding.w),
-              itemBuilder: (context, index) {
+              itemBuilder: (final context, final index) {
                 final qna = state.qnaList[index];
                 return SlideTransition(
                   position: _slideAnimations[index],
@@ -108,7 +106,6 @@ class _HelpUserPageViewState extends State<HelpUserPageView>
         },
       ),
     );
-  }
 
   @override
   void dispose() {

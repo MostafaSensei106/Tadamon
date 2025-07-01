@@ -1,25 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/core/widgets/lottie_component/lottie_component.dart';
-import 'package:tadamon/features/pages/search_page/logic/search_bloc.dart';
-import 'package:tadamon/features/pages/search_page/logic/search_state.dart';
-import 'package:tadamon/features/pages/search_page/ui/widget/product_expansion_tile.dart';
+import '../../../../../core/config/const/sensei_const.dart';
+import '../../../../../core/widgets/lottie_component/lottie_component.dart';
+import '../../logic/search_bloc.dart';
+import '../../logic/search_state.dart';
+import 'product_expansion_tile.dart';
 
 class SearchResultContent extends StatelessWidget {
   const SearchResultContent({
-    super.key,
-    required TextEditingController searchController,
+    required final TextEditingController searchController, super.key,
   }) : _searchController = searchController;
 
   final TextEditingController _searchController;
 
   @override
-  Widget build(BuildContext context) {
-    return Expanded(
+  Widget build(final BuildContext context) => Expanded(
       child: BlocBuilder<SearchBloc, SearchState>(
-        builder: (context, state) {
+        builder: (final context, final state) {
           if (state is SearchLoading) {
             return const Center(child: CircularProgressIndicator());
           } else if (state is SearchLoadingSuccess) {
@@ -36,11 +34,11 @@ class SearchResultContent extends StatelessWidget {
             }
             return ListView.separated(
               itemCount: state.products.length,
-              itemBuilder: (context, index) {
+              itemBuilder: (final context, final index) {
                 final product = state.products[index];
                 return ProductExpansionTileComponent(product: product);
               },
-              separatorBuilder: (context, index) =>
+              separatorBuilder: (final context, final index) =>
                   SizedBox(height: SenseiConst.margin.h),
             );
           } else if (state is SearchError) {
@@ -56,5 +54,4 @@ class SearchResultContent extends StatelessWidget {
         },
       ),
     );
-  }
 }

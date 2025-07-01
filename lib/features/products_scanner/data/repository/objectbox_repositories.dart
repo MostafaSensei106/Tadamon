@@ -1,13 +1,13 @@
-import 'package:tadamon/core/services/object_box_services/object_box_service.dart';
-import 'package:tadamon/core/widgets/app_toast/app_toast.dart';
-import 'package:tadamon/features/pages/log_page/data/models/scanned_logs_product_model.dart';
-import 'package:tadamon/features/products_scanner/data/models/product_model.dart';
-import 'package:tadamon/features/products_scanner/data/repository/fire_store_repositories.dart';
+import '../../../../core/services/object_box_services/object_box_service.dart';
+import '../../../../core/widgets/app_toast/app_toast.dart';
+import '../../../pages/log_page/data/models/scanned_logs_product_model.dart';
+import '../models/product_model.dart';
+import 'fire_store_repositories.dart';
 
 class ObjectboxRepository {
   Future<void> syncAllProductsToLocalDB() async {
     try {
-      final List<ProductModel> products = await FireStoreRepository()
+      final products = await FireStoreRepository()
           .downloadAllProductsFromFirebase();
       ObjectBoxService.instance.tadamonProductsBox.putMany(products);
     } catch (e) {
@@ -16,20 +16,20 @@ class ObjectboxRepository {
   }
 
   Future<bool> tadamonProductsBoxHasData() async {
-    var box = ObjectBoxService.instance.tadamonProductsBox.getAll();
+    final box = ObjectBoxService.instance.tadamonProductsBox.getAll();
     return box.isNotEmpty;
   }
 
   Future<bool> tadamonLogsBoxHasData() async {
-    var box = ObjectBoxService.instance.tadamonLogsBox.getAll();
+    final box = ObjectBoxService.instance.tadamonLogsBox.getAll();
     return box.isNotEmpty;
   }
 
-  Future<dynamic> getTadamonProductBySerialNumber(String serialNumber) async {
-    var box = ObjectBoxService.instance.tadamonProductsBox.getAll();
+  Future<dynamic> getTadamonProductBySerialNumber(final String serialNumber) async {
+    final box = ObjectBoxService.instance.tadamonProductsBox.getAll();
     try {
-      var data = box.firstWhere(
-        (element) => element.serialNumber == serialNumber,
+      final data = box.firstWhere(
+        (final element) => element.serialNumber == serialNumber,
         orElse: () => ProductModel(
           name: 'غير موجود',
           serialNumber: serialNumber,
@@ -70,7 +70,7 @@ class ObjectboxRepository {
     }
   }
 
-  Future<void> saveProductToTadamonLogs(ScannedLogsProductModel product) async {
+  Future<void> saveProductToTadamonLogs(final ScannedLogsProductModel product) async {
     try {
       ObjectBoxService.instance.tadamonLogsBox.put(product);
       AppToast.showSuccessToast('Product saved successfully');
@@ -80,28 +80,28 @@ class ObjectboxRepository {
   }
 
   Future<List<ScannedLogsProductModel>> getAllTadamonLogs() async {
-    var box = ObjectBoxService.instance.tadamonLogsBox.getAll();
+    final box = ObjectBoxService.instance.tadamonLogsBox.getAll();
     return box;
   }
 
   Future<List<ScannedLogsProductModel>> searchProductsBySerialNumber(
-    String query,
+    final String query,
   ) async {
-    var box = ObjectBoxService.instance.tadamonLogsBox.getAll();
+    final box = ObjectBoxService.instance.tadamonLogsBox.getAll();
     return box
-        .where((product) => product.serialNumber.contains(query))
+        .where((final product) => product.serialNumber.contains(query))
         .toList();
   }
 
   List<ScannedLogsProductModel> saveLogsTOPDF() {
-    var box = ObjectBoxService.instance.tadamonLogsBox.getAll();
+    final box = ObjectBoxService.instance.tadamonLogsBox.getAll();
     return box
-        .map((product) => ScannedLogsProductModel.fromMap(product.toMap()))
+        .map((final product) => ScannedLogsProductModel.fromMap(product.toMap()))
         .toList();
   }
 
   Stream<int> getTadamonLogsProductsCount() async* {
-    var box = ObjectBoxService.instance.tadamonLogsBox.getAll();
+    final box = ObjectBoxService.instance.tadamonLogsBox.getAll();
     yield box.length;
   }
 }

@@ -6,9 +6,9 @@ abstract class MainPageEvent extends Equatable {
 }
 
 class PageChanged extends MainPageEvent {
-  final int index;
 
   PageChanged(this.index);
+  final int index;
 
   @override
   List<Object> get props => [index];

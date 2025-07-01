@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/core/services/url_services/url_services.dart';
+import '../../../../../core/config/const/sensei_const.dart';
+import '../../../../../core/services/url_services/url_services.dart';
 
 class DonationForDevSlider extends StatefulWidget {
   const DonationForDevSlider({super.key});
@@ -33,7 +33,7 @@ class _DonationForDevSliderState extends State<DonationForDevSlider> {
   }
 
   void _initializeSlider() {
-    _pageController = PageController(initialPage: 0);
+    _pageController = PageController();
     _startAutoSlide();
 
     _pageController.addListener(() {
@@ -71,11 +71,10 @@ class _DonationForDevSliderState extends State<DonationForDevSlider> {
     _startAutoSlide();
   }
 
-  Widget _buildImageSlide(String imageAsset) {
-    return Image.asset(
+  Widget _buildImageSlide(final String imageAsset) => Image.asset(
       imageAsset,
       fit: BoxFit.cover,
-      errorBuilder: (context, error, stackTrace) => Container(
+      errorBuilder: (final context, final error, final stackTrace) => Container(
         decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.surfaceContainerHigh,
         ),
@@ -92,11 +91,9 @@ class _DonationForDevSliderState extends State<DonationForDevSlider> {
         ),
       ),
     );
-  }
 
   @override
-  Widget build(BuildContext context) {
-    return InkWell(
+  Widget build(final BuildContext context) => InkWell(
       onTapDown: (_) => _pauseAutoSlide(),
       onTapUp: (_) => _resumeAutoSlide(),
       onTap: () {
@@ -111,13 +108,11 @@ class _DonationForDevSliderState extends State<DonationForDevSlider> {
             borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius),
             child: PageView.builder(
               controller: _pageController,
-              pageSnapping: true,
-              scrollDirection: Axis.horizontal,
               physics: const ScrollPhysics(),
               itemCount: _imagesPaths.length,
-              itemBuilder: (context, index) =>
+              itemBuilder: (final context, final index) =>
                   _buildImageSlide(_imagesPaths[index]),
-              onPageChanged: (index) {
+              onPageChanged: (final index) {
                 setState(() => _currentPage = index);
               },
             ),
@@ -125,7 +120,6 @@ class _DonationForDevSliderState extends State<DonationForDevSlider> {
         ),
       ),
     );
-  }
 
   @override
   void dispose() {

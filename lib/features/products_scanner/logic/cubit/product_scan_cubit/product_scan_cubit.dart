@@ -1,17 +1,18 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:tadamon/core/controller/network_controller/network_controller.dart';
-import 'package:tadamon/core/widgets/app_toast/app_toast.dart';
-import 'package:tadamon/core/widgets/bottom_sheet/ui/model_bottom_sheet.dart';
-import 'package:tadamon/features/pages/log_page/data/models/scanned_logs_product_model.dart';
-import 'package:tadamon/features/products_scanner/data/models/product_model.dart';
-import 'package:tadamon/features/products_scanner/data/repository/fire_store_repositories.dart';
-import 'package:tadamon/features/products_scanner/data/repository/objectbox_repositories.dart';
-import 'package:tadamon/features/products_scanner/logic/image_scanner.dart';
-import 'package:tadamon/features/products_scanner/logic/barcode_scanner.dart';
-import 'package:tadamon/features/products_scanner/ui/widget/product_list_view.dart';
-import 'package:tadamon/generated/l10n.dart';
+
+import '../../../../../core/controller/network_controller/network_controller.dart';
+import '../../../../../core/widgets/app_toast/app_toast.dart';
+import '../../../../../core/widgets/bottom_sheet/ui/model_bottom_sheet.dart';
+import '../../../../../generated/l10n.dart';
+import '../../../../pages/log_page/data/models/scanned_logs_product_model.dart';
+import '../../../data/models/product_model.dart';
+import '../../../data/repository/fire_store_repositories.dart';
+import '../../../data/repository/objectbox_repositories.dart';
+import '../../../ui/widget/product_list_view.dart';
+import '../../barcode_scanner.dart';
+import '../../image_scanner.dart';
 
 part 'product_scan_state.dart';
 
@@ -23,13 +24,13 @@ class ProductScanCubit extends Cubit<ProductScanState> {
   /// If the context is not mounted, do nothing.
   ///
   /// This is a private method, because it is not supposed to be called from outside the cubit.
-  void _showProductInfo(BuildContext context, ProductModel product) {
+  void _showProductInfo(final BuildContext context, final ProductModel product) {
     ModelBottomSheet.show(
       context,
       S.of(context).sheetTitleProductInfo,
       child: ProductListView(product: product),
     );
-    ScannedLogsProductModel scannedProductToLogs =
+    final scannedProductToLogs =
         ScannedLogsProductModel.fromProduct(product);
     ObjectboxRepository().saveProductToTadamonLogs(scannedProductToLogs);
   }
@@ -51,7 +52,7 @@ class ProductScanCubit extends Cubit<ProductScanState> {
   ///
   /// If an error occurs during the operation, shows an error toast with the
   /// message "Error in scanBarcodeCamera: $e".
-  Future<void> scanBarcodeByCamera(BuildContext context) async {
+  Future<void> scanBarcodeByCamera(final BuildContext context) async {
     HapticFeedback.vibrate();
 
     ProductModel product;
@@ -59,13 +60,13 @@ class ProductScanCubit extends Cubit<ProductScanState> {
     try {
       emit(ProductScanLoading());
 
-      String barcode = await BarcodeScanner().scanBarcodeByCamera(context);
+      final barcode = await BarcodeScanner().scanBarcodeByCamera(context);
 
       if (barcode == '-1' || barcode == '-404') {
         return;
       }
 
-      bool isConnected = await NetworkController().checkConnection();
+      final isConnected = await NetworkController().checkConnection();
 
       if (isConnected) {
         product = await FireStoreRepository().getProductBySerialNumber(barcode);
@@ -79,7 +80,7 @@ class ProductScanCubit extends Cubit<ProductScanState> {
         emit(ProductScanSuccess());
       }
     } catch (e) {
-      AppToast.showErrorToast("Error in scanBarcodeCamera: $e");
+      AppToast.showErrorToast('Error in scanBarcodeCamera: $e');
       emit(ProductScanError(e.toString()));
     }
   }
@@ -101,7 +102,7 @@ class ProductScanCubit extends Cubit<ProductScanState> {
   /// upon successful completion. If any error occurs during the process, an
   /// error toast is shown with the specific error message.
 
-  Future<void> imageAnalysisScan(BuildContext context) async {
+  Future<void> imageAnalysisScan(final BuildContext context) async {
     HapticFeedback.vibrate();
 
     ProductModel product;
@@ -109,11 +110,11 @@ class ProductScanCubit extends Cubit<ProductScanState> {
     try {
       emit(ProductScanLoading());
 
-      String barcode = await ImageScanner().scanBarcodeFromImage(context);
+      final barcode = await ImageScanner().scanBarcodeFromImage(context);
 
       if (barcode == '-404' || barcode == '-1') return;
 
-      bool isConnected = await NetworkController().checkConnection();
+      final isConnected = await NetworkController().checkConnection();
 
       if (isConnected) {
         product = await FireStoreRepository().getProductBySerialNumber(barcode);
@@ -127,7 +128,7 @@ class ProductScanCubit extends Cubit<ProductScanState> {
         emit(ProductScanSuccess());
       }
     } catch (e) {
-      AppToast.showErrorToast("Error in imageAnalysisScan: $e");
+      AppToast.showErrorToast('Error in imageAnalysisScan: $e');
       emit(ProductScanError(e.toString()));
     }
   }

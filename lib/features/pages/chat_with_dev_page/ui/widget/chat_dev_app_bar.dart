@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/core/services/url_services/url_services.dart';
+import '../../../../../core/config/const/sensei_const.dart';
+import '../../../../../core/services/url_services/url_services.dart';
 
 class ChatDevAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const ChatDevAppBar({required this.title, super.key});
   final String title;
-  const ChatDevAppBar({super.key, required this.title});
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 
   /// Navigate back in the app by calling [Navigator.pop] on the given [context], and
   /// trigger a haptic feedback with [HapticFeedback.vibrate].
-  void leave(BuildContext context) {
+  void leave(final BuildContext context) {
     HapticFeedback.vibrate();
     Navigator.pop(context);
   }
@@ -22,8 +22,7 @@ class ChatDevAppBar extends StatelessWidget implements PreferredSizeWidget {
   /// Returns an [AppBar] widget with a centered title and a leading widget that is a left
   /// arrow icon. When the icon is tapped, it triggers the [leave] function to navigate back in
   /// the app. The [AppBar] has no elevation and a white background.
-  Widget build(BuildContext context) {
-    return AppBar(
+  Widget build(final BuildContext context) => AppBar(
       title: Text(title, style: TextStyle(fontSize: 20.sp)),
       leadingWidth: 102.w,
       titleSpacing: 0,
@@ -45,7 +44,6 @@ class ChatDevAppBar extends StatelessWidget implements PreferredSizeWidget {
         }),
       ],
     );
-  }
 
   /// Returns a [Padding] widget containing a [Material] widget with an [InkWell] child.
   ///
@@ -57,8 +55,7 @@ class ChatDevAppBar extends StatelessWidget implements PreferredSizeWidget {
   /// with the provided [icon] parameter, sized according to [SenseiConst.iconSize] and colored
   /// using [Theme.of(context).colorScheme.onSurface].
 
-  Widget _buildSidePageAppBarIcon(BuildContext context, IconData icon) {
-    return Padding(
+  Widget _buildSidePageAppBarIcon(final BuildContext context, final IconData icon) => Padding(
       padding: const EdgeInsets.all(SenseiConst.padding),
       child: Row(
         children: [
@@ -90,7 +87,6 @@ class ChatDevAppBar extends StatelessWidget implements PreferredSizeWidget {
                   decoration: BoxDecoration(
                     border: Border.all(
                       color: Theme.of(context).colorScheme.surface,
-                      width: 1,
                     ),
                     shape: BoxShape.circle,
                     color: Colors.green,
@@ -102,17 +98,14 @@ class ChatDevAppBar extends StatelessWidget implements PreferredSizeWidget {
         ],
       ),
     );
-  }
 
   Widget _buildActionBarIcon(
-    BuildContext context,
-    IconData icon,
+    final BuildContext context,
+    final IconData icon,
     final VoidCallback onPressed,
-  ) {
-    return IconButton(
+  ) => IconButton(
       icon: Icon(icon),
       color: Theme.of(context).colorScheme.onSurface,
       onPressed: onPressed,
     );
-  }
 }

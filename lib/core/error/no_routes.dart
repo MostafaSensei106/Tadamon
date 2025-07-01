@@ -24,14 +24,13 @@ import 'package:flutter/material.dart'
         Padding,
         Center,
         Scaffold;
-import 'package:tadamon/generated/l10n.dart' show S;
+import '../../generated/l10n.dart' show S;
 
 class NoRoutes extends StatelessWidget {
   const NoRoutes({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(final BuildContext context) => Scaffold(
       appBar: AppBar(title: Text(S.of(context).noPage), centerTitle: true),
       body: Center(
         child: Padding(
@@ -87,5 +86,4 @@ class NoRoutes extends StatelessWidget {
         ),
       ),
     );
-  }
 }

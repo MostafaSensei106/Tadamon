@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/core/services/url_services/url_services.dart';
-import 'package:tadamon/core/widgets/app_toast/app_toast.dart';
-import 'package:tadamon/core/widgets/icon_button_component/icon_button_filledtonal_component.dart';
-import 'package:tadamon/core/widgets/text_filed_component/text_filed_component.dart';
-import 'package:tadamon/features/pages/chat_with_dev_page/ui/widget/chat_bubble.dart';
-import 'package:tadamon/features/pages/chat_with_dev_page/ui/widget/chat_dev_app_bar.dart';
-import 'package:tadamon/generated/l10n.dart';
+
+import '../../../../../core/config/const/sensei_const.dart';
+import '../../../../../core/services/url_services/url_services.dart';
+import '../../../../../core/widgets/app_toast/app_toast.dart';
+import '../../../../../core/widgets/icon_button_component/icon_button_filledtonal_component.dart';
+import '../../../../../core/widgets/text_filed_component/text_filed_component.dart';
+import '../../../../../generated/l10n.dart';
+import '../widget/chat_bubble.dart';
+import '../widget/chat_dev_app_bar.dart';
 
 class ChatWithDev extends StatefulWidget {
   const ChatWithDev({super.key});
@@ -53,21 +54,19 @@ class _ChatWithDevState extends State<ChatWithDev>
     _initAnimations(messages);
   }
 
-  void _initAnimations(final dynamic messagesList) async {
+  void _initAnimations(final messagesList) async {
     _controllers = List.generate(
       messagesList.length,
-      (index) => AnimationController(
+      (final index) => AnimationController(
         vsync: this,
         duration: Duration(milliseconds: 300 + (index * 75)),
       ),
     );
 
-    _slideAnimations = _controllers.map((controller) {
-      return Tween<Offset>(
+    _slideAnimations = _controllers.map((final controller) => Tween<Offset>(
         begin: const Offset(1, 0),
         end: Offset.zero,
-      ).animate(CurvedAnimation(parent: controller, curve: Curves.easeOut));
-    }).toList();
+      ).animate(CurvedAnimation(parent: controller, curve: Curves.easeOut))).toList();
 
     // Delay start a bit for UX
     Future.delayed(const Duration(milliseconds: 200), () {
@@ -80,8 +79,7 @@ class _ChatWithDevState extends State<ChatWithDev>
   DateTime now = DateTime.now();
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(final BuildContext context) => Scaffold(
       appBar: ChatDevAppBar(title: S.of(context).mostafaMahmoud),
       body: Column(
         children: [
@@ -89,7 +87,7 @@ class _ChatWithDevState extends State<ChatWithDev>
             child: ListView.builder(
               padding: EdgeInsets.symmetric(horizontal: SenseiConst.padding.w),
               itemCount: messages.length,
-              itemBuilder: (context, index) {
+              itemBuilder: (final context, final index) {
                 final dateTime = now.subtract(
                   Duration(minutes: (messages.length - 1 - index)),
                 );
@@ -152,12 +150,11 @@ class _ChatWithDevState extends State<ChatWithDev>
         ],
       ),
     );
-  }
 
   Future<void> sendMessage() async {
     try {
       HapticFeedback.vibrate();
-      final String message = _controller.text;
+      final message = _controller.text;
       if (message.isNotEmpty) {
         await UrlRunServices.sendEmail(
           toEmail: 'mostafa438886@fci.bu.edu.eg',

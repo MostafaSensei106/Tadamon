@@ -1,9 +1,11 @@
 import 'dart:async';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tadamon/core/widgets/app_toast/app_toast.dart';
-import 'package:tadamon/features/counter_manager/logic/counter_state.dart';
-import 'package:tadamon/features/products_scanner/data/repository/fire_store_repositories.dart';
-import 'package:tadamon/features/products_scanner/data/repository/objectbox_repositories.dart';
+
+import '../../../core/widgets/app_toast/app_toast.dart';
+import '../../products_scanner/data/repository/fire_store_repositories.dart';
+import '../../products_scanner/data/repository/objectbox_repositories.dart';
+import 'counter_state.dart';
 
 class CounterCubit extends Cubit<CounterState> {
   CounterCubit() : super(CounterState(objectBoxCount: 0, firebaseCount: 0));
@@ -15,17 +17,17 @@ class CounterCubit extends Cubit<CounterState> {
     try {
       _objectBoxSubscription = ObjectboxRepository()
           .getTadamonLogsProductsCount()
-          .listen((count) {
+          .listen((final count) {
             emit(state.copyWith(objectBoxCount: count));
           });
 
       _fireStoreSubscription = FireStoreRepository().getProductsCount().listen((
-        count,
+        final count,
       ) {
         emit(state.copyWith(firebaseCount: count));
       });
     } catch (e, s) {
-      AppToast.showErrorToast("Error fetching counts: $e\n$s");
+      AppToast.showErrorToast('Error fetching counts: $e\n$s');
     }
   }
 

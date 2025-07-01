@@ -1,9 +1,9 @@
 import 'dart:convert';
 
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:tadamon/core/controller/network_controller/network_controller.dart';
-import 'package:tadamon/core/widgets/app_toast/app_toast.dart';
-import 'package:tadamon/features/products_scanner/data/repository/fire_store_repositories.dart';
+import '../../../../core/controller/network_controller/network_controller.dart';
+import '../../../../core/widgets/app_toast/app_toast.dart';
+import '../../../products_scanner/data/repository/fire_store_repositories.dart';
 
 class ReportService {
   static late SharedPreferences pref;
@@ -12,7 +12,7 @@ class ReportService {
     pref = await SharedPreferences.getInstance();
   }
 
-  Future<void> sendProductReport(Map<String, dynamic> productReport) async {
+  Future<void> sendProductReport(final Map<String, dynamic> productReport) async {
     if (await NetworkController().checkConnection()) {
       try {
         await FireStoreRepository().sendReportToBackEnd(productReport);
@@ -28,16 +28,16 @@ class ReportService {
     }
   }
 
-  Future<void> _saveReportLocally(Map<String, dynamic> productReport) async {
-    List<String> localReports = pref.getStringList('localReports') ?? [];
+  Future<void> _saveReportLocally(final Map<String, dynamic> productReport) async {
+    final localReports = pref.getStringList('localReports') ?? [];
     localReports.add(jsonEncode(productReport));
     await pref.setStringList('localReports', localReports);
   }
 
   static Future<List<Map<String, dynamic>>> _getLocalReports() async {
-    List<String> localReports = pref.getStringList('localReports') ?? [];
+    final localReports = pref.getStringList('localReports') ?? [];
     return localReports
-        .map((report) => jsonDecode(report) as Map<String, dynamic>)
+        .map((final report) => jsonDecode(report) as Map<String, dynamic>)
         .toList();
   }
 
@@ -54,8 +54,8 @@ class ReportService {
     }
   }
 
-  static Future<void> _clearLocalReports(Map<String, dynamic> report) async {
-    List<String> localReports = pref.getStringList('localReports') ?? [];
+  static Future<void> _clearLocalReports(final Map<String, dynamic> report) async {
+    final localReports = pref.getStringList('localReports') ?? [];
     localReports.remove(jsonEncode(report));
     await pref.setStringList('localReports', localReports);
   }

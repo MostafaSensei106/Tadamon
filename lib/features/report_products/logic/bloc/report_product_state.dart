@@ -5,13 +5,13 @@ class ReportProductInitial extends ReportProductState {}
 class ReportProductIsValid extends ReportProductState {}
 
 class ReportProductSerialNumberIsNotValid extends ReportProductState {
-  final String error;
   ReportProductSerialNumberIsNotValid(this.error);
+  final String error;
 }
 
 class ReportProductProductNameIsNotValid extends ReportProductState {
-  final String error;
   ReportProductProductNameIsNotValid(this.error);
+  final String error;
 }
 
 class ReportProductIsLoading extends ReportProductState {}
@@ -19,6 +19,6 @@ class ReportProductIsLoading extends ReportProductState {}
 class ReportProductIsNotValid extends ReportProductState {}
 
 class ReportProductIsError extends ReportProductState {
-  final String error;
   ReportProductIsError(this.error);
+  final String error;
 }

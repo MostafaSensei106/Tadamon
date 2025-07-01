@@ -1,15 +1,15 @@
 import 'dart:io' show File;
-import 'dart:typed_data' show Uint8List;
 
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:open_file/open_file.dart' show OpenFile;
 import 'package:path_provider/path_provider.dart' as path;
 import 'package:pdf/widgets.dart' as pw;
-import 'package:tadamon/core/config/const/sensei_const.dart' show SenseiConst;
-import 'package:tadamon/core/extensions/date_format_extension.dart';
-import 'package:tadamon/core/widgets/app_toast/app_toast.dart' show AppToast;
-import 'package:tadamon/features/pages/log_page/data/models/scanned_logs_product_model.dart'
+
+import '../../../features/pages/log_page/data/models/scanned_logs_product_model.dart'
     show ScannedLogsProductModel;
+import '../../config/const/sensei_const.dart' show SenseiConst;
+import '../../extensions/date_format_extension.dart';
+import '../../widgets/app_toast/app_toast.dart' show AppToast;
 
 class PdfExportServices {
   /// Exports the given list of [ScannedLogsProductModel] to a pdf file named
@@ -20,30 +20,30 @@ class PdfExportServices {
   /// first element of the list, and the values as the rows of the table.
   ///
   /// If the operation fails, a toast error message will be shown.
-  Future<void> exportPdf(List<ScannedLogsProductModel> dataList) async {
+  Future<void> exportPdf(final List<ScannedLogsProductModel> dataList) async {
     try {
       final fileName = 'Tadamon_Logs_${DateTime.now().formatted}';
       final pdf = pw.Document();
       final headers = dataList.first.toMap().keys.toList();
       final data = dataList
-          .map((item) => item.toMap().values.toList())
+          .map((final item) => item.toMap().values.toList())
           .toList();
 
-      final Uint8List imageBytes = (await rootBundle.load(
+      final imageBytes = (await rootBundle.load(
         SenseiConst.tadamonAppImage,
       )).buffer.asUint8List();
       final pw.ImageProvider image = pw.MemoryImage(imageBytes);
 
       pdf.addPage(
         pw.Page(
-          build: (context) => pw.Column(
+          build: (final context) => pw.Column(
             crossAxisAlignment: pw.CrossAxisAlignment.start,
             children: [
               pw.Center(child: pw.Image(image, width: 150, height: 150)),
               pw.SizedBox(height: 20),
               pw.Center(
                 child: pw.Text(
-                  "تقرير السجلات",
+                  'تقرير السجلات',
                   style: pw.TextStyle(
                     fontSize: 26,
                     fontWeight: pw.FontWeight.bold,
@@ -56,7 +56,7 @@ class PdfExportServices {
                 headerStyle: const pw.TextStyle(fontSize: 14),
                 headerDecoration: const pw.BoxDecoration(),
                 data: data
-                    .map((row) => row.map((cell) => cell.toString()).toList())
+                    .map((final row) => row.map((final cell) => cell.toString()).toList())
                     .toList(),
                 border: pw.TableBorder.symmetric(),
                 cellAlignment: pw.Alignment.center,

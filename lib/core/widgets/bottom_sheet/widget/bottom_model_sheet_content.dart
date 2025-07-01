@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:tadamon/core/config/const/sensei_const.dart';
+import '../../../config/const/sensei_const.dart';
 
 class BottomModelSheetContent extends StatelessWidget {
-  final Widget child;
-  final bool useColor;
 
   const BottomModelSheetContent({
-    super.key,
-    required this.child,
+    required this.child, super.key,
     this.useColor = false,
   });
+  final Widget child;
+  final bool useColor;
 
   @override
   /// Returns a [Container] widget with the given properties.
@@ -24,8 +23,7 @@ class BottomModelSheetContent extends StatelessWidget {
   ///
   /// The [child] is wrapped in a [SingleChildScrollView] widget to allow for
   /// scrolling if the content is larger than the screen size.
-  Widget build(BuildContext context) {
-    return Container(
+  Widget build(final BuildContext context) => Container(
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius),
@@ -35,5 +33,4 @@ class BottomModelSheetContent extends StatelessWidget {
       ),
       child: SingleChildScrollView(child: child),
     );
-  }
 }

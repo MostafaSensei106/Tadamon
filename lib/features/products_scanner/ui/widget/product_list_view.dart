@@ -9,30 +9,29 @@ import 'package:flutter/widgets.dart'
         Icon,
         SizedBox,
         ListView;
-import 'package:tadamon/core/config/const/app_enums.dart'
+import '../../../../core/config/const/app_enums.dart'
     show ListTileGroupType;
-import 'package:tadamon/core/widgets/button_component/button_compnent.dart'
+import '../../../../core/widgets/button_component/button_compnent.dart'
     show ButtonCompnent;
-import 'package:tadamon/core/widgets/drawer_component/drawer_component.dart'
+import '../../../../core/widgets/drawer_component/drawer_component.dart'
     show ListTileIconComponent;
-import 'package:tadamon/features/products_scanner/data/models/product_model.dart'
+import '../../data/models/product_model.dart'
     show ProductModel;
 
 class ProductListView extends StatelessWidget {
+
+  const ProductListView({required this.product, super.key});
   final ProductModel product;
 
-  const ProductListView({super.key, required this.product});
-
   @override
-  Widget build(BuildContext context) {
-    return ListView(
+  Widget build(final BuildContext context) => ListView(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       children: [
         ListTileIconComponent(
           useinBorderRadius: true,
           leading: Icons.qr_code_rounded,
-          title: "الرقم التسلسلي",
+          title: 'الرقم التسلسلي',
           subtitle: product.serialNumber,
           groupType: ListTileGroupType.top,
           trailing: IconButton(
@@ -44,31 +43,31 @@ class ProductListView extends StatelessWidget {
         ),
         ListTileIconComponent(
           leading: Icons.label_outline_rounded,
-          title: "إسم المنتج",
+          title: 'إسم المنتج',
           subtitle: product.name,
           groupType: ListTileGroupType.middle,
         ),
         ListTileIconComponent(
           leading: Icons.business_rounded,
-          title: "المصنع",
+          title: 'المصنع',
           subtitle: product.manufacture,
           groupType: ListTileGroupType.middle,
         ),
         ListTileIconComponent(
           leading: Icons.category_outlined,
-          title: "التصنيف",
+          title: 'التصنيف',
           subtitle: product.category,
           groupType: ListTileGroupType.middle,
         ),
         ListTileIconComponent(
           useinBorderRadius: true,
           leading: Icons.handshake_outlined,
-          title: "الحالة",
-          subtitle: product.onError == "Product not found"
-              ? "المنتج غير موجود"
+          title: 'الحالة',
+          subtitle: product.onError == 'Product not found'
+              ? 'المنتج غير موجود'
               : product.trusted
-              ? "مؤمن"
-              : "غير مؤمن",
+              ? 'مؤمن'
+              : 'غير مؤمن',
           groupType: ListTileGroupType.bottom,
         ),
         if (!product.trusted)
@@ -82,5 +81,4 @@ class ProductListView extends StatelessWidget {
           ),
       ],
     );
-  }
 }

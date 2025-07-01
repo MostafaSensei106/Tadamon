@@ -1,17 +1,18 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tadamon/features/pages/log_page/logic/bloc/logs_event.dart';
-import 'package:tadamon/features/pages/log_page/logic/bloc/logs_state.dart';
-import 'package:tadamon/features/products_scanner/data/repository/objectbox_repositories.dart';
+
+import '../../../../products_scanner/data/repository/objectbox_repositories.dart';
+import 'logs_event.dart';
+import 'logs_state.dart';
 
 class LogsBloc extends Bloc<LogsEvent, LogsState> {
-  final ObjectboxRepository repository;
 
   LogsBloc(this.repository) : super(LogsInitial()) {
     on<GetAllLogs>(_onGetAllLogs);
     on<GetLogsResult>(_onFeatchSearchResult);
   }
+  final ObjectboxRepository repository;
 
-  void _onGetAllLogs(GetAllLogs event, Emitter<LogsState> emit) async {
+  void _onGetAllLogs(final GetAllLogs event, final Emitter<LogsState> emit) async {
     emit(LogsLoading());
     try {
       final products = await repository.getAllTadamonLogs();
@@ -22,8 +23,8 @@ class LogsBloc extends Bloc<LogsEvent, LogsState> {
   }
 
   void _onFeatchSearchResult(
-    GetLogsResult event,
-    Emitter<LogsState> emit,
+    final GetLogsResult event,
+    final Emitter<LogsState> emit,
   ) async {
     emit(LogsLoading());
     try {

@@ -15,9 +15,7 @@ extension NavigationExtension on BuildContext {
   /// value is null unless the popped route was popped with [Navigator.pop]
   /// (e.g. by pressing the back button on Android).
 
-  Future<dynamic> pushNamed(String routeName, {Object? arguments}) {
-    return Navigator.of(this).pushNamed(routeName, arguments: arguments);
-  }
+  Future<dynamic> pushNamed(final String routeName, {final Object? arguments}) => Navigator.of(this).pushNamed(routeName, arguments: arguments);
 
   /// Replace the current route of the navigator that most tightly encloses the
   /// given [context] with the route named [routeName].
@@ -28,11 +26,9 @@ extension NavigationExtension on BuildContext {
   /// with; this route cannot interact with the route below itself, and the
   /// return value is null unless the removed route was popped with [Navigator.pop]
   /// (e.g. by pressing the back button on Android).
-  Future<dynamic> pushReplaceNamed(String routeName, {Object? arguments}) {
-    return Navigator.of(
+  Future<dynamic> pushReplaceNamed(final String routeName, {final Object? arguments}) => Navigator.of(
       this,
     ).pushReplacementNamed(routeName, arguments: arguments);
-  }
 
   /// Push the route with the given [routeName] onto the navigator that most
   /// tightly encloses the given [context].
@@ -48,14 +44,11 @@ extension NavigationExtension on BuildContext {
   /// return value is null unless the removed route was popped with [Navigator.pop]
   /// (e.g. by pressing the back button on Android).
   Future<dynamic> pushNamedAndRemoveUntil(
-    String routeName, {
-    Object? arguments,
-    required RoutePredicate predicate,
-  }) {
-    return Navigator.of(
+    final String routeName, {
+    required final RoutePredicate predicate, final Object? arguments,
+  }) => Navigator.of(
       this,
     ).pushNamedAndRemoveUntil(routeName, predicate, arguments: arguments);
-  }
 
   void pop() => Navigator.of(this).pop();
 }

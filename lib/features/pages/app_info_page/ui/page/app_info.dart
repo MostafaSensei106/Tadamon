@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:package_info_plus/package_info_plus.dart';
-import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/core/widgets/app_bar/side_page_app_bar.dart';
-import 'package:tadamon/features/pages/app_info_page/ui/widget/app_info_list.dart';
+import '../../../../../core/config/const/sensei_const.dart';
+import '../../../../../core/widgets/app_bar/side_page_app_bar.dart';
+import '../widget/app_info_list.dart';
 
 class AppInfo extends StatefulWidget {
   const AppInfo({super.key});
@@ -50,7 +50,7 @@ class _AppInfoState extends State<AppInfo> {
       final packageInfo = await PackageInfo.fromPlatform();
 
       setState(() {
-        _appVersion = "${packageInfo.version}-V";
+        _appVersion = '${packageInfo.version}-V';
         _buildNumber = packageInfo.buildNumber;
         _appName = packageInfo.appName;
         _packageName = packageInfo.packageName;
@@ -73,8 +73,7 @@ class _AppInfoState extends State<AppInfo> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(final BuildContext context) => Scaffold(
       appBar: const SidePageAppBar(
         title: 'معلومات التطبيق',
         useBackButton: true,
@@ -97,5 +96,4 @@ class _AppInfoState extends State<AppInfo> {
               ),
             ),
     );
-  }
 }

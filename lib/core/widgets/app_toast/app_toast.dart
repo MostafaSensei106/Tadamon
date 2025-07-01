@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/core/routing/app_router.dart';
 import 'package:toastification/toastification.dart';
+
+import '../../config/const/sensei_const.dart';
+import '../../routing/app_router.dart';
 
 class AppToast {
   /// Shows a toast with the given [message] for a short duration at the bottom
   /// of the screen with a black background and white text.
-  static void showSimpleToast(String message) {
+  static void showSimpleToast(final String message) {
     toastification.show(
       style: ToastificationStyle.simple,
       title: Text(message),
@@ -28,7 +29,7 @@ class AppToast {
 
   /// Shows a toast with the given [message] for a long duration at the bottom of
   /// the screen with a red background and white text.
-  static void showErrorToast(String discription) {
+  static void showErrorToast(final String discription) {
     toastification.show(
       type: ToastificationType.error,
       style: ToastificationStyle.minimal,
@@ -51,7 +52,7 @@ class AppToast {
     );
   }
 
-  static void showWarningToast(String discription) {
+  static void showWarningToast(final String discription) {
     toastification.show(
       type: ToastificationType.warning,
       style: ToastificationStyle.minimal,
@@ -77,7 +78,7 @@ class AppToast {
   /// Shows a toast with the given [message] for a short duration at the bottom
   /// of the screen with a green background and white text.
 
-  static void showSuccessToast(String message) {
+  static void showSuccessToast(final String message) {
     toastification.show(
       type: ToastificationType.success,
       style: ToastificationStyle.minimal,
@@ -97,7 +98,7 @@ class AppToast {
     );
   }
 
-  static void showInfoToast(String message) {
+  static void showInfoToast(final String message) {
     toastification.show(
       type: ToastificationType.info,
       style: ToastificationStyle.minimal,

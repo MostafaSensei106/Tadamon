@@ -1,14 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:tadamon/core/widgets/app_toast/app_toast.dart';
-import 'package:tadamon/features/pages/search_page/data/model/search_product_model.dart';
-import 'package:tadamon/features/products_scanner/data/models/product_model.dart';
+import '../../../../core/widgets/app_toast/app_toast.dart';
+import '../../../pages/search_page/data/model/search_product_model.dart';
+import '../models/product_model.dart';
 
 class FireStoreRepository {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   static const String _tadamonProductsCollection = 'TadamonProducts';
   static const String _productReportCollection = 'TadamonUserReport';
 
-  Future<void> addProduct(ProductModel product) async {
+  Future<void> addProduct(final ProductModel product) async {
     try {
       await _firestore
           .collection(_tadamonProductsCollection)
@@ -24,7 +24,7 @@ class FireStoreRepository {
           .collection(_tadamonProductsCollection)
           .get();
       return snapshot.docs
-          .map((doc) => ProductModel.fromMap(doc.data()))
+          .map((final doc) => ProductModel.fromMap(doc.data()))
           .toList();
     } catch (e) {
       AppToast.showErrorToast(e.toString());
@@ -38,7 +38,7 @@ class FireStoreRepository {
           .collection(_tadamonProductsCollection)
           .get();
       return snapshot.docs
-          .map((doc) => ProductModel.fromMap(doc.data()))
+          .map((final doc) => ProductModel.fromMap(doc.data()))
           .toList();
     } catch (e) {
       AppToast.showErrorToast(e.toString());
@@ -46,7 +46,7 @@ class FireStoreRepository {
     }
   }
 
-  Future<void> updateProduct(String documnetId, ProductModel product) async {
+  Future<void> updateProduct(final String documnetId, final ProductModel product) async {
     try {
       await _firestore
           .collection(_tadamonProductsCollection)
@@ -57,7 +57,7 @@ class FireStoreRepository {
     }
   }
 
-  Future<void> deleteProduct(String documnetId) async {
+  Future<void> deleteProduct(final String documnetId) async {
     try {
       await _firestore
           .collection(_tadamonProductsCollection)
@@ -68,7 +68,7 @@ class FireStoreRepository {
     }
   }
 
-  Future<dynamic> getProductBySerialNumber(String serialNumber) async {
+  Future<dynamic> getProductBySerialNumber(final String serialNumber) async {
     try {
       final snapshot = await _firestore
           .collection(_tadamonProductsCollection)
@@ -94,7 +94,7 @@ class FireStoreRepository {
 
   Future<List<ProductSearchModel>> searchInFireStore(
     String searchTerm,
-    String filter,
+    final String filter,
   ) async {
     if (searchTerm.isEmpty) {
       return [];
@@ -105,30 +105,28 @@ class FireStoreRepository {
       _tadamonProductsCollection,
     );
 
-    Query query = productsCollection
+    final query = productsCollection
         .orderBy(filter)
         .startAt([searchTerm])
-        .endAt(["$searchTerm\uF8FF"]);
+        .endAt(['$searchTerm\uF8FF']);
 
     final querySnapshot = await query.get();
 
     return querySnapshot.docs
-        .map((doc) => ProductSearchModel.fromDocument(doc))
+        .map((final doc) => ProductSearchModel.fromDocument(doc))
         .toList();
   }
 
-  Future<void> sendReportToBackEnd(Map<String, dynamic> productReport) async {
-    String productName = productReport['productName'];
-    DocumentReference documentReference = _firestore
+  Future<void> sendReportToBackEnd(final Map<String, dynamic> productReport) async {
+    final String productName = productReport['productName'];
+    final DocumentReference documentReference = _firestore
         .collection(_productReportCollection)
         .doc(productName);
     await documentReference.set(productReport);
   }
 
-  Stream<int> getProductsCount() {
-    return _firestore
+  Stream<int> getProductsCount() => _firestore
         .collection(_tadamonProductsCollection)
         .snapshots()
-        .map((snapshots) => snapshots.docs.length);
-  }
+        .map((final snapshots) => snapshots.docs.length);
 }

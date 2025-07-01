@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:tadamon/core/config/const/sensei_const.dart';
+import '../../../../../core/config/const/sensei_const.dart';
 
 class OnboardingPageOne extends StatelessWidget {
   const OnboardingPageOne({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return Center(
+  Widget build(final BuildContext context) => Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SizedBox(height: 24.5.h),
           Container(
@@ -34,7 +32,7 @@ class OnboardingPageOne extends StatelessWidget {
           ),
           SizedBox(height: 10.h),
           Text(
-            "تطبيق تَضَامُنٌ",
+            'تطبيق تَضَامُنٌ',
             style: TextStyle(
               fontSize: 28.sp,
               fontWeight: FontWeight.bold,
@@ -44,7 +42,7 @@ class OnboardingPageOne extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 30.w),
             child: Text(
-              "التطبيق الذي يساعدك على دعم القضية الفلسطينية وتقديم المساعدات للمحتاجين بكل سهولة.",
+              'التطبيق الذي يساعدك على دعم القضية الفلسطينية وتقديم المساعدات للمحتاجين بكل سهولة.',
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 16.sp,
@@ -55,5 +53,4 @@ class OnboardingPageOne extends StatelessWidget {
         ],
       ),
     );
-  }
 }

@@ -10,25 +10,22 @@ import 'package:flutter/material.dart'
         RoundedRectangleBorder,
         SystemMouseCursors,
         Text;
-import 'package:tadamon/core/config/const/sensei_const.dart';
+import '../../config/const/sensei_const.dart';
 
 class TextButtonComponent extends StatelessWidget {
+
+  const TextButtonComponent({
+    required this.text, required this.onPressed, super.key,
+    this.isClose = false,
+    this.useInBorderRadius = false,
+  });
   final String text;
   final VoidCallback onPressed;
   final bool isClose;
   final bool useInBorderRadius;
 
-  const TextButtonComponent({
-    super.key,
-    required this.text,
-    required this.onPressed,
-    this.isClose = false,
-    this.useInBorderRadius = false,
-  });
-
   @override
-  Widget build(BuildContext context) {
-    return TextButton(
+  Widget build(final BuildContext context) => TextButton(
       onPressed: onPressed,
       style: TextButton.styleFrom(
         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
@@ -43,5 +40,4 @@ class TextButtonComponent extends StatelessWidget {
       ),
       child: Text(text),
     );
-  }
 }

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:tadamon/core/config/const/sensei_const.dart';
+import '../../../config/const/sensei_const.dart';
 
 class BottomSheetHeader extends StatelessWidget {
+  const BottomSheetHeader({required this.titile, super.key});
   final String titile;
-  const BottomSheetHeader({super.key, required, required this.titile});
 
   @override
   ///
@@ -21,8 +21,7 @@ class BottomSheetHeader extends StatelessWidget {
   ///
   /// The header is centered horizontally.
   ///
-  Widget build(BuildContext context) {
-    return Center(
+  Widget build(final BuildContext context) => Center(
       child: Column(
         children: [
           Container(
@@ -39,5 +38,4 @@ class BottomSheetHeader extends StatelessWidget {
         ],
       ),
     );
-  }
 }

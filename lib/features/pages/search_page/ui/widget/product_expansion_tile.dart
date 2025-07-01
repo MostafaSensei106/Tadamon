@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:tadamon/core/config/const/app_enums.dart'
+import '../../../../../core/config/const/app_enums.dart'
     show ListTileGroupType;
-import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/core/config/fonts/fonts.dart';
-import 'package:tadamon/core/widgets/button_component/button_compnent.dart';
-import 'package:tadamon/core/widgets/drawer_component/drawer_component.dart';
-import 'package:tadamon/features/pages/search_page/data/model/search_product_model.dart';
+import '../../../../../core/config/const/sensei_const.dart';
+import '../../../../../core/config/fonts/fonts.dart';
+import '../../../../../core/widgets/button_component/button_compnent.dart';
+import '../../../../../core/widgets/drawer_component/drawer_component.dart';
+import '../../data/model/search_product_model.dart';
 
 class ProductExpansionTileComponent extends StatelessWidget {
-  final ProductSearchModel product;
 
-  const ProductExpansionTileComponent({super.key, required this.product});
+  const ProductExpansionTileComponent({required this.product, super.key});
+  final ProductSearchModel product;
   @override
-  Widget build(BuildContext context) {
-    return Container(
+  Widget build(final BuildContext context) => Container(
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.surfaceContainer,
         borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius),
@@ -53,8 +52,6 @@ class ProductExpansionTileComponent extends StatelessWidget {
           product.serialNumber,
           style: AppTextStyle.subtitle(context),
         ),
-        enableFeedback: true,
-        showTrailingIcon: true,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius),
           side: BorderSide(
@@ -64,7 +61,7 @@ class ProductExpansionTileComponent extends StatelessWidget {
         children: [
           ListTileIconComponent(
             leading: Icons.qr_code_rounded,
-            title: "الرقم التسلسلي",
+            title: 'الرقم التسلسلي',
             subtitle: product.serialNumber,
             groupType: ListTileGroupType.top,
             trailing: IconButton(
@@ -75,26 +72,26 @@ class ProductExpansionTileComponent extends StatelessWidget {
           ),
           ListTileIconComponent(
             leading: Icons.label_outline_rounded,
-            title: "اسم المنتج",
+            title: 'اسم المنتج',
             subtitle: product.name,
             groupType: ListTileGroupType.middle,
           ),
           ListTileIconComponent(
             leading: Icons.business_rounded,
-            title: "الشركة المصنعة",
+            title: 'الشركة المصنعة',
             subtitle: product.manufacturer,
             groupType: ListTileGroupType.middle,
           ),
           ListTileIconComponent(
             leading: Icons.category_outlined,
-            title: "التصنيف",
+            title: 'التصنيف',
             subtitle: product.category,
             groupType: ListTileGroupType.middle,
           ),
           ListTileIconComponent(
             leading: Icons.handshake_outlined,
-            title: "الحالة",
-            subtitle: product.trusted ? "لا يدعم الكيان" : "مقاطعة",
+            title: 'الحالة',
+            subtitle: product.trusted ? 'لا يدعم الكيان' : 'مقاطعة',
             groupType: ListTileGroupType.middle,
           ),
           if (product.trusted == false)
@@ -116,5 +113,4 @@ class ProductExpansionTileComponent extends StatelessWidget {
         ],
       ),
     );
-  }
 }

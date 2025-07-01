@@ -8,13 +8,11 @@ class FullAppDividerComponents extends StatelessWidget {
   /// Returns a [Divider] widget with a thickness, height, indent, and endIndent of
   /// 0, and a color of [Theme.of(context).colorScheme.outline] with an opacity
   /// of 0.8.
-  Widget build(BuildContext context) {
-    return Divider(
+  Widget build(final BuildContext context) => Divider(
       thickness: 0.2,
       height: 0,
       indent: 0,
       endIndent: 0,
       color: Theme.of(context).colorScheme.outline.withAlpha(0x80),
     );
-  }
 }

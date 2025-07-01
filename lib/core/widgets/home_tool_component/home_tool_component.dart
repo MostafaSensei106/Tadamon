@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/core/config/fonts/fonts.dart';
+import '../../config/const/sensei_const.dart';
+import '../../config/fonts/fonts.dart';
 
 class HomeToolsComponent extends StatelessWidget {
+
+  const HomeToolsComponent({
+    required this.icon, required this.title, required this.onTapped, super.key,
+  });
   final IconData icon;
   final String title;
   final VoidCallback onTapped;
-
-  const HomeToolsComponent({
-    super.key,
-    required this.icon,
-    required this.title,
-    required this.onTapped,
-  });
 
   @override
   /// Builds a [HomeToolsComponent].
@@ -51,12 +48,10 @@ class HomeToolsComponent extends StatelessWidget {
   ///
   ///    The [Text] widget is configured with a maxLines of 2, and an
   ///    [overflow] of [TextOverflow.fade].
-  Widget build(BuildContext context) {
-    return Material(
+  Widget build(final BuildContext context) => Material(
       color: Colors.transparent,
       child: InkWell(
         borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius),
-        enableFeedback: true,
         onTap: onTapped,
         child: Container(
           padding: const EdgeInsets.all(3),
@@ -90,5 +85,4 @@ class HomeToolsComponent extends StatelessWidget {
         ),
       ),
     );
-  }
 }

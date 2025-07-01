@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/core/widgets/bottom_sheet/widget/bottom_model_sheet_content.dart';
-import 'package:tadamon/core/widgets/bottom_sheet/widget/sheet_header.dart';
-import 'package:tadamon/core/widgets/textbutton_component/textbutton_component.dart';
-import 'package:tadamon/generated/l10n.dart';
+
+import '../../../../generated/l10n.dart';
+import '../../../config/const/sensei_const.dart';
+import '../../textbutton_component/textbutton_component.dart';
+import '../widget/bottom_model_sheet_content.dart';
+import '../widget/sheet_header.dart';
 
 class ModelBottomSheet {
   ///
@@ -21,17 +22,15 @@ class ModelBottomSheet {
   /// The [child] is displayed within a [ClipRRect] with a circular corner radius
   /// of 14 logical pixels.
   static void show(
-    BuildContext context,
-    String title, {
-    required Widget child,
+    final BuildContext context,
+    final String title, {
+    required final Widget child,
   }) {
     showModalBottomSheet<void>(
       context: context,
       isScrollControlled: true,
-      enableDrag: true,
       useRootNavigator: true,
-      isDismissible: true,
-      builder: (context) => _buildBottomSheet(context, title, child),
+      builder: (final context) => _buildBottomSheet(context, title, child),
     );
   }
 
@@ -62,11 +61,10 @@ class ModelBottomSheet {
   /// The close button is also padded with a [Padding] widget to add a bottom
   /// padding of 16 logical pixels.
   static Widget _buildBottomSheet(
-    BuildContext context,
-    String title,
-    Widget child,
-  ) {
-    return ClipRRect(
+    final BuildContext context,
+    final String title,
+    final Widget child,
+  ) => ClipRRect(
       borderRadius: const BorderRadius.vertical(top: Radius.circular(14)),
       child: ColoredBox(
         color: Theme.of(context).colorScheme.surface,
@@ -107,5 +105,4 @@ class ModelBottomSheet {
         ),
       ),
     );
-  }
 }

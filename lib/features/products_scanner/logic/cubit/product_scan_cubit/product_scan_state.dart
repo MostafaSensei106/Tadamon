@@ -10,8 +10,8 @@ class ProductScanLoading extends ProductScanState {}
 class ProductScanSuccess extends ProductScanState {}
 
 class ProductScanError extends ProductScanState {
-  final String message;
   ProductScanError(this.message);
+  final String message;
 }
 
 class ProductScanNotFound extends ProductScanState {}
@@ -19,6 +19,6 @@ class ProductScanNotFound extends ProductScanState {}
 class ProductScanFromLocal extends ProductScanState {}
 
 class ProductScanFromBackEnd extends ProductScanState {
-  final ProductModel product;
   ProductScanFromBackEnd(this.product);
+  final ProductModel product;
 }

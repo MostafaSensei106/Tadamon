@@ -1,16 +1,18 @@
-import 'package:flutter/material.dart' show Icons;
+import 'package:flutter/cupertino.dart' show ClipRRect, Padding, Wrap, SingleChildScrollView;
+import 'package:flutter/material.dart' show Icons, ClipRRect;
 import 'package:flutter/widgets.dart'
-    show StatelessWidget, BuildContext, Widget, Column;
-import 'package:tadamon/core/config/const/app_enums.dart'
+    show StatelessWidget, BuildContext, Widget, Column, ClipRRect;
+import 'package:pdf/widgets.dart' show ClipRRect, Padding, Wrap;
+import '../../../core/config/const/app_enums.dart'
     show ListTileGroupType;
-import 'package:tadamon/core/config/const/sensei_const.dart' show SenseiConst;
-import 'package:tadamon/core/services/url_services/url_services.dart'
+import '../../../core/config/const/sensei_const.dart' show SenseiConst;
+import '../../../core/services/url_services/url_services.dart'
     show UrlRunServices;
-import 'package:tadamon/core/widgets/bottom_sheet/ui/model_bottom_sheet.dart'
+import '../../../core/widgets/bottom_sheet/ui/model_bottom_sheet.dart'
     show ModelBottomSheet;
-import 'package:tadamon/core/widgets/drawer_component/drawer_component.dart'
+import '../../../core/widgets/drawer_component/drawer_component.dart'
     show ListTileIconComponent;
-import 'package:tadamon/generated/l10n.dart' show S;
+import '../../../generated/l10n.dart' show S;
 
 class DonationSheetContent extends StatelessWidget {
   const DonationSheetContent({super.key});
@@ -36,7 +38,7 @@ class DonationSheetContent extends StatelessWidget {
   ///
   /// The [DonationSheetContent] is also padded with a [Padding] widget to add
   /// a bottom padding of 16 logical pixels.
-  static void showDonationBottomSheet(BuildContext context) {
+  static void showDonationBottomSheet(final BuildContext context) {
     ModelBottomSheet.show(
       context,
       S.of(context).donate,
@@ -63,8 +65,7 @@ class DonationSheetContent extends StatelessWidget {
   ///
   /// The [ListTileIconComponent]s are also padded with a [Padding] widget to add a
   /// bottom padding of 16 logical pixels.
-  Widget build(BuildContext context) {
-    return Column(
+  Widget build(final BuildContext context) => Column(
       children: [
         ListTileIconComponent(
           leading: Icons.volunteer_activism_outlined,
@@ -101,9 +102,9 @@ class DonationSheetContent extends StatelessWidget {
           onTap: () => {
             UrlRunServices.launchURL(SenseiConst.donateByEGYFoodBankLink),
           },
+          useinBorderRadius: true,
           groupType: ListTileGroupType.bottom,
         ),
       ],
     );
-  }
 }

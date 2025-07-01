@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/core/widgets/text_filed_component/text_filed_component.dart';
-import 'package:tadamon/features/pages/log_page/logic/bloc/logs_bloc.dart';
-import 'package:tadamon/features/pages/log_page/logic/bloc/logs_event.dart';
-import 'package:tadamon/features/pages/log_page/ui/widgets/logs_search_content.dart';
+import '../../../../../core/config/const/sensei_const.dart';
+import '../../../../../core/widgets/text_filed_component/text_filed_component.dart';
+import '../../logic/bloc/logs_bloc.dart';
+import '../../logic/bloc/logs_event.dart';
+import 'logs_search_content.dart';
 
 class LogsPageView extends StatefulWidget {
   const LogsPageView({super.key});
@@ -19,8 +19,7 @@ class _LogsPageViewState extends State<LogsPageView> {
   String _selectedFilter = 'SerialNumber';
 
   @override
-  Widget build(BuildContext context) {
-    return Padding(
+  Widget build(final BuildContext context) => Padding(
       padding: const EdgeInsets.all(SenseiConst.padding),
       child: Column(
         children: [
@@ -30,10 +29,8 @@ class _LogsPageViewState extends State<LogsPageView> {
         ],
       ),
     );
-  }
 
-  Row searchBar(BuildContext context) {
-    return Row(
+  Row searchBar(final BuildContext context) => Row(
       children: [
         Expanded(
           child: TextFieldComponent(
@@ -49,7 +46,7 @@ class _LogsPageViewState extends State<LogsPageView> {
                     : _selectedFilter == 'Manufacture'
                     ? 'المُصنع'
                     : 'القسم'}...',
-            onChange: (value) {
+            onChange: (final value) {
               BlocProvider.of<LogsBloc>(
                 context,
               ).add(GetLogsResult(value, _selectedFilter));
@@ -58,11 +55,9 @@ class _LogsPageViewState extends State<LogsPageView> {
         ),
       ],
     );
-  }
 
-  PopupMenuButton<String> menuButton(BuildContext context) {
-    return PopupMenuButton<String>(
-      onSelected: (value) {
+  PopupMenuButton<String> menuButton(final BuildContext context) => PopupMenuButton<String>(
+      onSelected: (final value) {
         setState(() {
           _selectedFilter = value;
         });
@@ -86,8 +81,7 @@ class _LogsPageViewState extends State<LogsPageView> {
       padding: EdgeInsets.zero,
       tooltip: 'فلتر البحث',
       color: Theme.of(context).colorScheme.surface,
-      itemBuilder: (context) {
-        return [
+      itemBuilder: (final context) => [
           PopupMenuItem(
             value: 'SerialNumber',
             child: Row(
@@ -191,10 +185,8 @@ class _LogsPageViewState extends State<LogsPageView> {
               ],
             ),
           ),
-        ];
-      },
+        ],
     );
-  }
 
   @override
   void dispose() {

@@ -1,28 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:tadamon/core/config/const/app_enums.dart'
+import '../../../../../core/config/const/app_enums.dart'
     show ListTileGroupType;
-import 'package:tadamon/core/widgets/button_component/button_compnent.dart';
-import 'package:tadamon/core/widgets/drawer_component/drawer_component.dart';
-import 'package:tadamon/features/pages/app_info_page/ui/widget/app_info_title.dart';
+import '../../../../../core/widgets/button_component/button_compnent.dart';
+import '../../../../../core/widgets/drawer_component/drawer_component.dart';
+import 'app_info_title.dart';
 
 class AppInfoList extends StatefulWidget {
+
+  const AppInfoList({
+    required this.appName, required this.appVersion, required this.buildNumber, required this.buildSignature, required this.packageName, required this.installerStore, super.key,
+  });
   final String appName;
   final String appVersion;
   final String buildNumber;
   final String buildSignature;
   final String packageName;
   final String installerStore;
-
-  const AppInfoList({
-    super.key,
-    required this.appName,
-    required this.appVersion,
-    required this.buildNumber,
-    required this.buildSignature,
-    required this.packageName,
-    required this.installerStore,
-  });
 
   @override
   State<AppInfoList> createState() => _AppInfoListState();
@@ -48,21 +42,19 @@ class _AppInfoListState extends State<AppInfoList>
     _initAnimations(appInfo.keys.toList());
   }
 
-  void _initAnimations(final dynamic appInfoList) async {
+  void _initAnimations(final appInfoList) async {
     _controllers = List.generate(
       appInfoList.length,
-      (index) => AnimationController(
+      (final index) => AnimationController(
         vsync: this,
         duration: Duration(milliseconds: 300 + (index * 75)),
       ),
     );
 
-    _slideAnimations = _controllers.map((controller) {
-      return Tween<Offset>(
+    _slideAnimations = _controllers.map((final controller) => Tween<Offset>(
         begin: const Offset(1, 0),
         end: Offset.zero,
-      ).animate(CurvedAnimation(parent: controller, curve: Curves.easeOut));
-    }).toList();
+      ).animate(CurvedAnimation(parent: controller, curve: Curves.easeOut))).toList();
 
     // Delay start a bit for UX
     Future.delayed(const Duration(milliseconds: 200), () {
@@ -91,8 +83,7 @@ class _AppInfoListState extends State<AppInfoList>
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Column(
+  Widget build(final BuildContext context) => Column(
       children: [
         SlideTransition(
           position: _slideAnimations.first,
@@ -104,7 +95,7 @@ class _AppInfoListState extends State<AppInfoList>
         Expanded(
           child: ListView.builder(
             itemCount: appInfo.length,
-            itemBuilder: (context, index) {
+            itemBuilder: (final context, final index) {
               final key = appInfo.keys.elementAt(index);
               final value = appInfo[key] ?? 'غير معروف';
               return SlideTransition(
@@ -137,7 +128,7 @@ class _AppInfoListState extends State<AppInfoList>
             child: SizedBox(
               width: double.infinity,
               child: ButtonCompnent(
-                label: "نسخ معلومات التطبيق",
+                label: 'نسخ معلومات التطبيق',
                 icon: Icons.copy_all_rounded,
                 useMargin: true,
                 onPressed: () => copyToClipboard(),
@@ -147,9 +138,8 @@ class _AppInfoListState extends State<AppInfoList>
         ),
       ],
     );
-  }
 
-  IconData _getIcons(String key) {
+  IconData _getIcons(final String key) {
     switch (key) {
       case 'appName':
         return Icons.android_rounded;
@@ -168,7 +158,7 @@ class _AppInfoListState extends State<AppInfoList>
     }
   }
 
-  String _getTitle(String key) {
+  String _getTitle(final String key) {
     switch (key) {
       case 'appName':
         return 'اسم التطبيق';

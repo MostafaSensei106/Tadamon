@@ -1,6 +1,7 @@
-import 'package:tadamon/core/widgets/app_toast/app_toast.dart' show AppToast;
 import 'package:url_launcher/url_launcher.dart'
     show launchUrl, LaunchMode, canLaunchUrl;
+
+import '../../widgets/app_toast/app_toast.dart' show AppToast;
 
 class UrlRunServices {
   /// A function to launch a URL.
@@ -12,7 +13,7 @@ class UrlRunServices {
   /// If the launch fails, it will throw an [Exception].
   ///
   /// If an [Exception] is thrown, it will show a toast with the error message.
-  static Future<void> launchURL(String url) async {
+  static Future<void> launchURL(final String url) async {
     try {
       final uri = Uri.parse(url);
       if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
@@ -31,11 +32,11 @@ class UrlRunServices {
   ///
   /// If the launch fails, it will throw an [Exception].
   static Future<void> sendEmail({
-    required String toEmail,
-    required String subject,
-    required String body,
+    required final String toEmail,
+    required final String subject,
+    required final String body,
   }) async {
-    final Uri emailLaunchUri = Uri(
+    final emailLaunchUri = Uri(
       scheme: 'mailto',
       path: toEmail,
       query:
@@ -46,8 +47,8 @@ class UrlRunServices {
     }
   }
 
-  static Future<void> makePhoneCall(String phoneNumber) async {
-    final Uri phoneUri = Uri(scheme: 'tel', path: phoneNumber);
+  static Future<void> makePhoneCall(final String phoneNumber) async {
+    final phoneUri = Uri(scheme: 'tel', path: phoneNumber);
     if (await canLaunchUrl(phoneUri)) {
       await launchUrl(phoneUri); // Launch the phone call
     } else {

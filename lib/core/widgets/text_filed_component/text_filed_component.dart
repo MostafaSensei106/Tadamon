@@ -17,10 +17,23 @@ import 'package:flutter/material.dart'
         InputDecoration,
         FocusScope,
         TextFormField;
-import 'package:tadamon/core/config/const/sensei_const.dart' show SenseiConst;
-import 'package:tadamon/core/config/fonts/fonts.dart' show AppTextStyle;
+import '../../config/const/sensei_const.dart' show SenseiConst;
+import '../../config/fonts/fonts.dart' show AppTextStyle;
 
 class TextFieldComponent extends StatelessWidget {
+
+  const TextFieldComponent({
+    required this.controller, required this.icon, required this.hint, super.key,
+    this.onChange,
+    this.suffixIcon,
+    this.isNumeric = false,
+    this.errorText,
+    this.readOnly = false,
+    this.maxLength = 0,
+    this.isExpands = false,
+    this.largeField = false,
+    this.useOutBorderRadius = false,
+  });
   final TextEditingController controller;
   final IconData icon;
   final Widget? suffixIcon;
@@ -34,22 +47,6 @@ class TextFieldComponent extends StatelessWidget {
   final bool readOnly;
 
   final ValueChanged<String>? onChange;
-
-  const TextFieldComponent({
-    super.key,
-    required this.controller,
-    required this.icon,
-    required this.hint,
-    this.onChange,
-    this.suffixIcon,
-    this.isNumeric = false,
-    this.errorText,
-    this.readOnly = false,
-    this.maxLength = 0,
-    this.isExpands = false,
-    this.largeField = false,
-    this.useOutBorderRadius = false,
-  });
 
   /// Validates the input value based on the component's configuration.
   ///
@@ -76,14 +73,13 @@ class TextFieldComponent extends StatelessWidget {
   /// The [filled] property is set to true, and the [fillColor] is set to the surface color of the theme.
   /// The [focusedBorder] is set to an [OutlineInputBorder] with a primary color border and a width of 0.2.
   /// The [border] is set to an [OutlineInputBorder] with no border and a circular border radius of [SenseiConst.inBorderRadius.r].
-  Widget build(BuildContext context) {
-    return TextFormField(
+  Widget build(final BuildContext context) => TextFormField(
       controller: controller,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       cursorRadius: const Radius.circular(SenseiConst.inBorderRadius),
       keyboardType: isNumeric ? TextInputType.number : TextInputType.text,
-      onFieldSubmitted: (value) => FocusScope.of(context).nextFocus(),
-      onTapOutside: (event) => FocusScope.of(context).unfocus(),
+      onFieldSubmitted: (final value) => FocusScope.of(context).nextFocus(),
+      onTapOutside: (final event) => FocusScope.of(context).unfocus(),
       onChanged: onChange,
       readOnly: readOnly,
       maxLines: isExpands
@@ -120,5 +116,4 @@ class TextFieldComponent extends StatelessWidget {
         ),
       ),
     );
-  }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:tadamon/core/config/const/sensei_const.dart';
+import '../../../../../core/config/const/sensei_const.dart';
 
 class AppInfoTitle extends StatelessWidget {
   const AppInfoTitle({super.key});
@@ -16,11 +16,9 @@ class AppInfoTitle extends StatelessWidget {
   /// The container holding the image is styled with padding, rounded borders, and a border color
   /// derived from the current theme. The text widgets are centered and styled according to the
   /// theme's color scheme.
-  Widget build(BuildContext context) {
-    return Center(
+  Widget build(final BuildContext context) => Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
             padding: const EdgeInsets.all(SenseiConst.padding),
@@ -43,7 +41,7 @@ class AppInfoTitle extends StatelessWidget {
           ),
           SizedBox(height: 10.h),
           Text(
-            "تطبيق تَضَامُنٌ",
+            'تطبيق تَضَامُنٌ',
             style: TextStyle(
               fontSize: 23.sp,
               fontWeight: FontWeight.bold,
@@ -65,5 +63,4 @@ class AppInfoTitle extends StatelessWidget {
         ],
       ),
     );
-  }
 }

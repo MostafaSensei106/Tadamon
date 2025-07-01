@@ -1,6 +1,6 @@
 class BarcodeValidator {
-  static bool isNumber(String barcode) {
-    final RegExp regExp = RegExp(r'^\d+$');
+  static bool isNumber(final String barcode) {
+    final regExp = RegExp(r'^\d+$');
     return regExp.hasMatch(barcode);
   }
 }

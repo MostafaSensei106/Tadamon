@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:tadamon/core/routing/routes.dart';
-import 'package:tadamon/features/pages/onboarding_page/ui/widget/animated_triangles.dart';
-import 'package:tadamon/features/pages/onboarding_page/ui/widget/dot_indicator_nav.dart';
-import 'package:tadamon/features/pages/onboarding_page/ui/widget/onboarding_page_one.dart';
-import 'package:tadamon/features/pages/onboarding_page/ui/widget/onboarding_page_two.dart';
+import '../../../../../core/routing/routes.dart';
+import '../widget/animated_triangles.dart';
+import '../widget/dot_indicator_nav.dart';
+import '../widget/onboarding_page_one.dart';
+import '../widget/onboarding_page_two.dart';
 
 class OnboardingPage extends StatefulWidget {
   const OnboardingPage({super.key});
@@ -13,7 +13,7 @@ class OnboardingPage extends StatefulWidget {
 }
 
 class _OnboardingPageState extends State<OnboardingPage> {
-  final PageController _pageController = PageController(initialPage: 0);
+  final PageController _pageController = PageController();
   bool _loading = true;
 
   @override
@@ -23,8 +23,8 @@ class _OnboardingPageState extends State<OnboardingPage> {
   }
 
   Future<void> _checkAgreement() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    bool agreed = prefs.getBool('agreed_to_terms') ?? false;
+    final prefs = await SharedPreferences.getInstance();
+    final agreed = prefs.getBool('agreed_to_terms') ?? false;
     if (agreed) {
       _navigateToHome();
     } else {
@@ -36,12 +36,12 @@ class _OnboardingPageState extends State<OnboardingPage> {
     Navigator.pushNamedAndRemoveUntil(
       context,
       Routes.mainPage,
-      (route) => false,
+      (final route) => false,
     );
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     if (_loading) {
       return const Scaffold(body: Center(child: CircularProgressIndicator()));
     }
@@ -50,19 +50,18 @@ class _OnboardingPageState extends State<OnboardingPage> {
         children: [
           const AnimatedTriangles(),
           PageView(
-            scrollDirection: Axis.horizontal,
             controller: _pageController,
-            children: [
-              const OnboardingPageOne(),
-              const OnboardingPageTwo(
+            children: const [
+              OnboardingPageOne(),
+              OnboardingPageTwo(
                 firstIcon: Icons.qr_code_rounded,
                 secondIcon: Icons.image_search_rounded,
                 firstTitle: 'فحص الباركود',
                 secondTitle: 'تحليل الصور',
                 subtitle:
-                    "اكشف عن المنتجات باستخدام الكاميرا أو حلل الصور بتقنية تعلّم الآلة.",
+                    'اكشف عن المنتجات باستخدام الكاميرا أو حلل الصور بتقنية تعلّم الآلة.',
               ),
-              const OnboardingPageTwo(
+              OnboardingPageTwo(
                 firstIcon: Icons.search_rounded,
                 secondIcon: Icons.new_releases_outlined,
                 firstTitle: 'ابحث عن المنتج',
@@ -70,7 +69,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                 subtitle:
                     'ابحث عن المنتجات واحصل علي البدائل لمنتجات المقاطعة بكل سهولة.',
               ),
-              const OnboardingPageTwo(
+              OnboardingPageTwo(
                 height: 75.5,
                 appOnlineRun: true,
                 firstIcon: Icons.cloud_done_outlined,

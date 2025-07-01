@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tadamon/features/pages/help_user_page/data/repositories/repositories.dart';
-import 'package:tadamon/features/pages/help_user_page/logic/cubit/help_user_state.dart';
+import '../../data/repositories/repositories.dart';
+import 'help_user_state.dart';
 
 class HelpUserCubit extends Cubit<HelpUserState> {
   HelpUserCubit() : super(HelpUserInitial()) {
@@ -17,7 +17,7 @@ class HelpUserCubit extends Cubit<HelpUserState> {
     }
   }
 
-  void searchQA(String query) async {
+  void searchQA(final String query) async {
     try {
       if (query.isEmpty) {
         final qnaList = await QnaRepositore.getQna();
@@ -28,7 +28,7 @@ class HelpUserCubit extends Cubit<HelpUserState> {
       final allQna = await QnaRepositore.getQna();
       final filteredList = allQna
           .where(
-            (qna) =>
+            (final qna) =>
                 qna.question.toLowerCase().contains(query.toLowerCase()) ||
                 qna.simAnswer.toLowerCase().contains(query.toLowerCase()) ||
                 qna.fullAnswer.toLowerCase().contains(query.toLowerCase()),

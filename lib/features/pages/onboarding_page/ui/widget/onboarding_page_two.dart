@@ -4,13 +4,19 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/core/widgets/app_toast/app_toast.dart';
-import 'package:tadamon/core/widgets/button_component/button_compnent.dart';
-import 'package:tadamon/core/widgets/dilog_components/dilog_waiting_component.dart';
-import 'package:tadamon/features/products_scanner/logic/cubit/localdb_cubit/localdb_cubit.dart';
+import '../../../../../core/config/const/sensei_const.dart';
+import '../../../../../core/widgets/app_toast/app_toast.dart';
+import '../../../../../core/widgets/button_component/button_compnent.dart';
+import '../../../../../core/widgets/dilog_components/dilog_waiting_component.dart';
+import '../../../../products_scanner/logic/cubit/localdb_cubit/localdb_cubit.dart';
 
 class OnboardingPageTwo extends StatefulWidget {
+
+  const OnboardingPageTwo({
+    required this.firstIcon, required this.secondIcon, required this.firstTitle, required this.secondTitle, required this.subtitle, super.key,
+    this.appOnlineRun = false,
+    this.height = 0.0,
+  });
   final IconData firstIcon;
   final IconData secondIcon;
   final String firstTitle;
@@ -18,17 +24,6 @@ class OnboardingPageTwo extends StatefulWidget {
   final String subtitle;
   final bool appOnlineRun;
   final double height;
-
-  const OnboardingPageTwo({
-    super.key,
-    required this.firstIcon,
-    required this.secondIcon,
-    required this.firstTitle,
-    required this.secondTitle,
-    required this.subtitle,
-    this.appOnlineRun = false,
-    this.height = 0.0,
-  });
 
   @override
   State<OnboardingPageTwo> createState() => _OnboardingPageTwoState();
@@ -41,7 +36,7 @@ class _OnboardingPageTwoState extends State<OnboardingPageTwo> {
   @override
   void initState() {
     super.initState();
-    _timer = Timer.periodic(const Duration(seconds: 2), (timer) {
+    _timer = Timer.periodic(const Duration(seconds: 2), (final timer) {
       setState(() {
         isFirstIcon = !isFirstIcon;
       });
@@ -55,10 +50,8 @@ class _OnboardingPageTwoState extends State<OnboardingPageTwo> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Column(
+  Widget build(final BuildContext context) => Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         SizedBox(height: widget.height.h),
         Container(
@@ -79,7 +72,7 @@ class _OnboardingPageTwoState extends State<OnboardingPageTwo> {
             ),
             child: AnimatedSwitcher(
               duration: const Duration(milliseconds: 350),
-              transitionBuilder: (child, animation) =>
+              transitionBuilder: (final child, final animation) =>
                   ScaleTransition(scale: animation, child: child),
               child: Icon(
                 isFirstIcon ? widget.firstIcon : widget.secondIcon,
@@ -130,7 +123,7 @@ class _OnboardingPageTwoState extends State<OnboardingPageTwo> {
             ),
             if (widget.appOnlineRun) ...[
               BlocProvider(
-                create: (context) => LocalDBCubit()..loclaDBHasData(),
+                create: (final context) => LocalDBCubit()..loclaDBHasData(),
                 child: const AppOnline(),
               ),
             ],
@@ -138,16 +131,14 @@ class _OnboardingPageTwoState extends State<OnboardingPageTwo> {
         ),
       ],
     );
-  }
 }
 
 class AppOnline extends StatelessWidget {
   const AppOnline({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return BlocListener<LocalDBCubit, LocalDBState>(
-      listener: (context, state) {
+  Widget build(final BuildContext context) => BlocListener<LocalDBCubit, LocalDBState>(
+      listener: (final context, final state) {
         if (state is LoclaDBDataFetchingFromFireStore) {
           const DilogWatingComponent(
             title: 'جاري استيراد البيانات',
@@ -163,10 +154,9 @@ class AppOnline extends StatelessWidget {
         }
       },
       child: BlocBuilder<LocalDBCubit, LocalDBState>(
-        builder: (context, state) {
+        builder: (final context, final state) {
           if (state is LoclaDBDataBaseEmpty) {
             return ButtonCompnent(
-              useInBorderRadius: false,
               // useWidth: true,
               // width: 0.5.sw,
               label: 'تشغيل الاونلاين',
@@ -191,5 +181,4 @@ class AppOnline extends StatelessWidget {
         },
       ),
     );
-  }
 }

@@ -2,30 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
-import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/core/services/share_Services/share_services.dart';
-import 'package:tadamon/core/services/url_services/url_services.dart';
-import 'package:tadamon/core/widgets/icon_button_component/icon_button_filledtonal_component.dart';
-import 'package:tadamon/features/pages/chat_with_dev_page/ui/widget/donation_for_dev_slider.dart';
+import '../../../../../core/config/const/sensei_const.dart';
+import '../../../../../core/services/share_Services/share_services.dart';
+import '../../../../../core/services/url_services/url_services.dart';
+import '../../../../../core/widgets/icon_button_component/icon_button_filledtonal_component.dart';
+import 'donation_for_dev_slider.dart';
 
 class ChatBubble extends StatelessWidget {
+
+  const ChatBubble({
+    required this.text, required this.isSentByMe, required this.time, super.key,
+    this.isSupportDevButton = false,
+    this.isShareButton = false,
+  });
   final String text;
   final bool isSentByMe;
   final bool isSupportDevButton;
   final bool isShareButton;
   final DateTime time;
 
-  const ChatBubble({
-    super.key,
-    required this.text,
-    required this.isSentByMe,
-    this.isSupportDevButton = false,
-    this.isShareButton = false,
-    required this.time,
-  });
-
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     final formattedTime = DateFormat('hh:mm a', 'en').format(time);
     return Align(
       alignment: isSentByMe ? Alignment.bottomRight : Alignment.bottomLeft,
@@ -64,7 +61,6 @@ class ChatBubble extends StatelessWidget {
                 Message(text: text, isSentByMe: isSentByMe),
                 if (isShareButton)
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       IconButtonFilledTonalComponent(
                         icon: Icons.ios_share_rounded,
@@ -100,13 +96,12 @@ class ChatBubble extends StatelessWidget {
 }
 
 class Message extends StatelessWidget {
-  const Message({super.key, required this.text, required this.isSentByMe});
+  const Message({required this.text, required this.isSentByMe, super.key});
   final String text;
   final bool isSentByMe;
 
   @override
-  Widget build(BuildContext context) {
-    return Text(
+  Widget build(final BuildContext context) => Text(
       text,
       textAlign: TextAlign.start,
       style: TextStyle(
@@ -116,22 +111,18 @@ class Message extends StatelessWidget {
             : Theme.of(context).colorScheme.onSurface,
       ),
     );
-  }
 }
 
 class DataTime extends StatelessWidget {
   const DataTime({
-    super.key,
-    required this.formattedTime,
-    required this.isSentByMe,
+    required this.formattedTime, required this.isSentByMe, super.key,
   });
 
   final String formattedTime;
   final bool isSentByMe;
 
   @override
-  Widget build(BuildContext context) {
-    return Align(
+  Widget build(final BuildContext context) => Align(
       alignment: Alignment.bottomLeft,
       child: Text(
         formattedTime,
@@ -145,5 +136,4 @@ class DataTime extends StatelessWidget {
         ),
       ),
     );
-  }
 }

@@ -1,9 +1,12 @@
 import 'dart:ui' show Brightness;
 
+import 'package:flutter/material.dart' show ThemeMode;
 import 'package:flutter/widgets.dart' show BuildContext, MediaQuery;
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tadamon/core/config/theme/colors/logic/cubit/theme_cubit.dart'
+import '../cubit/theme_cubit.dart'
     show ThemeCubit;
+
+import '../cubit/theme_state.dart' show ThemeState;
 
 /// Toggles the theme between dark and light mode.
 ///
@@ -14,7 +17,7 @@ import 'package:tadamon/core/config/theme/colors/logic/cubit/theme_cubit.dart'
 /// Persists the chosen theme to SharedPreferences.
 ///
 /// Emits a new [ThemeState] with the chosen [isDark] and [ThemeMode].
-void toggleTheme(bool value, BuildContext context) {
+void toggleTheme(final bool value, final BuildContext context) {
   if (value) {
     context.read<ThemeCubit>().setSystemTheme();
   } else {
