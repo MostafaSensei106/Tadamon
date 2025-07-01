@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:tadamon/features/pages/help_user_page/data/model/qna_model.dart';
+import '../data/model/qna_model.dart';
 
 class HelpSearchDelegate extends SearchDelegate<QnaModel?> {
+  HelpSearchDelegate({required this.qnaList, required this.onSearch});
   final List<QnaModel> qnaList;
   final Function(String) onSearch;
-
-  HelpSearchDelegate({
-    required this.qnaList,
-    required this.onSearch,
-  });
 
   @override
   String get searchFieldLabel => 'ابحث عن سؤال...';
@@ -20,37 +16,31 @@ class HelpSearchDelegate extends SearchDelegate<QnaModel?> {
   //     );
 
   @override
-  List<Widget> buildActions(BuildContext context) {
-    return [
-      IconButton(
-        icon: const Icon(Icons.exit_to_app_rounded),
-        onPressed: () {
-          if (query.isEmpty) {
-            close(context, null);
-          } else {
-            query = '';
-            onSearch(query);
-          }
-        },
-      ),
-    ];
-  }
+  List<Widget> buildActions(final BuildContext context) => [
+    IconButton(
+      icon: const Icon(Icons.exit_to_app_rounded),
+      onPressed: () {
+        if (query.isEmpty) {
+          close(context, null);
+        } else {
+          query = '';
+          onSearch(query);
+        }
+      },
+    ),
+  ];
 
   @override
-  Widget buildLeading(BuildContext context) {
-    return IconButton(
-      icon: const Icon(Icons.double_arrow_rounded),
-      onPressed: () => close(context, null),
-    );
-  }
+  Widget buildLeading(final BuildContext context) => IconButton(
+    icon: const Icon(Icons.double_arrow_rounded),
+    onPressed: () => close(context, null),
+  );
 
   @override
-  Widget buildResults(BuildContext context) {
-    return _buildSearchResults();
-  }
+  Widget buildResults(final BuildContext context) => _buildSearchResults();
 
   @override
-  Widget buildSuggestions(BuildContext context) {
+  Widget buildSuggestions(final BuildContext context) {
     onSearch(query);
     return _buildSearchResults();
   }
@@ -61,17 +51,9 @@ class HelpSearchDelegate extends SearchDelegate<QnaModel?> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              Icons.search_off,
-              size: 64,
-            ),
+            Icon(Icons.search_off, size: 64),
             SizedBox(height: 16),
-            Text(
-              'لم يتم العثور على نتائج',
-              style: TextStyle(
-                fontSize: 16,
-              ),
-            ),
+            Text('لم يتم العثور على نتائج', style: TextStyle(fontSize: 16)),
           ],
         ),
       );
@@ -80,24 +62,19 @@ class HelpSearchDelegate extends SearchDelegate<QnaModel?> {
     return ListView.builder(
       itemCount: qnaList.length,
       padding: const EdgeInsets.symmetric(vertical: 8),
-      itemBuilder: (context, index) {
+      itemBuilder: (final context, final index) {
         final qna = qnaList[index];
         return ListTile(
           leading: const Icon(Icons.help_outline),
-          title: Text(
-            qna.question,
-            style: const TextStyle(fontSize: 16),
-          ),
+          title: Text(qna.question, style: const TextStyle(fontSize: 16)),
           subtitle: Text(
             qna.simAnswer,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
           ),
-          onTap: () =>
-            close(context, qna),
+          onTap: () => close(context, qna),
         );
       },
     );
   }
 }
-

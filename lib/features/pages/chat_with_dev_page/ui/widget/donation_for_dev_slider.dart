@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/core/services/url_services/url_services.dart';
+import '../../../../../core/config/const/sensei_const.dart';
+import '../../../../../core/services/url_services/url_services.dart';
 
 class DonationForDevSlider extends StatefulWidget {
   const DonationForDevSlider({super.key});
@@ -14,7 +14,6 @@ class DonationForDevSlider extends StatefulWidget {
 }
 
 class _DonationForDevSliderState extends State<DonationForDevSlider> {
-
   static const Duration _autoSlideDuration = Duration(seconds: 3);
   static const Duration _slideTransitionDuration = Duration(milliseconds: 400);
   late final PageController _pageController;
@@ -34,7 +33,7 @@ class _DonationForDevSliderState extends State<DonationForDevSlider> {
   }
 
   void _initializeSlider() {
-    _pageController = PageController(initialPage: 0);
+    _pageController = PageController();
     _startAutoSlide();
 
     _pageController.addListener(() {
@@ -47,7 +46,9 @@ class _DonationForDevSliderState extends State<DonationForDevSlider> {
 
   void _startAutoSlide() {
     _autoSlideTimer = Timer.periodic(_autoSlideDuration, (_) {
-      if (!mounted) return;
+      if (!mounted) {
+        return;
+      }
 
       if (_currentPage < _imagesPaths.length - 1) {
         _pageController.nextPage(
@@ -61,8 +62,7 @@ class _DonationForDevSliderState extends State<DonationForDevSlider> {
           curve: Curves.easeInOut,
         );
       }
-    }
-    );
+    });
   }
 
   void _pauseAutoSlide() {
@@ -73,58 +73,56 @@ class _DonationForDevSliderState extends State<DonationForDevSlider> {
     _startAutoSlide();
   }
 
-  Widget _buildImageSlide(String imageAsset) {
-    return Image.asset(
-      imageAsset,
-      fit: BoxFit.cover,
-      errorBuilder: (context, error, stackTrace) => Container(
-        decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.surfaceContainerHigh,
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              Icons.image_not_supported_outlined,
-              color: Theme.of(context).colorScheme.error,
-              size: SenseiConst.iconSize,
-            ),
-            const Text('فشل تحميل الصورة'),
-          ],
-        ),
+  Widget _buildImageSlide(final String imageAsset) => Image.asset(
+    imageAsset,
+    fit: BoxFit.cover,
+    errorBuilder: (final context, final error, final stackTrace) => Container(
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.surfaceContainerHigh,
       ),
-    );
-  }
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(
+            Icons.image_not_supported_outlined,
+            color: Theme.of(context).colorScheme.error,
+            size: SenseiConst.iconSize,
+          ),
+          const Text('فشل تحميل الصورة'),
+        ],
+      ),
+    ),
+  );
 
   @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTapDown: (_) => _pauseAutoSlide(),
-      onTapUp: (_) => _resumeAutoSlide(),
-      onTap: () {HapticFeedback.vibrate(); UrlRunServices.launchURL(SenseiConst.buyMeACoffeeLink);},
-      child: Padding(
-        padding:  EdgeInsets.symmetric(vertical: SenseiConst.padding.h-8),
-        child: AspectRatio(
-          aspectRatio: 35 / 10, 
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius),
-            child: PageView.builder(
-              controller: _pageController,
-              pageSnapping: true,
-              scrollDirection: Axis.horizontal,
-              physics: const ScrollPhysics(),
-              itemCount: _imagesPaths.length,
-              itemBuilder: (context, index) =>
-                  _buildImageSlide(_imagesPaths[index]),
-              onPageChanged: (index) {
-                setState(() => _currentPage = index);
-              },
-            ),
+  Widget build(final BuildContext context) => InkWell(
+    onTapDown: (_) => _pauseAutoSlide(),
+    onTapUp: (_) => _resumeAutoSlide(),
+    onTap: () {
+      HapticFeedback.vibrate();
+      launchURL(SenseiConst.buyMeACoffeeLink);
+    },
+    child: Padding(
+      padding: EdgeInsets.symmetric(vertical: SenseiConst.padding.h - 8),
+      child: AspectRatio(
+        aspectRatio: 35 / 10,
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius),
+          child: PageView.builder(
+            controller: _pageController,
+            physics: const ScrollPhysics(),
+            itemCount: _imagesPaths.length,
+            itemBuilder: (final context, final index) =>
+                _buildImageSlide(_imagesPaths[index]),
+            onPageChanged: (final index) {
+              setState(() => _currentPage = index);
+            },
           ),
         ),
       ),
-    );
-  }
+    ),
+  );
+
   @override
   void dispose() {
     _pageController.dispose();

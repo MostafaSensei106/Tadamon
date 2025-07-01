@@ -1,36 +1,44 @@
-import 'package:flutter/material.dart';
-import 'package:tadamon/core/config/const/sensei_const.dart';
+import 'package:flutter/material.dart'
+    show
+        StatelessWidget,
+        VoidCallback,
+        BuildContext,
+        Widget,
+        TextButton,
+        MaterialTapTargetSize,
+        BorderRadius,
+        RoundedRectangleBorder,
+        SystemMouseCursors,
+        Text;
+import '../../config/const/sensei_const.dart';
 
 class TextButtonComponent extends StatelessWidget {
+  const TextButtonComponent({
+    required this.text,
+    required this.onPressed,
+    super.key,
+    this.isClose = false,
+    this.useInBorderRadius = false,
+  });
   final String text;
   final VoidCallback onPressed;
   final bool isClose;
   final bool useInBorderRadius;
 
-  const TextButtonComponent({
-    super.key,
-    required this.text,
-    required this.onPressed,
-    this.isClose = false,
-    this.useInBorderRadius = false,
-  });
-
   @override
-  Widget build(BuildContext context) {
-    return TextButton(
-      onPressed: onPressed,
-      style: TextButton.styleFrom(
-        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-        shape: RoundedRectangleBorder(
-          borderRadius: useInBorderRadius
-              ? BorderRadius.circular(SenseiConst.inBorderRadius)
-              : BorderRadius.circular(SenseiConst.outBorderRadius),
-        ),
-        elevation: 0,
-        enableFeedback: true,
-        enabledMouseCursor: SystemMouseCursors.click,
+  Widget build(final BuildContext context) => TextButton(
+    onPressed: onPressed,
+    style: TextButton.styleFrom(
+      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+      shape: RoundedRectangleBorder(
+        borderRadius: useInBorderRadius
+            ? BorderRadius.circular(SenseiConst.inBorderRadius)
+            : BorderRadius.circular(SenseiConst.outBorderRadius),
       ),
-      child: Text(text),
-    );
-  }
+      elevation: 0,
+      enableFeedback: true,
+      enabledMouseCursor: SystemMouseCursors.click,
+    ),
+    child: Text(text),
+  );
 }

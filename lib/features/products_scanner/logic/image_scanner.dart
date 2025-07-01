@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:tadamon/core/widgets/app_toast/app_toast.dart';
 import 'package:google_mlkit_barcode_scanning/google_mlkit_barcode_scanning.dart';
-import 'package:tadamon/features/products_scanner/logic/barcode_validator.dart';
+import 'package:image_picker/image_picker.dart';
+
+import '../../../core/widgets/app_toast/app_toast.dart';
+import 'barcode_validator.dart';
 
 class ImageScanner {
   /// Selects an image from the gallery and returns its path.
@@ -11,16 +12,14 @@ class ImageScanner {
   ///
   Future<XFile?> _pickGalleryImage() async {
     try {
-      final ImagePicker imagePicker = ImagePicker();
-      final XFile? image = await imagePicker.pickImage(
+      final imagePicker = ImagePicker();
+      final image = await imagePicker.pickImage(
         source: ImageSource.gallery,
         imageQuality: 45,
       );
       return image;
     } catch (e) {
-      AppToast.showErrorToast(
-        'حدث خطاء اثناء اختيار الصورة: ${e.toString()}',
-      );
+      showErrorToast('حدث خطاء اثناء اختيار الصورة: ${e.toString()}');
       return null;
     }
   }
@@ -39,32 +38,32 @@ class ImageScanner {
   /// Returns the raw value of the first detected barcode, or `null` if no
   /// barcodes are found or an error occurs.
 
-  Future<String> _getBarcodeFromImage(XFile? image) async {
+  Future<String> _getBarcodeFromImage(final XFile? image) async {
     try {
       if (image == null) {
-        AppToast.showErrorToast('لم يتم اختيار الصورة');
+        showErrorToast('لم يتم اختيار الصورة');
         return '-1';
       }
 
-      final InputImage inputImage = InputImage.fromFilePath(image.path);
-      final BarcodeScanner barcodeScanner = BarcodeScanner();
-      final List<Barcode> barcodes =
-          await barcodeScanner.processImage(inputImage);
+      final inputImage = InputImage.fromFilePath(image.path);
+      final barcodeScanner = BarcodeScanner();
+      final barcodes = await barcodeScanner.processImage(inputImage);
       if (barcodes.isEmpty || barcodes.first.rawValue == null) {
-        AppToast.showErrorToast('لا يوجد باركود في الصورة');
+        showErrorToast('لا يوجد باركود في الصورة');
         return '-1';
       }
 
-      final String barcodeRawValue = barcodes.first.rawValue!;
-      if (!BarcodeValidator.isNumber(barcodeRawValue)) {
-        AppToast.showErrorToast(
-            'الباركود :$barcodeRawValue غير صالح، يجب أن يكون رقمًا فقط');
+      final barcodeRawValue = barcodes.first.rawValue!;
+      if (!isBarcodeNumber(barcodeRawValue)) {
+        showErrorToast(
+          'الباركود :$barcodeRawValue غير صالح، يجب أن يكون رقمًا فقط',
+        );
         return '-1';
       }
 
       return barcodeRawValue;
     } catch (e) {
-      AppToast.showErrorToast('حدث خطأ أثناء معالجة الصورة: ${e.toString()}');
+      showErrorToast('حدث خطأ أثناء معالجة الصورة: ${e.toString()}');
       return '-404';
     }
   }
@@ -84,14 +83,14 @@ class ImageScanner {
   ///
   /// Returns the raw value of the first detected barcode, or '-404' if no
   /// barcodes are found or an error occurs.
-  Future<String> scanBarcodeFromImage(BuildContext context) async {
+  Future<String> scanBarcodeFromImage(final BuildContext context) async {
     try {
-      final XFile? image = await _pickGalleryImage();
+      final image = await _pickGalleryImage();
 
-      final String barcode = await _getBarcodeFromImage(image);
+      final barcode = await _getBarcodeFromImage(image);
       return barcode;
     } catch (e) {
-      AppToast.showErrorToast('حدث خطاء اثناء تحليل الصورة: ${e.toString()}');
+      showErrorToast('حدث خطاء اثناء تحليل الصورة: ${e.toString()}');
       return '-404';
     }
   }

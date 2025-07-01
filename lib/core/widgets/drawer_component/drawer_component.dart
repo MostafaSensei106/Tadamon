@@ -1,118 +1,103 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart'
+    show
+        BorderRadius,
+        BoxDecoration,
+        BuildContext,
+        Colors,
+        Column,
+        Container,
+        EdgeInsets,
+        Icon,
+        IconData,
+        InkWell,
+        ListTile,
+        Material,
+        Radius,
+        StatelessWidget,
+        Text,
+        TextOverflow,
+        Theme,
+        VoidCallback,
+        Widget;
+import 'package:flutter/services.dart' show HapticFeedback;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/core/config/fonts/fonts.dart';
-import 'package:tadamon/core/widgets/divider.dart';
 
-class ListTileComponent extends StatelessWidget {
-  final IconData leadingIcon;
-  final String title;
-  final String subtitle;
-  final Widget? trailingWidget;
-  final VoidCallback? onTapped;
-  final bool selected;
-  final bool useMargin;
-  final bool useSingeGroup;
-  final bool useGroupTop;
-  final bool useGroupMiddle;
-  final bool useGroupBottom;
-  final bool useDivider;
-  final bool useinBorderRadius;
+import '../../config/const/app_enums.dart' show ListTileGroupType;
+import '../../config/const/sensei_const.dart';
+import '../divider.dart' show FullAppDividerComponents;
 
-  const ListTileComponent({
-    super.key,
-    required this.leadingIcon,
+class ListTileIconComponent extends StatelessWidget {
+  const ListTileIconComponent({
+    required this.leading,
     required this.title,
-    required this.subtitle,
-    this.trailingWidget,
-    this.onTapped,
-    this.selected = false,
-    this.useMargin = false,
-    this.useDivider = false,
-    this.useGroupTop = false,
-    this.useGroupMiddle = false,
-    this.useGroupBottom = false,
-    this.useSingeGroup = false,
+    required this.groupType,
+    super.key,
+    this.subtitle,
+    this.trailing,
+    this.onTap,
     this.useinBorderRadius = false,
+    this.selected,
+    this.useMargin = true,
   });
+  final IconData leading;
+  final String title;
+  final String? subtitle;
+  final Widget? trailing;
+  final VoidCallback? onTap;
+  final bool? selected;
+  final bool useinBorderRadius;
+  final bool useMargin;
+  final ListTileGroupType groupType;
 
-  /// Get the border radius based on the given group properties.
+  /// Calculates the border radius for the [ListTile] based on the [ListTileGroupType]
+  /// and [useinBorderRadius].
   ///
-  /// This function returns a [BorderRadius] with the following rules:
+  /// The [ListTileGroupType.top] and [ListTileGroupType.bottom] will have a border
+  /// radius on the top and bottom respectively, while [ListTileGroupType.single] will
+  /// have a border radius on all sides. [ListTileGroupType.middle] and
+  /// [ListTileGroupType.none] will have no border radius.
   ///
-  /// - If [useGroupTop] is true, return a [BorderRadius] with only the top
-  ///   left and right corners rounded.
-  ///
-  /// - If [useGroupBottom] is true, return a [BorderRadius] with only the
-  ///   bottom left and right corners rounded.
-  ///
-  /// - If [useSingeGroup] is true, return a [BorderRadius] with all corners
-  ///   rounded.
-  ///
-  /// - If [useGroupMiddle] is true, return a [BorderRadius] with no corners rounded.
-  ///
-  /// Otherwise, return a [BorderRadius] with all corners rounded.
+  /// If [useinBorderRadius] is `true`, the radius will be set to
+  /// [AppConstants.inBorderRadius], otherwise it will be set to
+  /// [AppConstants.outBorderRadius].
   BorderRadius _getBorderRadius() {
-    double borderRadius = useinBorderRadius
+    final borderRadius = useinBorderRadius
         ? SenseiConst.inBorderRadius
         : SenseiConst.outBorderRadius;
-    if (useGroupTop) {
-      return BorderRadius.only(
-        topLeft: Radius.circular(borderRadius),
-        topRight: Radius.circular(borderRadius),
-      );
-    } else if (useGroupBottom) {
-      return BorderRadius.only(
-        bottomLeft: Radius.circular(borderRadius),
-        bottomRight: Radius.circular(borderRadius),
-      );
-    } else if (useSingeGroup) {
-      return BorderRadius.circular(borderRadius);
-    } else if (useGroupMiddle) {
-      return BorderRadius.zero;
+    switch (groupType) {
+      case ListTileGroupType.top:
+        return BorderRadius.vertical(top: Radius.circular(borderRadius));
+      case ListTileGroupType.bottom:
+        return BorderRadius.vertical(bottom: Radius.circular(borderRadius));
+      case ListTileGroupType.single:
+        return BorderRadius.circular(borderRadius);
+      case ListTileGroupType.middle:
+        return BorderRadius.zero;
+      case ListTileGroupType.none:
+        return BorderRadius.circular(0);
     }
-    return BorderRadius.circular(borderRadius);
   }
 
   @override
-
-  /// Builds a [ListTileComponent].
-  ///
-  /// This function returns a [Container] widget with a margin and decoration
-  /// based on the given properties.
-  ///
-  /// The [Container] widget contains a [Column] widget with a
-  /// [InkWell] widget and a [SenseiDivider] widget if [useDivider] is true.
-  ///
-  /// The [InkWell] widget is configured with a rounded border with the
-  /// [SenseiConst.outBorderRadius] radius, and an [onTap] callback that calls
-  /// [onTapped] with the given [context].
-  ///
-  /// The [InkWell] widget has a [ListTile] widget as child, which is
-  /// configured with a horizontal title gap of 13 logical pixels, and a
-  /// content padding of 8 logical pixels on the left and right sides.
-  ///
-  /// The [ListTile] widget has a [Container] widget with a rounded border and
-  /// a transparent color as the leading widget.
-  ///
-  /// The [Container] widget has a [Icon] widget as child, which is configured
-  /// with the given [leadingIcon] and a size of [SenseiConst.iconSize].
-  ///
-  /// The [ListTile] widget has a [Text] widget as title, which is configured
-  /// with the given [title].
-  ///
-  /// The [ListTile] widget has a [Text] widget as subtitle, which is
-  /// configured with the given [subtitle] and an [overflow] of
-  /// [TextOverflow.ellipsis].
-  ///
-  /// The [ListTile] widget has the given [trailingWidget] as trailing widget.
-  ///
-  /// The [ListTile] widget is selected if [selected] is true.
-  Widget build(BuildContext context) {
+  /// Builds a [Container] widget with a [Column] containing a [Material]
+  /// widget wrapping a [ListTile]. The appearance and behavior of the
+  /// [ListTile] are determined by the provided parameters. It includes
+  /// customizable [leading], [title], [subtitle], and [trailing] widgets.
+  /// The [onTap] callback is triggered when the [InkWell] is tapped.
+  /// The border radius is configured based on the [groupType] and
+  /// [useinBorderRadius] properties, and the background color is set
+  /// according to the current theme's color scheme.
+  Widget build(final BuildContext context) {
+    final borderRadius = _getBorderRadius();
     return Container(
-      margin: useMargin ? const EdgeInsets.only(top: SenseiConst.margin) : null,
+      margin:
+          useMargin &&
+              (groupType == ListTileGroupType.top ||
+                  groupType == ListTileGroupType.single)
+          ? EdgeInsets.only(top: SenseiConst.margin.h)
+          : null,
       decoration: BoxDecoration(
-        borderRadius: _getBorderRadius(),
+        borderRadius: borderRadius,
         color: Theme.of(context).colorScheme.surfaceContainer,
       ),
       child: Column(
@@ -120,43 +105,35 @@ class ListTileComponent extends StatelessWidget {
           Material(
             color: Colors.transparent,
             child: InkWell(
-              borderRadius: _getBorderRadius(),
-              enableFeedback: true,
-              customBorder: RoundedRectangleBorder(
-                borderRadius: _getBorderRadius(),
-              ),
-              onTap: onTapped,
+              onTap: () {
+                HapticFeedback.vibrate();
+                onTap!();
+              },
+              borderRadius: borderRadius,
               child: ListTile(
-                horizontalTitleGap: 13.w,
-                contentPadding: EdgeInsets.symmetric(
-                    horizontal: SenseiConst.padding.w, vertical: 0),
                 leading: Container(
                   padding: const EdgeInsets.all(SenseiConst.padding),
                   decoration: BoxDecoration(
-                    borderRadius:
-                        BorderRadius.circular(SenseiConst.inBorderRadius),
-                    color:
-                        Theme.of(context).colorScheme.surfaceContainerHighest,
+                    borderRadius: BorderRadius.circular(
+                      SenseiConst.inBorderRadius,
+                    ),
+                    color: Theme.of(context).colorScheme.surfaceContainerHigh,
                   ),
-                  child: Icon(
-                    leadingIcon,
-                    size: SenseiConst.iconSize.sp,
-                  ),
+                  child: Icon(leading, size: SenseiConst.iconSize),
                 ),
-                title: Text(
-                  title,
-                ),
-                subtitle: Text(
-                  subtitle,
-                  overflow: TextOverflow.ellipsis,
-                  style: AppTextStyle.subtitle(context),
-                ),
-                trailing: trailingWidget,
-                selected: selected,
+                title: Text(title),
+                subtitle: subtitle != null
+                    ? Text(subtitle!, overflow: TextOverflow.ellipsis)
+                    : null,
+                trailing: trailing,
+                horizontalTitleGap: 13,
+                contentPadding: const EdgeInsets.symmetric(horizontal: 8),
               ),
             ),
           ),
-          if (useDivider) const SenseiDivider(),
+          if (groupType == ListTileGroupType.middle ||
+              groupType == ListTileGroupType.top)
+            const FullAppDividerComponents(),
         ],
       ),
     );

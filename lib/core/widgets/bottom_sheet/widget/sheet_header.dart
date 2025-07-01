@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:tadamon/core/config/const/sensei_const.dart';
+import '../../../config/const/sensei_const.dart';
 
 class BottomSheetHeader extends StatelessWidget {
+  const BottomSheetHeader({required this.titile, super.key});
   final String titile;
-  const BottomSheetHeader({super.key, required, required this.titile});
 
   @override
   ///
@@ -21,26 +21,21 @@ class BottomSheetHeader extends StatelessWidget {
   ///
   /// The header is centered horizontally.
   ///
-  Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        children: [
-          Container(
-            margin: EdgeInsets.symmetric(vertical: SenseiConst.margin.h),
-            width: 80.w,
-            height: 5.h,
-            decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.primaryFixedDim,
-              borderRadius: BorderRadius.circular(4),
-            ),
+  Widget build(final BuildContext context) => Center(
+    child: Column(
+      children: [
+        Container(
+          margin: EdgeInsets.symmetric(vertical: SenseiConst.margin.h),
+          width: 80.w,
+          height: 5.h,
+          decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.primaryFixedDim,
+            borderRadius: BorderRadius.circular(4),
           ),
-          Text(
-            titile,
-            style: Theme.of(context).textTheme.titleMedium,
-          ),
-          SizedBox(height: 6.h),
-        ],
-      ),
-    );
-  }
+        ),
+        Text(titile, style: Theme.of(context).textTheme.titleMedium),
+        SizedBox(height: 6.h),
+      ],
+    ),
+  );
 }

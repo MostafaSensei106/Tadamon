@@ -1,31 +1,23 @@
-import 'dart:ui';
+import 'dart:ui' show PlatformDispatcher;
 
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tadamon/core/config/theme/colors/logic/cubit/theme_shared_preferences.dart';
-import 'package:tadamon/core/config/theme/colors/logic/cubit/theme_state.dart';
+import 'package:flutter/material.dart' show ThemeMode, Brightness;
+import 'package:flutter_bloc/flutter_bloc.dart' show Cubit;
+import 'theme_shared_preferences.dart' show ThemeSharedPreferences;
+import 'theme_state.dart' show ThemeState;
 
 class ThemeCubit extends Cubit<ThemeState> {
+  ThemeCubit({required final ThemeSharedPreferences themeSharedPreferences})
+    : _themeSharedPreferences = themeSharedPreferences,
+      super(const ThemeState(isDark: false, themeMode: ThemeMode.system));
   final ThemeSharedPreferences _themeSharedPreferences;
-  final BuildContext _context;
-
-  ThemeCubit({
-    required ThemeSharedPreferences themeSharedPreferences,
-    required BuildContext context,
-  })  : _themeSharedPreferences = themeSharedPreferences,
-        _context = context,
-        super(const ThemeState(
-          isDark: false,
-          themeMode: ThemeMode.system,
-        ));
 
   /// Persists the given [ThemeState] to SharedPreferences.
   ///
   /// This function will save the current theme state to the device's
   /// SharedPreferences, and is intended to be called whenever the user
   /// changes the theme.
-  Future<void> _persistTheme(ThemeState state) async {
-    await _themeSharedPreferences.setTheme(state.isDark);
+  Future<void> _persistTheme(final ThemeState state) async {
+    await _themeSharedPreferences.setTheme(isDark: state.isDark);
     await _themeSharedPreferences.setThemeMode(state.themeMode);
   }
 
@@ -38,7 +30,7 @@ class ThemeCubit extends Cubit<ThemeState> {
   ///
   /// Emits a new [ThemeState] with the chosen [isDark] and
   /// [ThemeMode].
-  Future<void> toggleTheme(bool isDark) async {
+  Future<void> toggleTheme({required final bool isDark}) async {
     final newState = state.copyWith(
       isDark: isDark,
       themeMode: isDark ? ThemeMode.dark : ThemeMode.light,
@@ -56,7 +48,7 @@ class ThemeCubit extends Cubit<ThemeState> {
   /// [ThemeMode.system].
   Future<void> setSystemTheme() async {
     final isDark =
-        MediaQuery.of(_context).platformBrightness == Brightness.dark;
+        PlatformDispatcher.instance.platformBrightness == Brightness.dark;
     final newState = state.copyWith(
       isDark: isDark,
       themeMode: ThemeMode.system,
@@ -82,7 +74,7 @@ class ThemeCubit extends Cubit<ThemeState> {
 
     if (isFirstRun == null || isFirstRun) {
       await setSystemTheme();
-      await _themeSharedPreferences.setFirstRun(false);
+      await _themeSharedPreferences.setFirstRun(value: false);
     } else {
       final isDark = await _themeSharedPreferences.getTheme();
       final savedMode = await _themeSharedPreferences.getThemeMode();
@@ -98,12 +90,7 @@ class ThemeCubit extends Cubit<ThemeState> {
         await _persistTheme(newState);
         emit(newState);
       } else {
-        emit(
-          state.copyWith(
-            isDark: isDark,
-            themeMode: savedMode,
-          ),
-        );
+        emit(state.copyWith(isDark: isDark, themeMode: savedMode));
       }
     }
   }

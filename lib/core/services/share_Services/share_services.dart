@@ -1,7 +1,9 @@
-import 'package:share_plus/share_plus.dart';
+import 'package:share_plus/share_plus.dart' show SharePlus, ShareParams;
 
 class ShareServices {
-  static void share(String url) {
-    Share.share(url);
+  ShareServices._();
+
+  static void share(final String url) {
+    SharePlus.instance.share(ShareParams(text: url));
   }
 }

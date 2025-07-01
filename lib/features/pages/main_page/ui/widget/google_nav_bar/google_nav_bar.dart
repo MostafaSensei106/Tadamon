@@ -2,18 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/generated/l10n.dart';
+import '../../../../../../core/config/const/sensei_const.dart';
+import '../../../../../../generated/l10n.dart';
 
 class GoogleNavBar extends StatefulWidget {
-  final int currentIndex;
-  final ValueChanged<int> onItemTapped;
-
   const GoogleNavBar({
-    super.key,
     required this.currentIndex,
     required this.onItemTapped,
+    super.key,
   });
+  final int currentIndex;
+  final ValueChanged<int> onItemTapped;
 
   @override
   State<GoogleNavBar> createState() => _GoogleNavBarState();
@@ -22,10 +21,12 @@ class GoogleNavBar extends StatefulWidget {
 class _GoogleNavBarState extends State<GoogleNavBar> {
   bool _isVisible = true;
 
-  IconData _getIcon(int index) {
+  IconData _getIcon(final int index) {
     switch (index) {
       case 0:
-        return widget.currentIndex == 0 ? Icons.house_rounded : Icons.house_outlined;
+        return widget.currentIndex == 0
+            ? Icons.house_rounded
+            : Icons.house_outlined;
       case 1:
         return Icons.search;
       case 2:
@@ -36,7 +37,7 @@ class _GoogleNavBarState extends State<GoogleNavBar> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     final theme = Theme.of(context);
     return GestureDetector(
       onDoubleTap: () {
@@ -48,7 +49,9 @@ class _GoogleNavBarState extends State<GoogleNavBar> {
         firstCurve: const Interval(0.0, 0.5, curve: Curves.easeIn),
         secondCurve: const Interval(0.5, 1.0, curve: Curves.easeOut),
         sizeCurve: const Interval(0.0, 1.0, curve: Curves.easeInOut),
-        crossFadeState: _isVisible ? CrossFadeState.showFirst : CrossFadeState.showSecond,
+        crossFadeState: _isVisible
+            ? CrossFadeState.showFirst
+            : CrossFadeState.showSecond,
         firstChild: Padding(
           padding: EdgeInsets.symmetric(
             horizontal: SenseiConst.padding.w,
@@ -56,8 +59,9 @@ class _GoogleNavBarState extends State<GoogleNavBar> {
           ),
           child: Container(
             decoration: BoxDecoration(
-              borderRadius:
-                  BorderRadius.circular(SenseiConst.outBorderRadius.r),
+              borderRadius: BorderRadius.circular(
+                SenseiConst.outBorderRadius.r,
+              ),
               color: theme.colorScheme.surfaceContainer,
               border: Border.all(
                 strokeAlign: BorderSide.strokeAlignOutside,

@@ -1,4 +1,4 @@
-import 'dart:ui';
+import 'dart:ui' show FontWeight;
 
 class FontWeightHelper {
   static const FontWeight thin = FontWeight.w100;

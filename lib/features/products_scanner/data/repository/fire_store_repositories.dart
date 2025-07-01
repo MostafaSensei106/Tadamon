@@ -1,72 +1,77 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:tadamon/core/widgets/app_toast/app_toast.dart';
-import 'package:tadamon/features/pages/search_page/data/model/search_product_model.dart';
-import 'package:tadamon/features/products_scanner/data/models/product_model.dart';
+import '../../../../core/widgets/app_toast/app_toast.dart';
+import '../../../pages/search_page/data/model/search_product_model.dart';
+import '../models/product_model.dart';
 
 class FireStoreRepository {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   static const String _tadamonProductsCollection = 'TadamonProducts';
   static const String _productReportCollection = 'TadamonUserReport';
 
-  Future<void> addProduct(ProductModel product) async {
+  Future<void> addProduct(final ProductModel product) async {
     try {
       await _firestore
           .collection(_tadamonProductsCollection)
           .add(product.toMap());
     } catch (e) {
-      AppToast.showErrorToast(e.toString());
+      showErrorToast(e.toString());
     }
   }
 
   Future<List<ProductModel>> downloadAllProductsFromFirebase() async {
     try {
-      final snapshot =
-          await _firestore.collection(_tadamonProductsCollection).get();
+      final snapshot = await _firestore
+          .collection(_tadamonProductsCollection)
+          .get();
       return snapshot.docs
-          .map((doc) => ProductModel.fromMap(doc.data()))
+          .map((final doc) => ProductModel.fromMap(doc.data()))
           .toList();
     } catch (e) {
-      AppToast.showErrorToast(e.toString());
+      showErrorToast(e.toString());
       return [];
     }
   }
 
   Future<List<ProductModel>> getAllProducts() async {
     try {
-      final snapshot =
-          await _firestore.collection(_tadamonProductsCollection).get();
+      final snapshot = await _firestore
+          .collection(_tadamonProductsCollection)
+          .get();
       return snapshot.docs
-          .map((doc) => ProductModel.fromMap(doc.data()))
+          .map((final doc) => ProductModel.fromMap(doc.data()))
           .toList();
     } catch (e) {
-      AppToast.showErrorToast(e.toString());
+      showErrorToast(e.toString());
       return [];
     }
   }
 
-  Future<void> updateProduct(String documnetId, ProductModel product) async {
+  Future<void> updateProduct(
+    final String documnetId,
+    final ProductModel product,
+  ) async {
     try {
       await _firestore
           .collection(_tadamonProductsCollection)
           .doc(documnetId)
           .update(product.toMap());
     } catch (e) {
-      AppToast.showErrorToast(e.toString());
+      showErrorToast(e.toString());
     }
   }
 
-  Future<void> deleteProduct(String documnetId) async {
+  Future<void> deleteProduct(final String documnetId) async {
     try {
       await _firestore
           .collection(_tadamonProductsCollection)
           .doc(documnetId)
           .delete();
     } catch (e) {
-      AppToast.showErrorToast(e.toString());
+      showErrorToast(e.toString());
     }
   }
 
-  Future<dynamic> getProductBySerialNumber(String serialNumber) async {
+  Future<dynamic> getProductBySerialNumber(final String serialNumber) async {
     try {
       final snapshot = await _firestore
           .collection(_tadamonProductsCollection)
@@ -86,43 +91,47 @@ class FireStoreRepository {
         );
       }
     } catch (e) {
-      AppToast.showErrorToast(e.toString());
+      showErrorToast(e.toString());
     }
   }
 
   Future<List<ProductSearchModel>> searchInFireStore(
-      String searchTerm, String filter) async {
+    String searchTerm,
+    final String filter,
+  ) async {
     if (searchTerm.isEmpty) {
       return [];
     }
 
     searchTerm = searchTerm.toLowerCase();
-    final CollectionReference productsCollection =
-        _firestore.collection(_tadamonProductsCollection);
+    final CollectionReference productsCollection = _firestore.collection(
+      _tadamonProductsCollection,
+    );
 
-    Query query = productsCollection
+    final query = productsCollection
         .orderBy(filter)
-        .startAt([searchTerm]).endAt(["$searchTerm\uF8FF"]);
+        .startAt([searchTerm])
+        .endAt(['$searchTerm\uF8FF']);
 
     final querySnapshot = await query.get();
 
     return querySnapshot.docs
-        .map((doc) => ProductSearchModel.fromDocument(doc))
+        .map((final doc) => ProductSearchModel.fromDocument(doc))
         .toList();
   }
 
-  Future<void> sendReportToBackEnd(Map<String, dynamic> productReport) async {
-    String productName = productReport['productName'];
-    DocumentReference documentReference =
-        _firestore.collection(_productReportCollection).doc(productName);
+  Future<void> sendReportToBackEnd(
+    final Map<String, dynamic> productReport,
+  ) async {
+    final String productName = productReport['productName'];
+    final DocumentReference documentReference = _firestore
+        .collection(_productReportCollection)
+        .doc(productName);
     await documentReference.set(productReport);
   }
 
-  Stream<int> getProductsCount() {
-    return _firestore
-        .collection(_tadamonProductsCollection)
-        .snapshots()
-        .map((snapshots) => snapshots.docs.length);
-  }
-
+  Stream<int> getProductsCount() => _firestore
+      .collection(_tadamonProductsCollection)
+      .snapshots()
+      .map((final snapshots) => snapshots.docs.length);
 }

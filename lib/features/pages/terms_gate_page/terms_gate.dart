@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/core/routing/routes.dart';
-import 'package:tadamon/core/widgets/button_component/button_compnent.dart';
-import 'package:tadamon/core/widgets/textbutton_component/textbuttonicon_component.dart';
-import 'package:tadamon/core/widgets/app_bar/side_page_app_bar.dart';
+
+import '../../../core/config/const/sensei_const.dart';
+import '../../../core/routing/routes.dart';
+import '../../../core/widgets/app_bar/side_page_app_bar.dart';
+import '../../../core/widgets/button_component/button_compnent.dart';
+import '../../../core/widgets/textbutton_component/textbuttonicon_component.dart';
 
 class TermsGate extends StatefulWidget {
   const TermsGate({super.key});
@@ -58,7 +59,7 @@ class _TermsGateState extends State<TermsGate> with TickerProviderStateMixin {
     'تُعتبر كافة الأكواد المصدرية، التصاميم، الرسومات، الشعارات، العلامات التجارية، والمواد الأخرى المتوفرة في تطبيق "تضامن" ملكية حصرية للمطورين أو لأصحاب الحقوق المصرح لهم، ويُحظر نسخها أو استخدامها أو إعادة نشرها بدون إذن كتابي صريح.',
     'يحظر على أي جهة استغلال أو إعادة توزيع أجزاء من التطبيق أو محتوياته سواء كانت نصوصاً، صوراً، أو غيرها لأي أغراض تجارية أو غير تجارية دون الرجوع إلى حقوق الملكية الفكرية الخاصة بتطبيق "تضامن".',
     'يجب على المستخدمين الالتزام بكافة حقوق النشر وعدم تغيير أو تعديل أي إشارات أو علامات تدل على حقوق الملكية الفكرية الواردة في التطبيق.',
-    'أي انتهاك لهذه الحقوق سيُعتبر تعدياً جسيمًا على الملكية الفكرية وقد يؤدي إلى اتخاذ إجراءات قانونية صارمة بحق المخالفين دون سابق إنذار.'
+    'أي انتهاك لهذه الحقوق سيُعتبر تعدياً جسيمًا على الملكية الفكرية وقد يؤدي إلى اتخاذ إجراءات قانونية صارمة بحق المخالفين دون سابق إنذار.',
   ];
 
   @override
@@ -71,21 +72,20 @@ class _TermsGateState extends State<TermsGate> with TickerProviderStateMixin {
   void _initAnimations() {
     _controllers = List.generate(
       _terms.length,
-      (index) => AnimationController(
+      (final index) => AnimationController(
         vsync: this,
         duration: Duration(milliseconds: 250 + (index * 100)),
       ),
     );
 
-    _slideAnimations = _controllers.map((controller) {
-      return Tween<Offset>(
-        begin: const Offset(1, 0),
-        end: Offset.zero,
-      ).animate(CurvedAnimation(
-        parent: controller,
-        curve: Curves.easeOut,
-      ));
-    }).toList();
+    _slideAnimations = _controllers
+        .map(
+          (final controller) => Tween<Offset>(
+            begin: const Offset(1, 0),
+            end: Offset.zero,
+          ).animate(CurvedAnimation(parent: controller, curve: Curves.easeOut)),
+        )
+        .toList();
 
     // Delay start a bit for UX
     Future.delayed(const Duration(milliseconds: 200), () {
@@ -96,8 +96,8 @@ class _TermsGateState extends State<TermsGate> with TickerProviderStateMixin {
   }
 
   Future<void> _checkAgreement() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    bool agreed = prefs.getBool('agreed_to_terms') ?? false;
+    final prefs = await SharedPreferences.getInstance();
+    final agreed = prefs.getBool('agreed_to_terms') ?? false;
     if (agreed) {
       _navigateToHome();
     } else {
@@ -106,7 +106,7 @@ class _TermsGateState extends State<TermsGate> with TickerProviderStateMixin {
   }
 
   Future<void> _agree() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final prefs = await SharedPreferences.getInstance();
     await prefs.setBool('agreed_to_terms', true);
     _navigateToHome();
   }
@@ -116,64 +116,59 @@ class _TermsGateState extends State<TermsGate> with TickerProviderStateMixin {
     Navigator.pushNamedAndRemoveUntil(
       context,
       Routes.mainPage,
-      (route) => false,
+      (final route) => false,
     );
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     if (_loading) {
       return const Scaffold(body: Center(child: CircularProgressIndicator()));
     }
 
     return Scaffold(
-      appBar: const SidePageAppBar(
-        title: 'اتفاقية استخدام التطبيق',
-      ),
+      appBar: const SidePageAppBar(title: 'اتفاقية استخدام التطبيق'),
       body: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: SenseiConst.padding.w,
-        ),
+        padding: EdgeInsets.symmetric(horizontal: SenseiConst.padding.w),
         child: Column(
           children: [
             Expanded(
               child: ListView.builder(
                 itemCount: _terms.length,
-                itemBuilder: (context, index) {
-                  return SlideTransition(
-                    position: _slideAnimations[index],
-                    child: FadeTransition(
-                      opacity: _controllers[index],
-                      child: Card(
-                        margin: index == 0
-                            ? EdgeInsets.only(top: SenseiConst.margin.h)
-                            : null,
-                        elevation: 0,
-                        child: Padding(
-                          padding: const EdgeInsets.all(SenseiConst.padding),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                '${index + 1}. ',
-                                style: const TextStyle(
-                                    fontWeight: FontWeight.bold),
+                itemBuilder: (final context, final index) => SlideTransition(
+                  position: _slideAnimations[index],
+                  child: FadeTransition(
+                    opacity: _controllers[index],
+                    child: Card(
+                      margin: index == 0
+                          ? EdgeInsets.only(top: SenseiConst.margin.h)
+                          : null,
+                      elevation: 0,
+                      child: Padding(
+                        padding: const EdgeInsets.all(SenseiConst.padding),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              '${index + 1}. ',
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
                               ),
-                              Expanded(child: Text(_terms[index])),
-                            ],
-                          ),
+                            ),
+                            Expanded(child: Text(_terms[index])),
+                          ],
                         ),
                       ),
                     ),
-                  );
-                },
+                  ),
+                ),
               ),
             ),
             Row(
               children: [
                 Checkbox(
                   value: _isChecked,
-                  onChanged: (value) {
+                  onChanged: (final value) {
                     setState(() {
                       _isChecked = value ?? false;
                     });
@@ -188,8 +183,10 @@ class _TermsGateState extends State<TermsGate> with TickerProviderStateMixin {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   TextbuttonIconComponent(
-                    onPressed: () =>
-                        {HapticFeedback.vibrate(), SystemNavigator.pop()},
+                    onPressed: () => {
+                      HapticFeedback.vibrate(),
+                      SystemNavigator.pop(),
+                    },
                     text: ' الخروج من التطبيق',
                     icon: Icons.close,
                   ),
@@ -208,7 +205,7 @@ class _TermsGateState extends State<TermsGate> with TickerProviderStateMixin {
                   ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),

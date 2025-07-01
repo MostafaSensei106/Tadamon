@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tadamon/features/products_scanner/data/repository/objectbox_repositories.dart';
+import '../../../data/repository/objectbox_repositories.dart';
 
 part 'localdb_state.dart';
 
@@ -37,7 +37,7 @@ class LocalDBCubit extends Cubit<LocalDBState> {
   }
 
   Future<bool> loclaDBHasData() async {
-    bool hasData = await ObjectboxRepository().tadamonProductsBoxHasData();
+    final hasData = await ObjectboxRepository().tadamonProductsBoxHasData();
     if (hasData) {
       emit(LoclaDBDataBaseHasData());
       return true;

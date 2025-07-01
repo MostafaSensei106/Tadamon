@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:tadamon/features/pages/search_page/data/model/search_product_model.dart';
+import '../data/model/search_product_model.dart';
 
 abstract class SearchState extends Equatable {
   @override
@@ -11,18 +11,17 @@ class SearchInitial extends SearchState {}
 class SearchLoading extends SearchState {}
 
 class SearchLoadingSuccess extends SearchState {
+  // ignore: avoid_unused_constructor_parameters, prefer_final_parameters
+  SearchLoadingSuccess(List list, {required this.products});
   final List<ProductSearchModel> products;
-
-  SearchLoadingSuccess(List result, {required this.products});
 
   @override
   List<Object> get props => [products];
 }
 
 class SearchError extends SearchState {
-  final String message;
-
   SearchError(this.message);
+  final String message;
 
   @override
   List<Object> get props => [message];

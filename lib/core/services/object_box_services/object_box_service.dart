@@ -1,14 +1,15 @@
-import 'package:tadamon/features/pages/log_page/data/models/scanned_logs_product_model.dart';
-import 'package:tadamon/features/products_scanner/data/models/product_model.dart';
-import 'package:tadamon/objectbox.g.dart';
+import '../../../features/pages/log_page/data/models/scanned_logs_product_model.dart'
+    show ScannedLogsProductModel;
+import '../../../features/products_scanner/data/models/product_model.dart'
+    show ProductModel;
+import '../../../objectbox.g.dart' show Store, Box, openStore;
 
 class ObjectBoxService {
+  ObjectBoxService._internal();
   static final ObjectBoxService _instance = ObjectBoxService._internal();
   late final Store store;
   late final Box<ProductModel> tadamonProductsBox;
   late final Box<ScannedLogsProductModel> tadamonLogsBox;
-
-  ObjectBoxService._internal();
 
   /// Initialize the ObjectBox store and boxes.
   ///

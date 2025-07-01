@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tadamon/core/config/const/sensei_const.dart';
+import '../../../config/const/sensei_const.dart';
 
 class DrawerHeaderWidget extends StatelessWidget {
   const DrawerHeaderWidget({super.key});
@@ -11,17 +11,13 @@ class DrawerHeaderWidget extends StatelessWidget {
   /// [BoxFit] of [BoxFit.cover].
   ///
   /// The child of the [DrawerHeader] widget is null.
-  Widget build(BuildContext context) {
-    return const DrawerHeader(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage(
-                SenseiConst.drawerImage,
-              ),
-              fit: BoxFit.cover,
-              filterQuality: FilterQuality.medium,
-              ),
-        ),
-        child: null);
-  }
+  Widget build(final BuildContext context) => const DrawerHeader(
+    decoration: BoxDecoration(
+      image: DecorationImage(
+        image: AssetImage(SenseiConst.drawerImage),
+        fit: BoxFit.cover,
+      ),
+    ),
+    child: null,
+  );
 }

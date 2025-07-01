@@ -1,13 +1,31 @@
-import 'package:flutter/material.dart';
-import 'package:tadamon/core/error/no_routes.dart';
-import 'package:tadamon/core/routing/routes.dart';
-import 'package:tadamon/features/pages/app_info_page/ui/page/app_info.dart';
-import 'package:tadamon/features/pages/chat_with_dev_page/ui/page/chat_with_dev.dart';
-import 'package:tadamon/features/pages/help_user_page/ui/page/help_user_page.dart';
-import 'package:tadamon/features/pages/main_page/ui/page/main_page.dart';
-import 'package:tadamon/features/pages/onboarding_page/ui/page/onboarding_page.dart';
-import 'package:tadamon/features/pages/palestine_map_page/ui/page/palestine_map_page.dart';
-import 'package:tadamon/features/pages/terms_gate_page/terms_gate.dart';
+import 'package:flutter/material.dart'
+    show
+        GlobalKey,
+        NavigatorState,
+        ColorScheme,
+        RouteSettings,
+        Route,
+        Widget,
+        PageRouteBuilder,
+        Offset,
+        Theme,
+        Tween,
+        SlideTransition,
+        FadeTransition;
+
+import '../../features/pages/app_info_page/ui/page/app_info.dart' show AppInfo;
+import '../../features/pages/chat_with_dev_page/ui/page/chat_with_dev.dart'
+    show ChatWithDev;
+import '../../features/pages/help_user_page/ui/page/help_user_page.dart'
+    show HelpUserPage;
+import '../../features/pages/main_page/ui/page/main_page.dart' show MainPage;
+import '../../features/pages/onboarding_page/ui/page/onboarding_page.dart'
+    show OnboardingPage;
+import '../../features/pages/palestine_map_page/ui/page/palestine_map_page.dart'
+    show PalestineMapPage;
+import '../../features/pages/terms_gate_page/terms_gate.dart' show TermsGate;
+import '../error/no_routes.dart' show NoRoutes;
+import 'routes.dart' show Routes;
 
 class AppRouter {
   static final GlobalKey<NavigatorState> navigatorKey =
@@ -16,12 +34,12 @@ class AppRouter {
   static ColorScheme get theme {
     final context = navigatorKey.currentContext;
     if (context == null) {
-      throw Exception("Navigator context is not available");
+      throw Exception('Navigator context is not available');
     }
     return Theme.of(context).colorScheme;
   }
 
-  Route<dynamic> generateRoute(RouteSettings settings) {
+  Route<dynamic> generateRoute(final RouteSettings settings) {
     Widget page;
     switch (settings.name) {
       case Routes.onBoarding:
@@ -55,19 +73,17 @@ class AppRouter {
   /// from the right edge of the screen. The transition duration is set to
   /// 200 milliseconds.
 
-  PageRouteBuilder _createPageRoute(Widget page) {
-    return PageRouteBuilder(
-      transitionDuration: const Duration(milliseconds: 250),
-      pageBuilder: (_, animation, __) => FadeTransition(
-        opacity: animation,
-        child: SlideTransition(
-          position: Tween<Offset>(
-            begin: const Offset(1, 0),
-            end: Offset.zero,
-          ).animate(animation),
-          child: page,
-        ),
+  PageRouteBuilder _createPageRoute(final Widget page) => PageRouteBuilder(
+    transitionDuration: const Duration(milliseconds: 250),
+    pageBuilder: (_, final animation, _) => FadeTransition(
+      opacity: animation,
+      child: SlideTransition(
+        position: Tween<Offset>(
+          begin: const Offset(1, 0),
+          end: Offset.zero,
+        ).animate(animation),
+        child: page,
       ),
-    );
-  }
+    ),
+  );
 }

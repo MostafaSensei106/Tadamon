@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/core/widgets/text_filed_component/text_filed_component.dart';
-import 'package:tadamon/features/pages/log_page/logic/bloc/logs_bloc.dart';
-import 'package:tadamon/features/pages/log_page/logic/bloc/logs_event.dart';
-import 'package:tadamon/features/pages/log_page/ui/widgets/logs_search_content.dart';
+import '../../../../../core/config/const/sensei_const.dart';
+import '../../../../../core/widgets/text_filed_component/text_filed_component.dart';
+import '../../logic/bloc/logs_bloc.dart';
+import '../../logic/bloc/logs_event.dart';
+import 'logs_search_content.dart';
 
 class LogsPageView extends StatefulWidget {
   const LogsPageView({super.key});
@@ -19,76 +19,75 @@ class _LogsPageViewState extends State<LogsPageView> {
   String _selectedFilter = 'SerialNumber';
 
   @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(SenseiConst.padding),
-      child: Column(
-        children: [
-          searchBar(context),
-          SizedBox(height: SenseiConst.margin.h),
-          LogsSearchContent(searchController: _searchController),
-        ],
-      ),
-    );
-  }
-
-  Row searchBar(BuildContext context) {
-    return Row(
+  Widget build(final BuildContext context) => Padding(
+    padding: const EdgeInsets.all(SenseiConst.padding),
+    child: Column(
       children: [
-        Expanded(
-          child: TextFieldComponent(
-            useOutBorderRadius: true,
-            controller: _searchController,
-            icon: Icons.search,
-            suffixIcon: menuButton(context),
-            hint:
-                'ابحث عن ${_selectedFilter == 'Name' ? 'اسم المنتج' : _selectedFilter == 'SerialNumber' ? 'الرقم التسلسلي' : _selectedFilter == 'Manufacture' ? 'المُصنع' : 'القسم'}...',
-            onChange: (value) {
-              BlocProvider.of<LogsBloc>(context)
-                  .add(GetLogsResult(value, _selectedFilter));
-            },
+        searchBar(context),
+        SizedBox(height: SenseiConst.margin.h),
+        LogsSearchContent(searchController: _searchController),
+      ],
+    ),
+  );
+
+  Row searchBar(final BuildContext context) => Row(
+    children: [
+      Expanded(
+        child: TextFieldComponent(
+          useOutBorderRadius: true,
+          controller: _searchController,
+          icon: Icons.search,
+          suffixIcon: menuButton(context),
+          hint:
+              'ابحث عن ${_selectedFilter == 'Name'
+                  ? 'اسم المنتج'
+                  : _selectedFilter == 'SerialNumber'
+                  ? 'الرقم التسلسلي'
+                  : _selectedFilter == 'Manufacture'
+                  ? 'المُصنع'
+                  : 'القسم'}...',
+          onChange: (final value) {
+            BlocProvider.of<LogsBloc>(
+              context,
+            ).add(GetLogsResult(value, _selectedFilter));
+          },
+        ),
+      ),
+    ],
+  );
+
+  PopupMenuButton<String> menuButton(final BuildContext context) =>
+      PopupMenuButton<String>(
+        onSelected: (final value) {
+          setState(() {
+            _selectedFilter = value;
+          });
+        },
+        icon: Icon(
+          Icons.filter_list,
+          size: SenseiConst.iconSize,
+          color: _selectedFilter != 'SerialNumber'
+              ? Theme.of(context).colorScheme.primary
+              : null,
+        ),
+        elevation: 0,
+        enableFeedback: true,
+        borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius.r),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius.r),
+          side: BorderSide(
+            color: Theme.of(context).colorScheme.outline.withAlpha(0x80),
           ),
         ),
-      ],
-    );
-  }
-
-  PopupMenuButton<String> menuButton(BuildContext context) {
-    return PopupMenuButton<String>(
-      onSelected: (value) {
-        setState(() {
-          _selectedFilter = value;
-        });
-      },
-      icon: Icon(
-        Icons.filter_list,
-        size: SenseiConst.iconSize,
-        color: _selectedFilter != 'SerialNumber'
-            ? Theme.of(context).colorScheme.primary
-            : null,
-      ),
-      elevation: 0,
-      enableFeedback: true,
-      borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius.r),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius.r),
-        side: BorderSide(
-          color: Theme.of(context).colorScheme.outline.withAlpha(0x80),
-        ),
-      ),
-      padding: EdgeInsets.zero,
-      tooltip: 'فلتر البحث',
-      color: Theme.of(context).colorScheme.surface,
-      itemBuilder: (context) {
-        return [
+        padding: EdgeInsets.zero,
+        tooltip: 'فلتر البحث',
+        color: Theme.of(context).colorScheme.surface,
+        itemBuilder: (final context) => [
           PopupMenuItem(
             value: 'SerialNumber',
             child: Row(
               children: [
-                const Icon(
-                  Icons.qr_code_rounded,
-                  size: SenseiConst.iconSize,
-                ),
+                const Icon(Icons.qr_code_rounded, size: SenseiConst.iconSize),
                 SizedBox(width: SenseiConst.padding.w),
                 Text(
                   'الرقم التسلسلي',
@@ -141,10 +140,7 @@ class _LogsPageViewState extends State<LogsPageView> {
             value: 'Manufacture',
             child: Row(
               children: [
-                const Icon(
-                  Icons.business,
-                  size: SenseiConst.iconSize,
-                ),
+                const Icon(Icons.business, size: SenseiConst.iconSize),
                 SizedBox(width: SenseiConst.padding.w),
                 Text(
                   'المُصنع',
@@ -169,10 +165,7 @@ class _LogsPageViewState extends State<LogsPageView> {
             value: 'Category',
             child: Row(
               children: [
-                const Icon(
-                  Icons.category_outlined,
-                  size: SenseiConst.iconSize,
-                ),
+                const Icon(Icons.category_outlined, size: SenseiConst.iconSize),
                 SizedBox(width: SenseiConst.padding.w),
                 Text(
                   'القسم',
@@ -193,10 +186,8 @@ class _LogsPageViewState extends State<LogsPageView> {
               ],
             ),
           ),
-        ];
-      },
-    );
-  }
+        ],
+      );
 
   @override
   void dispose() {

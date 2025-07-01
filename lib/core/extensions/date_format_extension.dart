@@ -1,4 +1,4 @@
-import 'package:intl/intl.dart';
+import 'package:intl/intl.dart' show DateFormat;
 
 /// The extension for [DateTime] to format it in a specific way.
 ///
@@ -7,7 +7,7 @@ extension DateFormatExtension on DateTime {
   /// The formatted date as a string.
   String get formatted {
     /// The formatter that formats the date in the specific way.
-    final DateFormat formatter = DateFormat(kDateFormat, kLocale);
+    final formatter = DateFormat(kDateFormat, kLocale);
     return formatter.format(this);
   }
 }
@@ -17,4 +17,3 @@ const String kLocale = 'en';
 
 /// The format of the date for the date formatter.
 const String kDateFormat = 'yyyy-MM-dd, h:mm a';
-

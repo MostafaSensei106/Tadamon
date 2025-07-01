@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:tadamon/core/config/const/sensei_const.dart';
+import '../../config/const/sensei_const.dart';
 
 class ButtonCompnent extends StatelessWidget {
+  const ButtonCompnent({
+    required this.label,
+    required this.icon,
+    required this.onPressed,
+    super.key,
+    this.isEnabled = true,
+    this.useMargin = false,
+    this.useInBorderRadius = false,
+  });
   final String label;
   final IconData icon;
   final void Function()? onPressed;
@@ -10,18 +19,7 @@ class ButtonCompnent extends StatelessWidget {
   final bool useMargin;
   final bool useInBorderRadius;
 
-  const ButtonCompnent({
-    super.key,
-    required this.label,
-    required this.icon,
-    required this.onPressed,
-    this.isEnabled = true,
-    this.useMargin = false,
-    this.useInBorderRadius = false,
-  });
-
   @override
-
   /// Returns a [SizedBox] widget with a [ElevatedButton.icon] widget as child.
   /// The [ElevatedButton.icon] widget is configured with the given properties.
   ///
@@ -48,35 +46,32 @@ class ButtonCompnent extends StatelessWidget {
   ///
   /// The button has a padding of [SenseiConst.padding] around it, and an enabled
   /// mouse cursor.
-  Widget build(BuildContext context) {
-    return Container(
-      margin: useMargin ? EdgeInsets.only(top: SenseiConst.margin.h) : null,
-      child: ElevatedButton.icon(
-        onPressed: isEnabled ? onPressed : null,
-        icon: Icon(
-          icon,
-          size: SenseiConst.iconSize.sp,
+  Widget build(final BuildContext context) => Container(
+    margin: useMargin ? EdgeInsets.only(top: SenseiConst.margin.h) : null,
+    child: ElevatedButton.icon(
+      onPressed: isEnabled ? onPressed : null,
+      icon: Icon(icon, size: SenseiConst.iconSize.sp),
+      label: Text(label),
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+        foregroundColor: Theme.of(context).colorScheme.onPrimaryContainer,
+        disabledBackgroundColor: Theme.of(context).colorScheme.error,
+        disabledForegroundColor: Theme.of(context).colorScheme.onError,
+        iconColor: Theme.of(context).colorScheme.onPrimaryContainer,
+        disabledIconColor: Theme.of(context).colorScheme.onError,
+        padding: EdgeInsets.symmetric(
+          horizontal: SenseiConst.padding.w,
+          vertical: SenseiConst.padding.h,
         ),
-        label: Text(label),
-        style: ElevatedButton.styleFrom(
-          backgroundColor: Theme.of(context).colorScheme.primaryContainer,
-          foregroundColor: Theme.of(context).colorScheme.onPrimaryContainer,
-          disabledBackgroundColor: Theme.of(context).colorScheme.error,
-          disabledForegroundColor: Theme.of(context).colorScheme.onError,
-          iconColor: Theme.of(context).colorScheme.onPrimaryContainer,
-          disabledIconColor: Theme.of(context).colorScheme.onError,
-          padding: EdgeInsets.symmetric(
-            horizontal:  SenseiConst.padding.w,
-            vertical:  SenseiConst.padding.h,
-          ),
-          shape: RoundedRectangleBorder(
-            borderRadius: useInBorderRadius? BorderRadius.circular(SenseiConst.inBorderRadius) : BorderRadius.circular(SenseiConst.outBorderRadius),
-          ),
-          elevation: 2,
-          enableFeedback: true,
-          enabledMouseCursor: WidgetStateMouseCursor.clickable,
+        shape: RoundedRectangleBorder(
+          borderRadius: useInBorderRadius
+              ? BorderRadius.circular(SenseiConst.inBorderRadius)
+              : BorderRadius.circular(SenseiConst.outBorderRadius),
         ),
+        elevation: 2,
+        enableFeedback: true,
+        enabledMouseCursor: WidgetStateMouseCursor.clickable,
       ),
-    );
-  }
+    ),
+  );
 }

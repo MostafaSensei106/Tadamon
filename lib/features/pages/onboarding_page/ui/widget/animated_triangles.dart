@@ -8,7 +8,8 @@ class AnimatedTriangles extends StatefulWidget {
   State<AnimatedTriangles> createState() => _AnimatedTrianglesState();
 }
 
-class _AnimatedTrianglesState extends State<AnimatedTriangles> with SingleTickerProviderStateMixin {
+class _AnimatedTrianglesState extends State<AnimatedTriangles>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   final List<Triangle> _triangles = [];
 
@@ -26,29 +27,25 @@ class _AnimatedTrianglesState extends State<AnimatedTriangles> with SingleTicker
       duration: const Duration(seconds: 5),
     )..repeat(reverse: true);
 
-    for (int i = 0; i < 15; i++) {
+    for (var i = 0; i < 15; i++) {
       _triangles.add(Triangle());
     }
   }
 
   @override
-  Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: _controller,
-      builder: (context, child) {
-        return CustomPaint(
-          painter: TrianglePainter(
-            triangles: _triangles,
-            animationValue: _controller.value,
-            screenSize: MediaQuery.of(context).size,
-            trianglePaint: _trianglePaint, 
-            borderPaint: _borderPaint,
-          ),
-          size: Size.infinite,
-        );
-      },
-    );
-  }
+  Widget build(final BuildContext context) => AnimatedBuilder(
+    animation: _controller,
+    builder: (final context, final child) => CustomPaint(
+      painter: TrianglePainter(
+        triangles: _triangles,
+        animationValue: _controller.value,
+        screenSize: MediaQuery.of(context).size,
+        trianglePaint: _trianglePaint,
+        borderPaint: _borderPaint,
+      ),
+      size: Size.infinite,
+    ),
+  );
 
   @override
   void dispose() {
@@ -58,21 +55,27 @@ class _AnimatedTrianglesState extends State<AnimatedTriangles> with SingleTicker
 }
 
 class Triangle {
+  Triangle()
+    : relativeX = Random().nextDouble(),
+      relativeY = Random().nextDouble(),
+      size = Random().nextDouble() * 60 + 30,
+      speedFactor = Random().nextDouble() * 0.5 + 0.5,
+      color = Colors.red;
   final double relativeX;
   final double relativeY;
   final double size;
   final double speedFactor;
   final Color color;
-
-  Triangle()
-      : relativeX = Random().nextDouble(),
-        relativeY = Random().nextDouble(),
-        size = Random().nextDouble() * 60 + 30,
-        speedFactor = Random().nextDouble() * 0.5 + 0.5,
-        color = Colors.red;
 }
 
 class TrianglePainter extends CustomPainter {
+  TrianglePainter({
+    required this.triangles,
+    required this.animationValue,
+    required this.screenSize,
+    required this.trianglePaint,
+    required this.borderPaint,
+  });
   final List<Triangle> triangles;
   final double animationValue;
   final Size screenSize;
@@ -80,20 +83,13 @@ class TrianglePainter extends CustomPainter {
   final Paint trianglePaint;
   final Paint borderPaint;
 
-  TrianglePainter({
-    required this.triangles,
-    required this.animationValue,
-    required this.screenSize,
-    required this.trianglePaint, 
-    required this.borderPaint,
-  });
-
   @override
-  void paint(Canvas canvas, Size size) {
+  void paint(final Canvas canvas, final Size size) {
     for (var triangle in triangles) {
       final baseX = triangle.relativeX * screenSize.width;
       final baseY = triangle.relativeY * screenSize.height;
-      final bounceOffset = sin(animationValue * 2 * pi * triangle.speedFactor) * 20;
+      final bounceOffset =
+          sin(animationValue * 2 * pi * triangle.speedFactor) * 20;
       final adjustedX = baseX;
       final adjustedY = baseY + bounceOffset;
 
@@ -108,13 +104,13 @@ class TrianglePainter extends CustomPainter {
         ..lineTo(adjustedX - triangle.size / 2, adjustedY - height / 3)
         ..close();
 
-      canvas.drawPath(path, trianglePaint);
-      canvas.drawPath(path, borderPaint);
+      canvas
+        ..drawPath(path, trianglePaint)
+        ..drawPath(path, borderPaint);
     }
   }
 
   @override
-  bool shouldRepaint(covariant TrianglePainter oldDelegate) {
-    return oldDelegate.animationValue != animationValue;
-  }
+  bool shouldRepaint(covariant final TrianglePainter oldDelegate) =>
+      oldDelegate.animationValue != animationValue;
 }

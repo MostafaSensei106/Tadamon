@@ -1,6 +1,18 @@
-import 'package:flutter/material.dart';
-import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/core/widgets/lottie_component/lottie_component.dart';
+import 'package:flutter/material.dart' show Material, Colors;
+import 'package:flutter/widgets.dart'
+    show
+        ErrorWidget,
+        Center,
+        EdgeInsets,
+        SizedBox,
+        TextStyle,
+        MainAxisSize,
+        TextAlign,
+        Text,
+        Column,
+        Padding;
+import '../config/const/sensei_const.dart' show SenseiConst;
+import '../widgets/lottie_component/lottie_component.dart' show LottieComponent;
 
 /// This function is used to catch any errors that may occur in the app and show an
 /// error screen with a cat animation.
@@ -19,27 +31,26 @@ import 'package:tadamon/core/widgets/lottie_component/lottie_component.dart';
 /// The [Material] widget is used to display the error screen when an error
 /// occurs.
 void errorScreen() {
-  ErrorWidget.builder = (details) {
-    return Material(
-      child: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const LottieComponent(
-                  lottiePath: SenseiConst.lottieCatErrorAnimation,
-                  text: 'حدث خطأ في تطبيق تضامن'),
-              const SizedBox(height: 8),
-              Text(
-                details.exception.toString(),
-                textAlign: TextAlign.center,
-                style: const TextStyle(color: Colors.grey),
-              ),
-            ],
-          ),
+  ErrorWidget.builder = (final details) => Material(
+    child: Center(
+      child: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const LottieComponent(
+              lottiePath: SenseiConst.lottieCatErrorAnimation,
+              text: 'حدث خطأ في تطبيق تضامن',
+            ),
+            const SizedBox(height: 8),
+            Text(
+              details.exception.toString(),
+              textAlign: TextAlign.center,
+              style: const TextStyle(color: Colors.grey),
+            ),
+          ],
         ),
       ),
-    );
-  };
+    ),
+  );
 }

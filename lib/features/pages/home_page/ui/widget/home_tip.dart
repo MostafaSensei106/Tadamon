@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:tadamon/core/config/const/sensei_const.dart';
-import 'package:tadamon/core/config/fonts/fonts.dart';
-import 'package:tadamon/generated/l10n.dart';
+import '../../../../../core/config/const/sensei_const.dart';
+import '../../../../../core/config/fonts/fonts.dart';
+import '../../../../../generated/l10n.dart';
 
 class HomeTip extends StatefulWidget {
   const HomeTip({super.key});
@@ -16,7 +16,6 @@ class HomeTipState extends State<HomeTip> with SingleTickerProviderStateMixin {
   late final Animation<double> _animation;
 
   @override
-
   /// Initializes the state of the widget.
   ///
   /// This is called when the widget is inserted into the tree.
@@ -29,10 +28,7 @@ class HomeTipState extends State<HomeTip> with SingleTickerProviderStateMixin {
       vsync: this,
       duration: const Duration(milliseconds: 350),
     );
-    _animation = CurvedAnimation(
-      parent: _controller,
-      curve: Curves.easeInOut,
-    );
+    _animation = CurvedAnimation(parent: _controller, curve: Curves.easeInOut);
     _controller.forward();
   }
 
@@ -53,7 +49,6 @@ class HomeTipState extends State<HomeTip> with SingleTickerProviderStateMixin {
   }
 
   @override
-
   /// Disposes of the animation controller and calls [super.dispose].
   ///
   /// This is called when the widget is removed from the tree.
@@ -66,7 +61,6 @@ class HomeTipState extends State<HomeTip> with SingleTickerProviderStateMixin {
   }
 
   @override
-
   /// Returns a [FadeTransition] widget with a [SizeTransition] widget as child.
   ///
   /// The [FadeTransition] widget is configured with the [_animation] as opacity.
@@ -96,44 +90,40 @@ class HomeTipState extends State<HomeTip> with SingleTickerProviderStateMixin {
   ///
   /// The [ListTile] widget has a [Text] widget as subtitle, which is
   /// configured with the [S.of(context).AppDescription] text.
-  Widget build(BuildContext context) {
-    return FadeTransition(
-      opacity: _animation,
-      child: SizeTransition(
-        sizeFactor: _animation,
-        axisAlignment: -1.0,
-        child: GestureDetector(
-          onDoubleTap: _onClosePressed,
-          child: Container(
-            margin: const EdgeInsets.only(bottom: SenseiConst.margin),
-            padding: const EdgeInsets.all(SenseiConst.padding),
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: Theme.of(context).colorScheme.outline.withAlpha(0x80),
-              ),
-              borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius),
-              color: Theme.of(context).colorScheme.surfaceContainer,
+  Widget build(final BuildContext context) => FadeTransition(
+    opacity: _animation,
+    child: SizeTransition(
+      sizeFactor: _animation,
+      axisAlignment: -1.0,
+      child: GestureDetector(
+        onDoubleTap: _onClosePressed,
+        child: Container(
+          margin: const EdgeInsets.only(bottom: SenseiConst.margin),
+          padding: const EdgeInsets.all(SenseiConst.padding),
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: Theme.of(context).colorScheme.outline.withAlpha(0x80),
             ),
-            child: ListTile(
-              subtitleTextStyle: TextStyle(
-                color: Theme.of(context).colorScheme.onSurface,
-              ),
-              leading: Icon(
-                Icons.lightbulb_outline_rounded,
-                size: SenseiConst.iconSize,
-                color: Theme.of(context).colorScheme.onSurface,
-              ),
-              title: Text(
-                S.of(context).appName,
-              ),
-              subtitle: Text(
-                S.of(context).appDescription,
-                style: AppTextStyle.subtitle(context),
-              ),
+            borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius),
+            color: Theme.of(context).colorScheme.surfaceContainer,
+          ),
+          child: ListTile(
+            subtitleTextStyle: TextStyle(
+              color: Theme.of(context).colorScheme.onSurface,
+            ),
+            leading: Icon(
+              Icons.lightbulb_outline_rounded,
+              size: SenseiConst.iconSize,
+              color: Theme.of(context).colorScheme.onSurface,
+            ),
+            title: Text(S.of(context).appName),
+            subtitle: Text(
+              S.of(context).appDescription,
+              style: AppTextStyle(context).subtitle,
             ),
           ),
         ),
       ),
-    );
-  }
+    ),
+  );
 }

@@ -57,8 +57,8 @@ class DefaultFirebaseOptions {
     appId: '1:251801216073:android:9432f68a517c82fea34b98',
     messagingSenderId: '251801216073',
     projectId: 'tadamon-32f59',
-    databaseURL: 'https://tadamon-32f59-default-rtdb.europe-west1.firebasedatabase.app',
+    databaseURL:
+        'https://tadamon-32f59-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'tadamon-32f59.appspot.com',
   );
-  
 }
