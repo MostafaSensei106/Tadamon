@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart' show CupertinoPageRoute;
 import 'package:flutter/material.dart'
     show
         GlobalKey,
@@ -6,12 +7,7 @@ import 'package:flutter/material.dart'
         RouteSettings,
         Route,
         Widget,
-        PageRouteBuilder,
-        Offset,
-        Theme,
-        Tween,
-        SlideTransition,
-        FadeTransition;
+        Theme;
 
 import '../../features/pages/app_info_page/ui/page/app_info.dart' show AppInfo;
 import '../../features/pages/chat_with_dev_page/ui/page/chat_with_dev.dart'
@@ -64,26 +60,6 @@ class AppRouter {
       default:
         page = const NoRoutes();
     }
-    return _createPageRoute(page);
+    return CupertinoPageRoute(builder: (_) => page);
   }
-
-  /// Creates a [PageRouteBuilder] with custom animations for the given [page].
-  ///
-  /// The transition includes a fade and slide effect, with the slide starting
-  /// from the right edge of the screen. The transition duration is set to
-  /// 200 milliseconds.
-
-  PageRouteBuilder _createPageRoute(final Widget page) => PageRouteBuilder(
-    transitionDuration: const Duration(milliseconds: 250),
-    pageBuilder: (_, final animation, _) => FadeTransition(
-      opacity: animation,
-      child: SlideTransition(
-        position: Tween<Offset>(
-          begin: const Offset(1, 0),
-          end: Offset.zero,
-        ).animate(animation),
-        child: page,
-      ),
-    ),
-  );
 }
