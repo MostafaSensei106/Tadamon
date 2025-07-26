@@ -43,7 +43,7 @@ class AppInfoTitle extends StatelessWidget {
         Text(
           'تطبيق تَضَامُنٌ',
           style: TextStyle(
-            fontSize: 23.sp,
+            fontSize: 18.sp,
             fontWeight: FontWeight.bold,
             color: Theme.of(context).colorScheme.primary,
           ),

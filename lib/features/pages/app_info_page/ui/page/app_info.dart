@@ -14,11 +14,9 @@ class AppInfo extends StatefulWidget {
 
 class _AppInfoState extends State<AppInfo> {
   String _appVersion = '';
-  String _buildNumber = '';
   String _appName = '';
   String _packageName = '';
   String _installerStore = '';
-  String _buildSignature = '';
 
   bool _isLoading = true;
 
@@ -50,23 +48,19 @@ class _AppInfoState extends State<AppInfo> {
       final packageInfo = await PackageInfo.fromPlatform();
 
       setState(() {
-        _appVersion = '${packageInfo.version}-V';
-        _buildNumber = packageInfo.buildNumber;
+        _appVersion = '${packageInfo.version} (${packageInfo.buildNumber})';
         _appName = packageInfo.appName;
         _packageName = packageInfo.packageName;
         _installerStore = packageInfo.installerStore ?? 'غير معروف';
-        _buildSignature = packageInfo.buildSignature;
         _isLoading = false;
       });
     } catch (e) {
       debugPrint('Error loading app info: $e');
       setState(() {
         _appVersion = 'خطأ في تحميل البيانات';
-        _buildNumber = 'خطأ في تحميل البيانات';
         _appName = 'خطأ في تحميل البيانات';
         _packageName = 'خطأ في تحميل البيانات';
         _installerStore = 'خطأ في تحميل البيانات';
-        _buildSignature = 'خطأ في تحميل البيانات';
         _isLoading = false;
       });
     }
@@ -86,8 +80,6 @@ class _AppInfoState extends State<AppInfo> {
             child: AppInfoList(
               appName: _appName,
               appVersion: _appVersion,
-              buildNumber: _buildNumber,
-              buildSignature: _buildSignature,
               packageName: _packageName,
               installerStore: _installerStore,
             ),
