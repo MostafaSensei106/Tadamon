@@ -24,6 +24,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../config/const/app_enums.dart' show ListTileGroupType;
 import '../../config/const/sensei_const.dart';
+import '../../config/fonts/fonts.dart' show AppTextStyle;
 import '../divider.dart' show FullAppDividerComponents;
 
 class ListTileIconComponent extends StatelessWidget {
@@ -105,10 +106,12 @@ class ListTileIconComponent extends StatelessWidget {
           Material(
             color: Colors.transparent,
             child: InkWell(
-              onTap: () {
-                HapticFeedback.vibrate();
-                onTap!();
-              },
+              onTap: onTap == null
+                  ? null
+                  : () {
+                      HapticFeedback.vibrate();
+                      onTap!();
+                    },
               borderRadius: borderRadius,
               child: ListTile(
                 leading: Container(
@@ -125,6 +128,7 @@ class ListTileIconComponent extends StatelessWidget {
                 subtitle: subtitle != null
                     ? Text(subtitle!, overflow: TextOverflow.ellipsis)
                     : null,
+                subtitleTextStyle: AppTextStyle(context).subtitle,
                 trailing: trailing,
                 horizontalTitleGap: 13,
                 contentPadding: const EdgeInsets.symmetric(horizontal: 8),

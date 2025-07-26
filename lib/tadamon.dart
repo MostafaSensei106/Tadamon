@@ -39,6 +39,7 @@ class TadamonApp extends StatelessWidget {
           initialRoute: Routes.onBoarding,
           onGenerateRoute: appRouter.generateRoute,
           themeAnimationCurve: Curves.easeInOut,
+
           locale: const Locale('ar', 'EG'),
           supportedLocales: const [Locale('ar', 'EG')],
           localizationsDelegates: const [

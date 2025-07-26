@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../config/fonts/fonts.dart';
 
 class AppBarTitle extends StatelessWidget {
   const AppBarTitle({required this.title, super.key});
@@ -25,10 +24,6 @@ class AppBarTitle extends StatelessWidget {
               ).animate(animation),
               child: FadeTransition(opacity: animation, child: child),
             ),
-    child: Text(
-      title,
-      key: ValueKey<String>(title),
-      style: AppTextStyle(context).headline1.copyWith(color: Colors.white),
-    ),
+    child: Text(title, key: ValueKey<String>(title)),
   );
 }

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../../../../core/config/const/app_enums.dart' show ListTileGroupType;
@@ -9,16 +11,12 @@ class AppInfoList extends StatefulWidget {
   const AppInfoList({
     required this.appName,
     required this.appVersion,
-    required this.buildNumber,
-    required this.buildSignature,
     required this.packageName,
     required this.installerStore,
     super.key,
   });
   final String appName;
   final String appVersion;
-  final String buildNumber;
-  final String buildSignature;
   final String packageName;
   final String installerStore;
 
@@ -34,8 +32,8 @@ class _AppInfoListState extends State<AppInfoList>
   Map<String, String> get appInfo => {
     'appName': widget.appName,
     'appVersion': widget.appVersion,
-    'buildNumber': widget.buildNumber,
-    'buildSignature': widget.buildSignature,
+    'dartVersion': 'Stable, ${Platform.version.split(" ").first}',
+    'flutterVersion': 'Stable, ${FlutterVersion.version}',
     'packageName': widget.packageName,
     'installerStore': widget.installerStore,
   };
@@ -81,8 +79,6 @@ class _AppInfoListState extends State<AppInfoList>
 معلومات تطبيق تضامن:
 - اسم التطبيق: ${widget.appName}
 - إصدار التطبيق: ${widget.appVersion}
-- رقم البناء: ${widget.buildNumber}
-- توقيع البناء: ${widget.buildSignature}
 - اسم الحزمة: ${widget.packageName}
 - المتجر المثبت: ${widget.installerStore}
 ''',
@@ -152,11 +148,11 @@ class _AppInfoListState extends State<AppInfoList>
       case 'appName':
         return Icons.android_rounded;
       case 'appVersion':
-        return Icons.info_outline;
-      case 'buildNumber':
-        return Icons.build_outlined;
-      case 'buildSignature':
-        return Icons.code_outlined;
+        return Icons.phone_android_rounded;
+      case 'dartVersion':
+        return Icons.code_rounded;
+      case 'flutterVersion':
+        return Icons.flutter_dash;
       case 'packageName':
         return Icons.app_registration_outlined;
       case 'installerStore':
@@ -168,14 +164,16 @@ class _AppInfoListState extends State<AppInfoList>
 
   String _getTitle(final String key) {
     switch (key) {
+      case 'OS':
+        return 'نظام التشغيل';
       case 'appName':
         return 'اسم التطبيق';
       case 'appVersion':
         return 'إصدار التطبيق';
-      case 'buildNumber':
-        return 'رقم البناء';
-      case 'buildSignature':
-        return 'توقيع البناء';
+      case 'dartVersion':
+        return 'إصدار Dart';
+      case 'flutterVersion':
+        return 'إصدار Flutter';
       case 'packageName':
         return 'اسم الحزمة';
       case 'installerStore':
