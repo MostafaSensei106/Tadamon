@@ -15,7 +15,6 @@ import 'package:flutter/widgets.dart'
         EdgeInsets,
         Column,
         AnimatedSize,
-        Padding,
         ListView,
         ValueKey,
         Navigator;
@@ -106,37 +105,34 @@ class SenseiDrawer extends StatelessWidget {
         ),
       ),
       child: ListView(
-        padding: EdgeInsets.zero,
+        padding: const EdgeInsets.only(
+          left: SenseiConst.padding,
+          right: SenseiConst.padding,
+          bottom: SenseiConst.padding,
+        ),
         children: [
-          SizedBox(height: 0.25.sh, child: const DrawerHeaderWidget()),
-          Padding(
-            padding: EdgeInsets.only(
-              left: SenseiConst.padding.w,
-              right: SenseiConst.padding.w,
-              bottom: SenseiConst.padding.h,
-            ),
-            child: AnimatedSize(
-              duration: const Duration(milliseconds: 250),
-              child: Column(
-                children: [
-                  _buildThemeSwitch(context),
-                  _buildModeSwitch(context),
-                  _buildAppOffline(context),
-                  _buildEnableOnline(context),
-                  _buildUpdateLocalHiveDataBase(context),
-                  _buildDeleteLocalData(context),
-                  _buildHowToUse(context),
-                  _buildReportProduct(context),
-                  _buildClearLogs(context),
-                  _buildExportLogs(context),
-                  _buildReadMe(context),
-                  _buildLetestUpdate(context),
-                  _buildGithubToken(context),
-                  _buildTelegramChannel(context),
-                  _buildDeveloper(context),
-                  _buildAbout(context),
-                ],
-              ),
+          const DrawerHeaderWidget(),
+          AnimatedSize(
+            duration: const Duration(milliseconds: 250),
+            child: Column(
+              children: [
+                _buildThemeSwitch(context),
+                _buildModeSwitch(context),
+                _buildAppOffline(context),
+                _buildEnableOnline(context),
+                _buildUpdateLocalHiveDataBase(context),
+                _buildDeleteLocalData(context),
+                _buildHowToUse(context),
+                _buildReportProduct(context),
+                _buildClearLogs(context),
+                _buildExportLogs(context),
+                _buildReadMe(context),
+                _buildLetestUpdate(context),
+                _buildGithubToken(context),
+                _buildTelegramChannel(context),
+                _buildDeveloper(context),
+                _buildAbout(context),
+              ],
             ),
           ),
         ],
@@ -222,7 +218,7 @@ class SenseiDrawer extends StatelessWidget {
             Icons.error_outline_rounded,
             color: Colors.red,
           );
-          subtitleText = S.of(context).appOnLineMassageRunning;
+          subtitleText = S.of(context).appOffLineMassageDontRunning;
         } else {
           trailingWidget = const Icon(
             Icons.query_builder_rounded,
@@ -237,7 +233,9 @@ class SenseiDrawer extends StatelessWidget {
           title: S.of(context).appOffLine,
           subtitle: subtitleText,
           trailing: trailingWidget,
-          groupType: ListTileGroupType.single,
+          groupType: state is LoclaDBDataBaseHasData
+              ? ListTileGroupType.top
+              : ListTileGroupType.single,
         );
       },
     ),
@@ -268,7 +266,7 @@ class SenseiDrawer extends StatelessWidget {
         builder: (final context, final state) {
           if (state is LoclaDBDataBaseEmpty) {
             return SizedBox(
-              width: 1.sw,
+              width: double.infinity,
               child: ButtonCompnent(
                 useMargin: true,
                 label: 'تشغيل الاونلاين',
