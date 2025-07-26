@@ -237,7 +237,7 @@ class SenseiDrawer extends StatelessWidget {
           title: S.of(context).appOffLine,
           subtitle: subtitleText,
           trailing: trailingWidget,
-          groupType: ListTileGroupType.top,
+          groupType: ListTileGroupType.single,
         );
       },
     ),
@@ -273,6 +273,7 @@ class SenseiDrawer extends StatelessWidget {
                 useMargin: true,
                 label: 'تشغيل الاونلاين',
                 icon: Icons.cloud_download_outlined,
+
                 onPressed: () {
                   context.read<LocalDBCubit>().fetchDataFromFireStore();
                 },
