@@ -6,8 +6,8 @@ class DilogWatingComponent extends DilogComponent {
   const DilogWatingComponent({
     required super.title,
     required super.message,
+    required super.icon,
     super.key,
-    super.icon,
     super.actions,
   });
 

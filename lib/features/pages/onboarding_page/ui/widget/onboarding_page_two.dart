@@ -144,6 +144,7 @@ class AppOnline extends StatelessWidget {
         listener: (final context, final state) {
           if (state is LoclaDBDataFetchingFromFireStore) {
             const DilogWatingComponent(
+              icon: Icons.cloud_download_outlined,
               title: 'جاري استيراد البيانات',
               message: 'يرجى الانتظار حتى تكتمل المزامنة...',
             ).show(context);
