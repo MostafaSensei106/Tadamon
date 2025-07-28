@@ -6,7 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/config/const/sensei_const.dart';
 import '../../../../../core/widgets/app_toast/app_toast.dart';
-import '../../../../../core/widgets/button_component/button_compnent.dart';
+import '../../../../../core/widgets/button_components/button_compnent.dart';
 import '../../../../../core/widgets/dilog_components/dilog_waiting_component.dart';
 import '../../../../products_scanner/logic/cubit/localdb_cubit/localdb_cubit.dart';
 

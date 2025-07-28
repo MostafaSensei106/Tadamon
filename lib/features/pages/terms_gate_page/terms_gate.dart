@@ -6,8 +6,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../../core/config/const/sensei_const.dart';
 import '../../../core/routing/routes.dart';
 import '../../../core/widgets/app_bar_component/side_page_app_bar.dart';
-import '../../../core/widgets/button_component/button_compnent.dart';
-import '../../../core/widgets/textbutton_component/textbuttonicon_component.dart';
+import '../../../core/widgets/button_components/button_compnent.dart';
+import '../../../core/widgets/button_components/textbutton_components/textbuttonicon_component.dart';
 
 class TermsGate extends StatefulWidget {
   const TermsGate({super.key});

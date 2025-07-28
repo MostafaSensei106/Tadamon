@@ -10,7 +10,7 @@ import 'package:flutter/material.dart'
         RoundedRectangleBorder,
         SystemMouseCursors,
         Text;
-import '../../config/const/sensei_const.dart';
+import '../../../config/const/sensei_const.dart';
 
 class TextButtonComponent extends StatelessWidget {
   const TextButtonComponent({

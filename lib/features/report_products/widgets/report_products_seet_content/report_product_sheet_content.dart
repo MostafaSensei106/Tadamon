@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/config/const/sensei_const.dart';
-import '../../../../core/widgets/button_component/button_compnent.dart';
+import '../../../../core/widgets/button_components/button_compnent.dart';
 import '../../../../core/widgets/text_filed_component/text_filed_component.dart';
 import '../../logic/bloc/report_product_cubit.dart';
 import '../../logic/bloc/report_product_state.dart';
