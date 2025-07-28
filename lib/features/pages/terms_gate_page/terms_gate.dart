@@ -6,8 +6,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../../core/config/const/sensei_const.dart';
 import '../../../core/routing/routes.dart';
 import '../../../core/widgets/app_bar_component/side_page_app_bar.dart';
-import '../../../core/widgets/button_components/button_compnent.dart';
-import '../../../core/widgets/button_components/textbutton_components/textbuttonicon_component.dart';
+import '../../../core/widgets/button_components/elevated_button_components/button_compnent.dart';
+import '../../../core/widgets/button_components/text_button_components/text_icon_button_component.dart';
 
 class TermsGate extends StatefulWidget {
   const TermsGate({super.key});
@@ -182,7 +182,7 @@ class _TermsGateState extends State<TermsGate> with TickerProviderStateMixin {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  TextbuttonIconComponent(
+                  TextIconButtonComponent(
                     onPressed: () => {
                       HapticFeedback.vibrate(),
                       SystemNavigator.pop(),

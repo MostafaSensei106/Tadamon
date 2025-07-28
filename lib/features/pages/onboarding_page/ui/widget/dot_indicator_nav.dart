@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../../../../../core/config/const/sensei_const.dart';
 import '../../../../../core/routing/routes.dart';
-import '../../../../../core/widgets/button_components/button_compnent.dart';
+import '../../../../../core/widgets/button_components/elevated_button_components/button_compnent.dart';
 
 class DotIndicatorNav extends StatefulWidget {
   const DotIndicatorNav({required this.pageController, super.key});

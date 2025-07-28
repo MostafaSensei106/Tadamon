@@ -11,10 +11,10 @@ import 'package:flutter/material.dart'
         Icon,
         Text;
 import '../../../config/const/sensei_const.dart';
-import 'textbutton_component.dart' show TextButtonComponent;
+import 'text_button_component.dart' show TextButtonComponent;
 
-class TextbuttonIconComponent extends TextButtonComponent {
-  const TextbuttonIconComponent({
+class TextIconButtonComponent extends TextButtonComponent {
+  const TextIconButtonComponent({
     required super.onPressed,
     required super.text,
     required this.icon,

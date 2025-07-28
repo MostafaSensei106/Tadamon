@@ -1,15 +1,7 @@
-import 'package:flutter/material.dart'
-    show
-        StatelessWidget,
-        VoidCallback,
-        BuildContext,
-        Widget,
-        TextButton,
-        MaterialTapTargetSize,
-        BorderRadius,
-        RoundedRectangleBorder,
-        SystemMouseCursors,
-        Text;
+import 'package:flutter/material.dart' show TextButton, MaterialTapTargetSize;
+import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
+
 import '../../../config/const/sensei_const.dart';
 
 class TextButtonComponent extends StatelessWidget {
@@ -27,7 +19,10 @@ class TextButtonComponent extends StatelessWidget {
 
   @override
   Widget build(final BuildContext context) => TextButton(
-    onPressed: onPressed,
+    onPressed: () {
+      HapticFeedback.vibrate();
+      onPressed();
+    },
     style: TextButton.styleFrom(
       tapTargetSize: MaterialTapTargetSize.shrinkWrap,
       shape: RoundedRectangleBorder(

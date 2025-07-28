@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../core/config/const/sensei_const.dart';
 import '../../../core/widgets/bottom_sheet/ui/model_bottom_sheet.dart';
-import '../../../core/widgets/button_components/button_compnent.dart';
+import '../../../core/widgets/button_components/elevated_button_components/button_compnent.dart';
 import '../../../core/widgets/text_filed_component/text_filed_component.dart';
 import '../../../generated/l10n.dart';
 

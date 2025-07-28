@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../../../../core/config/const/app_enums.dart' show ListTileGroupType;
-import '../../../../../core/widgets/button_components/button_compnent.dart';
+import '../../../../../core/widgets/button_components/elevated_button_components/button_compnent.dart';
 import '../../../../../core/widgets/list_tile_components/list_tile_icon_component.dart';
 import 'app_info_title.dart';
 

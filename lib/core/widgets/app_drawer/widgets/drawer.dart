@@ -55,7 +55,8 @@ import '../../../routing/routes.dart' show Routes;
 import '../../../services/url_services/url_services.dart' show launchURL;
 import '../../app_toast/app_toast.dart' show showSuccessToast, showErrorToast;
 import '../../bottom_sheet/ui/model_bottom_sheet.dart' show showBottomSheet;
-import '../../button_components/button_compnent.dart' show ButtonCompnent;
+import '../../button_components/elevated_button_components/button_compnent.dart'
+    show ButtonCompnent;
 import '../../dilog_components/dilog_waiting_component.dart'
     show DilogWatingComponent;
 import '../../list_tile_components/list_tile_icon_component.dart'
