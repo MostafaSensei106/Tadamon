@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/config/const/sensei_const.dart';
-import '../../../../../core/widgets/app_bar/side_page_app_bar.dart';
+import '../../../../../core/widgets/app_bar_component/side_page_app_bar.dart';
 import '../../../../../core/widgets/expansion_tile_component/expansion_tile_component.dart';
 import '../../../../../generated/l10n.dart';
 import '../../logic/cubit/help_user_cubit.dart';

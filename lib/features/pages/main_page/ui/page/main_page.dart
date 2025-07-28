@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/config/const/sensei_const.dart';
-import '../../../../../core/widgets/app_bar/app_bar.dart';
+import '../../../../../core/widgets/app_bar_component/app_bar.dart';
 import '../../../../../core/widgets/app_drawer/widgets/drawer.dart';
 import '../../../../../generated/l10n.dart';
 import '../../logic/cubit/main_page_cubit.dart';

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import '../../../../../core/config/const/sensei_const.dart';
-import '../../../../../core/widgets/app_bar/side_page_app_bar.dart';
+import '../../../../../core/widgets/app_bar_component/side_page_app_bar.dart';
 import '../widget/app_info_list.dart';
 
 class AppInfo extends StatefulWidget {
