@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../config/const/sensei_const.dart';
 import '../../config/fonts/fonts.dart';
+import '../container_background_component/container_background_component.dart';
 
 class CounterItemsComponent extends StatefulWidget {
   const CounterItemsComponent({
@@ -109,13 +110,9 @@ class _CounterItemsComponentState extends State<CounterItemsComponent>
   /// 5. A [Text] widget with the current value of the counter, a style of a
   ///    [TextStyle] with a [fontSize] of 18 logical pixels, a [fontWeight] of
   ///    [FontWeight.bold], and a [textAlign] of [TextAlign.center].
-  Widget build(final BuildContext context) => Container(
-    margin: EdgeInsets.only(top: SenseiConst.margin.h),
+  Widget build(final BuildContext context) => ContainerBackgroundComponent(
+    margin: const EdgeInsets.only(top: SenseiConst.margin),
     padding: const EdgeInsets.all(SenseiConst.padding),
-    decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius),
-      color: Theme.of(context).colorScheme.surfaceContainer,
-    ),
     child: Column(
       children: [
         Container(
