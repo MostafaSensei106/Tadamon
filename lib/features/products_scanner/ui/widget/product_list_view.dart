@@ -27,7 +27,7 @@ class ProductListView extends StatelessWidget {
     children: [
       ListTileIconComponent(
         useinBorderRadius: true,
-        leading: Icons.qr_code_rounded,
+        iconLeading: Icons.qr_code_rounded,
         title: 'الرقم التسلسلي',
         subtitle: product.serialNumber,
         groupType: ListTileGroupType.top,
@@ -39,26 +39,26 @@ class ProductListView extends StatelessWidget {
         ),
       ),
       ListTileIconComponent(
-        leading: Icons.label_outline_rounded,
+        iconLeading: Icons.label_outline_rounded,
         title: 'إسم المنتج',
         subtitle: product.name,
         groupType: ListTileGroupType.middle,
       ),
       ListTileIconComponent(
-        leading: Icons.business_rounded,
+        iconLeading: Icons.business_rounded,
         title: 'المصنع',
         subtitle: product.manufacture,
         groupType: ListTileGroupType.middle,
       ),
       ListTileIconComponent(
-        leading: Icons.category_outlined,
+        iconLeading: Icons.category_outlined,
         title: 'التصنيف',
         subtitle: product.category,
         groupType: ListTileGroupType.middle,
       ),
       ListTileIconComponent(
         useinBorderRadius: true,
-        leading: Icons.handshake_outlined,
+        iconLeading: Icons.handshake_outlined,
         title: 'الحالة',
         subtitle: product.onError == 'Product not found'
             ? 'المنتج غير موجود'
