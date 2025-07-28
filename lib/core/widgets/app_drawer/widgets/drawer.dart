@@ -58,7 +58,7 @@ import '../../bottom_sheet/ui/model_bottom_sheet.dart' show showBottomSheet;
 import '../../button_component/button_compnent.dart' show ButtonCompnent;
 import '../../dilog_components/dilog_waiting_component.dart'
     show DilogWatingComponent;
-import '../../drawer_component/drawer_component.dart'
+import '../../list_tile_components/list_tile_icon_component.dart'
     show ListTileIconComponent;
 import 'drawer_header.dart' show DrawerHeaderWidget;
 
@@ -248,6 +248,7 @@ class SenseiDrawer extends StatelessWidget {
       listener: (final context, final state) {
         if (state is LoclaDBDataFetchingFromFireStore) {
           const DilogWatingComponent(
+            icon: Icons.cloud_download_outlined,
             title: 'جاري استيراد البيانات',
             message: 'يرجى الانتظار حتى تكتمل المزامنة...',
           ).show(context);
@@ -292,6 +293,7 @@ class SenseiDrawer extends StatelessWidget {
           listener: (final context, final state) {
             if (state is LoclaDBDataFetchingFromFireStore) {
               const DilogWatingComponent(
+                icon: Icons.cloud_download_outlined,
                 title: 'جاري تحديث قاعدة البيانات',
                 message: 'يرجى الانتظار حتى تكتمل المزامنة...',
               ).show(context);
@@ -333,6 +335,7 @@ class SenseiDrawer extends StatelessWidget {
       listener: (final context, final state) {
         if (state is LoclaDBDataBaseDeleting) {
           const DilogWatingComponent(
+            icon: Icons.delete_forever_outlined,
             title: 'جاري حذف البيانات',
             message: 'يرجى الانتظار حتى تكتمل المزامنة...',
           ).show(context);
@@ -385,6 +388,7 @@ class SenseiDrawer extends StatelessWidget {
       builder: (final context, final state) {
         if (state is PdfExportLoading) {
           return const DilogWatingComponent(
+            icon: Icons.picture_as_pdf_rounded,
             title: 'جاري تصدير السجلات',
             message: 'الرجاء الانتظار',
           );

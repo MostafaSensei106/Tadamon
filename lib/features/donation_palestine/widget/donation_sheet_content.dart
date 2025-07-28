@@ -9,7 +9,7 @@ import '../../../core/services/url_services/url_services.dart' show launchURL;
 
 import '../../../core/widgets/bottom_sheet/ui/model_bottom_sheet.dart'
     show showBottomSheet;
-import '../../../core/widgets/drawer_component/drawer_component.dart'
+import '../../../core/widgets/list_tile_components/list_tile_icon_component.dart'
     show ListTileIconComponent;
 import '../../../generated/l10n.dart' show S;
 

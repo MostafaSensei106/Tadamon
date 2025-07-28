@@ -5,7 +5,7 @@ import '../../../../../core/config/const/app_enums.dart' show ListTileGroupType;
 import '../../../../../core/config/const/sensei_const.dart';
 import '../../../../../core/config/fonts/fonts.dart';
 import '../../../../../core/extensions/date_format_extension.dart';
-import '../../../../../core/widgets/drawer_component/drawer_component.dart';
+import '../../../../../core/widgets/list_tile_components/list_tile_icon_component.dart';
 import '../../data/models/scanned_logs_product_model.dart';
 
 class ProductLogsExpansionTileComponent extends StatelessWidget {

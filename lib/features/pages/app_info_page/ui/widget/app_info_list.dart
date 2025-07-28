@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../../../../core/config/const/app_enums.dart' show ListTileGroupType;
 import '../../../../../core/widgets/button_component/button_compnent.dart';
-import '../../../../../core/widgets/drawer_component/drawer_component.dart';
+import '../../../../../core/widgets/list_tile_components/list_tile_icon_component.dart';
 import 'app_info_title.dart';
 
 class AppInfoList extends StatefulWidget {

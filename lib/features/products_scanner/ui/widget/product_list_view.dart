@@ -12,7 +12,7 @@ import 'package:flutter/widgets.dart'
 import '../../../../core/config/const/app_enums.dart' show ListTileGroupType;
 import '../../../../core/widgets/button_component/button_compnent.dart'
     show ButtonCompnent;
-import '../../../../core/widgets/drawer_component/drawer_component.dart'
+import '../../../../core/widgets/list_tile_components/list_tile_icon_component.dart'
     show ListTileIconComponent;
 import '../../data/models/product_model.dart' show ProductModel;
 

@@ -25,6 +25,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../config/const/app_enums.dart' show ListTileGroupType;
 import '../../config/const/sensei_const.dart';
 import '../../config/fonts/fonts.dart' show AppTextStyle;
+import '../container_background_component/container_background_component.dart';
 import '../divider.dart' show FullAppDividerComponents;
 
 class ListTileIconComponent extends StatelessWidget {
@@ -114,14 +115,10 @@ class ListTileIconComponent extends StatelessWidget {
                     },
               borderRadius: borderRadius,
               child: ListTile(
-                leading: Container(
+                leading: ContainerBackgroundComponent(
                   padding: const EdgeInsets.all(SenseiConst.padding),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(
-                      SenseiConst.inBorderRadius,
-                    ),
-                    color: Theme.of(context).colorScheme.surfaceContainerHigh,
-                  ),
+                  color: Theme.of(context).colorScheme.surfaceContainerHigh,
+                  useInBorderRadius: true,
                   child: Icon(leading, size: SenseiConst.iconSize),
                 ),
                 title: Text(title),

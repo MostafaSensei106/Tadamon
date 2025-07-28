@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../config/const/sensei_const.dart';
+import '../container_background_component/container_background_component.dart';
 
 class DilogComponent extends StatelessWidget {
   const DilogComponent({
@@ -11,7 +12,7 @@ class DilogComponent extends StatelessWidget {
   });
   final String title;
   final String message;
-  final IconData? icon;
+  final IconData icon;
   final List<Widget>? actions;
 
   /// Show the dialog component
@@ -57,12 +58,10 @@ class DilogComponent extends StatelessWidget {
       borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius),
     ),
     title: Text(title),
-    content: Container(
+    content: ContainerBackgroundComponent(
+      useInBorderRadius: true,
       padding: const EdgeInsets.all(SenseiConst.padding),
-      decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.surfaceContainer,
-        borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius),
-      ),
+      color: Theme.of(context).colorScheme.surfaceContainer,
       child: Text(message),
     ),
     actions: actions,
