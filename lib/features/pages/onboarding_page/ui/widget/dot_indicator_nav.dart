@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../../../../../core/config/const/sensei_const.dart';
 import '../../../../../core/routing/routes.dart';
-import '../../../../../core/widgets/button_components/elevated_button_components/button_compnent.dart';
+import '../../../../../core/widgets/button_components/elevated_button_components/elevated_icon_button_component.dart';
 
 class DotIndicatorNav extends StatefulWidget {
   const DotIndicatorNav({required this.pageController, super.key});
@@ -49,7 +49,7 @@ class _DotIndicatorNavState extends State<DotIndicatorNav> {
     final String label,
     final IconData icon,
     final VoidCallback onPressed,
-  ) => ButtonCompnent(
+  ) => ElevatedIconButtonComponent(
     key: ValueKey(key),
     useInBorderRadius: true,
     label: label,

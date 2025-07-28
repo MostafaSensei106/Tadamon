@@ -55,8 +55,7 @@ import '../../../routing/routes.dart' show Routes;
 import '../../../services/url_services/url_services.dart' show launchURL;
 import '../../app_toast/app_toast.dart' show showSuccessToast, showErrorToast;
 import '../../bottom_sheet/ui/model_bottom_sheet.dart' show showBottomSheet;
-import '../../button_components/elevated_button_components/button_compnent.dart'
-    show ButtonCompnent;
+import '../../button_components/elevated_button_components/elevated_icon_button_component.dart';
 import '../../dilog_components/dilog_waiting_component.dart'
     show DilogWatingComponent;
 import '../../list_tile_components/list_tile_icon_component.dart'
@@ -269,7 +268,7 @@ class SenseiDrawer extends StatelessWidget {
           if (state is LoclaDBDataBaseEmpty) {
             return SizedBox(
               width: double.infinity,
-              child: ButtonCompnent(
+              child: ElevatedIconButtonComponent(
                 useMargin: true,
                 label: 'تشغيل الاونلاين',
                 icon: Icons.cloud_download_outlined,

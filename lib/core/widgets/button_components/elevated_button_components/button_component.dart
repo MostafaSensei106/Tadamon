@@ -1,6 +1,20 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../config/const/sensei_const.dart';
+import 'package:flutter/material.dart'
+    show
+        StatelessWidget,
+        EdgeInsets,
+        IconData,
+        BuildContext,
+        Widget,
+        ElevatedButton,
+        Icon,
+        Text,
+        Theme,
+        BorderRadius,
+        RoundedRectangleBorder,
+        WidgetStateMouseCursor,
+        Container;
+
+import '../../../config/const/sensei_const.dart' show SenseiConst;
 
 class ButtonCompnent extends StatelessWidget {
   const ButtonCompnent({
@@ -47,10 +61,10 @@ class ButtonCompnent extends StatelessWidget {
   /// The button has a padding of [SenseiConst.padding] around it, and an enabled
   /// mouse cursor.
   Widget build(final BuildContext context) => Container(
-    margin: useMargin ? EdgeInsets.only(top: SenseiConst.margin.h) : null,
+    margin: useMargin ? const EdgeInsets.only(top: SenseiConst.margin) : null,
     child: ElevatedButton.icon(
       onPressed: isEnabled ? onPressed : null,
-      icon: Icon(icon, size: SenseiConst.iconSize.sp),
+      icon: Icon(icon, size: SenseiConst.iconSize),
       label: Text(label),
       style: ElevatedButton.styleFrom(
         backgroundColor: Theme.of(context).colorScheme.primaryContainer,
@@ -59,9 +73,9 @@ class ButtonCompnent extends StatelessWidget {
         disabledForegroundColor: Theme.of(context).colorScheme.onError,
         iconColor: Theme.of(context).colorScheme.onPrimaryContainer,
         disabledIconColor: Theme.of(context).colorScheme.onError,
-        padding: EdgeInsets.symmetric(
-          horizontal: SenseiConst.padding.w,
-          vertical: SenseiConst.padding.h,
+        padding: const EdgeInsets.symmetric(
+          horizontal: SenseiConst.padding,
+          vertical: SenseiConst.padding,
         ),
         shape: RoundedRectangleBorder(
           borderRadius: useInBorderRadius

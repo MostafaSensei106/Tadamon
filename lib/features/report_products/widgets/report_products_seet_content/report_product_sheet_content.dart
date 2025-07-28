@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/config/const/sensei_const.dart';
-import '../../../../core/widgets/button_components/elevated_button_components/button_compnent.dart';
+import '../../../../core/widgets/button_components/elevated_button_components/elevated_icon_button_component.dart';
 import '../../../../core/widgets/text_filed_component/text_filed_component.dart';
 import '../../logic/bloc/report_product_cubit.dart';
 import '../../logic/bloc/report_product_state.dart';
@@ -91,10 +91,11 @@ class _ReportProductSheetContentState extends State<ReportProductSheetContent> {
               const CircularProgressIndicator(),
             SizedBox(
               width: 1.sw,
-              child: ButtonCompnent(
+              child: ElevatedIconButtonComponent(
                 label: 'ارسال التقرير',
                 icon: Icons.send,
-                onPressed: isValid ? () => {sendReport(context)} : null,
+                isEnabled: isValid,
+                onPressed: () => sendReport(context),
                 useInBorderRadius: true,
               ),
             ),

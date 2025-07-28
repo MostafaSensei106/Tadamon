@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart' show MaterialApp;
 import 'package:flutter/widgets.dart'
-    show StatelessWidget, BuildContext, Widget, Size, Locale, Curves, SafeArea;
+    show StatelessWidget, BuildContext, Widget, Size, Locale, SafeArea;
 import 'package:flutter_bloc/flutter_bloc.dart' show BlocBuilder;
 import 'package:flutter_localizations/flutter_localizations.dart'
     show

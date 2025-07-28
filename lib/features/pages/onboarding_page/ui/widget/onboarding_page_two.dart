@@ -6,7 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/config/const/sensei_const.dart';
 import '../../../../../core/widgets/app_toast/app_toast.dart';
-import '../../../../../core/widgets/button_components/elevated_button_components/button_compnent.dart';
+import '../../../../../core/widgets/button_components/elevated_button_components/elevated_icon_button_component.dart';
 import '../../../../../core/widgets/dilog_components/dilog_waiting_component.dart';
 import '../../../../products_scanner/logic/cubit/localdb_cubit/localdb_cubit.dart';
 
@@ -160,9 +160,7 @@ class AppOnline extends StatelessWidget {
         child: BlocBuilder<LocalDBCubit, LocalDBState>(
           builder: (final context, final state) {
             if (state is LoclaDBDataBaseEmpty) {
-              return ButtonCompnent(
-                // useWidth: true,
-                // width: 0.5.sw,
+              return ElevatedIconButtonComponent(
                 label: 'تشغيل الاونلاين',
                 icon: Icons.cloud_download_outlined,
                 onPressed: () {
@@ -171,9 +169,7 @@ class AppOnline extends StatelessWidget {
                 },
               );
             }
-            return ButtonCompnent(
-              // useWidth: true,
-              // width: 0.5.sw,
+            return ElevatedIconButtonComponent(
               label: 'تم تهيئة البيانات بنجاح',
               icon: Icons.cloud_done_outlined,
               isEnabled: false,
