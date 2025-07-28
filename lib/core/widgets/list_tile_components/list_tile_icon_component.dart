@@ -3,7 +3,6 @@ import 'package:flutter/material.dart'
         BorderRadius,
         BoxDecoration,
         BuildContext,
-        Colors,
         Column,
         Container,
         EdgeInsets,
@@ -19,7 +18,6 @@ import 'package:flutter/material.dart'
         Theme,
         VoidCallback,
         Widget;
-import 'package:flutter/services.dart' show HapticFeedback;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../config/const/app_enums.dart' show ListTileGroupType;
@@ -27,10 +25,11 @@ import '../../config/const/sensei_const.dart';
 import '../../config/fonts/fonts.dart' show AppTextStyle;
 import '../container_background_component/container_background_component.dart';
 import '../divider.dart' show FullAppDividerComponents;
+import '../inkwell_component/inkwell_component.dart';
 
 class ListTileIconComponent extends StatelessWidget {
   const ListTileIconComponent({
-    required this.leading,
+    required this.iconLeading,
     required this.title,
     required this.groupType,
     super.key,
@@ -41,7 +40,7 @@ class ListTileIconComponent extends StatelessWidget {
     this.selected,
     this.useMargin = true,
   });
-  final IconData leading;
+  final IconData iconLeading;
   final String title;
   final String? subtitle;
   final Widget? trailing;
@@ -84,7 +83,7 @@ class ListTileIconComponent extends StatelessWidget {
   /// Builds a [Container] widget with a [Column] containing a [Material]
   /// widget wrapping a [ListTile]. The appearance and behavior of the
   /// [ListTile] are determined by the provided parameters. It includes
-  /// customizable [leading], [title], [subtitle], and [trailing] widgets.
+  /// customizable [iconLeading], [title], [subtitle], and [trailing] widgets.
   /// The [onTap] callback is triggered when the [InkWell] is tapped.
   /// The border radius is configured based on the [groupType] and
   /// [useinBorderRadius] properties, and the background color is set
@@ -104,31 +103,29 @@ class ListTileIconComponent extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Material(
-            color: Colors.transparent,
-            child: InkWell(
-              onTap: onTap == null
-                  ? null
-                  : () {
-                      HapticFeedback.vibrate();
-                      onTap!();
-                    },
-              borderRadius: borderRadius,
-              child: ListTile(
-                leading: ContainerBackgroundComponent(
-                  padding: const EdgeInsets.all(SenseiConst.padding),
-                  color: Theme.of(context).colorScheme.surfaceContainerHigh,
-                  useInBorderRadius: true,
-                  child: Icon(leading, size: SenseiConst.iconSize),
-                ),
-                title: Text(title),
-                subtitle: subtitle != null
-                    ? Text(subtitle!, overflow: TextOverflow.ellipsis)
-                    : null,
-                subtitleTextStyle: AppTextStyle(context).subtitle,
-                trailing: trailing,
-                horizontalTitleGap: 13,
-                contentPadding: const EdgeInsets.symmetric(horizontal: 8),
+          InkwellComponent(
+            onTap: onTap == null
+                ? null
+                : () {
+                    onTap!();
+                  },
+            borderRadius: borderRadius,
+            child: ListTile(
+              leading: ContainerBackgroundComponent(
+                padding: const EdgeInsets.all(SenseiConst.padding),
+                color: Theme.of(context).colorScheme.surfaceContainerHigh,
+                useInBorderRadius: true,
+                child: Icon(iconLeading, size: SenseiConst.iconSize),
+              ),
+              title: Text(title),
+              subtitle: subtitle != null
+                  ? Text(subtitle!, overflow: TextOverflow.ellipsis)
+                  : null,
+              subtitleTextStyle: AppTextStyle(context).subtitle,
+              trailing: trailing,
+              horizontalTitleGap: 13,
+              contentPadding: const EdgeInsets.symmetric(
+                horizontal: SenseiConst.padding,
               ),
             ),
           ),

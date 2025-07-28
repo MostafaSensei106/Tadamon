@@ -6,6 +6,7 @@ import 'package:flutter/material.dart'
         Column,
         Container,
         EdgeInsets,
+        Icon,
         InkWell,
         ListTile,
         Material,
@@ -21,10 +22,11 @@ import '../../config/const/app_enums.dart' show ListTileGroupType;
 import '../../config/const/sensei_const.dart';
 import '../../config/fonts/fonts.dart' show AppTextStyle;
 import '../divider.dart' show FullAppDividerComponents;
-import '../inkwell_component/inkwell_component.dart';
+import '../inkwell_component/inkwell_component.dart' show InkwellComponent;
 
 class ListTileIconComponent extends StatelessWidget {
   const ListTileIconComponent({
+    required this.leading,
     required this.title,
     required this.groupType,
     super.key,
@@ -35,6 +37,7 @@ class ListTileIconComponent extends StatelessWidget {
     this.selected,
     this.useMargin = true,
   });
+  final Widget leading;
   final String title;
   final String? subtitle;
   final Widget? trailing;
@@ -98,13 +101,14 @@ class ListTileIconComponent extends StatelessWidget {
       child: Column(
         children: [
           InkwellComponent(
-            borderRadius: borderRadius,
             onTap: onTap == null
                 ? null
                 : () {
                     onTap!();
                   },
+            borderRadius: borderRadius,
             child: ListTile(
+              leading: leading,
               title: Text(title),
               subtitle: subtitle != null
                   ? Text(subtitle!, overflow: TextOverflow.ellipsis)

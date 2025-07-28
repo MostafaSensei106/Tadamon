@@ -6,8 +6,8 @@ import 'package:flutter/material.dart'
         InkWell,
         Material,
         StatelessWidget,
-        Widget,
-        VoidCallback;
+        VoidCallback,
+        Widget;
 import 'package:flutter/services.dart' show HapticFeedback;
 
 class InkwellComponent extends StatelessWidget {
