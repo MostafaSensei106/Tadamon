@@ -41,7 +41,7 @@ class AppInfoTitle extends StatelessWidget {
         ),
         SizedBox(height: 10.h),
         Text(
-          'تطبيق تَضَامُنٌ',
+          'تَضَامُنٌ',
           style: TextStyle(
             fontSize: 18.sp,
             fontWeight: FontWeight.bold,
