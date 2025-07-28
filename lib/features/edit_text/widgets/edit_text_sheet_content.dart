@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart' hide showBottomSheet;
-import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../core/config/const/sensei_const.dart';
-import '../../../core/widgets/bottom_sheet/ui/model_bottom_sheet.dart';
-import '../../../core/widgets/button_components/elevated_button_components/button_compnent.dart';
-import '../../../core/widgets/text_filed_component/text_filed_component.dart';
-import '../../../generated/l10n.dart';
+import 'package:flutter/services.dart'
+    show HapticFeedback, ClipboardData, Clipboard;
+
+import '../../../core/config/const/sensei_const.dart' show SenseiConst;
+import '../../../core/widgets/bottom_sheet/ui/model_bottom_sheet.dart'
+    show showBottomSheet;
+import '../../../core/widgets/button_components/elevated_button_components/elevated_icon_button_component.dart';
+import '../../../core/widgets/text_filed_component/text_filed_component.dart'
+    show TextFieldComponent;
+import '../../../generated/l10n.dart' show S;
 
 class EditTextSheetContent extends StatefulWidget {
   const EditTextSheetContent({super.key});
@@ -94,7 +97,7 @@ class _EditTextSheetContentState extends State<EditTextSheetContent> {
               )
             : null,
       ),
-      SizedBox(height: SenseiConst.margin.h),
+      const SizedBox(height: SenseiConst.margin),
       TextFieldComponent(
         controller: TextEditingController(text: _processedText),
         icon: Icons.text_format,
@@ -115,10 +118,10 @@ class _EditTextSheetContentState extends State<EditTextSheetContent> {
               )
             : null,
       ),
-      SizedBox(height: SenseiConst.margin.h - 4),
+      const SizedBox(height: SenseiConst.margin - 4),
       SizedBox(
-        width: 1.sw,
-        child: ButtonCompnent(
+        width: double.infinity,
+        child: ElevatedIconButtonComponent(
           isEnabled: _processedText.isNotEmpty,
           useInBorderRadius: true,
           label: 'نسخ',

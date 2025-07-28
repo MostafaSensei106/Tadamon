@@ -1,9 +1,31 @@
-import 'dart:io';
+import 'dart:io' show Platform;
 
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter/material.dart'
+    show
+        StatefulWidget,
+        AnimationController,
+        State,
+        TickerProviderStateMixin,
+        Offset,
+        Animation,
+        BuildContext,
+        Widget,
+        IconData,
+        Tween,
+        Curves,
+        CurvedAnimation,
+        FadeTransition,
+        SlideTransition,
+        ListView,
+        Column,
+        Expanded,
+        Icons,
+        SizedBox;
+import 'package:flutter/services.dart'
+    show FlutterVersion, Clipboard, ClipboardData;
+
 import '../../../../../core/config/const/app_enums.dart' show ListTileGroupType;
-import '../../../../../core/widgets/button_components/elevated_button_components/button_compnent.dart';
+import '../../../../../core/widgets/button_components/elevated_button_components/elevated_icon_button_component.dart';
 import '../../../../../core/widgets/list_tile_components/list_tile_icon_component.dart';
 import 'app_info_title.dart';
 
@@ -71,7 +93,6 @@ class _AppInfoListState extends State<AppInfoList>
   }
 
   void copyToClipboard() {
-    HapticFeedback.vibrate();
     Clipboard.setData(
       ClipboardData(
         text:
@@ -131,7 +152,7 @@ class _AppInfoListState extends State<AppInfoList>
           opacity: _controllers.last,
           child: SizedBox(
             width: double.infinity,
-            child: ButtonCompnent(
+            child: ElevatedIconButtonComponent(
               label: 'نسخ معلومات التطبيق',
               icon: Icons.copy_all_rounded,
               useMargin: true,

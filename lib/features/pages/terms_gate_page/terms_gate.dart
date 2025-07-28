@@ -6,8 +6,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../../core/config/const/sensei_const.dart';
 import '../../../core/routing/routes.dart';
 import '../../../core/widgets/app_bar_component/side_page_app_bar.dart';
-import '../../../core/widgets/button_components/elevated_button_components/button_compnent.dart';
-import '../../../core/widgets/button_components/text_button_components/text_icon_button_component.dart';
+import '../../../core/widgets/button_components/elevated_button_components/elevated_icon_button_component.dart';
+import '../../../core/widgets/button_components/textbutton_components/text_icon_button_component.dart'
+    show TextIconButtonComponent;
 
 class TermsGate extends StatefulWidget {
   const TermsGate({super.key});
@@ -192,15 +193,11 @@ class _TermsGateState extends State<TermsGate> with TickerProviderStateMixin {
                   ),
                   Directionality(
                     textDirection: TextDirection.ltr,
-                    child: ButtonCompnent(
+                    child: ElevatedIconButtonComponent(
                       label: 'مرحبًا بكم في تضامن',
                       icon: Icons.keyboard_double_arrow_left_rounded,
-                      onPressed: _isChecked
-                          ? () {
-                              HapticFeedback.vibrate();
-                              _agree();
-                            }
-                          : null,
+                      isEnabled: _isChecked,
+                      onPressed: _agree,
                     ),
                   ),
                 ],

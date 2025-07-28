@@ -7,11 +7,8 @@ import 'package:flutter/widgets.dart'
         Widget,
         NeverScrollableScrollPhysics,
         Icon,
-        SizedBox,
         ListView;
 import '../../../../core/config/const/app_enums.dart' show ListTileGroupType;
-import '../../../../core/widgets/button_components/elevated_button_components/button_compnent.dart'
-    show ButtonCompnent;
 import '../../../../core/widgets/list_tile_components/list_tile_icon_component.dart'
     show ListTileIconComponent;
 import '../../data/models/product_model.dart' show ProductModel;
@@ -67,15 +64,6 @@ class ProductListView extends StatelessWidget {
             : 'غير مؤمن',
         groupType: ListTileGroupType.bottom,
       ),
-      if (!product.trusted)
-        SizedBox(
-          width: double.infinity,
-          child: ButtonCompnent(
-            label: '',
-            icon: Icons.report_problem_outlined,
-            onPressed: () {},
-          ),
-        ),
     ],
   );
 }

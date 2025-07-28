@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart' show MaterialApp;
 import 'package:flutter/widgets.dart'
-    show StatelessWidget, BuildContext, Widget, Size, Locale, Curves, SafeArea;
+    show StatelessWidget, BuildContext, Widget, Size, Locale, SafeArea;
 import 'package:flutter_bloc/flutter_bloc.dart' show BlocBuilder;
 import 'package:flutter_localizations/flutter_localizations.dart'
     show
@@ -31,15 +31,13 @@ class TadamonApp extends StatelessWidget {
       builder: (final context, final themeState) => ToastificationWrapper(
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: ' تَضَامُنٌ',
+          title: 'تَضَامُنٌ',
           theme: lightTheme,
           darkTheme: darkTheme,
           navigatorKey: AppRouter.navigatorKey,
           themeMode: themeState.themeMode,
           initialRoute: Routes.onBoarding,
           onGenerateRoute: appRouter.generateRoute,
-          themeAnimationCurve: Curves.easeInOut,
-
           locale: const Locale('ar', 'EG'),
           supportedLocales: const [Locale('ar', 'EG')],
           localizationsDelegates: const [
