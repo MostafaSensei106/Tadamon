@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../generated/l10n.dart';
 import '../../../config/const/sensei_const.dart';
-import '../../button_components/textbutton_components/textbutton_component.dart';
+import '../../button_components/text_button_components/text_button_component.dart';
 import '../widget/bottom_model_sheet_content.dart';
 import '../widget/sheet_header.dart';
 

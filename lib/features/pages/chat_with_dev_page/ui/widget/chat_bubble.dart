@@ -5,7 +5,7 @@ import 'package:intl/intl.dart';
 import '../../../../../core/config/const/sensei_const.dart';
 import '../../../../../core/services/share_Services/share_services.dart';
 import '../../../../../core/services/url_services/url_services.dart';
-import '../../../../../core/widgets/icon_button_component/icon_button_filledtonal_component.dart';
+import '../../../../../core/widgets/button_components/icon_button_components/icon_button_filledtonal_component.dart';
 import 'donation_for_dev_slider.dart';
 
 class ChatBubble extends StatelessWidget {
