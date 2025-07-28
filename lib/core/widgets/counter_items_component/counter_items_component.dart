@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../config/const/sensei_const.dart';
 import '../../config/fonts/fonts.dart';
 import '../container_background_component/container_background_component.dart';
@@ -115,24 +114,22 @@ class _CounterItemsComponentState extends State<CounterItemsComponent>
     padding: const EdgeInsets.all(SenseiConst.padding),
     child: Column(
       children: [
-        Container(
+        ContainerBackgroundComponent(
           padding: const EdgeInsets.all(SenseiConst.padding),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(SenseiConst.inBorderRadius),
-            color: Theme.of(context).colorScheme.primaryContainer,
-          ),
+          useInBorderRadius: true,
+          color: Theme.of(context).colorScheme.primary,
           child: Icon(
             widget.icon,
-            size: SenseiConst.iconSize.sp,
+            size: SenseiConst.iconSize,
             color: Theme.of(context).colorScheme.onPrimaryContainer,
           ),
         ),
-        SizedBox(height: 4.h),
+        const SizedBox(height: 4),
         Text(widget.title, textAlign: TextAlign.center),
-        SizedBox(height: 4.h),
+        const SizedBox(height: 4),
         Text(
           _currentValue.toString(),
-          style: AppTextStyle(context).subtitle.copyWith(fontSize: 16.sp),
+          style: AppTextStyle(context).subtitle.copyWith(fontSize: 16),
         ),
       ],
     ),
