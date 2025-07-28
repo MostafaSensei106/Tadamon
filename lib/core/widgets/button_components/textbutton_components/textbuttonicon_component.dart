@@ -10,7 +10,7 @@ import 'package:flutter/material.dart'
         BorderSide,
         Icon,
         Text;
-import '../../config/const/sensei_const.dart';
+import '../../../config/const/sensei_const.dart';
 import 'textbutton_component.dart' show TextButtonComponent;
 
 class TextbuttonIconComponent extends TextButtonComponent {

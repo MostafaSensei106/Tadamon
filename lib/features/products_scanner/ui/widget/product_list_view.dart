@@ -10,7 +10,7 @@ import 'package:flutter/widgets.dart'
         SizedBox,
         ListView;
 import '../../../../core/config/const/app_enums.dart' show ListTileGroupType;
-import '../../../../core/widgets/button_component/button_compnent.dart'
+import '../../../../core/widgets/button_components/button_compnent.dart'
     show ButtonCompnent;
 import '../../../../core/widgets/list_tile_components/list_tile_icon_component.dart'
     show ListTileIconComponent;

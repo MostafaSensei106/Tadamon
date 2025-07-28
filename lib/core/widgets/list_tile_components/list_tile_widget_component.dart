@@ -6,7 +6,6 @@ import 'package:flutter/material.dart'
         Column,
         Container,
         EdgeInsets,
-        Icon,
         InkWell,
         ListTile,
         Material,

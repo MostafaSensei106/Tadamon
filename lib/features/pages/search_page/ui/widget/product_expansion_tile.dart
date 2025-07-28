@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/config/const/app_enums.dart' show ListTileGroupType;
 import '../../../../../core/config/const/sensei_const.dart';
 import '../../../../../core/config/fonts/fonts.dart';
-import '../../../../../core/widgets/button_component/button_compnent.dart';
+import '../../../../../core/widgets/button_components/button_compnent.dart';
 import '../../../../../core/widgets/list_tile_components/list_tile_icon_component.dart';
 import '../../data/model/search_product_model.dart';
 
