@@ -16,8 +16,8 @@ import 'package:flutter/material.dart'
 
 import '../../../config/const/sensei_const.dart' show SenseiConst;
 
-class ButtonCompnent extends StatelessWidget {
-  const ButtonCompnent({
+class ElevatedButtonCompnent extends StatelessWidget {
+  const ElevatedButtonCompnent({
     required this.label,
     required this.icon,
     required this.onPressed,
