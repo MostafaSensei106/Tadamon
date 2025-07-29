@@ -16,15 +16,12 @@ dependencies:
   connectivity_plus: ^6.1.1
   equatable: ^2.0.5
   file_picker: ^10.1.2
-  firebase_app_check: ^0.4.0
   firebase_core: ^4.0.0
   flutter:
     sdk: flutter
   flutter_bloc: ^9.0.0
-  flutter_launcher_icons: ^0.14.3
   flutter_localizations:
     sdk: flutter
-  flutter_native_splash: ^2.4.4
   flutter_screenutil: ^5.9.3
   google_mlkit_barcode_scanning: ^0.14.1
   google_nav_bar: ^5.0.7
@@ -41,7 +38,7 @@ dependencies:
   shared_preferences: ^2.5.2
   simple_barcode_scanner: ^0.3.0
   smooth_page_indicator: ^1.2.0+3
-  toastification: ^3.0.1
+  toastification: ^3.0.3
   url_launcher: ^6.3.1
 
 
@@ -52,6 +49,10 @@ dev_dependencies:
     sdk: flutter
   intl_utils: ^2.8.8
   objectbox_generator: ^4.1.0
+  flutter_launcher_icons: ^0.14.3
+  flutter_native_splash: ^2.4.4
+
+
 
 flutter:
   generate: true
