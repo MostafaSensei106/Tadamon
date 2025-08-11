@@ -9,7 +9,7 @@ android {
 
     namespace = "com.mhsensei.tadamon"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = "29.0.13599879"
+    ndkVersion = "29.0.1384066"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
