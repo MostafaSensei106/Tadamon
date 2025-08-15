@@ -22,7 +22,8 @@ android {
 
     defaultConfig {
         applicationId = "com.mhsensei.tadamon"
-        minSdk = 23
+        minSdkVersion(flutter.minSdkVersion)
+
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
