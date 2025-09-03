@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart' show ThemeMode;
-import 'package:shared_preferences/shared_preferences.dart'
-    show SharedPreferences;
+
+import '../../../../../shared_preferences_global/shared_preferences_global.dart';
+import '../../../../const/shared_preferences_keys.dart';
 
 class ThemeSharedPreferences {
-  static const themeKey = 'theme';
-  static const themeModeKey = 'themeMode';
-  static const firstRunKey = 'firstRun';
-
   /// Persists the given [isDark] to SharedPreferences as the app's theme.
   ///
   /// [isDark] is `true` if the app should use the dark theme, and `false`
@@ -16,8 +13,10 @@ class ThemeSharedPreferences {
   /// SharedPreferences, and is intended to be called whenever the user
   /// changes the theme.
   Future<void> setTheme({required final bool isDark}) async {
-    final sharedPreferences = await SharedPreferences.getInstance();
-    await sharedPreferences.setBool(themeKey, isDark);
+    await SharedPreferencesGlobal.setValue<bool>(
+      SharedPreferencesKeys.theme,
+      isDark,
+    );
   }
 
   /// Retrieves the current theme from SharedPreferences as a boolean value.
@@ -27,8 +26,11 @@ class ThemeSharedPreferences {
   ///
   /// If the theme is not set, the default value is `false` (i.e. the light theme).
   Future<bool> getTheme() async {
-    final sharedPreferences = await SharedPreferences.getInstance();
-    return sharedPreferences.getBool(themeKey) ?? false;
+    final theme = SharedPreferencesGlobal.getValue<bool>(
+      SharedPreferencesKeys.theme,
+    );
+
+    return theme;
   }
 
   /// Checks if the app is being run for the first time.
@@ -36,9 +38,11 @@ class ThemeSharedPreferences {
   /// Returns a `Future<bool?>` that is `true` if it's the first run,
   /// `false` if it's not, or `null` if the value has not been set.
 
-  Future<bool?> isFirstRun() async {
-    final sharedPreferences = await SharedPreferences.getInstance();
-    return sharedPreferences.getBool(firstRunKey);
+  Future<bool> isFirstRun() async {
+    final isFirstRun = SharedPreferencesGlobal.getValue<bool>(
+      SharedPreferencesKeys.firstRun,
+    );
+    return isFirstRun;
   }
 
   /// Persists the given [value] to SharedPreferences as a boolean indicating
@@ -48,8 +52,10 @@ class ThemeSharedPreferences {
   /// onboarding process, and is used to determine whether the onboarding
   /// process should be shown or not.
   Future<void> setFirstRun({required final bool value}) async {
-    final sharedPreferences = await SharedPreferences.getInstance();
-    await sharedPreferences.setBool(firstRunKey, value);
+    await SharedPreferencesGlobal.setValue<bool>(
+      SharedPreferencesKeys.firstRun,
+      value,
+    );
   }
 
   /// Persists the given [ThemeMode] to SharedPreferences.
@@ -57,10 +63,11 @@ class ThemeSharedPreferences {
   /// This function saves the current theme mode to the device's
   /// SharedPreferences, allowing the app to remember and restore the
   /// user's preferred theme mode (light, dark, or system) upon reopening.
-
   Future<void> setThemeMode(final ThemeMode mode) async {
-    final sharedPreferences = await SharedPreferences.getInstance();
-    await sharedPreferences.setInt(themeModeKey, mode.index);
+    await SharedPreferencesGlobal.setValue<int>(
+      SharedPreferencesKeys.themeMode,
+      mode.index,
+    );
   }
 
   /// Retrieves the current [ThemeMode] from SharedPreferences.
@@ -70,8 +77,9 @@ class ThemeSharedPreferences {
   /// defaults to [ThemeMode.system].
 
   Future<ThemeMode> getThemeMode() async {
-    final sharedPreferences = await SharedPreferences.getInstance();
-    final modeIndex = sharedPreferences.getInt(themeModeKey);
-    return modeIndex != null ? ThemeMode.values[modeIndex] : ThemeMode.system;
+    final modeIndex = SharedPreferencesGlobal.getValue<int>(
+      SharedPreferencesKeys.themeMode,
+    );
+    return ThemeMode.values[modeIndex];
   }
 }

@@ -9,8 +9,7 @@ import 'core/error/error_screen.dart' show errorScreen;
 import 'core/routing/app_router.dart' show AppRouter;
 import 'core/services/object_box_services/object_box_service.dart'
     show ObjectBoxService;
-import 'features/report_products/logic/services/report_service.dart'
-    show ReportService;
+import 'core/shared_preferences_global/shared_preferences_global.dart';
 import 'firebase_options.dart' show DefaultFirebaseOptions;
 import 'tadamon.dart' show TadamonApp;
 
@@ -18,6 +17,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+
+  await SharedPreferencesGlobal().initialize();
 
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
@@ -32,6 +33,5 @@ void main() async {
   // );
 
   errorScreen();
-  ReportService.initializePreferences();
   runApp(BlocProvider.value(value: themeCubit, child: TadamonApp(AppRouter())));
 }

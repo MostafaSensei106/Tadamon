@@ -72,7 +72,7 @@ class ThemeCubit extends Cubit<ThemeState> {
   Future<void> initializeTheme() async {
     final isFirstRun = await _themeSharedPreferences.isFirstRun();
 
-    if (isFirstRun == null || isFirstRun) {
+    if (isFirstRun) {
       await setSystemTheme();
       await _themeSharedPreferences.setFirstRun(value: false);
     } else {

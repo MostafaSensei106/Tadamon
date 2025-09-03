@@ -1,7 +1,9 @@
 import 'dart:convert';
 
 import 'package:shared_preferences/shared_preferences.dart';
+import '../../../../core/config/const/shared_preferences_keys.dart';
 import '../../../../core/controller/network_controller/network_controller.dart';
+import '../../../../core/shared_preferences_global/shared_preferences_global.dart';
 import '../../../../core/widgets/app_toast/app_toast.dart';
 import '../../../products_scanner/data/repository/fire_store_repositories.dart';
 
@@ -31,13 +33,19 @@ class ReportService {
   Future<void> _saveReportLocally(
     final Map<String, dynamic> productReport,
   ) async {
-    final localReports = pref.getStringList('localReports') ?? []
-      ..add(jsonEncode(productReport));
-    await pref.setStringList('localReports', localReports);
+    final localReports = SharedPreferencesGlobal.getValue<List<String>>(
+      SharedPreferencesKeys.localReports,
+    )..add(jsonEncode(productReport));
+    await SharedPreferencesGlobal.setValue<List<String>>(
+      SharedPreferencesKeys.localReports,
+      localReports,
+    );
   }
 
   static Future<List<Map<String, dynamic>>> _getLocalReports() async {
-    final localReports = pref.getStringList('localReports') ?? [];
+    final localReports = SharedPreferencesGlobal.getValue<List<String>>(
+      SharedPreferencesKeys.localReports,
+    );
     return localReports
         .map((final report) => jsonDecode(report) as Map<String, dynamic>)
         .toList();
@@ -48,7 +56,7 @@ class ReportService {
     for (final report in localReports) {
       try {
         await FireStoreRepository().sendReportToBackEnd(report);
-        await _clearLocalReports(report);
+        await _clearLocalReports();
         showSimpleToast('تم إرسال بلاغ معلق');
       } catch (e) {
         showErrorToast(e.toString());
@@ -56,11 +64,9 @@ class ReportService {
     }
   }
 
-  static Future<void> _clearLocalReports(
-    final Map<String, dynamic> report,
-  ) async {
-    final localReports = pref.getStringList('localReports') ?? []
-      ..remove(jsonEncode(report));
-    await pref.setStringList('localReports', localReports);
+  static Future<void> _clearLocalReports() async {
+    await SharedPreferencesGlobal.clearDataInKey(
+      SharedPreferencesKeys.localReports,
+    );
   }
 }
