@@ -8,7 +8,7 @@ licenses:
   - GPL-3.0
 
 environment:
-  sdk: ^3.9.0
+  sdk: ^3.9.2
 
 dependencies:
   cached_network_image: ^3.4.1
