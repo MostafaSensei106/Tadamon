@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the getObjectBoxModel function from the objectbox.g library, for the Dart programming language.">
+  <title>getObjectBoxModel function - objectbox.g library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../static-assets/styles.css?v1">
+  <link rel="icon" href="../static-assets/favicon.png?v1">
+  
+</head>
+
+<body data-base-href="../" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../index.html">tadamon</a></li>
+    <li><a href="../objectbox.g/">objectbox.g.dart</a></li>
+    <li class="self-crumb">getObjectBoxModel function</li>
+  </ol>
+  <div class="self-name">getObjectBoxModel</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <button class="toggle" id="theme-button" title="Toggle between light and dark mode" aria-label="Light and dark mode toggle">
+    <span id="dark-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      dark_mode
+    </span>
+    <span id="light-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      light_mode
+    </span>
+  </button>
+</header>
+<main>
+  <div
+      id="dartdoc-main-content"
+      class="main-content"
+      data-above-sidebar="objectbox.g&#47;objectbox.g-library-sidebar.html"
+      data-below-sidebar="">
+      <div>
+<h1><span class="kind-function">getObjectBoxModel</span> function 
+ 
+</h1></div>
+
+    <section class="multi-line-signature">
+        
+<span class="returntype"><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox_internal/ModelDefinition-class.html">ModelDefinition</a></span>
+<span class="name ">getObjectBoxModel</span>(<wbr>)
+
+        
+
+    </section>
+    
+<section class="desc markdown">
+  <p>Returns the ObjectBox model definition for this project for use with
+<a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/Store/Store.html">obx.Store.new</a>.</p>
+</section>
+
+
+    
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">obx_int.ModelDefinition getObjectBoxModel() {
+  final model = obx_int.ModelInfo(
+    entities: _entities,
+    lastEntityId: const obx_int.IdUid(4, 9160064887395371876),
+    lastIndexId: const obx_int.IdUid(0, 0),
+    lastRelationId: const obx_int.IdUid(0, 0),
+    lastSequenceId: const obx_int.IdUid(0, 0),
+    retiredEntityUids: const [6072440110067899483, 6674380074645599672],
+    retiredIndexUids: const [],
+    retiredPropertyUids: const [
+      3257500603860786490,
+      7184596676276845706,
+      4125859010512694816,
+      7999642378580237386,
+      1774581651058165040,
+      6648500980729496271,
+      5083381345625000545,
+      8316824247462543173,
+      2878691409008529064,
+      8553239779623812279,
+      136166845008193984,
+      4333210679318052728,
+      667664151190914925,
+      6348219516869610320,
+      8259691590146978420,
+    ],
+    retiredRelationUids: const [],
+    modelVersion: 5,
+    modelVersionParserMinimum: 5,
+    version: 1,
+  );
+
+  final bindings = &lt;Type, obx_int.EntityDefinition&gt;{
+    ProductModel: obx_int.EntityDefinition&lt;ProductModel&gt;(
+      model: _entities[0],
+      toOneRelations: (ProductModel object) =&gt; [],
+      toManyRelations: (ProductModel object) =&gt; {},
+      getId: (ProductModel object) =&gt; object.id,
+      setId: (ProductModel object, int id) {
+        object.id = id;
+      },
+      objectToFB: (ProductModel object, fb.Builder fbb) {
+        final nameOffset = fbb.writeString(object.name);
+        final serialNumberOffset = fbb.writeString(object.serialNumber);
+        final manufactureOffset = fbb.writeString(object.manufacture);
+        final categoryOffset = fbb.writeString(object.category);
+        final onErrorOffset = fbb.writeString(object.onError);
+        fbb.startTable(8);
+        fbb.addInt64(0, object.id);
+        fbb.addOffset(1, nameOffset);
+        fbb.addOffset(2, serialNumberOffset);
+        fbb.addOffset(3, manufactureOffset);
+        fbb.addOffset(4, categoryOffset);
+        fbb.addBool(5, object.trusted);
+        fbb.addOffset(6, onErrorOffset);
+        fbb.finish(fbb.endTable());
+        return object.id;
+      },
+      objectFromFB: (obx.Store store, ByteData fbData) {
+        final buffer = fb.BufferContext(fbData);
+        final rootOffset = buffer.derefObject(0);
+        final idParam = const fb.Int64Reader().vTableGet(
+          buffer,
+          rootOffset,
+          4,
+          0,
+        );
+        final nameParam = const fb.StringReader(
+          asciiOptimization: true,
+        ).vTableGet(buffer, rootOffset, 6, &#39;&#39;);
+        final serialNumberParam = const fb.StringReader(
+          asciiOptimization: true,
+        ).vTableGet(buffer, rootOffset, 8, &#39;&#39;);
+        final manufactureParam = const fb.StringReader(
+          asciiOptimization: true,
+        ).vTableGet(buffer, rootOffset, 10, &#39;&#39;);
+        final categoryParam = const fb.StringReader(
+          asciiOptimization: true,
+        ).vTableGet(buffer, rootOffset, 12, &#39;&#39;);
+        final trustedParam = const fb.BoolReader().vTableGet(
+          buffer,
+          rootOffset,
+          14,
+          false,
+        );
+        final onErrorParam = const fb.StringReader(
+          asciiOptimization: true,
+        ).vTableGet(buffer, rootOffset, 16, &#39;&#39;);
+        final object = ProductModel(
+          id: idParam,
+          name: nameParam,
+          serialNumber: serialNumberParam,
+          manufacture: manufactureParam,
+          category: categoryParam,
+          trusted: trustedParam,
+          onError: onErrorParam,
+        );
+
+        return object;
+      },
+    ),
+    ScannedLogsProductModel: obx_int.EntityDefinition&lt;ScannedLogsProductModel&gt;(
+      model: _entities[1],
+      toOneRelations: (ScannedLogsProductModel object) =&gt; [],
+      toManyRelations: (ScannedLogsProductModel object) =&gt; {},
+      getId: (ScannedLogsProductModel object) =&gt; object.id,
+      setId: (ScannedLogsProductModel object, int id) {
+        object.id = id;
+      },
+      objectToFB: (ScannedLogsProductModel object, fb.Builder fbb) {
+        final nameOffset = fbb.writeString(object.name);
+        final serialNumberOffset = fbb.writeString(object.serialNumber);
+        final manufactureOffset = fbb.writeString(object.manufacture);
+        final categoryOffset = fbb.writeString(object.category);
+        final onErrorOffset = fbb.writeString(object.onError);
+        fbb.startTable(9);
+        fbb.addInt64(0, object.id);
+        fbb.addOffset(1, nameOffset);
+        fbb.addOffset(2, serialNumberOffset);
+        fbb.addOffset(3, manufactureOffset);
+        fbb.addOffset(4, categoryOffset);
+        fbb.addBool(5, object.trusted);
+        fbb.addOffset(6, onErrorOffset);
+        fbb.addInt64(7, object.scannedAt.millisecondsSinceEpoch);
+        fbb.finish(fbb.endTable());
+        return object.id;
+      },
+      objectFromFB: (obx.Store store, ByteData fbData) {
+        final buffer = fb.BufferContext(fbData);
+        final rootOffset = buffer.derefObject(0);
+        final idParam = const fb.Int64Reader().vTableGet(
+          buffer,
+          rootOffset,
+          4,
+          0,
+        );
+        final nameParam = const fb.StringReader(
+          asciiOptimization: true,
+        ).vTableGet(buffer, rootOffset, 6, &#39;&#39;);
+        final serialNumberParam = const fb.StringReader(
+          asciiOptimization: true,
+        ).vTableGet(buffer, rootOffset, 8, &#39;&#39;);
+        final manufactureParam = const fb.StringReader(
+          asciiOptimization: true,
+        ).vTableGet(buffer, rootOffset, 10, &#39;&#39;);
+        final categoryParam = const fb.StringReader(
+          asciiOptimization: true,
+        ).vTableGet(buffer, rootOffset, 12, &#39;&#39;);
+        final trustedParam = const fb.BoolReader().vTableGet(
+          buffer,
+          rootOffset,
+          14,
+          false,
+        );
+        final onErrorParam = const fb.StringReader(
+          asciiOptimization: true,
+        ).vTableGet(buffer, rootOffset, 16, &#39;&#39;);
+        final scannedAtParam = DateTime.fromMillisecondsSinceEpoch(
+          const fb.Int64Reader().vTableGet(buffer, rootOffset, 18, 0),
+        );
+        final object = ScannedLogsProductModel(
+          id: idParam,
+          name: nameParam,
+          serialNumber: serialNumberParam,
+          manufacture: manufactureParam,
+          category: categoryParam,
+          trusted: trustedParam,
+          onError: onErrorParam,
+          scannedAt: scannedAtParam,
+        );
+
+        return object;
+      },
+    ),
+  };
+
+  return obx_int.ModelDefinition(model, bindings);
+}</code></pre>
+</section>
+
+
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../index.html">tadamon</a></li>
+    <li><a href="../objectbox.g/">objectbox.g</a></li>
+    <li class="self-crumb">getObjectBoxModel function</li>
+</ol>
+
+    <h5>objectbox.g library</h5>
+    <div id="dartdoc-sidebar-left-content"></div>
+  </div><!--/.sidebar-offcanvas-left-->
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div><!--/.sidebar-offcanvas-->
+</main>
+<footer>
+  <span class="no-break">
+    tadamon
+      1.0.0+1
+  </span>
+  
+</footer>
+
+
+<script src="../static-assets/highlight.pack.js?v1"></script>
+<script src="../static-assets/docs.dart.js"></script>
+
+</body>
+</html>
+
