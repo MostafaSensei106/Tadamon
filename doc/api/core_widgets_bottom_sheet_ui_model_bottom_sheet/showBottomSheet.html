@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the showBottomSheet function from the model_bottom_sheet library, for the Dart programming language.">
+  <title>showBottomSheet function - model_bottom_sheet library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../static-assets/styles.css?v1">
+  <link rel="icon" href="../static-assets/favicon.png?v1">
+  
+</head>
+
+<body data-base-href="../" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../index.html">tadamon</a></li>
+    <li><a href="../core_widgets_bottom_sheet_ui_model_bottom_sheet/">core&#47;widgets&#47;bottom_sheet&#47;ui&#47;model_bottom_sheet.dart</a></li>
+    <li class="self-crumb">showBottomSheet function</li>
+  </ol>
+  <div class="self-name">showBottomSheet</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <button class="toggle" id="theme-button" title="Toggle between light and dark mode" aria-label="Light and dark mode toggle">
+    <span id="dark-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      dark_mode
+    </span>
+    <span id="light-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      light_mode
+    </span>
+  </button>
+</header>
+<main>
+  <div
+      id="dartdoc-main-content"
+      class="main-content"
+      data-above-sidebar="core_widgets_bottom_sheet_ui_model_bottom_sheet&#47;core_widgets_bottom_sheet_ui_model_bottom_sheet-library-sidebar.html"
+      data-below-sidebar="">
+      <div>
+<h1><span class="kind-function">showBottomSheet</span> function 
+ 
+</h1></div>
+
+    <section class="multi-line-signature">
+        
+<span class="returntype">void</span>
+<span class="name ">showBottomSheet</span>(<wbr><ol class="parameter-list"> <li><span class="parameter" id="showBottomSheet-param-context"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/widgets/BuildContext-class.html">BuildContext</a></span> <span class="parameter-name">context</span>, </span></li>
+<li><span class="parameter" id="showBottomSheet-param-title"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">title</span>, {</span></li>
+<li><span class="parameter" id="showBottomSheet-param-child"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/widgets/Widget-class.html">Widget</a></span> <span class="parameter-name">child</span>, </span></li>
+</ol>})
+
+        
+
+    </section>
+    
+<section class="desc markdown">
+  <p>Shows a bottom sheet with the given <code>title</code> and <code>child</code> in the given
+<code>context</code>.</p>
+<p>The bottom sheet is scrollable, drags, uses the root navigator, and
+is dismissible.</p>
+<p>The bottom sheet is clipped at the top with a corner radius of
+14 logical pixels.</p>
+<p>The <code>child</code> is displayed within a <a href="https://api.flutter.dev/flutter/widgets/ClipRRect-class.html">ClipRRect</a> with a circular corner radius
+of 14 logical pixels.</p>
+</section>
+
+
+    
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">void showBottomSheet(
+  final BuildContext context,
+  final String title, {
+  required final Widget child,
+}) {
+  showModalBottomSheet&lt;void&gt;(
+    context: context,
+    isScrollControlled: true,
+    useRootNavigator: true,
+    builder: (final context) =&gt; _buildBottomSheet(context, title, child),
+  );
+}</code></pre>
+</section>
+
+
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../index.html">tadamon</a></li>
+    <li><a href="../core_widgets_bottom_sheet_ui_model_bottom_sheet/">model_bottom_sheet</a></li>
+    <li class="self-crumb">showBottomSheet function</li>
+</ol>
+
+    <h5>model_bottom_sheet library</h5>
+    <div id="dartdoc-sidebar-left-content"></div>
+  </div><!--/.sidebar-offcanvas-left-->
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div><!--/.sidebar-offcanvas-->
+</main>
+<footer>
+  <span class="no-break">
+    tadamon
+      1.0.0+1
+  </span>
+  
+</footer>
+
+
+<script src="../static-assets/highlight.pack.js?v1"></script>
+<script src="../static-assets/docs.dart.js"></script>
+
+</body>
+</html>
+

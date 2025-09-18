@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="objectbox.g library API docs, for the Dart programming language.">
+  <title>objectbox.g library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../static-assets/styles.css?v1">
+  <link rel="icon" href="../static-assets/favicon.png?v1">
+  
+</head>
+
+<body data-base-href="../" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../index.html">tadamon</a></li>
+    <li class="self-crumb">objectbox.g.dart</li>
+  </ol>
+  <div class="self-name">objectbox.g</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <button class="toggle" id="theme-button" title="Toggle between light and dark mode" aria-label="Light and dark mode toggle">
+    <span id="dark-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      dark_mode
+    </span>
+    <span id="light-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      light_mode
+    </span>
+  </button>
+</header>
+<main>
+<div
+    id="dartdoc-main-content"
+    class="main-content"
+    data-above-sidebar=""
+    data-below-sidebar="objectbox.g&#47;objectbox.g-library-sidebar.html">
+  
+    <div>
+      
+
+      <h1>
+        <span class="kind-library">objectbox.g</span>
+        library 
+ 
+
+      </h1>
+    </div>
+
+    
+
+
+    <section class="summary offset-anchor" id="classes">
+      <h2>Classes</h2>
+      <dl>
+          <dt id="Admin">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/Admin-class.html">Admin</a></span> 
+
+</dt>
+<dd>
+  ObjectBox Admin allows you to explore the database in a regular web browser.
+</dd>
+
+          <dt id="Backlink">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/Backlink-class.html">Backlink</a></span> 
+
+</dt>
+<dd>
+  An annotation for a <a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/ToMany-class.html">ToMany</a> field of an <a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/Entity-class.html">Entity</a> class to create a relation
+based on another relation. See <a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/Backlink/Backlink.html">Backlink.new</a>.
+</dd>
+
+          <dt id="Box">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/Box-class.html">Box</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A Box instance gives you access to objects of a particular type.
+You get Box instances via <a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/Store/box.html">Store.box()</a> or <a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/Box-class.html">Box(Store)</a>.
+</dd>
+
+          <dt id="Condition">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/Condition-class.html">Condition</a><span class="signature">&lt;<wbr><span class="type-parameter">EntityT</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A <a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/Query-class.html">Query</a> condition base class.
+</dd>
+
+          <dt id="DebugFlags">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/DebugFlags-class.html">DebugFlags</a></span> 
+
+</dt>
+<dd>
+  Passed as <code>debugFlags</code> when calling <a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/Store/Store.html">Store.new</a> to enable debug options.
+</dd>
+
+          <dt id="Entity">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/Entity-class.html">Entity</a></span> 
+
+</dt>
+<dd>
+  An annotation to mark a class as an ObjectBox Entity. See <a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/Entity/Entity.html">Entity.new</a>.
+</dd>
+
+          <dt id="ExternalName">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/ExternalName-class.html">ExternalName</a></span> 
+
+</dt>
+<dd>
+  An annotation to specify the name of an <a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/Entity-class.html">Entity</a> class or field of an
+<a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/Entity-class.html">Entity</a> class in an external system. See <a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/ExternalName/ExternalName.html">ExternalName.new</a>.
+</dd>
+
+          <dt id="ExternalType">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/ExternalType-class.html">ExternalType</a></span> 
+
+</dt>
+<dd>
+  An annotation to specify the type of a field in an <a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/Entity-class.html">Entity</a> class in an
+external system. See <a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/ExternalType/ExternalType.html">ExternalType.new</a>.
+</dd>
+
+          <dt id="HnswFlags">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/HnswFlags-class.html">HnswFlags</a></span> 
+
+</dt>
+<dd>
+  Flags as a part of the <a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/HnswIndex-class.html">HnswIndex</a> configuration.
+</dd>
+
+          <dt id="HnswIndex">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/HnswIndex-class.html">HnswIndex</a></span> 
+
+</dt>
+<dd>
+  An annotation to create an HSNW index for a field of an <a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/Entity-class.html">Entity</a> class. See
+<a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/HnswIndex/HnswIndex.html">HnswIndex.new</a>.
+</dd>
+
+          <dt id="Id">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/Id-class.html">Id</a></span> 
+
+</dt>
+<dd>
+  An annotation to mark a field of an <a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/Entity-class.html">Entity</a> class as the ID property.
+See <a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/Id/Id.html">Id.new</a>.
+</dd>
+
+          <dt id="IdWithScore">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/IdWithScore-class.html">IdWithScore</a></span> 
+
+</dt>
+<dd>
+  Wraps the ID of a matching object and a score when using <a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/Query/findIdsWithScores.html">Query.findIdsWithScores</a>.
+</dd>
+
+          <dt id="Index">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/Index-class.html">Index</a></span> 
+
+</dt>
+<dd>
+  An annotation to create an index for a field of an <a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/Entity-class.html">Entity</a> class. See
+<a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/Index/Index.html">Index.new</a>.
+</dd>
+
+          <dt id="ObjectWithScore">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/ObjectWithScore-class.html">ObjectWithScore</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  Wraps a matching object and a score when using <a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/Query/findWithScores.html">Query.findWithScores</a>.
+</dd>
+
+          <dt id="Order">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/Order-class.html">Order</a></span> 
+
+</dt>
+<dd>
+  Groups query order flags.
+</dd>
+
+          <dt id="ProductModel_">
+  <span class="name "><a href="../objectbox.g/ProductModel_-class.html">ProductModel_</a></span> 
+
+</dt>
+<dd>
+  <a href="../features_products_scanner_data_models_product_model/ProductModel-class.html">ProductModel</a> entity fields to define ObjectBox queries.
+</dd>
+
+          <dt id="Property">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/Property-class.html">Property</a></span> 
+
+</dt>
+<dd>
+  An optional annotation to configure how a field of an <a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/Entity-class.html">Entity</a> class is
+stored. See <a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/Property/Property.html">Property.new</a>.
+</dd>
+
+          <dt id="PropertyQuery">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/PropertyQuery-class.html">PropertyQuery</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  Property query base.
+</dd>
+
+          <dt id="Query">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/Query-class.html">Query</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A repeatable Query returning the latest matching Objects.
+</dd>
+
+          <dt id="QueryBacklinkToMany">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/QueryBacklinkToMany-class.html">QueryBacklinkToMany</a><span class="signature">&lt;<wbr><span class="type-parameter">Source</span>, <span class="type-parameter">Target</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  
+</dd>
+
+          <dt id="QueryBooleanProperty">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/QueryBooleanProperty-class.html">QueryBooleanProperty</a><span class="signature">&lt;<wbr><span class="type-parameter">EntityT</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  
+</dd>
+
+          <dt id="QueryBuilder">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/QueryBuilder-class.html">QueryBuilder</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  Query builder allows creating reusable queries.
+</dd>
+
+          <dt id="QueryByteVectorProperty">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/QueryByteVectorProperty-class.html">QueryByteVectorProperty</a><span class="signature">&lt;<wbr><span class="type-parameter">EntityT</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  
+</dd>
+
+          <dt id="QueryDateNanoProperty">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/QueryDateNanoProperty-class.html">QueryDateNanoProperty</a><span class="signature">&lt;<wbr><span class="type-parameter">EntityT</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  This wraps <a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/QueryIntegerProperty-class.html">QueryIntegerProperty</a> for <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a> properties annotated with
+<code>@Property(type: PropertyType.dateNano)</code> to avoid having to manually convert
+to nanoseconds (<a href="https://api.flutter.dev/flutter/dart-core/DateTime/microsecondsSinceEpoch.html">DateTime.microsecondsSinceEpoch</a> <code>* 1000</code>) when creating
+query conditions.
+</dd>
+
+          <dt id="QueryDateProperty">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/QueryDateProperty-class.html">QueryDateProperty</a><span class="signature">&lt;<wbr><span class="type-parameter">EntityT</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  This wraps <a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/QueryIntegerProperty-class.html">QueryIntegerProperty</a> for <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a> properties to avoid
+having to manually convert to <a href="https://api.flutter.dev/flutter/dart-core/DateTime/millisecondsSinceEpoch.html">DateTime.millisecondsSinceEpoch</a> when
+creating query conditions.
+</dd>
+
+          <dt id="QueryDoubleProperty">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/QueryDoubleProperty-class.html">QueryDoubleProperty</a><span class="signature">&lt;<wbr><span class="type-parameter">EntityT</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  
+</dd>
+
+          <dt id="QueryDoubleVectorProperty">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/QueryDoubleVectorProperty-class.html">QueryDoubleVectorProperty</a><span class="signature">&lt;<wbr><span class="type-parameter">EntityT</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  For double vectors greater and less queries are supported on elements of
+the vector (e.g. "has element greater").
+</dd>
+
+          <dt id="QueryHnswProperty">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/QueryHnswProperty-class.html">QueryHnswProperty</a><span class="signature">&lt;<wbr><span class="type-parameter">EntityT</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  Provides extra conditions for float vector properties with an <a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/HnswIndex-class.html">HnswIndex</a>.
+</dd>
+
+          <dt id="QueryIntegerProperty">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/QueryIntegerProperty-class.html">QueryIntegerProperty</a><span class="signature">&lt;<wbr><span class="type-parameter">EntityT</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  
+</dd>
+
+          <dt id="QueryIntegerVectorProperty">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/QueryIntegerVectorProperty-class.html">QueryIntegerVectorProperty</a><span class="signature">&lt;<wbr><span class="type-parameter">EntityT</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  For integer vectors (excluding <a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/QueryByteVectorProperty-class.html">QueryByteVectorProperty</a>) greater, less and
+equal are supported on elements of the vector (e.g. "has element greater").
+</dd>
+
+          <dt id="QueryProperty">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/QueryProperty-class.html">QueryProperty</a><span class="signature">&lt;<wbr><span class="type-parameter">EntityT</span>, <span class="type-parameter">DartType</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  The QueryProperty types allow users to build query conditions on a property.
+</dd>
+
+          <dt id="QueryRelationToMany">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/QueryRelationToMany-class.html">QueryRelationToMany</a><span class="signature">&lt;<wbr><span class="type-parameter">Source</span>, <span class="type-parameter">Target</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  
+</dd>
+
+          <dt id="QueryRelationToOne">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/QueryRelationToOne-class.html">QueryRelationToOne</a><span class="signature">&lt;<wbr><span class="type-parameter">Source</span>, <span class="type-parameter">Target</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  
+</dd>
+
+          <dt id="QueryStringProperty">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/QueryStringProperty-class.html">QueryStringProperty</a><span class="signature">&lt;<wbr><span class="type-parameter">EntityT</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  
+</dd>
+
+          <dt id="QueryStringVectorProperty">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/QueryStringVectorProperty-class.html">QueryStringVectorProperty</a><span class="signature">&lt;<wbr><span class="type-parameter">EntityT</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  
+</dd>
+
+          <dt id="ScannedLogsProductModel_">
+  <span class="name "><a href="../objectbox.g/ScannedLogsProductModel_-class.html">ScannedLogsProductModel_</a></span> 
+
+</dt>
+<dd>
+  <a href="../features_pages_log_page_data_models_scanned_logs_product_model/ScannedLogsProductModel-class.html">ScannedLogsProductModel</a> entity fields to define ObjectBox queries.
+</dd>
+
+          <dt id="Store">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/Store-class.html">Store</a></span> 
+
+</dt>
+<dd>
+  Represents an ObjectBox database and works together with <a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/Box-class.html">Box</a> to allow
+getting and putting.
+</dd>
+
+          <dt id="Sync">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/Sync-class.html">Sync</a></span> 
+
+</dt>
+<dd>
+  <a href="https://objectbox.io/sync/">ObjectBox Sync</a> makes data available and
+synchronized across devices, online and offline.
+</dd>
+
+          <dt id="SyncChange">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/SyncChange-class.html">SyncChange</a></span> 
+
+</dt>
+<dd>
+  Sync incoming data event.
+</dd>
+
+          <dt id="SyncClient">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/SyncClient-class.html">SyncClient</a></span> 
+
+</dt>
+<dd>
+  Sync client is used to connect to an ObjectBox sync server.
+Use through <a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/Sync-class.html">Sync</a>.
+</dd>
+
+          <dt id="SyncCredentials">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/SyncCredentials-class.html">SyncCredentials</a></span> 
+
+</dt>
+<dd>
+  Credentials used to authenticate a sync client against a server.
+</dd>
+
+          <dt id="ToMany">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/ToMany-class.html">ToMany</a><span class="signature">&lt;<wbr><span class="type-parameter">EntityT</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A to-many relation of an entity that references multiple objects of a "target" entity <code>EntityT</code>.
+</dd>
+
+          <dt id="ToOne">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/ToOne-class.html">ToOne</a><span class="signature">&lt;<wbr><span class="type-parameter">EntityT</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A to-one relation of an entity that references one object of a "target" entity <code>EntityT</code>.
+</dd>
+
+          <dt id="Transient">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/Transient-class.html">Transient</a></span> 
+
+</dt>
+<dd>
+  An annotation to mark a field of an <a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/Entity-class.html">Entity</a> class that should not be
+stored. See <a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/Transient/Transient.html">Transient.new</a>.
+</dd>
+
+          <dt id="Unique">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/Unique-class.html">Unique</a></span> 
+
+</dt>
+<dd>
+  An annotation to create a unique index for a field of an <a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/Entity-class.html">Entity</a> class. See
+<a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/Unique/Unique.html">Unique.new</a>.
+</dd>
+
+          <dt id="Version">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/Version-class.html">Version</a></span> 
+
+</dt>
+<dd>
+  Wrapper for a semantic version information.
+</dd>
+
+      </dl>
+    </section>
+
+    <section class="summary offset-anchor" id="enums">
+      <h2>Enums</h2>
+      <dl>
+          <dt id="ConflictStrategy">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/ConflictStrategy.html">ConflictStrategy</a></span> 
+
+</dt>
+<dd>
+  Used with <a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/Unique-class.html">Unique</a> to specify the conflict resolution strategy.
+</dd>
+
+          <dt id="ExternalPropertyType">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/ExternalPropertyType.html">ExternalPropertyType</a></span> 
+
+</dt>
+<dd>
+  A property type of an external system (e.g. another database) that has no
+default mapping to an ObjectBox type.
+</dd>
+
+          <dt id="IndexType">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/IndexType.html">IndexType</a></span> 
+
+</dt>
+<dd>
+  IndexType can be used to change what type ObjectBox uses when indexing a
+property.
+</dd>
+
+          <dt id="PropertyType">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/PropertyType.html">PropertyType</a></span> 
+
+</dt>
+<dd>
+  Use with <a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/Property/type.html">Property.type</a>.
+</dd>
+
+          <dt id="PutMode">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/PutMode.html">PutMode</a></span> 
+
+</dt>
+<dd>
+  Box put (write) mode.
+</dd>
+
+          <dt id="SyncConnectionEvent">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/SyncConnectionEvent.html">SyncConnectionEvent</a></span> 
+
+</dt>
+<dd>
+  Connection state change event.
+</dd>
+
+          <dt id="SyncLoginEvent">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/SyncLoginEvent.html">SyncLoginEvent</a></span> 
+
+</dt>
+<dd>
+  Login state change event.
+</dd>
+
+          <dt id="SyncRequestUpdatesMode">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/SyncRequestUpdatesMode.html">SyncRequestUpdatesMode</a></span> 
+
+</dt>
+<dd>
+  Configuration of how <a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/SyncClient-class.html">SyncClient</a> fetches remote updates from the server.
+</dd>
+
+          <dt id="SyncState">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/SyncState.html">SyncState</a></span> 
+
+</dt>
+<dd>
+  Current state of the <a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/SyncClient-class.html">SyncClient</a>.
+</dd>
+
+          <dt id="TxMode">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/TxMode.html">TxMode</a></span> 
+
+</dt>
+<dd>
+  Configure transaction mode. Used with <a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/Store/runInTransaction.html">Store.runInTransaction()</a>.
+</dd>
+
+          <dt id="VectorDistanceType">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/VectorDistanceType.html">VectorDistanceType</a></span> 
+
+</dt>
+<dd>
+  The vector distance algorithm used by an <a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/HnswIndex-class.html">HnswIndex</a> (vector search).
+</dd>
+
+      </dl>
+    </section>
+
+
+
+    <section class="summary offset-anchor" id="extensions">
+      <h2>Extensions</h2>
+      <dl>
+          <dt id="DoublePropertyQuery">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/DoublePropertyQuery.html">DoublePropertyQuery</a></span>
+  on <a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/PropertyQuery-class.html">PropertyQuery</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a></span>&gt;</span>
+  
+
+</dt>
+<dd>
+  "Property query" for a double field. Created by <a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/Query/property.html">Query.property()</a>.
+</dd>
+
+          <dt id="IntegerPropertyQuery">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/IntegerPropertyQuery.html">IntegerPropertyQuery</a></span>
+  on <a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/PropertyQuery-class.html">PropertyQuery</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>&gt;</span>
+  
+
+</dt>
+<dd>
+  "Property query" for an integer field. Created by <a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/Query/property.html">Query.property()</a>.
+</dd>
+
+          <dt id="ObservableStore">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/ObservableStore.html">ObservableStore</a></span>
+  on <a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/Store-class.html">Store</a>
+  
+
+</dt>
+<dd>
+  StreamController implementation inspired by the sample controller sample at:
+<a href="https://dart.dev/articles/libraries/creating-streams#honoring-the-pause-state">https://dart.dev/articles/libraries/creating-streams#honoring-the-pause-state</a>
+<a href="https://dart.dev/articles/libraries/code/stream_controller.dart">https://dart.dev/articles/libraries/code/stream_controller.dart</a>
+</dd>
+
+          <dt id="QueryParamBool">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/QueryParamBool.html">QueryParamBool</a></span>
+  on QueryParam<span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>&gt;</span>
+  
+
+</dt>
+<dd>
+  QueryParam for boolean properties
+</dd>
+
+          <dt id="QueryParamBytes">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/QueryParamBytes.html">QueryParamBytes</a></span>
+  on QueryParam<span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>&gt;</span></span>&gt;</span>
+  
+
+</dt>
+<dd>
+  QueryParam for byte vector properties
+</dd>
+
+          <dt id="QueryParamDouble">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/QueryParamDouble.html">QueryParamDouble</a></span>
+  on QueryParam<span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a></span>&gt;</span>
+  
+
+</dt>
+<dd>
+  QueryParam for double properties
+</dd>
+
+          <dt id="QueryParamInt">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/QueryParamInt.html">QueryParamInt</a></span>
+  on QueryParam<span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>&gt;</span>
+  
+
+</dt>
+<dd>
+  QueryParam for int properties
+</dd>
+
+          <dt id="QueryParamString">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/QueryParamString.html">QueryParamString</a></span>
+  on QueryParam<span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>
+  
+
+</dt>
+<dd>
+  QueryParam for string properties
+</dd>
+
+          <dt id="QuerySetParam">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/QuerySetParam.html">QuerySetParam</a></span>
+  on <a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/Query-class.html">Query</a>
+  
+
+</dt>
+<dd>
+  Adds capabilities to set query parameters
+</dd>
+
+          <dt id="StringPropertyQuery">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/StringPropertyQuery.html">StringPropertyQuery</a></span>
+  on <a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/PropertyQuery-class.html">PropertyQuery</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>
+  
+
+</dt>
+<dd>
+  "Property query" for a string field. Created by <a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/Query/property.html">Query.property()</a>.
+</dd>
+
+      </dl>
+    </section>
+
+
+
+    <section class="summary offset-anchor" id="functions">
+      <h2>Functions</h2>
+      <dl class="callables">
+          <dt id="getObjectBoxModel" class="callable">
+  <span class="name"><a href="../objectbox.g/getObjectBoxModel.html">getObjectBoxModel</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox_internal/ModelDefinition-class.html">ModelDefinition</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the ObjectBox model definition for this project for use with
+<a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/Store/Store.html">obx.Store.new</a>.
+  
+
+</dd>
+
+          <dt id="openStore" class="callable">
+  <span class="name"><a href="../objectbox.g/openStore.html">openStore</a></span><span class="signature">(<wbr>{<span class="parameter" id="openStore-param-directory"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">directory</span>, </span><span class="parameter" id="openStore-param-maxDBSizeInKB"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">maxDBSizeInKB</span>, </span><span class="parameter" id="openStore-param-maxDataSizeInKB"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">maxDataSizeInKB</span>, </span><span class="parameter" id="openStore-param-fileMode"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">fileMode</span>, </span><span class="parameter" id="openStore-param-maxReaders"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">maxReaders</span>, </span><span class="parameter" id="openStore-param-queriesCaseSensitiveDefault"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">queriesCaseSensitiveDefault</span> = <span class="default-value">true</span>, </span><span class="parameter" id="openStore-param-macosApplicationGroup"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">macosApplicationGroup</span></span>})
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/flutter_test/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/Store-class.html">Store</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Shortcut for <a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/Store/Store.html">obx.Store.new</a> that passes <a href="../objectbox.g/getObjectBoxModel.html">getObjectBoxModel</a> and for Flutter
+apps by default a <code>directory</code> using <code>defaultStoreDirectory()</code> from the
+ObjectBox Flutter library.
+  
+
+</dd>
+
+      </dl>
+    </section>
+
+
+    <section class="summary offset-anchor" id="exceptions">
+      <h2>Exceptions / Errors</h2>
+      <dl>
+          <dt id="DbFileCorruptException">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/DbFileCorruptException-class.html">DbFileCorruptException</a></span> 
+
+</dt>
+<dd>
+  Errors were detected in a database file, e.g. illegal values or structural
+inconsistencies.
+</dd>
+
+          <dt id="DbFullException">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/DbFullException-class.html">DbFullException</a></span> 
+
+</dt>
+<dd>
+  Thrown when applying a transaction (e.g. putting an object) would exceed the
+<code>maxDBSizeInKB</code> configured when calling <a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/Store/Store.html">Store.new</a>.
+</dd>
+
+          <dt id="DbMaxDataSizeExceededException">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/DbMaxDataSizeExceededException-class.html">DbMaxDataSizeExceededException</a></span> 
+
+</dt>
+<dd>
+  Thrown when applying a transaction would exceed the <code>maxDataSizeInKByte</code>
+configured when calling <a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/Store/Store.html">Store.new</a>.
+</dd>
+
+          <dt id="DbMaxReadersExceededException">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/DbMaxReadersExceededException-class.html">DbMaxReadersExceededException</a></span> 
+
+</dt>
+<dd>
+  Thrown when the maximum amount of readers (read transactions) was exceeded.
+</dd>
+
+          <dt id="DbPagesCorruptException">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/DbPagesCorruptException-class.html">DbPagesCorruptException</a></span> 
+
+</dt>
+<dd>
+  Errors related to pages were detected in a database file, e.g. bad page refs
+outside of the file.
+</dd>
+
+          <dt id="DbShutdownException">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/DbShutdownException-class.html">DbShutdownException</a></span> 
+
+</dt>
+<dd>
+  Thrown when an error occurred that requires the store to be closed.
+</dd>
+
+          <dt id="NonUniqueResultException">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/NonUniqueResultException-class.html">NonUniqueResultException</a></span> 
+
+</dt>
+<dd>
+  Thrown if <code>Query.findUnique()</code> is called, but the query matches more than
+one object.
+</dd>
+
+          <dt id="NumericOverflowException">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/NumericOverflowException-class.html">NumericOverflowException</a></span> 
+
+</dt>
+<dd>
+  Thrown if a property query aggregate function (e.g. <code>sum()</code>) can not compute
+a result due to a number type overflowing.
+</dd>
+
+          <dt id="ObjectBoxException">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/ObjectBoxException-class.html">ObjectBoxException</a></span> 
+
+</dt>
+<dd>
+  ObjectBox database exception.
+</dd>
+
+          <dt id="SchemaException">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/SchemaException-class.html">SchemaException</a></span> 
+
+</dt>
+<dd>
+  Thrown when there is an error with the data schema (data model).
+</dd>
+
+          <dt id="StorageException">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/StorageException-class.html">StorageException</a></span> 
+
+</dt>
+<dd>
+  ObjectBox database exception with an OBX_ERROR code.
+</dd>
+
+          <dt id="UniqueViolationException">
+  <span class="name "><a href="https://pub.dev/documentation/objectbox/4.3.1/objectbox/UniqueViolationException-class.html">UniqueViolationException</a></span> 
+
+</dt>
+<dd>
+  A unique constraint would have been violated by this database operation.
+</dd>
+
+      </dl>
+    </section>
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../index.html">tadamon</a></li>
+    <li class="self-crumb">objectbox.g.dart</li>
+</ol>
+
+    <h5><span class="package-name">tadamon</span> <span class="package-kind">package</span></h5>
+    <ol>
+      <li class="section-title">Libraries</li>
+      <li><a href="../core_config_const_app_enums/">core/config/const/app_enums</a></li>
+      <li><a href="../core_config_const_sensei_const/">core/config/const/sensei_const</a></li>
+      <li><a href="../core_config_const_shared_preferences_keys/">core/config/const/shared_preferences_keys</a></li>
+      <li><a href="../core_config_fonts_fonts/">core/config/fonts/fonts</a></li>
+      <li><a href="../core_config_theme_colors_dark_theme/">core/config/theme/colors/dark_theme</a></li>
+      <li><a href="../core_config_theme_colors_light_theme/">core/config/theme/colors/light_theme</a></li>
+      <li><a href="../core_config_theme_colors_logic_cubit_theme_cubit/">core/config/theme/colors/logic/cubit/theme_cubit</a></li>
+      <li><a href="../core_config_theme_colors_logic_cubit_theme_shared_preferences/">core/config/theme/colors/logic/cubit/theme_shared_preferences</a></li>
+      <li><a href="../core_config_theme_colors_logic_cubit_theme_state/">core/config/theme/colors/logic/cubit/theme_state</a></li>
+      <li><a href="../core_config_theme_colors_logic_helper_theme_toggle_helper/">core/config/theme/colors/logic/helper/theme_toggle_helper</a></li>
+      <li><a href="../core_controller_network_controller_network_controller/">core/controller/network_controller/network_controller</a></li>
+      <li><a href="../core_error_error_screen/">core/error/error_screen</a></li>
+      <li><a href="../core_error_no_routes/">core/error/no_routes</a></li>
+      <li><a href="../core_extensions_date_format_extension/">core/extensions/date_format_extension</a></li>
+      <li><a href="../core_extensions_navigetion_extensions/">core/extensions/navigetion_extensions</a></li>
+      <li><a href="../core_helpers_font_weight_helper/">core/helpers/font_weight_helper</a></li>
+      <li><a href="../core_logic_locals_cubit_locals_cubit/">core/logic/locals/cubit/locals_cubit</a></li>
+      <li><a href="../core_logic_locals_cubit_locals_event/">core/logic/locals/cubit/locals_event</a></li>
+      <li><a href="../core_logic_locals_cubit_locals_state/">core/logic/locals/cubit/locals_state</a></li>
+      <li><a href="../core_routing_app_router/">core/routing/app_router</a></li>
+      <li><a href="../core_routing_routes/">core/routing/routes</a></li>
+      <li><a href="../core_services_object_box_services_object_box_service/">core/services/object_box_services/object_box_service</a></li>
+      <li><a href="../core_services_pdf_export_services_pdf_export_services/">core/services/pdf_export_services/pdf_export_services</a></li>
+      <li><a href="../core_services_share_Services_share_services/">core/services/share_Services/share_services</a></li>
+      <li><a href="../core_services_url_services_url_services/">core/services/url_services/url_services</a></li>
+      <li><a href="../core_shared_preferences_global_shared_preferences_global/">core/shared_preferences_global/shared_preferences_global</a></li>
+      <li><a href="../core_widgets_app_bar_component_action_drawer_icons/">core/widgets/app_bar_component/action_drawer_icons</a></li>
+      <li><a href="../core_widgets_app_bar_component_app_bar/">core/widgets/app_bar_component/app_bar</a></li>
+      <li><a href="../core_widgets_app_bar_component_app_bar_title/">core/widgets/app_bar_component/app_bar_title</a></li>
+      <li><a href="../core_widgets_app_bar_component_side_page_app_bar/">core/widgets/app_bar_component/side_page_app_bar</a></li>
+      <li><a href="../core_widgets_app_drawer_widgets_drawer/">core/widgets/app_drawer/widgets/drawer</a></li>
+      <li><a href="../core_widgets_app_drawer_widgets_drawer_header/">core/widgets/app_drawer/widgets/drawer_header</a></li>
+      <li><a href="../core_widgets_app_toast_app_toast/">core/widgets/app_toast/app_toast</a></li>
+      <li><a href="../core_widgets_bottom_sheet_ui_model_bottom_sheet/">core/widgets/bottom_sheet/ui/model_bottom_sheet</a></li>
+      <li><a href="../core_widgets_bottom_sheet_widget_bottom_model_sheet_content/">core/widgets/bottom_sheet/widget/bottom_model_sheet_content</a></li>
+      <li><a href="../core_widgets_bottom_sheet_widget_sheet_header/">core/widgets/bottom_sheet/widget/sheet_header</a></li>
+      <li><a href="../core_widgets_button_components_elevated_button_components_elevated_button_component/">core/widgets/button_components/elevated_button_components/elevated_button_component</a></li>
+      <li><a href="../core_widgets_button_components_elevated_button_components_elevated_icon_button_component/">core/widgets/button_components/elevated_button_components/elevated_icon_button_component</a></li>
+      <li><a href="../core_widgets_button_components_icon_button_components_icon_button_component/">core/widgets/button_components/icon_button_components/icon_button_component</a></li>
+      <li><a href="../core_widgets_button_components_icon_button_components_icon_button_filled_component/">core/widgets/button_components/icon_button_components/icon_button_filled_component</a></li>
+      <li><a href="../core_widgets_button_components_icon_button_components_icon_button_filledtonal_component/">core/widgets/button_components/icon_button_components/icon_button_filledtonal_component</a></li>
+      <li><a href="../core_widgets_button_components_textbutton_components_text_button_component/">core/widgets/button_components/textbutton_components/text_button_component</a></li>
+      <li><a href="../core_widgets_button_components_textbutton_components_text_icon_button_component/">core/widgets/button_components/textbutton_components/text_icon_button_component</a></li>
+      <li><a href="../core_widgets_container_background_component_container_background_component/">core/widgets/container_background_component/container_background_component</a></li>
+      <li><a href="../core_widgets_counter_items_component_counter_items_component/">core/widgets/counter_items_component/counter_items_component</a></li>
+      <li><a href="../core_widgets_dilog_components_dilog_ask_user_components/">core/widgets/dilog_components/dilog_ask_user_components</a></li>
+      <li><a href="../core_widgets_dilog_components_dilog_component/">core/widgets/dilog_components/dilog_component</a></li>
+      <li><a href="../core_widgets_dilog_components_dilog_waiting_component/">core/widgets/dilog_components/dilog_waiting_component</a></li>
+      <li><a href="../core_widgets_divider/">core/widgets/divider</a></li>
+      <li><a href="../core_widgets_expansion_tile_component_expansion_tile_component/">core/widgets/expansion_tile_component/expansion_tile_component</a></li>
+      <li><a href="../core_widgets_home_tool_component_home_tool_component/">core/widgets/home_tool_component/home_tool_component</a></li>
+      <li><a href="../core_widgets_inkwell_component_inkwell_component/">core/widgets/inkwell_component/inkwell_component</a></li>
+      <li><a href="../core_widgets_list_tile_components_list_tile_component/">core/widgets/list_tile_components/list_tile_component</a></li>
+      <li><a href="../core_widgets_list_tile_components_list_tile_icon_component/">core/widgets/list_tile_components/list_tile_icon_component</a></li>
+      <li><a href="../core_widgets_list_tile_components_list_tile_widget_component/">core/widgets/list_tile_components/list_tile_widget_component</a></li>
+      <li><a href="../core_widgets_lottie_component_lottie_component/">core/widgets/lottie_component/lottie_component</a></li>
+      <li><a href="../core_widgets_text_filed_component_text_filed_component/">core/widgets/text_filed_component/text_filed_component</a></li>
+      <li><a href="../features_counter_manager_logic_counter_cubit/">features/counter_manager/logic/counter_cubit</a></li>
+      <li><a href="../features_counter_manager_logic_counter_state/">features/counter_manager/logic/counter_state</a></li>
+      <li><a href="../features_donation_palestine_widget_donation_sheet_content/">features/donation_palestine/widget/donation_sheet_content</a></li>
+      <li><a href="../features_edit_text_widgets_edit_text_sheet_content/">features/edit_text/widgets/edit_text_sheet_content</a></li>
+      <li><a href="../features_pages_app_info_page_ui_page_app_info/">features/pages/app_info_page/ui/page/app_info</a></li>
+      <li><a href="../features_pages_app_info_page_ui_widget_app_info_list/">features/pages/app_info_page/ui/widget/app_info_list</a></li>
+      <li><a href="../features_pages_app_info_page_ui_widget_app_info_title/">features/pages/app_info_page/ui/widget/app_info_title</a></li>
+      <li><a href="../features_pages_chat_with_dev_page_ui_page_chat_with_dev/">features/pages/chat_with_dev_page/ui/page/chat_with_dev</a></li>
+      <li><a href="../features_pages_chat_with_dev_page_ui_widget_chat_bubble/">features/pages/chat_with_dev_page/ui/widget/chat_bubble</a></li>
+      <li><a href="../features_pages_chat_with_dev_page_ui_widget_chat_dev_app_bar/">features/pages/chat_with_dev_page/ui/widget/chat_dev_app_bar</a></li>
+      <li><a href="../features_pages_chat_with_dev_page_ui_widget_donation_for_dev_slider/">features/pages/chat_with_dev_page/ui/widget/donation_for_dev_slider</a></li>
+      <li><a href="../features_pages_help_user_page_data_model_qna_model/">features/pages/help_user_page/data/model/qna_model</a></li>
+      <li><a href="../features_pages_help_user_page_data_repositories_repositories/">features/pages/help_user_page/data/repositories/repositories</a></li>
+      <li><a href="../features_pages_help_user_page_logic_cubit_help_user_cubit/">features/pages/help_user_page/logic/cubit/help_user_cubit</a></li>
+      <li><a href="../features_pages_help_user_page_logic_cubit_help_user_state/">features/pages/help_user_page/logic/cubit/help_user_state</a></li>
+      <li><a href="../features_pages_help_user_page_logic_help_search_delegate/">features/pages/help_user_page/logic/help_search_delegate</a></li>
+      <li><a href="../features_pages_help_user_page_ui_page_help_user_page/">features/pages/help_user_page/ui/page/help_user_page</a></li>
+      <li><a href="../features_pages_help_user_page_ui_widget_help_user_page_view/">features/pages/help_user_page/ui/widget/help_user_page_view</a></li>
+      <li><a href="../features_pages_home_page_ui_page_home_page/">features/pages/home_page/ui/page/home_page</a></li>
+      <li><a href="../features_pages_home_page_ui_widget_home_app_tools/">features/pages/home_page/ui/widget/home_app_tools</a></li>
+      <li><a href="../features_pages_home_page_ui_widget_home_tip/">features/pages/home_page/ui/widget/home_tip</a></li>
+      <li><a href="../features_pages_home_page_ui_widget_image_news/">features/pages/home_page/ui/widget/image_news</a></li>
+      <li><a href="../features_pages_home_page_ui_widget_items_counter/">features/pages/home_page/ui/widget/items_counter</a></li>
+      <li><a href="../features_pages_log_page_data_models_scanned_logs_product_model/">features/pages/log_page/data/models/scanned_logs_product_model</a></li>
+      <li><a href="../features_pages_log_page_logic_bloc_logs_bloc/">features/pages/log_page/logic/bloc/logs_bloc</a></li>
+      <li><a href="../features_pages_log_page_logic_bloc_logs_event/">features/pages/log_page/logic/bloc/logs_event</a></li>
+      <li><a href="../features_pages_log_page_logic_bloc_logs_state/">features/pages/log_page/logic/bloc/logs_state</a></li>
+      <li><a href="../features_pages_log_page_ui_page_log_page/">features/pages/log_page/ui/page/log_page</a></li>
+      <li><a href="../features_pages_log_page_ui_widgets_logs_page_view/">features/pages/log_page/ui/widgets/logs_page_view</a></li>
+      <li><a href="../features_pages_log_page_ui_widgets_logs_search_content/">features/pages/log_page/ui/widgets/logs_search_content</a></li>
+      <li><a href="../features_pages_log_page_ui_widgets_productlogs_expansiontile_component/">features/pages/log_page/ui/widgets/productlogs_expansiontile_component</a></li>
+      <li><a href="../features_pages_main_page_logic_cubit_main_page_cubit/">features/pages/main_page/logic/cubit/main_page_cubit</a></li>
+      <li><a href="../features_pages_main_page_logic_cubit_main_page_event/">features/pages/main_page/logic/cubit/main_page_event</a></li>
+      <li><a href="../features_pages_main_page_logic_cubit_main_page_state/">features/pages/main_page/logic/cubit/main_page_state</a></li>
+      <li><a href="../features_pages_main_page_ui_page_main_page/">features/pages/main_page/ui/page/main_page</a></li>
+      <li><a href="../features_pages_main_page_ui_widget_google_nav_bar_google_nav_bar/">features/pages/main_page/ui/widget/google_nav_bar/google_nav_bar</a></li>
+      <li><a href="../features_pages_main_page_ui_widget_main_page_container/">features/pages/main_page/ui/widget/main_page_container</a></li>
+      <li><a href="../features_pages_onboarding_page_ui_page_onboarding_page/">features/pages/onboarding_page/ui/page/onboarding_page</a></li>
+      <li><a href="../features_pages_onboarding_page_ui_widget_animated_triangles/">features/pages/onboarding_page/ui/widget/animated_triangles</a></li>
+      <li><a href="../features_pages_onboarding_page_ui_widget_dot_indicator_nav/">features/pages/onboarding_page/ui/widget/dot_indicator_nav</a></li>
+      <li><a href="../features_pages_onboarding_page_ui_widget_onboarding_page_one/">features/pages/onboarding_page/ui/widget/onboarding_page_one</a></li>
+      <li><a href="../features_pages_onboarding_page_ui_widget_onboarding_page_two/">features/pages/onboarding_page/ui/widget/onboarding_page_two</a></li>
+      <li><a href="../features_pages_palestine_map_page_ui_page_palestine_map_page/">features/pages/palestine_map_page/ui/page/palestine_map_page</a></li>
+      <li><a href="../features_pages_search_page_data_model_search_product_model/">features/pages/search_page/data/model/search_product_model</a></li>
+      <li><a href="../features_pages_search_page_logic_search_bloc/">features/pages/search_page/logic/search_bloc</a></li>
+      <li><a href="../features_pages_search_page_logic_search_event/">features/pages/search_page/logic/search_event</a></li>
+      <li><a href="../features_pages_search_page_logic_search_state/">features/pages/search_page/logic/search_state</a></li>
+      <li><a href="../features_pages_search_page_ui_page_search_page/">features/pages/search_page/ui/page/search_page</a></li>
+      <li><a href="../features_pages_search_page_ui_widget_product_expansion_tile/">features/pages/search_page/ui/widget/product_expansion_tile</a></li>
+      <li><a href="../features_pages_search_page_ui_widget_search_page_view/">features/pages/search_page/ui/widget/search_page_view</a></li>
+      <li><a href="../features_pages_search_page_ui_widget_search_result_content/">features/pages/search_page/ui/widget/search_result_content</a></li>
+      <li><a href="../features_pages_terms_gate_page_terms_gate/">features/pages/terms_gate_page/terms_gate</a></li>
+      <li><a href="../features_pdf_export_logic_cubit_pdf_export_cubit/">features/pdf_export/logic/cubit/pdf_export_cubit</a></li>
+      <li><a href="../features_pdf_export_logic_cubit_pdf_export_state/">features/pdf_export/logic/cubit/pdf_export_state</a></li>
+      <li><a href="../features_products_scanner_data_models_product_model/">features/products_scanner/data/models/product_model</a></li>
+      <li><a href="../features_products_scanner_data_repository_fire_store_repositories/">features/products_scanner/data/repository/fire_store_repositories</a></li>
+      <li><a href="../features_products_scanner_data_repository_objectbox_repositories/">features/products_scanner/data/repository/objectbox_repositories</a></li>
+      <li><a href="../features_products_scanner_logic_barcode_scanner/">features/products_scanner/logic/barcode_scanner</a></li>
+      <li><a href="../features_products_scanner_logic_barcode_validator/">features/products_scanner/logic/barcode_validator</a></li>
+      <li><a href="../features_products_scanner_logic_cubit_localdb_cubit_localdb_cubit/">features/products_scanner/logic/cubit/localdb_cubit/localdb_cubit</a></li>
+      <li><a href="../features_products_scanner_logic_cubit_product_scan_cubit_product_scan_cubit/">features/products_scanner/logic/cubit/product_scan_cubit/product_scan_cubit</a></li>
+      <li><a href="../features_products_scanner_logic_image_scanner/">features/products_scanner/logic/image_scanner</a></li>
+      <li><a href="../features_products_scanner_ui_widget_product_list_view/">features/products_scanner/ui/widget/product_list_view</a></li>
+      <li><a href="../features_report_products_logic_bloc_report_product_cubit/">features/report_products/logic/bloc/report_product_cubit</a></li>
+      <li><a href="../features_report_products_logic_bloc_report_product_state/">features/report_products/logic/bloc/report_product_state</a></li>
+      <li><a href="../features_report_products_logic_services_report_service/">features/report_products/logic/services/report_service</a></li>
+      <li><a href="../features_report_products_widgets_report_products_seet_content_radio_selection_tile_component/">features/report_products/widgets/report_products_seet_content/radio_selection_tile_component</a></li>
+      <li><a href="../features_report_products_widgets_report_products_seet_content_report_product_sheet_content/">features/report_products/widgets/report_products_seet_content/report_product_sheet_content</a></li>
+      <li><a href="../firebase_options/">firebase_options</a></li>
+      <li><a href="../generated_assets/">generated/assets</a></li>
+      <li><a href="../generated_intl_messages_all/">generated/intl/messages_all</a></li>
+      <li><a href="../generated_intl_messages_ar/">generated/intl/messages_ar</a></li>
+      <li><a href="../generated_l10n/">generated/l10n</a></li>
+      <li><a href="../l10n_app_localizations/">l10n/app_localizations</a></li>
+      <li><a href="../l10n_app_localizations_ar/">l10n/app_localizations_ar</a></li>
+      <li><a href="../main/">main</a></li>
+      <li><a href="../objectbox.g/">objectbox.g</a></li>
+      <li><a href="../tadamon/">tadamon</a></li>
+</ol>
+
+  </div>
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+    <h5>objectbox.g library</h5>
+  </div><!--/sidebar-offcanvas-right-->
+</main>
+<footer>
+  <span class="no-break">
+    tadamon
+      1.0.0+1
+  </span>
+  
+</footer>
+
+
+<script src="../static-assets/highlight.pack.js?v1"></script>
+<script src="../static-assets/docs.dart.js"></script>
+
+</body>
+</html>
+

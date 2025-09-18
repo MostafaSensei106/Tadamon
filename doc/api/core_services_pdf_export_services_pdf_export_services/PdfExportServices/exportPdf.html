@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the exportPdf method from the PdfExportServices class, for the Dart programming language.">
+  <title>exportPdf method - PdfExportServices class - pdf_export_services library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../../static-assets/styles.css?v1">
+  <link rel="icon" href="../../static-assets/favicon.png?v1">
+  
+</head>
+
+<body data-base-href="../../" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../../index.html">tadamon</a></li>
+    <li><a href="../../core_services_pdf_export_services_pdf_export_services/">core&#47;services&#47;pdf_export_services&#47;pdf_export_services.dart</a></li>
+    <li><a href="../../core_services_pdf_export_services_pdf_export_services/PdfExportServices-class.html">PdfExportServices</a></li>
+    <li class="self-crumb">exportPdf method</li>
+  </ol>
+  <div class="self-name">exportPdf</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <button class="toggle" id="theme-button" title="Toggle between light and dark mode" aria-label="Light and dark mode toggle">
+    <span id="dark-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      dark_mode
+    </span>
+    <span id="light-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      light_mode
+    </span>
+  </button>
+</header>
+<main>
+<div
+    id="dartdoc-main-content"
+    class="main-content"
+    data-above-sidebar="core_services_pdf_export_services_pdf_export_services&#47;PdfExportServices-class-sidebar.html"
+    data-below-sidebar="">
+    <div>
+<h1><span class="kind-method">exportPdf</span> method 
+</h1></div>
+
+    <section class="multi-line-signature">
+      
+<span class="returntype"><a href="https://api.flutter.dev/flutter/flutter_test/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">void</span>&gt;</span></span>
+<span class="name ">exportPdf</span>(<wbr><ol class="parameter-list single-line"> <li><span class="parameter" id="exportPdf-param-dataList"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../features_pages_log_page_data_models_scanned_logs_product_model/ScannedLogsProductModel-class.html">ScannedLogsProductModel</a></span>&gt;</span></span> <span class="parameter-name">dataList</span></span></li>
+</ol>)
+
+      
+
+    </section>
+    
+<section class="desc markdown">
+  <p>Exports the given list of <a href="../../features_pages_log_page_data_models_scanned_logs_product_model/ScannedLogsProductModel-class.html">ScannedLogsProductModel</a> to a pdf file named
+"Tadamon_Logs.pdf" in the app's document directory, and
+opens it afterwards.</p>
+<p>The pdf file will contain a table with the headers as the keys of the
+first element of the list, and the values as the rows of the table.</p>
+<p>If the operation fails, a toast error message will be shown.</p>
+</section>
+
+
+    
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">Future&lt;void&gt; exportPdf(final List&lt;ScannedLogsProductModel&gt; dataList) async {
+  try {
+    final fileName = &#39;Tadamon_Logs_${DateTime.now().formatted}&#39;;
+    final pdf = pw.Document();
+    final headers = dataList.first.toMap().keys.toList();
+    final data = dataList
+        .map((final item) =&gt; item.toMap().values.toList())
+        .toList();
+
+    final imageBytes = (await rootBundle.load(
+      SenseiConst.tadamonAppImage,
+    )).buffer.asUint8List();
+    final pw.ImageProvider image = pw.MemoryImage(imageBytes);
+
+    pdf.addPage(
+      pw.Page(
+        build: (final context) =&gt; pw.Column(
+          crossAxisAlignment: pw.CrossAxisAlignment.start,
+          children: [
+            pw.Center(child: pw.Image(image, width: 150, height: 150)),
+            pw.SizedBox(height: 20),
+            pw.Center(
+              child: pw.Text(
+                &#39;تقرير السجلات&#39;,
+                style: pw.TextStyle(
+                  fontSize: 26,
+                  fontWeight: pw.FontWeight.bold,
+                ),
+              ),
+            ),
+            pw.SizedBox(height: 20),
+            pw.TableHelper.fromTextArray(
+              headers: headers,
+              headerStyle: const pw.TextStyle(fontSize: 14),
+              headerDecoration: const pw.BoxDecoration(),
+              data: data
+                  .map(
+                    (final row) =&gt;
+                        row.map((final cell) =&gt; cell.toString()).toList(),
+                  )
+                  .toList(),
+              border: pw.TableBorder.symmetric(),
+              cellAlignment: pw.Alignment.center,
+              cellStyle: const pw.TextStyle(fontSize: 12),
+            ),
+          ],
+        ),
+      ),
+    );
+
+    final dir = await path.getApplicationDocumentsDirectory();
+    final file = File(&#39;${dir.path}&#47;$fileName.pdf&#39;);
+    await file.writeAsBytes(await pdf.save());
+    await OpenFile.open(file.path);
+    showSuccessToast(&#39;تم حفظ الملف بنجاح&#39;);
+  } catch (e) {
+    showErrorToast(&#39;Failed to generate the pdf&#39;);
+  }
+}</code></pre>
+</section>
+
+
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../../index.html">tadamon</a></li>
+    <li><a href="../../core_services_pdf_export_services_pdf_export_services/">pdf_export_services</a></li>
+    <li><a href="../../core_services_pdf_export_services_pdf_export_services/PdfExportServices-class.html">PdfExportServices</a></li>
+    <li class="self-crumb">exportPdf method</li>
+</ol>
+
+    <h5>PdfExportServices class</h5>
+    <div id="dartdoc-sidebar-left-content"></div>
+  </div><!--/.sidebar-offcanvas-->
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+</div><!--/.sidebar-offcanvas-->
+</main>
+<footer>
+  <span class="no-break">
+    tadamon
+      1.0.0+1
+  </span>
+  
+</footer>
+
+
+<script src="../../static-assets/highlight.pack.js?v1"></script>
+<script src="../../static-assets/docs.dart.js"></script>
+
+</body>
+</html>
+
