@@ -15,23 +15,16 @@ import 'tadamon.dart' show TadamonApp;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-
   await SharedPreferencesGlobal().initialize();
-
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-
   await ObjectBoxService.init();
-
   final themeCubit = ThemeCubit(
     themeSharedPreferences: ThemeSharedPreferences(),
   );
-
   // await FirebaseAppCheck.instance.activate(
   //   androidProvider: AndroidProvider.playIntegrity,
   // );
-
   errorScreen();
   runApp(BlocProvider.value(value: themeCubit, child: TadamonApp(AppRouter())));
 }
