@@ -23,7 +23,7 @@ class HomeCubit extends Cubit<HomeState> {
     _startAutoSlide();
   }
 
-  void pageChanged(int page) {
+  void pageChanged(final int page) {
     if (state is HomeLoaded) {
       emit(HomeLoaded(imageUrls: _imageUrls, currentPage: page));
     }
