@@ -184,7 +184,22 @@ class AppLocalizationsEn extends AppLocalizations {
   String get exportAsCsv => 'Export as CSV';
 
   @override
-  String get exportAsJson => 'Export as JSON';
+  String get dataPreview => 'معاينة البيانات';
+
+  @override
+  String get totalLogs => 'إجمالي السجلات';
+
+  @override
+  String get period => 'الفترة';
+
+  @override
+  String get pdfSubtitle => 'مناسب للطباعة والمشاركة';
+
+  @override
+  String get csvSubtitle => 'للاستخدام مع Excel وجداول البيانات';
+
+  @override
+  String get jsonSubtitle => 'للمطورين والتكامل مع الأنظمة';
 
   @override
   String get close => 'Close';

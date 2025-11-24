@@ -440,11 +440,41 @@ abstract class AppLocalizations {
   /// **'تصدير بصيغة CSV'**
   String get exportAsCsv;
 
-  /// تصدير بصيغة JSON
+  /// معاينة البيانات
   ///
   /// In ar, this message translates to:
-  /// **'تصدير بصيغة JSON'**
-  String get exportAsJson;
+  /// **'معاينة البيانات'**
+  String get dataPreview;
+
+  /// إجمالي السجلات
+  ///
+  /// In ar, this message translates to:
+  /// **'إجمالي السجلات'**
+  String get totalLogs;
+
+  /// الفترة
+  ///
+  /// In ar, this message translates to:
+  /// **'الفترة'**
+  String get period;
+
+  /// مناسب للطباعة والمشاركة
+  ///
+  /// In ar, this message translates to:
+  /// **'مناسب للطباعة والمشاركة'**
+  String get pdfSubtitle;
+
+  /// للاستخدام مع Excel وجداول البيانات
+  ///
+  /// In ar, this message translates to:
+  /// **'للاستخدام مع Excel وجداول البيانات'**
+  String get csvSubtitle;
+
+  /// للمطورين والتكامل مع الأنظمة
+  ///
+  /// In ar, this message translates to:
+  /// **'للمطورين والتكامل مع الأنظمة'**
+  String get jsonSubtitle;
 
   /// زر الإغلاق
   ///

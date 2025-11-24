@@ -295,10 +295,37 @@
   },
   "exportAsCsv": "تصدير بصيغة CSV",
 
-  "@exportAsJson": {
-    "description": "تصدير بصيغة JSON"
+  "@exportAsJson": "تصدير بصيغة JSON",
+
+  "@dataPreview": {
+    "description": "معاينة البيانات"
   },
-  "exportAsJson": "تصدير بصيغة JSON",
+  "dataPreview": "معاينة البيانات",
+
+  "@totalLogs": {
+    "description": "إجمالي السجلات"
+  },
+  "totalLogs": "إجمالي السجلات",
+
+  "@period": {
+    "description": "الفترة"
+  },
+  "period": "الفترة",
+
+  "@pdfSubtitle": {
+    "description": "مناسب للطباعة والمشاركة"
+  },
+  "pdfSubtitle": "مناسب للطباعة والمشاركة",
+
+  "@csvSubtitle": {
+    "description": "للاستخدام مع Excel وجداول البيانات"
+  },
+  "csvSubtitle": "للاستخدام مع Excel وجداول البيانات",
+
+  "@jsonSubtitle": {
+    "description": "للمطورين والتكامل مع الأنظمة"
+  },
+  "jsonSubtitle": "للمطورين والتكامل مع الأنظمة",
 
   "@close": {
     "description": "زر الإغلاق"
