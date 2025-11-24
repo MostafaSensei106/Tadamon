@@ -108,10 +108,13 @@ and</li>
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">@override
-Widget build(final BuildContext context) =&gt; const Padding(
-  padding: EdgeInsets.all(SenseiConst.padding),
-  child: Column(
-    children: [HomeTip(), ImageNews(), HomeAppTools(), ItemsCounter()],
+Widget build(final BuildContext context) =&gt; BlocProvider(
+  create: (_) =&gt; HomeCubit()..loadContent(),
+  child: const Padding(
+    padding: EdgeInsets.all(SenseiConst.padding),
+    child: Column(
+      children: [HomeTip(), ImageNews(), HomeAppTools(), ItemsCounter()],
+    ),
   ),
 );</code></pre>
 </section>

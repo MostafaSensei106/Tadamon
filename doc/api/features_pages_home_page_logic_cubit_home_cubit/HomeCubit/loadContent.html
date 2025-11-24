@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-  <meta name="description" content="API docs for the thumbIcon method from the SenseiDrawer class, for the Dart programming language.">
-  <title>thumbIcon method - SenseiDrawer class - drawer library - Dart API</title>
+  <meta name="description" content="API docs for the loadContent method from the HomeCubit class, for the Dart programming language.">
+  <title>loadContent method - HomeCubit class - home_cubit library - Dart API</title>
 
 
   
@@ -25,11 +25,11 @@
   <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
   <ol class="breadcrumbs gt-separated dark hidden-xs">
     <li><a href="../../index.html">tadamon</a></li>
-    <li><a href="../../core_widgets_app_drawer_widgets_drawer/">core&#47;widgets&#47;app_drawer&#47;widgets&#47;drawer.dart</a></li>
-    <li><a href="../../core_widgets_app_drawer_widgets_drawer/SenseiDrawer-class.html">SenseiDrawer</a></li>
-    <li class="self-crumb">thumbIcon method</li>
+    <li><a href="../../features_pages_home_page_logic_cubit_home_cubit/">features&#47;pages&#47;home_page&#47;logic&#47;cubit&#47;home_cubit.dart</a></li>
+    <li><a href="../../features_pages_home_page_logic_cubit_home_cubit/HomeCubit-class.html">HomeCubit</a></li>
+    <li class="self-crumb">loadContent method</li>
   </ol>
-  <div class="self-name">thumbIcon</div>
+  <div class="self-name">loadContent</div>
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
@@ -46,44 +46,30 @@
 <div
     id="dartdoc-main-content"
     class="main-content"
-    data-above-sidebar="core_widgets_app_drawer_widgets_drawer&#47;SenseiDrawer-class-sidebar.html"
+    data-above-sidebar="features_pages_home_page_logic_cubit_home_cubit&#47;HomeCubit-class-sidebar.html"
     data-below-sidebar="">
     <div>
-<h1><span class="kind-method">thumbIcon</span> method 
+<h1><span class="kind-method">loadContent</span> method 
 </h1></div>
 
     <section class="multi-line-signature">
       
-<span class="returntype"><a href="https://api.flutter.dev/flutter/widgets/WidgetStateProperty-class.html">WidgetStateProperty</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/widgets/Icon-class.html">Icon</a></span>&gt;</span></span>
-<span class="name ">thumbIcon</span>(<wbr><ol class="parameter-list single-line"> <li><span class="parameter" id="thumbIcon-param-context"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/widgets/BuildContext-class.html">BuildContext</a></span> <span class="parameter-name">context</span></span></li>
-</ol>)
+<span class="returntype">void</span>
+<span class="name ">loadContent</span>(<wbr>)
 
       
 
     </section>
     
-<section class="desc markdown">
-  <p>Creates an <a href="https://api.flutter.dev/flutter/widgets/Icon-class.html">Icon</a> that is conditionally styled based on the presence of
-<a href="https://api.flutter.dev/flutter/widgets/WidgetState.html">WidgetState.selected</a> in the given <a href="https://api.flutter.dev/flutter/dart-core/Set-class.html">Set</a> of <a href="https://api.flutter.dev/flutter/widgets/WidgetState.html">WidgetState</a>s.</p>
-<p>If the set contains <a href="https://api.flutter.dev/flutter/widgets/WidgetState.html">WidgetState.selected</a>, the icon is an <a href="https://api.flutter.dev/flutter/material/Icons/check-constant.html">Icons.check</a>
-with the primary color of the current <a href="https://api.flutter.dev/flutter/material/Theme-class.html">Theme</a>.  Otherwise, the icon is an
-<a href="https://api.flutter.dev/flutter/material/Icons/close-constant.html">Icons.close</a>.</p>
-</section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">WidgetStateProperty&lt;Icon&gt; thumbIcon(final BuildContext context) =&gt;
-    WidgetStateProperty.resolveWith&lt;Icon&gt;((final Set&lt;WidgetState&gt; states) {
-      if (states.contains(WidgetState.selected)) {
-        return Icon(
-          Icons.check,
-          color: Theme.of(context).colorScheme.primary,
-        );
-      }
-      return const Icon(Icons.close);
-    });</code></pre>
+  <pre class="language-dart"><code class="language-dart">void loadContent() {
+  emit(HomeLoaded(imageUrls: _imageUrls, currentPage: 0));
+  _startAutoSlide();
+}</code></pre>
 </section>
 
 
@@ -97,12 +83,12 @@ with the primary color of the current <a href="https://api.flutter.dev/flutter/m
 </header>
 <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
     <li><a href="../../index.html">tadamon</a></li>
-    <li><a href="../../core_widgets_app_drawer_widgets_drawer/">drawer</a></li>
-    <li><a href="../../core_widgets_app_drawer_widgets_drawer/SenseiDrawer-class.html">SenseiDrawer</a></li>
-    <li class="self-crumb">thumbIcon method</li>
+    <li><a href="../../features_pages_home_page_logic_cubit_home_cubit/">home_cubit</a></li>
+    <li><a href="../../features_pages_home_page_logic_cubit_home_cubit/HomeCubit-class.html">HomeCubit</a></li>
+    <li class="self-crumb">loadContent method</li>
 </ol>
 
-    <h5>SenseiDrawer class</h5>
+    <h5>HomeCubit class</h5>
     <div id="dartdoc-sidebar-left-content"></div>
   </div><!--/.sidebar-offcanvas-->
   <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">

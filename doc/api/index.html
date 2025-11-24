@@ -42,6 +42,192 @@
 <main>
   <div id="dartdoc-main-content" class="main-content">
       
+<section class="desc markdown">
+  <h1 align="center">Tadamon App</h1>
+<p align="center">
+  <img src="https://socialify.git.ci/MostafaSensei106/Tadamon/image?custom_language=Flutter&amp;font=KoHo&amp;language=1&amp;logo=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F138288138%3Fv%3D4&amp;name=1&amp;owner=1&amp;pattern=Floating+Cogs&amp;theme=Light" alt="Tadamon App Banner">
+</p>
+<p align="center">
+  <strong>An innovative Flutter application dedicated to supporting the Palestinian cause.</strong><br>
+  Built with Flutter, empowering users with tools for product scanning, local data management, and accessing vital information to make conscious consumer choices.
+</p>
+<p align="center">
+  <a href="#-motivation">Motivation</a> •
+  <a href="#-about">About</a> •
+  <a href="#-features">Features</a> •
+  <a href="#-architecture">Architecture</a> •
+  <a href="#-technologies">Technologies</a> •
+  <a href="#-getting-started">Getting Started</a> •
+  <a href="#-roadmap">Roadmap</a> •
+  <a href="#-contributing">Contributing</a> •
+  <a href="#-license">License</a>
+</p>
+<hr>
+<h2 id="-motivation">🎯 Motivation</h2>
+<p>In a world where consumer choices have a global impact, the <strong>Tadamon App</strong> (Tadamon means "Solidarity" in Arabic) was created to empower individuals who wish to support the Palestinian cause through ethical consumption. The app provides a transparent and easy-to-use tool to identify products and understand their origins, helping users make informed decisions that align with their values.</p>
+<p>Our goal is to foster a community of conscious consumers and provide a reliable resource for those who want to stand in solidarity with Palestine.</p>
+<hr>
+<h2 id="-about">📖 About</h2>
+<p><strong>Tadamon App</strong> is a comprehensive Flutter application designed for Android. It serves as a digital assistant for ethical shopping, offering robust product scanning capabilities, offline data access, and seamless cloud synchronization.</p>
+<p>The app's core mission is to provide users with the information they need to support their chosen causes. With a clean, intuitive interface and a rich feature set, Tadamon is more than just a utility—it's a tool for making a difference.</p>
+<hr>
+<h2 id="-features">✨ Features</h2>
+<h3 id="core-functionality">Core Functionality</h3>
+<ul>
+<li><strong>Barcode Scanning</strong>: Utilizes Google ML Kit for fast and accurate barcode scanning to instantly retrieve product information.</li>
+<li><strong>Offline First</strong>: Powered by a local Objectbox database, ensuring the app is fully functional even without an internet connection.</li>
+<li><strong>Cloud Sync</strong>: Seamlessly synchronizes the local database with Firebase Firestore to keep product information up-to-date.</li>
+<li><strong>PDF Export</strong>: Generate and export detailed reports of scanned products in PDF format for personal records or sharing.</li>
+<li><strong>User-driven Reporting</strong>: An integrated system for users to report new products or suggest corrections, helping to keep the database accurate and community-driven.</li>
+<li><strong>Dynamic Theming</strong>: A beautiful and responsive UI with full support for light and dark modes, as well as following the system theme.</li>
+<li><strong>Localization</strong>: Full support for multiple languages (starting with Arabic) to cater to a global user base.</li>
+</ul>
+<hr>
+<h2 id="-architecture">🏗️ Architecture</h2>
+<p>The app is built using a <strong>feature-driven architecture</strong>, promoting a clean separation of concerns and scalability.</p>
+<ul>
+<li><strong>BLoC Pattern</strong>: State management is handled predictably and efficiently using the BLoC (Business Logic Component) pattern.</li>
+<li><strong>Repository Pattern</strong>: Abstracts data sources (local database and cloud services), making the app more modular and testable.</li>
+<li><strong>Dependency Injection</strong>: Core services like database access are provided throughout the app, ensuring loose coupling and maintainability.</li>
+</ul>
+<h3 id="project-structure">Project Structure</h3>
+<pre class="language-dart"><code>lib/
+├── core/               # Shared components: routing, theming, widgets, services
+├── features/           # Individual feature modules (e.g., product_scanner, home_page)
+├── generated/          # Auto-generated files for localization (l10n)
+├── l10n/               # Localization files
+├── main.dart           # Main application entry point
+└── objectbox.g.dart    # Objectbox auto-generated binding files
+</code></pre>
+<hr>
+<h2 id="-technologies">🛠️ Technologies</h2>
+<p>This project leverages a modern and robust tech stack for high-quality mobile development:</p>
+<table>
+<thead>
+<tr>
+<th>Technology</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🐦 <strong>Flutter &amp; Dart</strong></td>
+<td>The core framework and language for building beautiful, natively compiled applications.</td>
+</tr>
+<tr>
+<td>🗃️ <strong>Objectbox</strong></td>
+<td>A high-performance NoSQL database for local, offline-first data storage.</td>
+</tr>
+<tr>
+<td>🔥 <strong>Firebase Firestore</strong></td>
+<td>A flexible, scalable NoSQL cloud database for data synchronization.</td>
+</tr>
+<tr>
+<td>🧱 <strong>flutter_bloc</strong></td>
+<td>A predictable state management library that helps implement the BLoC pattern.</td>
+</tr>
+<tr>
+<td>📄 <strong>pdf &amp; open_file</strong></td>
+<td>Libraries for creating, exporting, and opening PDF files.</td>
+</tr>
+<tr>
+<td>📸 <strong>google_mlkit_barcode_scanning</strong></td>
+<td>For fast and reliable barcode scanning via Google's ML Kit.</td>
+</tr>
+<tr>
+<td>🌐 <strong>dio &amp; connectivity_plus</strong></td>
+<td>For handling network requests and monitoring network state.</td>
+</tr>
+<tr>
+<td>🎨 <strong>flutter_screenutil</strong></td>
+<td>For creating a responsive UI that adapts to different screen sizes.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="-getting-started">🚀 Getting Started</h2>
+<p>You can get the Tadamon App up and running in two ways: by downloading a pre-built release or by building it from the source code.</p>
+<h3 id="option-1-download-from-github-releases">Option 1: Download from GitHub Releases</h3>
+<p>For most users, the easiest way to install the app is by downloading the latest APK from the GitHub Releases page.</p>
+<ol>
+<li>Go to the <strong><a href="https://github.com/MostafaSensei106/Tadamon/releases">Releases</a></strong> page of this repository.</li>
+<li>Under the latest release, find the <code>app-release.apk</code> file in the <strong>Assets</strong> section.</li>
+<li>Download the APK file to your Android device and install it.
+<em>You may need to enable "Install from unknown sources" in your device's settings.</em></li>
+</ol>
+<h3 id="option-2-build-from-source">Option 2: Build from Source</h3>
+<p>If you are a developer and want to build the app from the source code, follow these steps.</p>
+<h4 id="prerequisites">Prerequisites</h4>
+<ul>
+<li>Flutter SDK (version 3.10.1 or higher)</li>
+<li>Android Studio or VS Code with the Flutter extension.</li>
+</ul>
+<h4 id="installation">Installation</h4>
+<ol>
+<li>Clone the repository:
+<pre class="language-bash"><code class="language-bash">git clone https://github.com/MostafaSensei106/Tadamon.git
+</code></pre>
+</li>
+<li>Navigate to the project directory:
+<pre class="language-bash"><code class="language-bash">cd Tadamon
+</code></pre>
+</li>
+<li>Install dependencies:
+<pre class="language-bash"><code class="language-bash">flutter pub get
+</code></pre>
+</li>
+<li>Run the code generator for Objectbox and other dependencies:
+<pre class="language-bash"><code class="language-bash">dart run build_runner build --delete-conflicting-outputs
+</code></pre>
+</li>
+<li>Run the app on your connected Android device or emulator:
+<pre class="language-bash"><code class="language-bash">flutter run
+</code></pre>
+</li>
+</ol>
+<h2 id="-screenshots">🖼️ Screenshots</h2>
+<p><em>Coming Soon! This section will be updated with screenshots of the app's main features.</em></p>
+<table>
+<thead>
+<tr>
+<th>Home Screen</th>
+<th>Scanning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>(screenshot)</em></td>
+<td><em>(screenshot)</em></td>
+</tr>
+<tr>
+<td><strong>Log Page</strong></td>
+<td><strong>App Drawer</strong></td>
+</tr>
+<tr>
+<td><em>(screenshot)</em></td>
+<td><em>(screenshot)</em></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="-contributing">🤝 Contributing</h2>
+<p>Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are <strong>greatly appreciated</strong>.</p>
+<ol>
+<li>Fork the Project</li>
+<li>Create your Feature Branch (<code>git checkout -b feature/AmazingFeature</code>)</li>
+<li>Commit your Changes (<code>git commit -m 'Add some AmazingFeature'</code>)</li>
+<li>Push to the Branch (<code>git push origin feature/AmazingFeature</code>)</li>
+<li>Open a Pull Request</li>
+</ol>
+<p>Please read our (soon-to-be-added) <strong>Contributing Guidelines</strong> for more details.</p>
+<hr>
+<h2 id="-license">📜 License</h2>
+<p>Distributed under the <strong>GPL-3.0 License</strong>. See the <code>LICENSE</code> file for more information.</p>
+<hr>
+<p align="center">
+  Made with ❤️ by <a href="https://github.com/MostafaSensei106">MostafaSensei106</a>
+</p>
+</section>
 
 
       <section class="summary">
@@ -257,6 +443,27 @@
 <dd>
 </dd>
 
+          <dt id="about_section">
+  <span class="name"><a href="core_widgets_app_drawer_widgets_about_section/">core/widgets/app_drawer/widgets/about_section</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="actions_section">
+  <span class="name"><a href="core_widgets_app_drawer_widgets_actions_section/">core/widgets/app_drawer/widgets/actions_section</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="data_management_section">
+  <span class="name"><a href="core_widgets_app_drawer_widgets_data_management_section/">core/widgets/app_drawer/widgets/data_management_section</a></span> 
+
+</dt>
+<dd>
+</dd>
+
           <dt id="drawer">
   <span class="name"><a href="core_widgets_app_drawer_widgets_drawer/">core/widgets/app_drawer/widgets/drawer</a></span> 
 
@@ -266,6 +473,20 @@
 
           <dt id="drawer_header">
   <span class="name"><a href="core_widgets_app_drawer_widgets_drawer_header/">core/widgets/app_drawer/widgets/drawer_header</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="links_section">
+  <span class="name"><a href="core_widgets_app_drawer_widgets_links_section/">core/widgets/app_drawer/widgets/links_section</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="theme_section">
+  <span class="name"><a href="core_widgets_app_drawer_widgets_theme_section/">core/widgets/app_drawer/widgets/theme_section</a></span> 
 
 </dt>
 <dd>
@@ -567,6 +788,13 @@
 
           <dt id="help_user_page_view">
   <span class="name"><a href="features_pages_help_user_page_ui_widget_help_user_page_view/">features/pages/help_user_page/ui/widget/help_user_page_view</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="home_cubit">
+  <span class="name"><a href="features_pages_home_page_logic_cubit_home_cubit/">features/pages/home_page/logic/cubit/home_cubit</a></span> 
 
 </dt>
 <dd>
@@ -1039,8 +1267,13 @@
       <li><a href="core_widgets_app_bar_component_app_bar/">core/widgets/app_bar_component/app_bar</a></li>
       <li><a href="core_widgets_app_bar_component_app_bar_title/">core/widgets/app_bar_component/app_bar_title</a></li>
       <li><a href="core_widgets_app_bar_component_side_page_app_bar/">core/widgets/app_bar_component/side_page_app_bar</a></li>
+      <li><a href="core_widgets_app_drawer_widgets_about_section/">core/widgets/app_drawer/widgets/about_section</a></li>
+      <li><a href="core_widgets_app_drawer_widgets_actions_section/">core/widgets/app_drawer/widgets/actions_section</a></li>
+      <li><a href="core_widgets_app_drawer_widgets_data_management_section/">core/widgets/app_drawer/widgets/data_management_section</a></li>
       <li><a href="core_widgets_app_drawer_widgets_drawer/">core/widgets/app_drawer/widgets/drawer</a></li>
       <li><a href="core_widgets_app_drawer_widgets_drawer_header/">core/widgets/app_drawer/widgets/drawer_header</a></li>
+      <li><a href="core_widgets_app_drawer_widgets_links_section/">core/widgets/app_drawer/widgets/links_section</a></li>
+      <li><a href="core_widgets_app_drawer_widgets_theme_section/">core/widgets/app_drawer/widgets/theme_section</a></li>
       <li><a href="core_widgets_app_toast_app_toast/">core/widgets/app_toast/app_toast</a></li>
       <li><a href="core_widgets_bottom_sheet_ui_model_bottom_sheet/">core/widgets/bottom_sheet/ui/model_bottom_sheet</a></li>
       <li><a href="core_widgets_bottom_sheet_widget_bottom_model_sheet_content/">core/widgets/bottom_sheet/widget/bottom_model_sheet_content</a></li>
@@ -1084,6 +1317,7 @@
       <li><a href="features_pages_help_user_page_logic_help_search_delegate/">features/pages/help_user_page/logic/help_search_delegate</a></li>
       <li><a href="features_pages_help_user_page_ui_page_help_user_page/">features/pages/help_user_page/ui/page/help_user_page</a></li>
       <li><a href="features_pages_help_user_page_ui_widget_help_user_page_view/">features/pages/help_user_page/ui/widget/help_user_page_view</a></li>
+      <li><a href="features_pages_home_page_logic_cubit_home_cubit/">features/pages/home_page/logic/cubit/home_cubit</a></li>
       <li><a href="features_pages_home_page_ui_page_home_page/">features/pages/home_page/ui/page/home_page</a></li>
       <li><a href="features_pages_home_page_ui_widget_home_app_tools/">features/pages/home_page/ui/widget/home_app_tools</a></li>
       <li><a href="features_pages_home_page_ui_widget_home_tip/">features/pages/home_page/ui/widget/home_tip</a></li>
