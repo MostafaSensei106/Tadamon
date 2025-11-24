@@ -12,6 +12,8 @@ class DrawerHeaderWidget extends StatelessWidget {
   ///
   /// The child of the [DrawerHeader] widget is null.
   Widget build(final BuildContext context) => const DrawerHeader(
+    margin: EdgeInsets.all(0),
+    padding: EdgeInsetsGeometry.all(0),
     decoration: BoxDecoration(
       image: DecorationImage(
         image: AssetImage(SenseiConst.drawerImage),

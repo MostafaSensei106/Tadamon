@@ -8,6 +8,7 @@ import 'package:flutter_localizations/flutter_localizations.dart'
         GlobalWidgetsLocalizations,
         GlobalCupertinoLocalizations;
 import 'package:flutter_screenutil/flutter_screenutil.dart' show ScreenUtilInit;
+import 'package:toastification/toastification.dart';
 
 import 'core/config/theme/colors/dark_theme.dart' show darkTheme;
 import 'core/config/theme/colors/light_theme.dart' show lightTheme;
@@ -27,27 +28,29 @@ class TadamonApp extends StatelessWidget {
     designSize: const Size(375, 812),
     minTextAdapt: true,
     child: BlocBuilder<ThemeCubit, ThemeState>(
-      builder: (final context, final themeState) => MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'تَضَامُنٌ',
-        theme: lightTheme,
-        darkTheme: darkTheme,
-        navigatorKey: AppRouter.navigatorKey,
-        themeMode: themeState.themeMode,
-        initialRoute: Routes.onBoarding,
-        onGenerateRoute: appRouter.generateRoute,
-        locale: const Locale('ar', 'EG'),
-        supportedLocales: const [Locale('ar', 'EG')],
-        localizationsDelegates: const [
-          S.delegate,
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-        ],
-        localeResolutionCallback: (final locale, final supportedLocales) =>
-            const Locale('ar', 'EG'),
-        builder: (final context, final child) =>
-            SafeArea(top: false, left: false, right: false, child: child!),
+      builder: (final context, final themeState) => ToastificationWrapper(
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'تَضَامُنٌ',
+          theme: lightTheme,
+          darkTheme: darkTheme,
+          navigatorKey: AppRouter.navigatorKey,
+          themeMode: themeState.themeMode,
+          initialRoute: Routes.onBoarding,
+          onGenerateRoute: appRouter.generateRoute,
+          locale: const Locale('ar', 'EG'),
+          supportedLocales: const [Locale('ar', 'EG')],
+          localizationsDelegates: const [
+            S.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          localeResolutionCallback: (final locale, final supportedLocales) =>
+              const Locale('ar', 'EG'),
+          builder: (final context, final child) =>
+              SafeArea(top: false, left: false, right: false, child: child!),
+        ),
       ),
     ),
   );

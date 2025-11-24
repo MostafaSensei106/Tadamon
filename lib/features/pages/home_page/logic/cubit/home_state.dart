@@ -12,7 +12,6 @@ final class HomeInitial extends HomeState {}
 final class HomeLoading extends HomeState {}
 
 final class HomeLoaded extends HomeState {
-
   const HomeLoaded({required this.imageUrls, required this.currentPage});
   final List<String> imageUrls;
   final int currentPage;
@@ -22,7 +21,6 @@ final class HomeLoaded extends HomeState {
 }
 
 final class HomeError extends HomeState {
-
   const HomeError(this.message);
   final String message;
 
