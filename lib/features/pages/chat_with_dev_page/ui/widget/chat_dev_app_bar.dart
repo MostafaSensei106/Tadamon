@@ -105,6 +105,13 @@ class ChatDevAppBar extends StatelessWidget implements PreferredSizeWidget {
     final IconData icon,
     final VoidCallback onPressed,
   ) => IconButton(
+    style: IconButton.styleFrom(
+      backgroundColor: Theme.of(context).colorScheme.surfaceContainer,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(SenseiConst.outBorderRadius),
+      ),
+      padding: const EdgeInsets.all(4),
+    ),
     icon: Icon(icon),
     color: Theme.of(context).colorScheme.onSurface,
     onPressed: onPressed,

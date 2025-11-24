@@ -144,7 +144,7 @@ class _ChatWithDevState extends State<ChatWithDev>
                       onPressed: () {
                         sendMessage();
                       },
-                      color: Theme.of(context).colorScheme.secondaryFixed,
+                      // color: Theme.of(context).colorScheme.secondaryFixed,
                     ),
                   ),
                 ],

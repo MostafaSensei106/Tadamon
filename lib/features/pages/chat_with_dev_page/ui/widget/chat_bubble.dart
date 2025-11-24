@@ -67,7 +67,7 @@ class ChatBubble extends StatelessWidget {
                       IconButtonFilledTonalComponent(
                         icon: Icons.ios_share_rounded,
                         useInBorderRadius: true,
-                        color: Theme.of(context).colorScheme.secondaryFixed,
+                        // color: Theme.of(context).colorScheme.secondaryFixed,
                         onPressed: () {
                           HapticFeedback.vibrate();
                           ShareServices.shareUrl(SenseiConst.tadamonGitHubLink);
@@ -76,7 +76,7 @@ class ChatBubble extends StatelessWidget {
                       IconButtonFilledTonalComponent(
                         icon: Icons.link_rounded,
                         useInBorderRadius: true,
-                        color: Theme.of(context).colorScheme.secondaryFixed,
+                        // color: Theme.of(context).colorScheme.secondaryFixed,
                         onPressed: () {
                           HapticFeedback.vibrate();
                           launchURL(SenseiConst.devPortfolioLink);

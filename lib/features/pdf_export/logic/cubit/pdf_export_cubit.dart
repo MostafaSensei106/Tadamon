@@ -6,7 +6,7 @@ import '../../../../core/services/export_services.dart';
 import '../../../../core/services/pdf_export_services/pdf_export_services.dart';
 import '../../../../core/widgets/app_toast/app_toast.dart';
 import '../../../../core/widgets/button_components/textbutton_components/text_icon_button_component.dart';
-import '../../../../core/widgets/dilog_components/dialog_ask_user_components.dart';
+import '../../../../core/widgets/dialog_components/dialog_ask_user_components.dart';
 import '../../../products_scanner/data/repository/objectbox_repositories.dart';
 import 'pdf_export_state.dart';
 
@@ -42,7 +42,7 @@ class PdfExportCubit extends Cubit<PdfExportState> {
     try {
       final pdf = await PdfExportServices().exportPdf(dataList);
       emit(const PdfExportInitial());
-      // ignore: use_build_context_synchronously
+      if (!context.mounted) return;
       await DialogAskUserComponents(
         title: 'تصدير PDF',
         question: 'هل تريد حفظ الملف أم مشاركته؟',
@@ -85,7 +85,7 @@ class PdfExportCubit extends Cubit<PdfExportState> {
     try {
       final csv = ExportServices().getCsv(dataList);
       emit(const PdfExportInitial());
-      // ignore: use_build_context_synchronously
+      if (!context.mounted) return;
       await DialogAskUserComponents(
         title: 'تصدير CSV',
         question: 'هل تريد حفظ الملف أم مشاركته؟',
@@ -128,7 +128,7 @@ class PdfExportCubit extends Cubit<PdfExportState> {
     try {
       final json = ExportServices().getJson(dataList);
       emit(const PdfExportInitial());
-      // ignore: use_build_context_synchronously
+      if (!context.mounted) return;
       await DialogAskUserComponents(
         title: 'تصدير JSON',
         question: 'هل تريد حفظ الملف أم مشاركته؟',

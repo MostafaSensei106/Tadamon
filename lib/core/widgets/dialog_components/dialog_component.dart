@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../config/const/sensei_const.dart';
 
-class DilogComponent extends StatelessWidget {
-  const DilogComponent({
+class DialogComponent extends StatelessWidget {
+  const DialogComponent({
     required this.title,
     required this.message,
     required this.actions,
@@ -14,15 +14,10 @@ class DilogComponent extends StatelessWidget {
   final IconData icon;
   final List<Widget>? actions;
 
-  /// Show the dialog component
-  ///
-  /// This function will show the DilogComponent in the given context.
-  /// It will create a new instance of DilogComponent with the given
-  /// title, message, actions and icon.
   void show(final BuildContext context) {
     showDialog(
       context: context,
-      builder: (final BuildContext context) => DilogComponent(
+      builder: (final BuildContext context) => DialogComponent(
         title: title,
         message: message,
         actions: actions,
@@ -32,7 +27,7 @@ class DilogComponent extends StatelessWidget {
   }
 
   @override
-  /// Builds a [DilogComponent].
+  /// Builds a [DialogComponent].
   ///
   /// This function returns an [AlertDialog] widget with an icon of the given
   /// [icon], a title of the given [title], a content of the given [message],
