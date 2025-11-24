@@ -53,14 +53,18 @@ class ExportLogsSheetContent extends StatelessWidget {
                   icon: Icons.table_chart_rounded,
                   title: AppLocalizations.of(context)!.exportAsCsv,
                   subtitle: AppLocalizations.of(context)!.csvSubtitle,
-                  onTap: () {},
+                  onTap: () {
+                    context.read<PdfExportCubit>().exportCsv();
+                  },
                   groupType: ListTileGroupType.middle,
                 ),
                 ListTileIconComponent(
                   icon: Icons.code_rounded,
                   title: AppLocalizations.of(context)!.exportAsJson,
                   subtitle: AppLocalizations.of(context)!.jsonSubtitle,
-                  onTap: () {},
+                  onTap: () {
+                    context.read<PdfExportCubit>().exportJson();
+                  },
                   useinBorderRadius: true,
                   groupType: ListTileGroupType.bottom,
                 ),

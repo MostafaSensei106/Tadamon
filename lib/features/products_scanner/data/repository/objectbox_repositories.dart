@@ -97,13 +97,9 @@ class ObjectboxRepository {
         .toList();
   }
 
-  List<ScannedLogsProductModel> saveLogsTOPDF() {
+  List<ScannedLogsProductModel> getAllScannedLogs() {
     final box = ObjectBoxService.instance.tadamonLogsBox.getAll();
-    return box
-        .map(
-          (final product) => ScannedLogsProductModel.fromMap(product.toMap()),
-        )
-        .toList();
+    return box;
   }
 
   Stream<int> getTadamonLogsProductsCount() async* {
