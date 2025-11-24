@@ -90,7 +90,7 @@ respectively.</p>
     final barcodeScanRes = await SimpleBarcodeScanner.scanBarcode(
       context,
       barcodeAppBar: BarcodeAppBar(
-        appBarTitle: S.of(context).scanBarcode,
+        appBarTitle: AppLocalizations.of(context)!.scanBarcode,
         centerTitle: true,
         enableBackButton: true,
         backButtonIcon: const Icon(Icons.keyboard_double_arrow_right_rounded),
@@ -99,7 +99,7 @@ respectively.</p>
       delayMillis: 150,
       scanFormat: ScanFormat.ONLY_BARCODE,
       lineColor: &#39;#FF0000&#39;,
-      cancelButtonText: S.of(context).close,
+      cancelButtonText: AppLocalizations.of(context)!.close,
     );
     if (barcodeScanRes == &#39;-1&#39;) {
       showInfoToast(&#39;لم يتم قراءة اي باركود&#39;);

@@ -55,7 +55,8 @@
     <section class="multi-line-signature">
       
 <span class="returntype"><a href="https://api.flutter.dev/flutter/flutter_test/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">void</span>&gt;</span></span>
-<span class="name ">exportPdf</span>(<wbr>)
+<span class="name ">exportPdf</span>(<wbr><ol class="parameter-list single-line"> <li><span class="parameter" id="exportPdf-param-context"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/widgets/BuildContext-class.html">BuildContext</a></span> <span class="parameter-name">context</span></span></li>
+</ol>)
 
       
 
@@ -66,21 +67,47 @@
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Future&lt;void&gt; exportPdf() async {
-  final dataList = ObjectboxRepository().saveLogsTOPDF();
+  <pre class="language-dart"><code class="language-dart">Future&lt;void&gt; exportPdf(final BuildContext context) async {
+  final dataList = ObjectboxRepository().getAllScannedLogs();
   if (dataList.isEmpty) {
     showErrorToast(&#39;No data to export&#39;);
-    emit(PdfExportError());
+    emit(const PdfExportInitial());
     return;
   }
 
   emit(PdfExportLoading());
 
   try {
-    await PdfExportServices().exportPdf(dataList);
-    &#47;&#47; emit(PdfExportSuccess());
+    final pdf = await PdfExportServices().exportPdf(dataList);
+    emit(const PdfExportInitial());
+    if (!context.mounted) {
+      return;
+    }
+    await DialogAskUserComponents(
+      title: &#39;تصدير PDF&#39;,
+      question: &#39;هل تريد حفظ الملف أم مشاركته؟&#39;,
+      icon: Icons.picture_as_pdf,
+      actions: [
+        TextIconButtonComponent(
+          onPressed: () async {
+            await PdfExportServices().sharePdf(pdf);
+          },
+          text: &#39;مشاركة&#39;,
+          useInBorderRadius: true,
+          icon: Icons.ios_share_rounded,
+        ),
+        TextIconButtonComponent(
+          onPressed: () async {
+            await PdfExportServices().savePdf(pdf);
+          },
+          text: &#39;حفظ&#39;,
+          useInBorderRadius: true,
+          icon: Icons.save_alt_rounded,
+        ),
+      ],
+    ).show(context);
   } catch (e) {
-    emit(PdfExportError());
+    emit(const PdfExportInitial());
     showErrorToast(&#39;Error: $e&#39;);
   }
 }</code></pre>

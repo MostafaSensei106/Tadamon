@@ -70,7 +70,7 @@
   <pre class="language-dart"><code class="language-dart">static void showEditTextBottomSheet(final BuildContext context) {
   showBottomSheet(
     context,
-    S.of(context).editText,
+    AppLocalizations.of(context)!.editText,
     child: const EditTextSheetContent(),
   );
 }</code></pre>

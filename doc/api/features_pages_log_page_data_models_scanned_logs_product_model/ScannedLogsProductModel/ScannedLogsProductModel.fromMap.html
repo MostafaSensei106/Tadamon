@@ -65,11 +65,11 @@
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">factory ScannedLogsProductModel.fromMap(final Map&lt;String, dynamic&gt; map) =&gt;
     ScannedLogsProductModel(
-      name: map[&#39;productName&#39;],
+      name: map[&#39;name&#39;],
       serialNumber: map[&#39;serialNumber&#39;],
-      manufacture: map[&#39;productManufacturer&#39;],
-      category: map[&#39;productCategory&#39;],
-      trusted: map[&#39;isTrusted&#39;],
+      manufacture: map[&#39;manufacture&#39;],
+      category: map[&#39;category&#39;],
+      trusted: map[&#39;trusted&#39;],
       scannedAt: DateTime.parse(
         map[&#39;scannedAt&#39;] ?? DateTime.now().toIso8601String(),
       ),

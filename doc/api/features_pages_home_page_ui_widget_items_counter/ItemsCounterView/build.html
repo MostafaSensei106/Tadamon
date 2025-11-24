@@ -119,14 +119,14 @@ Widget build(final BuildContext context) {
       _buildStreamCounter(
         stream: ObjectboxRepository().getTadamonLogsProductsCount(),
         icon: Icons.qr_code_rounded,
-        title: S.of(context).scanBarcode,
+        title: AppLocalizations.of(context)!.scanBarcode,
         formatter: formatter!,
       ),
       SizedBox(width: SenseiConst.margin.w),
       _buildStreamCounter(
         stream: FireStoreRepository().getProductsCount(),
         icon: Icons.checklist_rounded,
-        title: S.of(context).supportedProducts,
+        title: AppLocalizations.of(context)!.supportedProducts,
         formatter: formatter,
       ),
     ],

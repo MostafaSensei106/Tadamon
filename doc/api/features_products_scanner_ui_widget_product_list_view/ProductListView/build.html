@@ -114,7 +114,7 @@ Widget build(final BuildContext context) =&gt; ListView(
   children: [
     ListTileIconComponent(
       useinBorderRadius: true,
-      iconLeading: Icons.qr_code_rounded,
+      icon: Icons.qr_code_rounded,
       title: &#39;الرقم التسلسلي&#39;,
       subtitle: product.serialNumber,
       groupType: ListTileGroupType.top,
@@ -126,26 +126,26 @@ Widget build(final BuildContext context) =&gt; ListView(
       ),
     ),
     ListTileIconComponent(
-      iconLeading: Icons.label_outline_rounded,
+      icon: Icons.label_outline_rounded,
       title: &#39;إسم المنتج&#39;,
       subtitle: product.name,
       groupType: ListTileGroupType.middle,
     ),
     ListTileIconComponent(
-      iconLeading: Icons.business_rounded,
+      icon: Icons.business_rounded,
       title: &#39;المصنع&#39;,
       subtitle: product.manufacture,
       groupType: ListTileGroupType.middle,
     ),
     ListTileIconComponent(
-      iconLeading: Icons.category_outlined,
+      icon: Icons.category_outlined,
       title: &#39;التصنيف&#39;,
       subtitle: product.category,
       groupType: ListTileGroupType.middle,
     ),
     ListTileIconComponent(
       useinBorderRadius: true,
-      iconLeading: Icons.handshake_outlined,
+      icon: Icons.handshake_outlined,
       title: &#39;الحالة&#39;,
       subtitle: product.onError == &#39;Product not found&#39;
           ? &#39;المنتج غير موجود&#39;

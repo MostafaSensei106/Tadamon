@@ -108,13 +108,9 @@ and</li>
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">@override
-Widget build(final BuildContext context) =&gt; Column(
-  children: [
-    _buildAppOffline(context),
-    _buildEnableOnline(context),
-    _buildUpdateLocalHiveDataBase(context),
-    _buildDeleteLocalData(context),
-  ],
+Widget build(final BuildContext context) =&gt; BlocProvider(
+  create: (final context) =&gt; LocalDBCubit()..loclaDBHasData(),
+  child: const DataManagementView(),
 );</code></pre>
 </section>
 

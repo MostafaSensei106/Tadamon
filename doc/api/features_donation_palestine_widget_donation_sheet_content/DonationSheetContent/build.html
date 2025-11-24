@@ -109,7 +109,7 @@ bottom padding of 16 logical pixels.</p>
 Widget build(final BuildContext context) =&gt; Column(
   children: [
     ListTileIconComponent(
-      iconLeading: Icons.volunteer_activism_outlined,
+      icon: Icons.volunteer_activism_outlined,
       title: &#39;منظمة الانوروا&#39;,
       subtitle: &#39;نبرع هم طريق منظمة الانوروا&#39;,
 
@@ -118,21 +118,21 @@ Widget build(final BuildContext context) =&gt; Column(
       groupType: ListTileGroupType.top,
     ),
     ListTileIconComponent(
-      iconLeading: Icons.mode_night_outlined,
+      icon: Icons.mode_night_outlined,
       title: &#39;الهلال الاحمر الفلسطيني&#39;,
       subtitle: &#39;تبرع عن طريق الهلال الاحمر الفلسطيني&#39;,
       onTap: () =&gt; {launchURL(SenseiConst.donateByPalestinercsLink)},
       groupType: ListTileGroupType.middle,
     ),
     ListTileIconComponent(
-      iconLeading: Icons.maps_home_work_outlined,
+      icon: Icons.maps_home_work_outlined,
       title: &#39;بيت الزكاة والصدقات المصري&#39;,
       subtitle: &#39;تبرع عن طريق ابيت الزكاةو الصدقات المصري&#39;,
       onTap: () =&gt; launchURL(SenseiConst.donateByBaitzakatLink),
       groupType: ListTileGroupType.middle,
     ),
     ListTileIconComponent(
-      iconLeading: Icons.food_bank_outlined,
+      icon: Icons.food_bank_outlined,
       title: &#39;بنك الطعام المصري&#39;,
       subtitle: &#39;تبرع عن طريقة بنك الطعام المصري&#39;,
       onTap: () =&gt; {launchURL(SenseiConst.donateByEGYFoodBankLink)},
