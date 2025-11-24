@@ -73,6 +73,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get switchToDarkTheme => 'Switch to Dark Mode';
 
   @override
+  String get del => 'Delete';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
   String get switchToLightTheme => 'Switch to Light Mode';
 
   @override

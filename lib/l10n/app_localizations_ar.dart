@@ -73,6 +73,12 @@ class AppLocalizationsAr extends AppLocalizations {
   String get switchToDarkTheme => 'التبديل إلى الوضع الداكن';
 
   @override
+  String get del => 'حذف';
+
+  @override
+  String get cancel => 'إلغاء';
+
+  @override
   String get switchToLightTheme => 'التبديل إلى الوضع الفاتح';
 
   @override

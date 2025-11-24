@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart'
     show
         IconButton,
-        Theme,
         StatelessWidget,
         IconData,
         VoidCallback,
-        Color,
         BuildContext,
         Widget,
         Icon,
@@ -21,13 +19,11 @@ class IconButtonFilledTonalComponent extends StatelessWidget {
     required this.icon,
     required this.onPressed,
     this.useInBorderRadius = false,
-    this.color,
     super.key,
   });
   final IconData icon;
   final VoidCallback onPressed;
   final bool useInBorderRadius;
-  final Color? color;
 
   @override
   /// Builds an [IconButton] widget that displays an icon and
@@ -36,7 +32,6 @@ class IconButtonFilledTonalComponent extends StatelessWidget {
   /// property.
   Widget build(final BuildContext context) => IconButton.filledTonal(
     icon: Icon(icon),
-    color: color ?? Theme.of(context).colorScheme.onSurface,
     onPressed: () {
       HapticFeedback.vibrate();
       onPressed();

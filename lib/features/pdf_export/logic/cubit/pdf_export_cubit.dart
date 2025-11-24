@@ -42,7 +42,9 @@ class PdfExportCubit extends Cubit<PdfExportState> {
     try {
       final pdf = await PdfExportServices().exportPdf(dataList);
       emit(const PdfExportInitial());
-      if (!context.mounted) return;
+      if (!context.mounted) {
+        return;
+      }
       await DialogAskUserComponents(
         title: 'تصدير PDF',
         question: 'هل تريد حفظ الملف أم مشاركته؟',
@@ -85,7 +87,9 @@ class PdfExportCubit extends Cubit<PdfExportState> {
     try {
       final csv = ExportServices().getCsv(dataList);
       emit(const PdfExportInitial());
-      if (!context.mounted) return;
+      if (!context.mounted) {
+        return;
+      }
       await DialogAskUserComponents(
         title: 'تصدير CSV',
         question: 'هل تريد حفظ الملف أم مشاركته؟',
@@ -128,7 +132,9 @@ class PdfExportCubit extends Cubit<PdfExportState> {
     try {
       final json = ExportServices().getJson(dataList);
       emit(const PdfExportInitial());
-      if (!context.mounted) return;
+      if (!context.mounted) {
+        return;
+      }
       await DialogAskUserComponents(
         title: 'تصدير JSON',
         question: 'هل تريد حفظ الملف أم مشاركته؟',

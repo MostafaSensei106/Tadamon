@@ -21,6 +21,8 @@
   "darkTheme": "Dark Mode",
   "lightTheme": "Light Mode",
   "switchToDarkTheme": "Switch to Dark Mode",
+  "del":"Delete",
+  "cancel":"Cancel",
   "switchToLightTheme": "Switch to Light Mode",
   "appOffLine": "Tadamon Offline",
   "appOffLineMassageDontRunning": "The application is not connected.",

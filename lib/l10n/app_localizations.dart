@@ -224,6 +224,18 @@ abstract class AppLocalizations {
   /// **'Switch to Dark Mode'**
   String get switchToDarkTheme;
 
+  /// No description provided for @del.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get del;
+
+  /// No description provided for @cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
+
   /// No description provided for @switchToLightTheme.
   ///
   /// In en, this message translates to:

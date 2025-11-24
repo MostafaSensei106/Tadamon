@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart'
     show
-        BuildContext,
-        Widget,
-        IconData,
-        TextButton,
         BorderRadius,
-        RoundedRectangleBorder,
-        Theme,
         BorderSide,
+        BuildContext,
+        Color,
         Icon,
-        Text;
+        IconData,
+        RoundedRectangleBorder,
+        Text,
+        TextButton,
+        Theme,
+        Widget;
 import '../../../config/const/sensei_const.dart';
 import 'text_button_component.dart' show TextButtonComponent;
 
@@ -18,14 +19,17 @@ class TextIconButtonComponent extends TextButtonComponent {
     required super.onPressed,
     required super.text,
     required this.icon,
+    this.color,
     super.key,
     super.useInBorderRadius = false,
   });
   final IconData icon;
+  final Color? color;
 
   @override
   Widget build(final BuildContext context) => TextButton.icon(
     style: TextButton.styleFrom(
+      backgroundColor: color ?? Theme.of(context).colorScheme.surface,
       shape: RoundedRectangleBorder(
         borderRadius: useInBorderRadius
             ? BorderRadius.circular(SenseiConst.inBorderRadius)

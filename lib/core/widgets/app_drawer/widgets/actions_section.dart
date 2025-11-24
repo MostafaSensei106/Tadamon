@@ -7,6 +7,8 @@ import '../../../../l10n/app_localizations.dart';
 import '../../../config/const/app_enums.dart';
 import '../../../routing/routes.dart';
 import '../../bottom_sheet/ui/model_bottom_sheet.dart';
+import '../../button_components/textbutton_components/text_icon_button_component.dart';
+import '../../dialog_components/dialog_ask_user_components.dart';
 import '../../list_tile_components/list_tile_icon_component.dart';
 
 class ActionsSection extends StatelessWidget {
@@ -69,9 +71,31 @@ class ActionsSection extends StatelessWidget {
     icon: Icons.clear_all_rounded,
     title: AppLocalizations.of(context)!.clearLogs,
     subtitle: AppLocalizations.of(context)!.clearLogsMassage,
-    onTap: () {
-      Navigator.of(context).pop();
-      ObjectboxRepository().clearTadamonLogsFromLocalDB();
+    onTap: () async {
+      await DialogAskUserComponents(
+        title: AppLocalizations.of(context)!.clearLogs,
+        question: AppLocalizations.of(context)!.clearLogsMassage,
+        icon: Icons.clear_all_rounded,
+        actions: [
+          TextIconButtonComponent(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            text: AppLocalizations.of(context)!.close,
+            useInBorderRadius: true,
+            icon: Icons.close_outlined,
+          ),
+          TextIconButtonComponent(
+            onPressed: () async {
+              ObjectboxRepository().clearTadamonLogsFromLocalDB();
+              Navigator.of(context).pop();
+            },
+            text: AppLocalizations.of(context)!.del,
+            useInBorderRadius: true,
+            icon: Icons.clear_all_rounded,
+          ),
+        ],
+      ).show(context);
     },
     groupType: ListTileGroupType.top,
   );
