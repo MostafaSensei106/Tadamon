@@ -275,6 +275,31 @@
   },
   "contactDevMassage": "تابعني على مواقع التواصل الاجتماعي.",
 
+  "@exportLogs": {
+    "description": "تصدير السجلات"
+  },
+  "exportLogs": "تصدير السجلات",
+
+  "@exportLogsSummary": {
+    "description": "ملخص تصدير السجلات"
+  },
+  "exportLogsSummary": "سيؤدي هذا إلى تصدير كافة سجلات المنتجات الممسوحة ضوئيًا.",
+
+  "@exportAsPdf": {
+    "description": "تصدير بصيغة PDF"
+  },
+  "exportAsPdf": "تصدير بصيغة PDF",
+
+  "@exportAsCsv": {
+    "description": "تصدير بصيغة CSV"
+  },
+  "exportAsCsv": "تصدير بصيغة CSV",
+
+  "@exportAsJson": {
+    "description": "تصدير بصيغة JSON"
+  },
+  "exportAsJson": "تصدير بصيغة JSON",
+
   "@close": {
     "description": "زر الإغلاق"
   },

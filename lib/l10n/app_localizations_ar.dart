@@ -169,5 +169,21 @@ class AppLocalizationsAr extends AppLocalizations {
   String get contactDevMassage => 'تابعني على مواقع التواصل الاجتماعي.';
 
   @override
+  String get exportLogs => 'تصدير السجلات';
+
+  @override
+  String get exportLogsSummary =>
+      'سيؤدي هذا إلى تصدير كافة سجلات المنتجات الممسوحة ضوئيًا.';
+
+  @override
+  String get exportAsPdf => 'تصدير بصيغة PDF';
+
+  @override
+  String get exportAsCsv => 'تصدير بصيغة CSV';
+
+  @override
+  String get exportAsJson => 'تصدير بصيغة JSON';
+
+  @override
   String get close => 'إغلاق';
 }

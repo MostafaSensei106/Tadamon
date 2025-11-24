@@ -6,6 +6,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart' as intl;
 
 import 'app_localizations_ar.dart';
+import 'app_localizations_en.dart';
 
 // ignore_for_file: type=lint
 
@@ -92,7 +93,10 @@ abstract class AppLocalizations {
       ];
 
   /// A list of this localizations delegate's supported locales.
-  static const List<Locale> supportedLocales = <Locale>[Locale('ar')];
+  static const List<Locale> supportedLocales = <Locale>[
+    Locale('ar'),
+    Locale('en'),
+  ];
 
   /// اسم التطبيق
   ///
@@ -412,6 +416,36 @@ abstract class AppLocalizations {
   /// **'تابعني على مواقع التواصل الاجتماعي.'**
   String get contactDevMassage;
 
+  /// تصدير السجلات
+  ///
+  /// In ar, this message translates to:
+  /// **'تصدير السجلات'**
+  String get exportLogs;
+
+  /// ملخص تصدير السجلات
+  ///
+  /// In ar, this message translates to:
+  /// **'سيؤدي هذا إلى تصدير كافة سجلات المنتجات الممسوحة ضوئيًا.'**
+  String get exportLogsSummary;
+
+  /// تصدير بصيغة PDF
+  ///
+  /// In ar, this message translates to:
+  /// **'تصدير بصيغة PDF'**
+  String get exportAsPdf;
+
+  /// تصدير بصيغة CSV
+  ///
+  /// In ar, this message translates to:
+  /// **'تصدير بصيغة CSV'**
+  String get exportAsCsv;
+
+  /// تصدير بصيغة JSON
+  ///
+  /// In ar, this message translates to:
+  /// **'تصدير بصيغة JSON'**
+  String get exportAsJson;
+
   /// زر الإغلاق
   ///
   /// In ar, this message translates to:
@@ -430,7 +464,7 @@ class _AppLocalizationsDelegate
 
   @override
   bool isSupported(Locale locale) =>
-      <String>['ar'].contains(locale.languageCode);
+      <String>['ar', 'en'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
@@ -441,6 +475,8 @@ AppLocalizations lookupAppLocalizations(Locale locale) {
   switch (locale.languageCode) {
     case 'ar':
       return AppLocalizationsAr();
+    case 'en':
+      return AppLocalizationsEn();
   }
 
   throw FlutterError(
