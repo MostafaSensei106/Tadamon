@@ -35,8 +35,15 @@ class PdfExportServices {
       )).buffer.asUint8List();
       final pw.ImageProvider image = pw.MemoryImage(imageBytes);
 
+      final fontData =
+          await rootBundle.load('assets/fonts/ar/Tajawal-Regular.ttf');
+      final ttf = pw.Font.ttf(fontData);
+
       pdf.addPage(
         pw.Page(
+          theme: pw.ThemeData.withFont(
+            base: ttf,
+          ),
           build: (final context) => pw.Column(
             crossAxisAlignment: pw.CrossAxisAlignment.start,
             children: [
