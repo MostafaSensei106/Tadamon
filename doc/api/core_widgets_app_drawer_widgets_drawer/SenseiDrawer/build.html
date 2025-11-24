@@ -68,16 +68,39 @@
     </section>
     
 <section class="desc markdown">
-  <p>Builds the main drawer widget for the application.</p>
-<p>This method returns a <a href="https://api.flutter.dev/flutter/widgets/SizedBox-class.html">SizedBox</a> containing a <a href="https://api.flutter.dev/flutter/material/Drawer-class.html">Drawer</a> widget with a
-specified shape and border radius. The drawer contains a <a href="https://api.flutter.dev/flutter/widgets/ListView-class.html">ListView</a> that
-includes a fixed-size <a href="../../core_widgets_app_drawer_widgets_drawer_header/DrawerHeaderWidget-class.html">DrawerHeaderWidget</a> and a padded <a href="https://api.flutter.dev/flutter/widgets/AnimatedSize-class.html">AnimatedSize</a>
-widget wrapping a <a href="https://api.flutter.dev/flutter/widgets/Column-class.html">Column</a> of various drawer options including theme
-switch, mode switch, offline/online toggles, database actions, usage
-instructions, reporting, logging, and developer information.</p>
-<p>The width of the drawer scales with the screen size, utilizing 90% of
-the screen width. The padding and radius values are defined in the
-<a href="../../core_config_const_sensei_const/SenseiConst-class.html">SenseiConst</a> class to ensure consistency with the app's theme.</p>
+  <p>Describes the part of the user interface represented by this widget.</p>
+<p>The framework calls this method when this widget is inserted into the tree
+in a given <a href="https://api.flutter.dev/flutter/widgets/BuildContext-class.html">BuildContext</a> and when the dependencies of this widget change
+(e.g., an <a href="https://api.flutter.dev/flutter/widgets/InheritedWidget-class.html">InheritedWidget</a> referenced by this widget changes). This
+method can potentially be called in every frame and should not have any side
+effects beyond building a widget.</p>
+<p>The framework replaces the subtree below this widget with the widget
+returned by this method, either by updating the existing subtree or by
+removing the subtree and inflating a new subtree, depending on whether the
+widget returned by this method can update the root of the existing
+subtree, as determined by calling <a href="https://api.flutter.dev/flutter/widgets/Widget/canUpdate.html">Widget.canUpdate</a>.</p>
+<p>Typically implementations return a newly created constellation of widgets
+that are configured with information from this widget's constructor and
+from the given <a href="https://api.flutter.dev/flutter/widgets/BuildContext-class.html">BuildContext</a>.</p>
+<p>The given <a href="https://api.flutter.dev/flutter/widgets/BuildContext-class.html">BuildContext</a> contains information about the location in the
+tree at which this widget is being built. For example, the context
+provides the set of inherited widgets for this location in the tree. A
+given widget might be built with multiple different <a href="https://api.flutter.dev/flutter/widgets/BuildContext-class.html">BuildContext</a>
+arguments over time if the widget is moved around the tree or if the
+widget is inserted into the tree in multiple places at once.</p>
+<p>The implementation of this method must only depend on:</p>
+<ul>
+<li>the fields of the widget, which themselves must not change over time,
+and</li>
+<li>any ambient state obtained from the <code>context</code> using
+<a href="https://api.flutter.dev/flutter/widgets/BuildContext/dependOnInheritedWidgetOfExactType.html">BuildContext.dependOnInheritedWidgetOfExactType</a>.</li>
+</ul>
+<p>If a widget's <a href="../../core_widgets_app_drawer_widgets_drawer/SenseiDrawer/build.html">build</a> method is to depend on anything else, use a
+<a href="https://api.flutter.dev/flutter/widgets/StatefulWidget-class.html">StatefulWidget</a> instead.</p>
+<p>See also:</p>
+<ul>
+<li><a href="https://api.flutter.dev/flutter/widgets/StatelessWidget-class.html">StatelessWidget</a>, which contains the discussion on performance considerations.</li>
+</ul>
 </section>
 
 
@@ -85,18 +108,6 @@ the screen width. The padding and radius values are defined in the
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">@override
-&#47;&#47;&#47; Builds the main drawer widget for the application.
-&#47;&#47;&#47;
-&#47;&#47;&#47; This method returns a [SizedBox] containing a [Drawer] widget with a
-&#47;&#47;&#47; specified shape and border radius. The drawer contains a [ListView] that
-&#47;&#47;&#47; includes a fixed-size [DrawerHeaderWidget] and a padded [AnimatedSize]
-&#47;&#47;&#47; widget wrapping a [Column] of various drawer options including theme
-&#47;&#47;&#47; switch, mode switch, offline&#47;online toggles, database actions, usage
-&#47;&#47;&#47; instructions, reporting, logging, and developer information.
-&#47;&#47;&#47;
-&#47;&#47;&#47; The width of the drawer scales with the screen size, utilizing 90% of
-&#47;&#47;&#47; the screen width. The padding and radius values are defined in the
-&#47;&#47;&#47; [SenseiConst] class to ensure consistency with the app&#39;s theme.
 Widget build(final BuildContext context) =&gt; SizedBox(
   width: 0.90.sw,
   child: Drawer(
@@ -107,33 +118,18 @@ Widget build(final BuildContext context) =&gt; SizedBox(
       ),
     ),
     child: ListView(
-      padding: const EdgeInsets.only(
-        left: SenseiConst.padding,
-        right: SenseiConst.padding,
-        bottom: SenseiConst.padding,
-      ),
-      children: [
-        const DrawerHeaderWidget(),
-        AnimatedSize(
-          duration: const Duration(milliseconds: 250),
+      padding: const EdgeInsets.only(bottom: SenseiConst.padding),
+      children: const [
+        DrawerHeaderWidget(),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: SenseiConst.padding),
           child: Column(
             children: [
-              _buildThemeSwitch(context),
-              _buildModeSwitch(context),
-              _buildAppOffline(context),
-              _buildEnableOnline(context),
-              _buildUpdateLocalHiveDataBase(context),
-              _buildDeleteLocalData(context),
-              _buildHowToUse(context),
-              _buildReportProduct(context),
-              _buildClearLogs(context),
-              _buildExportLogs(context),
-              _buildReadMe(context),
-              _buildLetestUpdate(context),
-              _buildGithubToken(context),
-              _buildTelegramChannel(context),
-              _buildDeveloper(context),
-              _buildAbout(context),
+              ThemeSection(),
+              DataManagementSection(),
+              ActionsSection(),
+              LinksSection(),
+              AboutSection(),
             ],
           ),
         ),

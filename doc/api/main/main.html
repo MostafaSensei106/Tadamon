@@ -68,23 +68,16 @@
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-
   await SharedPreferencesGlobal().initialize();
-
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-
   await ObjectBoxService.init();
-
   final themeCubit = ThemeCubit(
     themeSharedPreferences: ThemeSharedPreferences(),
   );
-
   &#47;&#47; await FirebaseAppCheck.instance.activate(
   &#47;&#47;   androidProvider: AndroidProvider.playIntegrity,
   &#47;&#47; );
-
   errorScreen();
   runApp(BlocProvider.value(value: themeCubit, child: TadamonApp(AppRouter())));
 }</code></pre>

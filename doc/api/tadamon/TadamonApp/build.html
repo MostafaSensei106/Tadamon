@@ -112,27 +112,29 @@ Widget build(final BuildContext context) =&gt; ScreenUtilInit(
   designSize: const Size(375, 812),
   minTextAdapt: true,
   child: BlocBuilder&lt;ThemeCubit, ThemeState&gt;(
-    builder: (final context, final themeState) =&gt; MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: &#39;تَضَامُنٌ&#39;,
-      theme: lightTheme,
-      darkTheme: darkTheme,
-      navigatorKey: AppRouter.navigatorKey,
-      themeMode: themeState.themeMode,
-      initialRoute: Routes.onBoarding,
-      onGenerateRoute: appRouter.generateRoute,
-      locale: const Locale(&#39;ar&#39;, &#39;EG&#39;),
-      supportedLocales: const [Locale(&#39;ar&#39;, &#39;EG&#39;)],
-      localizationsDelegates: const [
-        S.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      localeResolutionCallback: (final locale, final supportedLocales) =&gt;
-          const Locale(&#39;ar&#39;, &#39;EG&#39;),
-      builder: (final context, final child) =&gt;
-          SafeArea(top: false, left: false, right: false, child: child!),
+    builder: (final context, final themeState) =&gt; ToastificationWrapper(
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: &#39;تَضَامُنٌ&#39;,
+        theme: lightTheme,
+        darkTheme: darkTheme,
+        navigatorKey: AppRouter.navigatorKey,
+        themeMode: themeState.themeMode,
+        initialRoute: Routes.onBoarding,
+        onGenerateRoute: appRouter.generateRoute,
+        locale: const Locale(&#39;ar&#39;, &#39;EG&#39;),
+        supportedLocales: const [Locale(&#39;ar&#39;, &#39;EG&#39;)],
+        localizationsDelegates: const [
+          S.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        localeResolutionCallback: (final locale, final supportedLocales) =&gt;
+            const Locale(&#39;ar&#39;, &#39;EG&#39;),
+        builder: (final context, final child) =&gt;
+            SafeArea(top: false, left: false, right: false, child: child!),
+      ),
     ),
   ),
 );</code></pre>

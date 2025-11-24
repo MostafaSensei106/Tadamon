@@ -87,6 +87,8 @@ configured with the 'assets/images/WaterMelonCover.jpg' image and a
 &#47;&#47;&#47;
 &#47;&#47;&#47; The child of the [DrawerHeader] widget is null.
 Widget build(final BuildContext context) =&gt; const DrawerHeader(
+  margin: EdgeInsets.all(0),
+  padding: EdgeInsetsGeometry.all(0),
   decoration: BoxDecoration(
     image: DecorationImage(
       image: AssetImage(SenseiConst.drawerImage),
