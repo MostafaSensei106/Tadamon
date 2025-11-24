@@ -7,9 +7,11 @@ import 'package:flutter/material.dart'
         AlertDialog,
         IconData,
         VoidCallback,
-        Theme;
+        Theme,
+        showDialog;
 
 import '../../config/const/sensei_const.dart' show SenseiConst;
+import '../button_components/textbutton_components/text_button_component.dart';
 import '../container_background_component/container_background_component.dart';
 
 class DilogAskUserComponents extends StatelessWidget {
@@ -17,18 +19,25 @@ class DilogAskUserComponents extends StatelessWidget {
     required this.title,
     required this.question,
     required this.icon,
-    required this.isYes,
     required this.onYes,
     required this.onNo,
+    required this.yesText,
+    required this.noText,
     super.key,
   });
 
   final String title;
   final String question;
   final IconData icon;
-  final bool isYes;
   final VoidCallback onYes;
   final VoidCallback onNo;
+  final String yesText;
+  final String noText;
+
+  Future<void> show(final BuildContext context) async => showDialog<void>(
+    context: context,
+    builder: (final BuildContext context) => this,
+  );
 
   @override
   Widget build(final BuildContext context) => AlertDialog(
@@ -41,5 +50,9 @@ class DilogAskUserComponents extends StatelessWidget {
       color: Theme.of(context).colorScheme.primaryContainer,
       child: Text(question),
     ),
+    actions: [
+      TextButtonComponent(text: noText, onPressed: onNo),
+      TextButtonComponent(text: yesText, onPressed: onYes),
+    ],
   );
 }

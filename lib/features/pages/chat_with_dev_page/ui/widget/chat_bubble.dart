@@ -70,7 +70,7 @@ class ChatBubble extends StatelessWidget {
                         color: Theme.of(context).colorScheme.secondaryFixed,
                         onPressed: () {
                           HapticFeedback.vibrate();
-                          ShareServices.share(SenseiConst.tadamonGitHubLink);
+                          ShareServices.shareUrl(SenseiConst.tadamonGitHubLink);
                         },
                       ),
                       IconButtonFilledTonalComponent(

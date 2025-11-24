@@ -44,7 +44,7 @@ class ExportLogsSheetContent extends StatelessWidget {
                   title: AppLocalizations.of(context)!.exportAsPdf,
                   subtitle: AppLocalizations.of(context)!.pdfSubtitle,
                   onTap: () {
-                    context.read<PdfExportCubit>().exportPdf();
+                    context.read<PdfExportCubit>().exportPdf(context);
                   },
                   useinBorderRadius: true,
                   groupType: ListTileGroupType.top,
@@ -54,7 +54,7 @@ class ExportLogsSheetContent extends StatelessWidget {
                   title: AppLocalizations.of(context)!.exportAsCsv,
                   subtitle: AppLocalizations.of(context)!.csvSubtitle,
                   onTap: () {
-                    context.read<PdfExportCubit>().exportCsv();
+                    context.read<PdfExportCubit>().exportCsv(context);
                   },
                   groupType: ListTileGroupType.middle,
                 ),
@@ -63,7 +63,7 @@ class ExportLogsSheetContent extends StatelessWidget {
                   title: AppLocalizations.of(context)!.exportAsJson,
                   subtitle: AppLocalizations.of(context)!.jsonSubtitle,
                   onTap: () {
-                    context.read<PdfExportCubit>().exportJson();
+                    context.read<PdfExportCubit>().exportJson(context);
                   },
                   useinBorderRadius: true,
                   groupType: ListTileGroupType.bottom,
