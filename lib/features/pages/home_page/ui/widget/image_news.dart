@@ -34,26 +34,26 @@ class _ImageNewsState extends State<ImageNews> {
   }
 
   Widget _buildImageSlide(final String imageUrl) => CachedNetworkImage(
-        imageUrl: imageUrl,
-        fit: BoxFit.cover,
-        filterQuality: FilterQuality.medium,
-        errorWidget: (final context, final url, final error) => Container(
-          decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.surfaceContainerHigh,
+    imageUrl: imageUrl,
+    fit: BoxFit.cover,
+    filterQuality: FilterQuality.medium,
+    errorWidget: (final context, final url, final error) => Container(
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.surfaceContainerHigh,
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(
+            Icons.image_not_supported_outlined,
+            color: Theme.of(context).colorScheme.error,
+            size: SenseiConst.iconSize,
           ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
-                Icons.image_not_supported_outlined,
-                color: Theme.of(context).colorScheme.error,
-                size: SenseiConst.iconSize,
-              ),
-              const Text('Failed to load image'),
-            ],
-          ),
-        ),
-      );
+          const Text('Failed to load image'),
+        ],
+      ),
+    ),
+  );
 
   @override
   Widget build(final BuildContext context) =>
@@ -112,9 +112,8 @@ class _ImageNewsState extends State<ImageNews> {
                         effect: ExpandingDotsEffect(
                           dotWidth: SenseiConst.indicatorDotSize,
                           dotHeight: SenseiConst.indicatorDotSize,
-                          dotColor: Theme.of(
-                            context,
-                          ).colorScheme.onSurface.withAlpha((0.5 * 255).toInt()),
+                          dotColor: Theme.of(context).colorScheme.onSurface
+                              .withAlpha((0.5 * 255).toInt()),
                           activeDotColor: Theme.of(
                             context,
                           ).colorScheme.primaryContainer,
