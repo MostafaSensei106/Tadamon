@@ -9,6 +9,7 @@ import 'package:share_plus/share_plus.dart';
 import '../../features/pages/log_page/data/models/scanned_logs_product_model.dart';
 import '../extensions/date_format_extension.dart';
 import '../widgets/app_toast/app_toast.dart';
+import 'share_Services/share_services.dart';
 
 class ExportServices {
   String getCsv(final List<ScannedLogsProductModel> logs) {
@@ -51,7 +52,7 @@ class ExportServices {
       final fileName = 'Tadamon_Logs_${DateTime.now().formatted}';
       final file = File('${dir.path}/$fileName.$extension');
       await file.writeAsString(content);
-      await Share.shareXFiles([XFile(file.path)]);
+      ShareServices.shareFile(XFile(file.path));
     } catch (e) {
       showErrorToast('Failed to share the file');
     }

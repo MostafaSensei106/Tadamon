@@ -6,7 +6,7 @@ import '../../../../l10n/app_localizations.dart';
 import '../../../config/const/app_enums.dart';
 import '../../app_toast/app_toast.dart';
 import '../../button_components/elevated_button_components/elevated_icon_button_component.dart';
-import '../../dilog_components/dilog_waiting_component.dart';
+import '../../dilog_components/dialog_waiting_component.dart';
 import '../../list_tile_components/list_tile_icon_component.dart';
 
 class DataManagementSection extends StatelessWidget {

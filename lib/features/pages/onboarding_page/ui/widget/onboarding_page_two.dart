@@ -7,7 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/config/const/sensei_const.dart';
 import '../../../../../core/widgets/app_toast/app_toast.dart';
 import '../../../../../core/widgets/button_components/elevated_button_components/elevated_icon_button_component.dart';
-import '../../../../../core/widgets/dilog_components/dilog_waiting_component.dart';
+import '../../../../../core/widgets/dilog_components/dialog_waiting_component.dart';
 import '../../../../products_scanner/logic/cubit/localdb_cubit/localdb_cubit.dart';
 
 class OnboardingPageTwo extends StatefulWidget {

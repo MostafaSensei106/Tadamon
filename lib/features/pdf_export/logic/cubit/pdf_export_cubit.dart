@@ -5,7 +5,8 @@ import 'package:intl/intl.dart';
 import '../../../../core/services/export_services.dart';
 import '../../../../core/services/pdf_export_services/pdf_export_services.dart';
 import '../../../../core/widgets/app_toast/app_toast.dart';
-import '../../../../core/widgets/dilog_components/dilog_ask_user_components.dart';
+import '../../../../core/widgets/button_components/textbutton_components/text_icon_button_component.dart';
+import '../../../../core/widgets/dilog_components/dialog_ask_user_components.dart';
 import '../../../products_scanner/data/repository/objectbox_repositories.dart';
 import 'pdf_export_state.dart';
 
@@ -42,18 +43,28 @@ class PdfExportCubit extends Cubit<PdfExportState> {
       final pdf = await PdfExportServices().exportPdf(dataList);
       emit(const PdfExportInitial());
       // ignore: use_build_context_synchronously
-      await DilogAskUserComponents(
+      await DialogAskUserComponents(
         title: 'تصدير PDF',
         question: 'هل تريد حفظ الملف أم مشاركته؟',
         icon: Icons.picture_as_pdf,
-        onYes: () async {
-          await PdfExportServices().savePdf(pdf);
-        },
-        onNo: () async {
-          await PdfExportServices().sharePdf(pdf);
-        },
-        yesText: 'حفظ',
-        noText: 'مشاركة',
+        actions: [
+          TextIconButtonComponent(
+            onPressed: () async {
+              await PdfExportServices().sharePdf(pdf);
+            },
+            text: 'مشاركة',
+            useInBorderRadius: true,
+            icon: Icons.ios_share_rounded,
+          ),
+          TextIconButtonComponent(
+            onPressed: () async {
+              await PdfExportServices().savePdf(pdf);
+            },
+            text: 'حفظ',
+            useInBorderRadius: true,
+            icon: Icons.save_alt_rounded,
+          ),
+        ],
       ).show(context);
     } catch (e) {
       emit(const PdfExportInitial());
@@ -75,18 +86,28 @@ class PdfExportCubit extends Cubit<PdfExportState> {
       final csv = ExportServices().getCsv(dataList);
       emit(const PdfExportInitial());
       // ignore: use_build_context_synchronously
-      await DilogAskUserComponents(
+      await DialogAskUserComponents(
         title: 'تصدير CSV',
         question: 'هل تريد حفظ الملف أم مشاركته؟',
         icon: Icons.table_chart,
-        onYes: () async {
-          await ExportServices().saveFile(csv, 'csv');
-        },
-        onNo: () async {
-          await ExportServices().shareFile(csv, 'csv');
-        },
-        yesText: 'حفظ',
-        noText: 'مشاركة',
+        actions: [
+          TextIconButtonComponent(
+            onPressed: () async {
+              await ExportServices().shareFile(csv, 'csv');
+            },
+            text: 'مشاركة',
+            useInBorderRadius: true,
+            icon: Icons.ios_share_rounded,
+          ),
+          TextIconButtonComponent(
+            onPressed: () async {
+              await ExportServices().saveFile(csv, 'csv');
+            },
+            text: 'حفظ',
+            useInBorderRadius: true,
+            icon: Icons.save_alt_rounded,
+          ),
+        ],
       ).show(context);
     } catch (e) {
       emit(const PdfExportInitial());
@@ -108,18 +129,28 @@ class PdfExportCubit extends Cubit<PdfExportState> {
       final json = ExportServices().getJson(dataList);
       emit(const PdfExportInitial());
       // ignore: use_build_context_synchronously
-      await DilogAskUserComponents(
+      await DialogAskUserComponents(
         title: 'تصدير JSON',
         question: 'هل تريد حفظ الملف أم مشاركته؟',
         icon: Icons.code,
-        onYes: () async {
-          await ExportServices().saveFile(json, 'json');
-        },
-        onNo: () async {
-          await ExportServices().shareFile(json, 'json');
-        },
-        yesText: 'حفظ',
-        noText: 'مشاركة',
+        actions: [
+          TextIconButtonComponent(
+            onPressed: () async {
+              await ExportServices().shareFile(json, 'json');
+            },
+            text: 'مشاركة',
+            useInBorderRadius: true,
+            icon: Icons.ios_share_rounded,
+          ),
+          TextIconButtonComponent(
+            onPressed: () async {
+              await ExportServices().saveFile(json, 'json');
+            },
+            text: 'حفظ',
+            useInBorderRadius: true,
+            icon: Icons.save_alt_rounded,
+          ),
+        ],
       ).show(context);
     } catch (e) {
       emit(const PdfExportInitial());

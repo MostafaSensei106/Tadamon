@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../config/const/sensei_const.dart';
-import 'dilog_component.dart';
+import 'dialog_component.dart';
 
 class DilogWatingComponent extends DilogComponent {
   const DilogWatingComponent({
