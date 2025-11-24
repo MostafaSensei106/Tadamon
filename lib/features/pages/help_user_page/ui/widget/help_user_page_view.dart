@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/config/const/sensei_const.dart';
 import '../../../../../core/widgets/app_bar_component/side_page_app_bar.dart';
 import '../../../../../core/widgets/expansion_tile_component/expansion_tile_component.dart';
-import '../../../../../generated/l10n.dart';
+import '../../../../../l10n/app_localizations.dart';
 import '../../logic/cubit/help_user_cubit.dart';
 import '../../logic/cubit/help_user_state.dart';
 
@@ -49,7 +49,10 @@ class _HelpUserPageViewState extends State<HelpUserPageView>
 
   @override
   Widget build(final BuildContext context) => Scaffold(
-    appBar: SidePageAppBar(title: S.of(context).howToUse, useBackButton: true),
+    appBar: SidePageAppBar(
+      title: AppLocalizations.of(context)!.howToUse,
+      useBackButton: true,
+    ),
     body: BlocBuilder<HelpUserCubit, HelpUserState>(
       builder: (final context, final state) {
         if (state is HlepUserLoadingQnaState) {

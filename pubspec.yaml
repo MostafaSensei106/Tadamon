@@ -48,7 +48,6 @@ dev_dependencies:
   flutter_native_splash: ^2.4.4
   flutter_test:
     sdk: flutter
-  intl_utils: ^2.8.8
   objectbox_generator: ^5.0.0
 
 flutter:
@@ -63,8 +62,3 @@ flutter:
     - family: ArabicFont
       fonts:
         - asset: assets/fonts/ar/Tajawal-Regular.ttf
-
-flutter_intl:
-  enabled: true
-  main_locale: ar
-  default_locale: ar

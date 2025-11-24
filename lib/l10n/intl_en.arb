@@ -60,5 +60,11 @@
   "exportAsPdf": "Export as PDF",
   "exportAsCsv": "Export as CSV",
   "exportAsJson": "Export as JSON",
+  "pdfSubtitle": "Export logs as a PDF file.",
+  "csvSubtitle": "Export logs as a CSV file.",
+  "jsonSubtitle": "Export logs as a JSON file.",
+  "dataPreview": "Data Preview",
+  "totalLogs": "Total Logs",
+  "period": "Period",
   "close": "Close"
 }

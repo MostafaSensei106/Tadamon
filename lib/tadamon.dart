@@ -2,11 +2,6 @@ import 'package:flutter/material.dart' show MaterialApp;
 import 'package:flutter/widgets.dart'
     show StatelessWidget, BuildContext, Widget, Size, Locale, SafeArea;
 import 'package:flutter_bloc/flutter_bloc.dart' show BlocBuilder;
-import 'package:flutter_localizations/flutter_localizations.dart'
-    show
-        GlobalMaterialLocalizations,
-        GlobalWidgetsLocalizations,
-        GlobalCupertinoLocalizations;
 import 'package:flutter_screenutil/flutter_screenutil.dart' show ScreenUtilInit;
 import 'package:toastification/toastification.dart';
 
@@ -16,7 +11,7 @@ import 'core/config/theme/colors/logic/cubit/theme_cubit.dart' show ThemeCubit;
 import 'core/config/theme/colors/logic/cubit/theme_state.dart' show ThemeState;
 import 'core/routing/app_router.dart' show AppRouter;
 import 'core/routing/routes.dart' show Routes;
-import 'generated/l10n.dart' show S;
+import 'l10n/app_localizations.dart';
 
 class TadamonApp extends StatelessWidget {
   // ignore: avoid_unused_constructor_parameters
@@ -39,13 +34,8 @@ class TadamonApp extends StatelessWidget {
           initialRoute: Routes.onBoarding,
           onGenerateRoute: appRouter.generateRoute,
           locale: const Locale('ar', 'EG'),
-          supportedLocales: const [Locale('ar', 'EG')],
-          localizationsDelegates: const [
-            S.delegate,
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-          ],
+          supportedLocales: AppLocalizations.supportedLocales,
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
           localeResolutionCallback: (final locale, final supportedLocales) =>
               const Locale('ar', 'EG'),
           builder: (final context, final child) =>

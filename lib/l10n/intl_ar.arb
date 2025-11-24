@@ -295,7 +295,10 @@
   },
   "exportAsCsv": "تصدير بصيغة CSV",
 
-  "@exportAsJson": "تصدير بصيغة JSON",
+  "@exportAsJson": {
+    "description": "تصدير بصيغة JSON"
+  },
+  "exportAsJson": "تصدير بصيغة JSON",
 
   "@dataPreview": {
     "description": "معاينة البيانات"

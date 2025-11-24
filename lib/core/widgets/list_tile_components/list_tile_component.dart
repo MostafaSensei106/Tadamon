@@ -23,8 +23,8 @@ import '../../config/fonts/fonts.dart' show AppTextStyle;
 import '../divider.dart' show FullAppDividerComponents;
 import '../inkwell_component/inkwell_component.dart';
 
-class ListTileIconComponent extends StatelessWidget {
-  const ListTileIconComponent({
+class ListTileComponent extends StatelessWidget {
+  const ListTileComponent({
     required this.title,
     required this.groupType,
     super.key,

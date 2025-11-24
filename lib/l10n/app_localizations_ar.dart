@@ -182,13 +182,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get exportAsCsv => 'تصدير بصيغة CSV';
 
   @override
-  String get dataPreview => 'معاينة البيانات';
-
-  @override
-  String get totalLogs => 'إجمالي السجلات';
-
-  @override
-  String get period => 'الفترة';
+  String get exportAsJson => 'تصدير بصيغة JSON';
 
   @override
   String get pdfSubtitle => 'مناسب للطباعة والمشاركة';
@@ -198,6 +192,15 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get jsonSubtitle => 'للمطورين والتكامل مع الأنظمة';
+
+  @override
+  String get dataPreview => 'معاينة البيانات';
+
+  @override
+  String get totalLogs => 'إجمالي السجلات';
+
+  @override
+  String get period => 'الفترة';
 
   @override
   String get close => 'إغلاق';

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart' hide showBottomSheet;
 import '../../../../features/pdf_export/widgets/export_logs_sheet_content.dart';
 import '../../../../features/products_scanner/data/repository/objectbox_repositories.dart';
 import '../../../../features/report_products/widgets/report_products_seet_content/report_product_sheet_content.dart';
-import '../../../../generated/l10n.dart';
+import '../../../../l10n/app_localizations.dart';
 import '../../../config/const/app_enums.dart';
 import '../../../routing/routes.dart';
 import '../../bottom_sheet/ui/model_bottom_sheet.dart';
@@ -36,9 +36,9 @@ class ActionsSection extends StatelessWidget {
 
   Widget _buildHowToUse(final BuildContext context) => ListTileIconComponent(
     groupType: ListTileGroupType.top,
-    iconLeading: Icons.question_answer_outlined,
-    title: S.of(context).howToUse,
-    subtitle: S.of(context).howToUseMassage,
+    icon: Icons.question_answer_outlined,
+    title: AppLocalizations.of(context)!.howToUse,
+    subtitle: AppLocalizations.of(context)!.howToUseMassage,
     trailing: Icon(
       Icons.arrow_forward_ios_rounded,
       color: Theme.of(context).colorScheme.onSurface.withAlpha(0x80),
@@ -52,23 +52,23 @@ class ActionsSection extends StatelessWidget {
   Widget _buildReportProduct(final BuildContext context) =>
       ListTileIconComponent(
         groupType: ListTileGroupType.bottom,
-        iconLeading: Icons.production_quantity_limits_outlined,
-        title: S.of(context).reportProduct,
-        subtitle: S.of(context).reportProductMassage,
+        icon: Icons.production_quantity_limits_outlined,
+        title: AppLocalizations.of(context)!.reportProduct,
+        subtitle: AppLocalizations.of(context)!.reportProductMassage,
         onTap: () {
           Navigator.pop(context);
           showBottomSheet(
             context,
-            'بلغ عن منتج',
+            AppLocalizations.of(context)!.reportProduct,
             child: const ReportProductSheetContent(),
           );
         },
       );
 
   Widget _buildClearLogs(final BuildContext context) => ListTileIconComponent(
-    iconLeading: Icons.clear_all_rounded,
-    title: S.of(context).clearLogs,
-    subtitle: S.of(context).clearLogs,
+    icon: Icons.clear_all_rounded,
+    title: AppLocalizations.of(context)!.clearLogs,
+    subtitle: AppLocalizations.of(context)!.clearLogsMassage,
     onTap: () {
       Navigator.of(context).pop();
       ObjectboxRepository().clearTadamonLogsFromLocalDB();
@@ -77,14 +77,14 @@ class ActionsSection extends StatelessWidget {
   );
 
   Widget _buildExportLogs(final BuildContext context) => ListTileIconComponent(
-    iconLeading: Icons.picture_as_pdf_rounded,
-    title: 'تصدير السجلات',
-    subtitle: 'تصطير السجلات علي شكل PDF',
+    icon: Icons.picture_as_pdf_rounded,
+    title: AppLocalizations.of(context)!.exportLogs,
+    subtitle: AppLocalizations.of(context)!.exportLogsSummary,
     onTap: () {
       Navigator.of(context).pop();
       showBottomSheet(
         context,
-        ' S.of(context).exportLogs,',
+        AppLocalizations.of(context)!.exportLogs,
         child: const ExportLogsSheetContent(),
       );
     },

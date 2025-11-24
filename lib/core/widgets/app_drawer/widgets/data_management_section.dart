@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../../features/products_scanner/logic/cubit/localdb_cubit/localdb_cubit.dart';
-import '../../../../generated/l10n.dart';
+import '../../../../l10n/app_localizations.dart';
 import '../../../config/const/app_enums.dart';
 import '../../app_toast/app_toast.dart';
 import '../../button_components/elevated_button_components/elevated_icon_button_component.dart';
@@ -29,31 +30,33 @@ class DataManagementSection extends StatelessWidget {
           Icons.query_builder_rounded,
           color: Colors.red,
         );
-        var subtitleText = S.of(context).appOffLine;
+        var subtitleText = AppLocalizations.of(context)!.appOffLine;
         if (state is LoclaDBDataBaseHasData) {
           trailingWidget = const Icon(
             Icons.check_box_outlined,
             color: Colors.green,
           );
-          subtitleText = S.of(context).appOnLineMassageRunning;
+          subtitleText = AppLocalizations.of(context)!.appOnLineMassageRunning;
         } else if (state is LoclaDBDataBaseEmpty) {
           trailingWidget = const Icon(
             Icons.error_outline_rounded,
             color: Colors.red,
           );
-          subtitleText = S.of(context).appOffLineMassageDontRunning;
+          subtitleText = AppLocalizations.of(
+            context,
+          )!.appOffLineMassageDontRunning;
         } else {
           trailingWidget = const Icon(
             Icons.query_builder_rounded,
             color: Colors.yellow,
           );
-          subtitleText = S.of(context).appOflineLoading;
+          subtitleText = AppLocalizations.of(context)!.appOflineLoading;
         }
         return ListTileIconComponent(
-          iconLeading: state is LoclaDBDataBaseHasData
+          icon: state is LoclaDBDataBaseHasData
               ? Icons.cloud_done_outlined
               : Icons.cloud_off_rounded,
-          title: S.of(context).appOffLine,
+          title: AppLocalizations.of(context)!.appOffLine,
           subtitle: subtitleText,
           trailing: trailingWidget,
           groupType: state is LoclaDBDataBaseHasData
@@ -93,7 +96,7 @@ class DataManagementSection extends StatelessWidget {
               width: double.infinity,
               child: ElevatedIconButtonComponent(
                 useMargin: true,
-                label: 'تشغيل الاونلاين',
+                label: AppLocalizations.of(context)!.enableOnline,
                 icon: Icons.cloud_download_outlined,
                 onPressed: () {
                   context.read<LocalDBCubit>().fetchDataFromFireStore();
@@ -136,9 +139,9 @@ class DataManagementSection extends StatelessWidget {
               if (state is LoclaDBDataBaseHasData) {
                 return ListTileIconComponent(
                   groupType: ListTileGroupType.middle,
-                  iconLeading: Icons.dataset_linked_outlined,
-                  title: 'تحديث قاعدة البيانات',
-                  subtitle: 'تحديث قاعدة البيانات',
+                  icon: Icons.dataset_linked_outlined,
+                  title: AppLocalizations.of(context)!.letastUpdate,
+                  subtitle: AppLocalizations.of(context)!.letestUpdateMassage,
                   onTap: () {
                     context.read<LocalDBCubit>().updateDataBaseFromFireStore();
                   },
@@ -177,9 +180,9 @@ class DataManagementSection extends StatelessWidget {
         builder: (final context, final state) {
           if (state is LoclaDBDataBaseHasData) {
             return ListTileIconComponent(
-              iconLeading: Icons.delete_forever_outlined,
-              title: 'حذف البيانات',
-              subtitle: 'سوف يتم حذف جميع المنتجات المحفوظة',
+              icon: Icons.delete_forever_outlined,
+              title: AppLocalizations.of(context)!.clearLogs,
+              subtitle: AppLocalizations.of(context)!.clearLogsMassage,
               onTap: () {
                 context.read<LocalDBCubit>().deleteAllLocalProducts();
               },

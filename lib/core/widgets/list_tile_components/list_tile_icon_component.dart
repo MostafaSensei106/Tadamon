@@ -29,7 +29,7 @@ import '../inkwell_component/inkwell_component.dart';
 
 class ListTileIconComponent extends StatelessWidget {
   const ListTileIconComponent({
-    required this.iconLeading,
+    required this.icon,
     required this.title,
     required this.groupType,
     super.key,
@@ -40,7 +40,7 @@ class ListTileIconComponent extends StatelessWidget {
     this.selected,
     this.useMargin = true,
   });
-  final IconData iconLeading;
+  final IconData icon;
   final String title;
   final String? subtitle;
   final Widget? trailing;
@@ -83,7 +83,7 @@ class ListTileIconComponent extends StatelessWidget {
   /// Builds a [Container] widget with a [Column] containing a [Material]
   /// widget wrapping a [ListTile]. The appearance and behavior of the
   /// [ListTile] are determined by the provided parameters. It includes
-  /// customizable [iconLeading], [title], [subtitle], and [trailing] widgets.
+  /// customizable [icon], [title], [subtitle], and [trailing] widgets.
   /// The [onTap] callback is triggered when the [InkWell] is tapped.
   /// The border radius is configured based on the [groupType] and
   /// [useinBorderRadius] properties, and the background color is set
@@ -115,7 +115,7 @@ class ListTileIconComponent extends StatelessWidget {
                 padding: const EdgeInsets.all(SenseiConst.padding),
                 color: Theme.of(context).colorScheme.surfaceContainerHigh,
                 useInBorderRadius: true,
-                child: Icon(iconLeading, size: SenseiConst.iconSize),
+                child: Icon(icon, size: SenseiConst.iconSize),
               ),
               title: Text(title),
               subtitle: subtitle != null

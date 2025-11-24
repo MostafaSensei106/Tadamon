@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import '../../../../../../core/config/const/sensei_const.dart';
-import '../../../../../../generated/l10n.dart';
+import '../../../../../../l10n/app_localizations.dart';
 
 class GoogleNavBar extends StatefulWidget {
   const GoogleNavBar({
@@ -89,17 +89,17 @@ class _GoogleNavBarState extends State<GoogleNavBar> {
                   GButton(
                     icon: _getIcon(0),
                     iconSize: SenseiConst.iconSize.sp,
-                    text: S.of(context).home,
+                    text: AppLocalizations.of(context)!.home,
                   ),
                   GButton(
                     icon: _getIcon(1),
                     iconSize: SenseiConst.iconSize,
-                    text: S.of(context).search,
+                    text: AppLocalizations.of(context)!.search,
                   ),
                   GButton(
                     icon: _getIcon(2),
                     iconSize: SenseiConst.iconSize,
-                    text: S.of(context).logs,
+                    text: AppLocalizations.of(context)!.logs,
                   ),
                 ],
                 selectedIndex: widget.currentIndex,

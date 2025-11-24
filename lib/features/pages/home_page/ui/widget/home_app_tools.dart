@@ -6,7 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/config/const/sensei_const.dart';
 import '../../../../../core/routing/routes.dart';
 import '../../../../../core/widgets/home_tool_component/home_tool_component.dart';
-import '../../../../../generated/l10n.dart';
+import '../../../../../l10n/app_localizations.dart';
 import '../../../../donation_palestine/widget/donation_sheet_content.dart';
 import '../../../../edit_text/widgets/edit_text_sheet_content.dart';
 import '../../../../products_scanner/logic/cubit/product_scan_cubit/product_scan_cubit.dart';
@@ -33,7 +33,7 @@ class HomeAppTools extends StatelessWidget {
             child: BlocBuilder<ProductScanCubit, ProductScanState>(
               builder: (final context, final state) => HomeToolsComponent(
                 icon: Icons.qr_code_rounded,
-                title: S.of(context).scanBarcode,
+                title: AppLocalizations.of(context)!.scanBarcode,
                 onTapped: () => context
                     .read<ProductScanCubit>()
                     .scanBarcodeByCamera(context),
@@ -46,7 +46,7 @@ class HomeAppTools extends StatelessWidget {
             child: BlocBuilder<ProductScanCubit, ProductScanState>(
               builder: (final context, final state) => HomeToolsComponent(
                 icon: Icons.image_search_rounded,
-                title: S.of(context).imageAnalysis,
+                title: AppLocalizations.of(context)!.imageAnalysis,
                 onTapped: () =>
                     context.read<ProductScanCubit>().imageAnalysisScan(context),
               ),
@@ -55,7 +55,7 @@ class HomeAppTools extends StatelessWidget {
           SizedBox(width: 8.w),
           HomeToolsComponent(
             icon: Icons.short_text_outlined,
-            title: S.of(context).editText,
+            title: AppLocalizations.of(context)!.editText,
             onTapped: () {
               HapticFeedback.vibrate();
               EditTextSheetContent.showEditTextBottomSheet(context);
@@ -64,7 +64,7 @@ class HomeAppTools extends StatelessWidget {
           SizedBox(width: 8.w),
           HomeToolsComponent(
             icon: Icons.map_outlined,
-            title: S.of(context).palatineMap,
+            title: AppLocalizations.of(context)!.palatineMap,
             onTapped: () {
               HapticFeedback.vibrate();
               Navigator.pushNamed(context, Routes.palatineMap);
@@ -73,7 +73,7 @@ class HomeAppTools extends StatelessWidget {
           SizedBox(width: 8.w),
           HomeToolsComponent(
             icon: Icons.volunteer_activism_outlined,
-            title: S.of(context).donate,
+            title: AppLocalizations.of(context)!.donate,
             onTapped: () {
               HapticFeedback.vibrate();
               DonationSheetContent.showDonationBottomSheet(context);

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../generated/l10n.dart';
+import '../../../../l10n/app_localizations.dart';
 import '../../../config/const/app_enums.dart';
 import '../../../routing/routes.dart';
 import '../../list_tile_components/list_tile_icon_component.dart';
@@ -13,9 +13,9 @@ class AboutSection extends StatelessWidget {
 
   Widget _buildDeveloper(final BuildContext context) => ListTileIconComponent(
     groupType: ListTileGroupType.top,
-    iconLeading: Icons.verified_outlined,
-    title: S.of(context).developer,
-    subtitle: S.of(context).mostafaMahmoud,
+    icon: Icons.verified_outlined,
+    title: AppLocalizations.of(context)!.developer,
+    subtitle: AppLocalizations.of(context)!.mostafaMahmoud,
     trailing: Icon(
       Icons.arrow_forward_ios_rounded,
       color: Theme.of(context).colorScheme.onSurface.withAlpha(0x80),
@@ -28,13 +28,13 @@ class AboutSection extends StatelessWidget {
 
   Widget _buildAbout(final BuildContext context) => ListTileIconComponent(
     groupType: ListTileGroupType.bottom,
-    iconLeading: Icons.info_outline,
+    icon: Icons.info_outline,
     trailing: Icon(
       Icons.arrow_forward_ios_rounded,
       color: Theme.of(context).colorScheme.onSurface.withAlpha(0x80),
     ),
-    title: S.of(context).about,
-    subtitle: S.of(context).about,
+    title: AppLocalizations.of(context)!.about,
+    subtitle: AppLocalizations.of(context)!.about,
     onTap: () => {
       Navigator.pop(context),
       Navigator.pushNamed(context, Routes.appInfo),

@@ -54,7 +54,7 @@ class ProductExpansionTileComponent extends StatelessWidget {
       ),
       children: [
         ListTileIconComponent(
-          iconLeading: Icons.qr_code_rounded,
+          icon: Icons.qr_code_rounded,
           title: 'الرقم التسلسلي',
           subtitle: product.serialNumber,
           groupType: ListTileGroupType.top,
@@ -65,25 +65,25 @@ class ProductExpansionTileComponent extends StatelessWidget {
           ),
         ),
         ListTileIconComponent(
-          iconLeading: Icons.label_outline_rounded,
+          icon: Icons.label_outline_rounded,
           title: 'اسم المنتج',
           subtitle: product.name,
           groupType: ListTileGroupType.middle,
         ),
         ListTileIconComponent(
-          iconLeading: Icons.business_rounded,
+          icon: Icons.business_rounded,
           title: 'الشركة المصنعة',
           subtitle: product.manufacturer,
           groupType: ListTileGroupType.middle,
         ),
         ListTileIconComponent(
-          iconLeading: Icons.category_outlined,
+          icon: Icons.category_outlined,
           title: 'التصنيف',
           subtitle: product.category,
           groupType: ListTileGroupType.middle,
         ),
         ListTileIconComponent(
-          iconLeading: Icons.handshake_outlined,
+          icon: Icons.handshake_outlined,
           title: 'الحالة',
           subtitle: product.trusted ? 'لا يدعم الكيان' : 'مقاطعة',
           groupType: ListTileGroupType.middle,

@@ -12,11 +12,15 @@ class PdfExportCubit extends Cubit<PdfExportState> {
   }
 
   Future<void> getInitialData() async {
-    final logCount = await ObjectboxRepository().getTadamonLogsProductsCount().first;
+    final logCount = await ObjectboxRepository()
+        .getTadamonLogsProductsCount()
+        .first;
     final now = DateTime.now();
     final thirtyDaysAgo = now.subtract(const Duration(days: 30));
     final formattedNow = DateFormat('yyyy/MM/dd').format(now);
-    final formattedThirtyDaysAgo = DateFormat('yyyy/MM/dd').format(thirtyDaysAgo);
+    final formattedThirtyDaysAgo = DateFormat(
+      'yyyy/MM/dd',
+    ).format(thirtyDaysAgo);
     final dateRange = '$formattedThirtyDaysAgo - $formattedNow';
     emit(PdfExportInitial(logCount: logCount, dateRange: dateRange));
   }

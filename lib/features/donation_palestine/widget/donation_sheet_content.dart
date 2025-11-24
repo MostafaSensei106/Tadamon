@@ -3,15 +3,15 @@ import 'package:flutter/material.dart' show Icons, ClipRRect;
 import 'package:flutter/widgets.dart'
     show StatelessWidget, BuildContext, Widget, Column;
 import 'package:pdf/widgets.dart' show Padding, Wrap;
+
 import '../../../core/config/const/app_enums.dart' show ListTileGroupType;
 import '../../../core/config/const/sensei_const.dart' show SenseiConst;
 import '../../../core/services/url_services/url_services.dart' show launchURL;
-
 import '../../../core/widgets/bottom_sheet/ui/model_bottom_sheet.dart'
     show showBottomSheet;
 import '../../../core/widgets/list_tile_components/list_tile_icon_component.dart'
     show ListTileIconComponent;
-import '../../../generated/l10n.dart' show S;
+import '../../../l10n/app_localizations.dart';
 
 class DonationSheetContent extends StatelessWidget {
   const DonationSheetContent({super.key});
@@ -40,7 +40,7 @@ class DonationSheetContent extends StatelessWidget {
   static void showDonationBottomSheet(final BuildContext context) {
     showBottomSheet(
       context,
-      S.of(context).donate,
+      AppLocalizations.of(context)!.donate,
       child: const DonationSheetContent(),
     );
   }
@@ -67,7 +67,7 @@ class DonationSheetContent extends StatelessWidget {
   Widget build(final BuildContext context) => Column(
     children: [
       ListTileIconComponent(
-        iconLeading: Icons.volunteer_activism_outlined,
+        icon: Icons.volunteer_activism_outlined,
         title: 'منظمة الانوروا',
         subtitle: 'نبرع هم طريق منظمة الانوروا',
 
@@ -76,21 +76,21 @@ class DonationSheetContent extends StatelessWidget {
         groupType: ListTileGroupType.top,
       ),
       ListTileIconComponent(
-        iconLeading: Icons.mode_night_outlined,
+        icon: Icons.mode_night_outlined,
         title: 'الهلال الاحمر الفلسطيني',
         subtitle: 'تبرع عن طريق الهلال الاحمر الفلسطيني',
         onTap: () => {launchURL(SenseiConst.donateByPalestinercsLink)},
         groupType: ListTileGroupType.middle,
       ),
       ListTileIconComponent(
-        iconLeading: Icons.maps_home_work_outlined,
+        icon: Icons.maps_home_work_outlined,
         title: 'بيت الزكاة والصدقات المصري',
         subtitle: 'تبرع عن طريق ابيت الزكاةو الصدقات المصري',
         onTap: () => launchURL(SenseiConst.donateByBaitzakatLink),
         groupType: ListTileGroupType.middle,
       ),
       ListTileIconComponent(
-        iconLeading: Icons.food_bank_outlined,
+        icon: Icons.food_bank_outlined,
         title: 'بنك الطعام المصري',
         subtitle: 'تبرع عن طريقة بنك الطعام المصري',
         onTap: () => {launchURL(SenseiConst.donateByEGYFoodBankLink)},

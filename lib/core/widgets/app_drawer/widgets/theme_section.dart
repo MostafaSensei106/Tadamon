@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../generated/l10n.dart';
+import '../../../../l10n/app_localizations.dart';
 import '../../../config/const/app_enums.dart';
 import '../../../config/theme/colors/logic/cubit/theme_cubit.dart';
 import '../../../config/theme/colors/logic/cubit/theme_state.dart';
@@ -23,9 +23,9 @@ class ThemeSection extends StatelessWidget {
           groupType: state.themeMode != ThemeMode.system
               ? ListTileGroupType.top
               : ListTileGroupType.single,
-          iconLeading: Icons.brightness_auto_outlined,
-          title: S.of(context).systemTheme,
-          subtitle: S.of(context).followSystemTheme,
+          icon: Icons.brightness_auto_outlined,
+          title: AppLocalizations.of(context)!.systemTheme,
+          subtitle: AppLocalizations.of(context)!.followSystemTheme,
           trailing: Switch(
             thumbIcon: _thumbIcon(context),
             value: state.themeMode == ThemeMode.system,
@@ -51,15 +51,15 @@ class ThemeSection extends StatelessWidget {
             : ListTileIconComponent(
                 key: ValueKey(state.isDark),
                 groupType: ListTileGroupType.bottom,
-                iconLeading: state.isDark
+                icon: state.isDark
                     ? Icons.light_mode_outlined
                     : Icons.dark_mode_outlined,
                 title: state.isDark
-                    ? S.of(context).darkTheme
-                    : S.of(context).lightTheme,
+                    ? AppLocalizations.of(context)!.darkTheme
+                    : AppLocalizations.of(context)!.lightTheme,
                 subtitle: state.isDark
-                    ? S.of(context).switchToLightTheme
-                    : S.of(context).switchToDarkTheme,
+                    ? AppLocalizations.of(context)!.switchToLightTheme
+                    : AppLocalizations.of(context)!.switchToDarkTheme,
                 trailing: Switch(
                   thumbIcon: _thumbIcon(context),
                   value: state.isDark,
