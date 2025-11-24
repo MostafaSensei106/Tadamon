@@ -6,19 +6,16 @@ plugins {
 }
 
 android {
-
     namespace = "com.mhsensei.tadamon"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = "29.0.13846066"
+    ndkVersion = flutter.ndkVersion
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
 
-      kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_11.toString()
-    }
+    kotlinOptions { jvmTarget = JavaVersion.VERSION_11.toString() }
 
     defaultConfig {
         applicationId = "com.mhsensei.tadamon"
@@ -29,17 +26,7 @@ android {
         versionName = flutter.versionName
     }
 
-    buildTypes {
-        release {
-            signingConfig = signingConfigs.getByName("debug");
-        }
-    }
-
-
-
+    buildTypes { release { signingConfig = signingConfigs.getByName("debug") } }
 }
 
-
-flutter {
-    source = "../.."
-}
+flutter { source = "../.." }
