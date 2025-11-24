@@ -13,6 +13,7 @@
 
 
 
+
 "@errorHandle": {
     "description": "خطأ في  تطبيق  تضامن"
   },
@@ -34,6 +35,11 @@
   },
   "back": " الرجوع",
 
+
+
+
+  "del":"حذف",
+  "cancel":"إلغاء",
 
 
 
@@ -274,6 +280,61 @@
     "description": "طرق التواصل مع المطور"
   },
   "contactDevMassage": "تابعني على مواقع التواصل الاجتماعي.",
+
+  "@exportLogs": {
+    "description": "تصدير السجلات"
+  },
+  "exportLogs": "تصدير السجلات",
+
+  "@exportLogsSummary": {
+    "description": "ملخص تصدير السجلات"
+  },
+  "exportLogsSummary": "سيؤدي هذا إلى تصدير كافة سجلات المنتجات الممسوحة ضوئيًا.",
+
+  "@exportAsPdf": {
+    "description": "تصدير بصيغة PDF"
+  },
+  "exportAsPdf": "تصدير بصيغة PDF",
+
+  "@exportAsCsv": {
+    "description": "تصدير بصيغة CSV"
+  },
+  "exportAsCsv": "تصدير بصيغة CSV",
+
+  "@exportAsJson": {
+    "description": "تصدير بصيغة JSON"
+  },
+  "exportAsJson": "تصدير بصيغة JSON",
+
+  "@dataPreview": {
+    "description": "معاينة البيانات"
+  },
+  "dataPreview": "معاينة البيانات",
+
+  "@totalLogs": {
+    "description": "إجمالي السجلات"
+  },
+  "totalLogs": "إجمالي السجلات",
+
+  "@period": {
+    "description": "الفترة"
+  },
+  "period": "الفترة",
+
+  "@pdfSubtitle": {
+    "description": "مناسب للطباعة والمشاركة"
+  },
+  "pdfSubtitle": "مناسب للطباعة والمشاركة",
+
+  "@csvSubtitle": {
+    "description": "للاستخدام مع Excel وجداول البيانات"
+  },
+  "csvSubtitle": "للاستخدام مع Excel وجداول البيانات",
+
+  "@jsonSubtitle": {
+    "description": "للمطورين والتكامل مع الأنظمة"
+  },
+  "jsonSubtitle": "للمطورين والتكامل مع الأنظمة",
 
   "@close": {
     "description": "زر الإغلاق"

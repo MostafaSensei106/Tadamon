@@ -24,14 +24,18 @@ import 'package:flutter/material.dart'
         Padding,
         Center,
         Scaffold;
-import '../../generated/l10n.dart' show S;
+
+import '../../l10n/app_localizations.dart';
 
 class NoRoutes extends StatelessWidget {
   const NoRoutes({super.key});
 
   @override
   Widget build(final BuildContext context) => Scaffold(
-    appBar: AppBar(title: Text(S.of(context).noPage), centerTitle: true),
+    appBar: AppBar(
+      title: Text(AppLocalizations.of(context)!.noPage),
+      centerTitle: true,
+    ),
     body: Center(
       child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -45,7 +49,7 @@ class NoRoutes extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             Text(
-              S.of(context).noRoutes,
+              AppLocalizations.of(context)!.noRoutes,
               style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                 fontWeight: FontWeight.bold,
                 color: Theme.of(context).colorScheme.error,
@@ -73,7 +77,7 @@ class NoRoutes extends StatelessWidget {
                 ),
               ),
               child: Text(
-                S.of(context).back,
+                AppLocalizations.of(context)!.back,
                 style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,

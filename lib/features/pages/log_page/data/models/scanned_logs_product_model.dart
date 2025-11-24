@@ -16,11 +16,11 @@ class ScannedLogsProductModel {
 
   factory ScannedLogsProductModel.fromMap(final Map<String, dynamic> map) =>
       ScannedLogsProductModel(
-        name: map['productName'],
+        name: map['name'],
         serialNumber: map['serialNumber'],
-        manufacture: map['productManufacturer'],
-        category: map['productCategory'],
-        trusted: map['isTrusted'],
+        manufacture: map['manufacture'],
+        category: map['category'],
+        trusted: map['trusted'],
         scannedAt: DateTime.parse(
           map['scannedAt'] ?? DateTime.now().toIso8601String(),
         ),
@@ -47,12 +47,14 @@ class ScannedLogsProductModel {
   DateTime scannedAt;
 
   Map<String, dynamic> toMap() => {
-    'productName': name,
+    'name': name,
     'serialNumber': serialNumber,
-    'productManufacturer': manufacture,
-    'productCategory': category,
-    'isTrusted': trusted,
+    'manufacture': manufacture,
+    'category': category,
+    'trusted': trusted,
     'onError': onError,
     'scannedAt': scannedAt.toIso8601String(),
   };
+
+  String toJson() => toMap().toString();
 }

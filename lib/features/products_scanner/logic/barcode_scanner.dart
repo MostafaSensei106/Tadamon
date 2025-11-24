@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:simple_barcode_scanner/simple_barcode_scanner.dart';
 
 import '../../../core/widgets/app_toast/app_toast.dart';
-import '../../../generated/l10n.dart';
+import '../../../l10n/app_localizations.dart';
 import 'barcode_validator.dart';
 
 class BarcodeScanner {
@@ -37,7 +37,7 @@ class BarcodeScanner {
       final barcodeScanRes = await SimpleBarcodeScanner.scanBarcode(
         context,
         barcodeAppBar: BarcodeAppBar(
-          appBarTitle: S.of(context).scanBarcode,
+          appBarTitle: AppLocalizations.of(context)!.scanBarcode,
           centerTitle: true,
           enableBackButton: true,
           backButtonIcon: const Icon(Icons.keyboard_double_arrow_right_rounded),
@@ -46,7 +46,7 @@ class BarcodeScanner {
         delayMillis: 150,
         scanFormat: ScanFormat.ONLY_BARCODE,
         lineColor: '#FF0000',
-        cancelButtonText: S.of(context).close,
+        cancelButtonText: AppLocalizations.of(context)!.close,
       );
       if (barcodeScanRes == '-1') {
         showInfoToast('لم يتم قراءة اي باركود');

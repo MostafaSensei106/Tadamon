@@ -6,6 +6,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart' as intl;
 
 import 'app_localizations_ar.dart';
+import 'app_localizations_en.dart';
 
 // ignore_for_file: type=lint
 
@@ -66,8 +67,8 @@ abstract class AppLocalizations {
 
   final String localeName;
 
-  static AppLocalizations of(BuildContext context) {
-    return Localizations.of<AppLocalizations>(context, AppLocalizations)!;
+  static AppLocalizations? of(BuildContext context) {
+    return Localizations.of<AppLocalizations>(context, AppLocalizations);
   }
 
   static const LocalizationsDelegate<AppLocalizations> delegate =
@@ -92,330 +93,411 @@ abstract class AppLocalizations {
       ];
 
   /// A list of this localizations delegate's supported locales.
-  static const List<Locale> supportedLocales = <Locale>[Locale('ar')];
+  static const List<Locale> supportedLocales = <Locale>[
+    Locale('ar'),
+    Locale('en'),
+  ];
 
-  /// اسم التطبيق
+  /// No description provided for @appName.
   ///
-  /// In ar, this message translates to:
-  /// **'تضامن'**
+  /// In en, this message translates to:
+  /// **'Tadamon'**
   String get appName;
 
-  /// وصف التطبيق
+  /// No description provided for @appDescription.
   ///
-  /// In ar, this message translates to:
-  /// **'اللهم الطف بإخواننا، وثبّت أقدامهم، وانصرهم، وأعزّ بفضلك من نصرهم، وأذلّ بقدرتك من خذلهم.'**
+  /// In en, this message translates to:
+  /// **'O Allah, be gentle with our brothers, make their feet firm, grant them victory, and honor those who support them with Your grace, and humiliate those who let them down with Your power.'**
   String get appDescription;
 
-  /// خطأ في  تطبيق  تضامن
+  /// No description provided for @errorHandle.
   ///
-  /// In ar, this message translates to:
-  /// **'خطأ في التطبيق'**
+  /// In en, this message translates to:
+  /// **'Application Error'**
   String get errorHandle;
 
-  /// لم يتم العثور على الصفحة
+  /// No description provided for @noPage.
   ///
-  /// In ar, this message translates to:
-  /// **'لم يتم العثور على الصفحة'**
+  /// In en, this message translates to:
+  /// **'Page Not Found'**
   String get noPage;
 
-  /// لم يتم العثور على الصفحة
+  /// No description provided for @noRoutes.
   ///
-  /// In ar, this message translates to:
-  /// **'لم يتم العثور على الصفحة'**
+  /// In en, this message translates to:
+  /// **'Page Not Found'**
   String get noRoutes;
 
-  /// زر الرجوع
+  /// No description provided for @back.
   ///
-  /// In ar, this message translates to:
-  /// **' الرجوع'**
+  /// In en, this message translates to:
+  /// **'Back'**
   String get back;
 
-  /// العنوان الرئيسي في التطبيق
+  /// No description provided for @home.
   ///
-  /// In ar, this message translates to:
-  /// **'الرئيسية'**
+  /// In en, this message translates to:
+  /// **'Home'**
   String get home;
 
-  /// زر البحث
+  /// No description provided for @search.
   ///
-  /// In ar, this message translates to:
-  /// **'بحث'**
+  /// In en, this message translates to:
+  /// **'Search'**
   String get search;
 
-  /// صفحة السجلات
+  /// No description provided for @logs.
   ///
-  /// In ar, this message translates to:
-  /// **'السجلات'**
+  /// In en, this message translates to:
+  /// **'Logs'**
   String get logs;
 
-  /// زر فحص الباركود
+  /// No description provided for @scanBarcode.
   ///
-  /// In ar, this message translates to:
-  /// **'فحص الباركود'**
+  /// In en, this message translates to:
+  /// **'Scan Barcode'**
   String get scanBarcode;
 
-  /// تحليل الصور
+  /// No description provided for @imageAnalysis.
   ///
-  /// In ar, this message translates to:
-  /// **'تحليل الصور'**
+  /// In en, this message translates to:
+  /// **'Image Analysis'**
   String get imageAnalysis;
 
-  /// تعديل النصوص
+  /// No description provided for @editText.
   ///
-  /// In ar, this message translates to:
-  /// **'تعديل النص'**
+  /// In en, this message translates to:
+  /// **'Edit Text'**
   String get editText;
 
-  /// خريطة فلسطين
+  /// No description provided for @palatineMap.
   ///
-  /// In ar, this message translates to:
-  /// **'خريطة فلسطين'**
+  /// In en, this message translates to:
+  /// **'Palestine Map'**
   String get palatineMap;
 
-  /// زر التبرع لغزة
+  /// No description provided for @donate.
   ///
-  /// In ar, this message translates to:
-  /// **'تبرع لغزة'**
+  /// In en, this message translates to:
+  /// **'Donate to Gaza'**
   String get donate;
 
-  /// عدد المنتجات التي تمت مراجعتها
+  /// No description provided for @scanedProducts.
   ///
-  /// In ar, this message translates to:
-  /// **'المنتجات التي تمت مراجعتها'**
+  /// In en, this message translates to:
+  /// **'Reviewed Products'**
   String get scanedProducts;
 
-  /// عدد المنتجات التي تم دعمها
+  /// No description provided for @supportedProducts.
   ///
-  /// In ar, this message translates to:
-  /// **'المنتجات التي تم دعمها'**
+  /// In en, this message translates to:
+  /// **'Supported Products'**
   String get supportedProducts;
 
-  /// إعدادات لون الواجهة
+  /// No description provided for @systemTheme.
   ///
-  /// In ar, this message translates to:
-  /// **'لون واجهة التطبيق'**
+  /// In en, this message translates to:
+  /// **'App Interface Color'**
   String get systemTheme;
 
-  /// مطابقة لون التطبيق مع النظام
+  /// No description provided for @followSystemTheme.
   ///
-  /// In ar, this message translates to:
-  /// **'مطابقة لون النظام'**
+  /// In en, this message translates to:
+  /// **'Match System Theme'**
   String get followSystemTheme;
 
-  /// الوضع الداكن
+  /// No description provided for @darkTheme.
   ///
-  /// In ar, this message translates to:
-  /// **'الوضع الداكن'**
+  /// In en, this message translates to:
+  /// **'Dark Mode'**
   String get darkTheme;
 
-  /// الوضع الفاتح
+  /// No description provided for @lightTheme.
   ///
-  /// In ar, this message translates to:
-  /// **'الوضع الفاتح'**
+  /// In en, this message translates to:
+  /// **'Light Mode'**
   String get lightTheme;
 
-  /// التبديل إلى الوضع الداكن
+  /// No description provided for @switchToDarkTheme.
   ///
-  /// In ar, this message translates to:
-  /// **'التبديل إلى الوضع الداكن'**
+  /// In en, this message translates to:
+  /// **'Switch to Dark Mode'**
   String get switchToDarkTheme;
 
-  /// التبديل إلى الوضع الفاتح
+  /// No description provided for @del.
   ///
-  /// In ar, this message translates to:
-  /// **'التبديل إلى الوضع الفاتح'**
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get del;
+
+  /// No description provided for @cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
+
+  /// No description provided for @switchToLightTheme.
+  ///
+  /// In en, this message translates to:
+  /// **'Switch to Light Mode'**
   String get switchToLightTheme;
 
-  /// حالة التطبيق عند عدم الاتصال بالإنترنت
+  /// No description provided for @appOffLine.
   ///
-  /// In ar, this message translates to:
-  /// **'تضامن دون إنترنت'**
+  /// In en, this message translates to:
+  /// **'Tadamon Offline'**
   String get appOffLine;
 
-  /// رسالة عدم الاتصال بالإنترنت
+  /// No description provided for @appOffLineMassageDontRunning.
   ///
-  /// In ar, this message translates to:
-  /// **'التطبيق غير متصل.'**
+  /// In en, this message translates to:
+  /// **'The application is not connected.'**
   String get appOffLineMassageDontRunning;
 
-  /// رسالة نجاح تشغيل التطبيق
+  /// No description provided for @appOnLineMassageRunning.
   ///
-  /// In ar, this message translates to:
-  /// **'التطبيق يعمل بنجاح.'**
+  /// In en, this message translates to:
+  /// **'The application is running successfully.'**
   String get appOnLineMassageRunning;
 
-  /// تحميل بيانات التطبيق دون اتصال
+  /// No description provided for @appOflineLoading.
   ///
-  /// In ar, this message translates to:
-  /// **'انتظر ...'**
+  /// In en, this message translates to:
+  /// **'Wait...'**
   String get appOflineLoading;
 
-  /// تحميل قائمة المنتجات
+  /// No description provided for @enableOnline.
   ///
-  /// In ar, this message translates to:
-  /// **'تحميل قائمة المنتجات'**
+  /// In en, this message translates to:
+  /// **'Load Product List'**
   String get enableOnline;
 
-  /// رسالة عند تشغيل التطبيق بدون إنترنت
+  /// No description provided for @enableOnlineMassage.
   ///
-  /// In ar, this message translates to:
-  /// **'تشغيل التطبيق بدون إنترنت.'**
+  /// In en, this message translates to:
+  /// **'Running the application offline.'**
   String get enableOnlineMassage;
 
-  /// حذف السجلات
+  /// No description provided for @clearLogs.
   ///
-  /// In ar, this message translates to:
-  /// **'حذف السجلات'**
+  /// In en, this message translates to:
+  /// **'Clear Logs'**
   String get clearLogs;
 
-  /// مسح سجلات المنتجات في التطبيق
+  /// No description provided for @clearLogsMassage.
   ///
-  /// In ar, this message translates to:
-  /// **'مسح سجلات المنتجات في التطبيق.'**
+  /// In en, this message translates to:
+  /// **'Clear product logs in the application.'**
   String get clearLogsMassage;
 
-  /// الأسئلة الشائعة
+  /// No description provided for @howToUse.
   ///
-  /// In ar, this message translates to:
-  /// **'الأسئلة الشائعة'**
+  /// In en, this message translates to:
+  /// **'FAQ'**
   String get howToUse;
 
-  /// طريقة استخدام التطبيق
+  /// No description provided for @howToUseMassage.
   ///
-  /// In ar, this message translates to:
-  /// **'تعرف على طريقة استخدام التطبيق.'**
+  /// In en, this message translates to:
+  /// **'Learn how to use the application.'**
   String get howToUseMassage;
 
-  /// الإبلاغ عن منتج
+  /// No description provided for @reportProduct.
   ///
-  /// In ar, this message translates to:
-  /// **'الإبلاغ عن منتج'**
+  /// In en, this message translates to:
+  /// **'Report a Product'**
   String get reportProduct;
 
-  /// مساعدة في تحسين التطبيق
+  /// No description provided for @reportProductMassage.
   ///
-  /// In ar, this message translates to:
-  /// **'ساعدنا في تحسين التطبيق.'**
+  /// In en, this message translates to:
+  /// **'Help us improve the application.'**
   String get reportProductMassage;
 
-  /// اختبار
+  /// No description provided for @test.
   ///
-  /// In ar, this message translates to:
-  /// **'تجريبي'**
+  /// In en, this message translates to:
+  /// **'Test'**
   String get test;
 
-  /// عنوان تفاصيل المنتج
+  /// No description provided for @sheetTitleProductInfo.
   ///
-  /// In ar, this message translates to:
-  /// **'تفاصيل المنتج'**
+  /// In en, this message translates to:
+  /// **'Product Details'**
   String get sheetTitleProductInfo;
 
-  /// اسم المطور
+  /// No description provided for @developer.
   ///
-  /// In ar, this message translates to:
-  /// **'المطور'**
+  /// In en, this message translates to:
+  /// **'Developer'**
   String get developer;
 
-  /// اسم المطور بالكامل
+  /// No description provided for @mostafaMahmoud.
   ///
-  /// In ar, this message translates to:
+  /// In en, this message translates to:
   /// **'Mostafa Mahmoud'**
   String get mostafaMahmoud;
 
-  /// زر قراءة مستند المشروع
+  /// No description provided for @readMe.
   ///
-  /// In ar, this message translates to:
+  /// In en, this message translates to:
   /// **'ReadMe'**
   String get readMe;
 
-  /// رابط إلى مستودع التطبيق على جيت هاب
+  /// No description provided for @readMeMassage.
   ///
-  /// In ar, this message translates to:
-  /// **'رابط إلى مستودع التطبيق على جيت هاب.'**
+  /// In en, this message translates to:
+  /// **'Link to the application repository on GitHub.'**
   String get readMeMassage;
 
-  /// آخر التحديثات
+  /// No description provided for @letastUpdate.
   ///
-  /// In ar, this message translates to:
-  /// **'آخر التحديثات'**
+  /// In en, this message translates to:
+  /// **'Latest Updates'**
   String get letastUpdate;
 
-  /// تفاصيل آخر تحديث
+  /// No description provided for @letestUpdateMassage.
   ///
-  /// In ar, this message translates to:
-  /// **'اطلع على التحديثات وسجل التغييرات.'**
+  /// In en, this message translates to:
+  /// **'Check for updates and changelog.'**
   String get letestUpdateMassage;
 
-  /// إنشاء تذكرة على جيت هاب
+  /// No description provided for @githubTiket.
   ///
-  /// In ar, this message translates to:
-  /// **'تذكرة على جيت هاب'**
+  /// In en, this message translates to:
+  /// **'GitHub Ticket'**
   String get githubTiket;
 
-  /// الإبلاغ عن خطأ أو اقتراح ميزة جديدة
+  /// No description provided for @githubTiketMassage.
   ///
-  /// In ar, this message translates to:
-  /// **'الإبلاغ عن خطأ أو اقتراح ميزة جديدة.'**
+  /// In en, this message translates to:
+  /// **'Report a bug or suggest a new feature.'**
   String get githubTiketMassage;
 
-  /// قناة تلغرام
+  /// No description provided for @telegramChannel.
   ///
-  /// In ar, this message translates to:
-  /// **'قناة تلغرام'**
+  /// In en, this message translates to:
+  /// **'Telegram Channel'**
   String get telegramChannel;
 
-  /// رابط إلى قناة تلغرام
+  /// No description provided for @telegramChannelMassage.
   ///
-  /// In ar, this message translates to:
-  /// **'رابط إلى قناة تلغرام.'**
+  /// In en, this message translates to:
+  /// **'Link to the Telegram channel.'**
   String get telegramChannelMassage;
 
-  /// صفحة معلومات عن التطبيق
+  /// No description provided for @about.
   ///
-  /// In ar, this message translates to:
-  /// **'معلومات عن التطبيق'**
+  /// In en, this message translates to:
+  /// **'About the App'**
   String get about;
 
-  /// حول تطبيق تضامن
+  /// No description provided for @aboutTadamon.
   ///
-  /// In ar, this message translates to:
-  /// **'حول تطبيق تضامن.'**
+  /// In en, this message translates to:
+  /// **'About Tadamon App.'**
   String get aboutTadamon;
 
-  /// زر التواصل مع المطور
+  /// No description provided for @contactDev.
   ///
-  /// In ar, this message translates to:
-  /// **'رسالة من المطور'**
+  /// In en, this message translates to:
+  /// **'Message from the Developer'**
   String get contactDev;
 
-  /// رسالة المطور
+  /// No description provided for @devMassage.
   ///
-  /// In ar, this message translates to:
-  /// **'لا توجد رسالة حالياً.'**
+  /// In en, this message translates to:
+  /// **'No message at the moment.'**
   String get devMassage;
 
-  /// شكر من المطور
+  /// No description provided for @devThx.
   ///
-  /// In ar, this message translates to:
-  /// **'شكراً لاستخدام تطبيق تضامن.'**
+  /// In en, this message translates to:
+  /// **'Thank you for using the Tadamon app.'**
   String get devThx;
 
-  /// التبرع للمطور
+  /// No description provided for @devDonate.
   ///
-  /// In ar, this message translates to:
-  /// **'ادعم المطور.'**
+  /// In en, this message translates to:
+  /// **'Support the developer.'**
   String get devDonate;
 
-  /// طرق التواصل مع المطور
+  /// No description provided for @contactDevMassage.
   ///
-  /// In ar, this message translates to:
-  /// **'تابعني على مواقع التواصل الاجتماعي.'**
+  /// In en, this message translates to:
+  /// **'Follow me on social media.'**
   String get contactDevMassage;
 
-  /// زر الإغلاق
+  /// No description provided for @exportLogs.
   ///
-  /// In ar, this message translates to:
-  /// **'إغلاق'**
+  /// In en, this message translates to:
+  /// **'Export Logs'**
+  String get exportLogs;
+
+  /// No description provided for @exportLogsSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'This will export all your scanned product logs.'**
+  String get exportLogsSummary;
+
+  /// No description provided for @exportAsPdf.
+  ///
+  /// In en, this message translates to:
+  /// **'Export as PDF'**
+  String get exportAsPdf;
+
+  /// No description provided for @exportAsCsv.
+  ///
+  /// In en, this message translates to:
+  /// **'Export as CSV'**
+  String get exportAsCsv;
+
+  /// No description provided for @exportAsJson.
+  ///
+  /// In en, this message translates to:
+  /// **'Export as JSON'**
+  String get exportAsJson;
+
+  /// No description provided for @pdfSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Export logs as a PDF file.'**
+  String get pdfSubtitle;
+
+  /// No description provided for @csvSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Export logs as a CSV file.'**
+  String get csvSubtitle;
+
+  /// No description provided for @jsonSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Export logs as a JSON file.'**
+  String get jsonSubtitle;
+
+  /// No description provided for @dataPreview.
+  ///
+  /// In en, this message translates to:
+  /// **'Data Preview'**
+  String get dataPreview;
+
+  /// No description provided for @totalLogs.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Logs'**
+  String get totalLogs;
+
+  /// No description provided for @period.
+  ///
+  /// In en, this message translates to:
+  /// **'Period'**
+  String get period;
+
+  /// No description provided for @close.
+  ///
+  /// In en, this message translates to:
+  /// **'Close'**
   String get close;
 }
 
@@ -430,7 +512,7 @@ class _AppLocalizationsDelegate
 
   @override
   bool isSupported(Locale locale) =>
-      <String>['ar'].contains(locale.languageCode);
+      <String>['ar', 'en'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
@@ -441,6 +523,8 @@ AppLocalizations lookupAppLocalizations(Locale locale) {
   switch (locale.languageCode) {
     case 'ar':
       return AppLocalizationsAr();
+    case 'en':
+      return AppLocalizationsEn();
   }
 
   throw FlutterError(

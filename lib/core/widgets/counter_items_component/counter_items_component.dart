@@ -134,7 +134,7 @@ class _CounterItemsComponentState extends State<CounterItemsComponent>
           child: Icon(
             widget.icon,
             size: SenseiConst.iconSize,
-            color: Theme.of(context).colorScheme.onPrimary,
+            color: Theme.of(context).colorScheme.onPrimaryContainer,
           ),
         ),
         const SizedBox(height: 4),

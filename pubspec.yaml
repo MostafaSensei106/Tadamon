@@ -11,9 +11,11 @@ environment:
   sdk: ^3.10.1
 
 dependencies:
+  bidi: ^2.0.9
   cached_network_image: ^3.4.1
   cloud_firestore: ^6.0.0
   connectivity_plus: ^7.0.0
+  dartarabic: ^0.3.1
   equatable: ^2.0.5
   file_picker: ^10.1.2
   firebase_core: ^4.0.0
@@ -48,7 +50,6 @@ dev_dependencies:
   flutter_native_splash: ^2.4.4
   flutter_test:
     sdk: flutter
-  intl_utils: ^2.8.8
   objectbox_generator: ^5.0.0
 
 flutter:
@@ -63,8 +64,3 @@ flutter:
     - family: ArabicFont
       fonts:
         - asset: assets/fonts/ar/Tajawal-Regular.ttf
-
-flutter_intl:
-  enabled: true
-  main_locale: ar
-  default_locale: ar

@@ -8,7 +8,7 @@ import '../../../../../core/widgets/app_toast/app_toast.dart';
 import '../../../../../core/widgets/button_components/icon_button_components/icon_button_filledtonal_component.dart'
     show IconButtonFilledTonalComponent;
 import '../../../../../core/widgets/text_filed_component/text_filed_component.dart';
-import '../../../../../generated/l10n.dart';
+import '../../../../../l10n/app_localizations.dart';
 import '../widget/chat_bubble.dart';
 import '../widget/chat_dev_app_bar.dart';
 
@@ -85,7 +85,7 @@ class _ChatWithDevState extends State<ChatWithDev>
 
   @override
   Widget build(final BuildContext context) => Scaffold(
-    appBar: ChatDevAppBar(title: S.of(context).mostafaMahmoud),
+    appBar: ChatDevAppBar(title: AppLocalizations.of(context)!.mostafaMahmoud),
     body: Column(
       children: [
         Expanded(
@@ -144,7 +144,7 @@ class _ChatWithDevState extends State<ChatWithDev>
                       onPressed: () {
                         sendMessage();
                       },
-                      color: Theme.of(context).colorScheme.secondaryFixed,
+                      // color: Theme.of(context).colorScheme.secondaryFixed,
                     ),
                   ),
                 ],

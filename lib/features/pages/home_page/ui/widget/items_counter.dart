@@ -6,7 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/config/const/sensei_const.dart';
 import '../../../../../core/widgets/counter_items_component/counter_items_component.dart';
-import '../../../../../generated/l10n.dart';
+import '../../../../../l10n/app_localizations.dart';
 import '../../../../counter_manager/logic/counter_cubit.dart';
 import '../../../../products_scanner/data/repository/fire_store_repositories.dart';
 import '../../../../products_scanner/data/repository/objectbox_repositories.dart';
@@ -48,14 +48,14 @@ class ItemsCounterView extends StatelessWidget {
         _buildStreamCounter(
           stream: ObjectboxRepository().getTadamonLogsProductsCount(),
           icon: Icons.qr_code_rounded,
-          title: S.of(context).scanBarcode,
+          title: AppLocalizations.of(context)!.scanBarcode,
           formatter: formatter!,
         ),
         SizedBox(width: SenseiConst.margin.w),
         _buildStreamCounter(
           stream: FireStoreRepository().getProductsCount(),
           icon: Icons.checklist_rounded,
-          title: S.of(context).supportedProducts,
+          title: AppLocalizations.of(context)!.supportedProducts,
           formatter: formatter,
         ),
       ],

@@ -73,6 +73,12 @@ class AppLocalizationsAr extends AppLocalizations {
   String get switchToDarkTheme => 'التبديل إلى الوضع الداكن';
 
   @override
+  String get del => 'حذف';
+
+  @override
+  String get cancel => 'إلغاء';
+
+  @override
   String get switchToLightTheme => 'التبديل إلى الوضع الفاتح';
 
   @override
@@ -167,6 +173,40 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get contactDevMassage => 'تابعني على مواقع التواصل الاجتماعي.';
+
+  @override
+  String get exportLogs => 'تصدير السجلات';
+
+  @override
+  String get exportLogsSummary =>
+      'سيؤدي هذا إلى تصدير كافة سجلات المنتجات الممسوحة ضوئيًا.';
+
+  @override
+  String get exportAsPdf => 'تصدير بصيغة PDF';
+
+  @override
+  String get exportAsCsv => 'تصدير بصيغة CSV';
+
+  @override
+  String get exportAsJson => 'تصدير بصيغة JSON';
+
+  @override
+  String get pdfSubtitle => 'مناسب للطباعة والمشاركة';
+
+  @override
+  String get csvSubtitle => 'للاستخدام مع Excel وجداول البيانات';
+
+  @override
+  String get jsonSubtitle => 'للمطورين والتكامل مع الأنظمة';
+
+  @override
+  String get dataPreview => 'معاينة البيانات';
+
+  @override
+  String get totalLogs => 'إجمالي السجلات';
+
+  @override
+  String get period => 'الفترة';
 
   @override
   String get close => 'إغلاق';

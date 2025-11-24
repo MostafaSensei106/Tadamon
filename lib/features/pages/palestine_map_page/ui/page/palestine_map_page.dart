@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/config/const/sensei_const.dart';
 import '../../../../../core/widgets/app_bar_component/side_page_app_bar.dart';
-import '../../../../../generated/l10n.dart';
+import '../../../../../l10n/app_localizations.dart';
 
 class PalestineMapPage extends StatelessWidget {
   const PalestineMapPage({super.key});
@@ -10,7 +10,7 @@ class PalestineMapPage extends StatelessWidget {
   @override
   Widget build(final BuildContext context) => Scaffold(
     appBar: SidePageAppBar(
-      title: S.of(context).palatineMap,
+      title: AppLocalizations.of(context)!.palatineMap,
       useBackButton: true,
     ),
     body: ClipRRect(

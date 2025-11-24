@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../../../../core/config/const/sensei_const.dart';
 import '../../../../../core/config/fonts/fonts.dart';
-import '../../../../../generated/l10n.dart';
+import '../../../../../l10n/app_localizations.dart';
 
 class HomeTip extends StatefulWidget {
   const HomeTip({super.key});
@@ -85,11 +85,11 @@ class HomeTipState extends State<HomeTip> with SingleTickerProviderStateMixin {
   /// [Theme.of(context).colorScheme.onSecondaryContainer].
   ///
   /// The [ListTile] widget has a [Text] widget as title, which is configured
-  /// with the [S.of(context).AppName] text, and a style of a [TextStyle] with
+  /// with the [AppLocalizations.of(context).AppName] text, and a style of a [TextStyle] with
   /// a color of [Theme.of(context).colorScheme.onSecondaryContainer].
   ///
   /// The [ListTile] widget has a [Text] widget as subtitle, which is
-  /// configured with the [S.of(context).AppDescription] text.
+  /// configured with the [AppLocalizations.of(context).AppDescription] text.
   Widget build(final BuildContext context) => FadeTransition(
     opacity: _animation,
     child: SizeTransition(
@@ -116,9 +116,9 @@ class HomeTipState extends State<HomeTip> with SingleTickerProviderStateMixin {
               size: SenseiConst.iconSize,
               color: Theme.of(context).colorScheme.onSurface,
             ),
-            title: Text(S.of(context).appName),
+            title: Text(AppLocalizations.of(context)!.appName),
             subtitle: Text(
-              S.of(context).appDescription,
+              AppLocalizations.of(context)!.appDescription,
               style: AppTextStyle(context).subtitle,
             ),
           ),

@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/controller/network_controller/network_controller.dart';
 import '../../../../../core/widgets/app_toast/app_toast.dart';
 import '../../../../../core/widgets/bottom_sheet/ui/model_bottom_sheet.dart';
-import '../../../../../generated/l10n.dart';
+import '../../../../../l10n/app_localizations.dart';
 import '../../../../pages/log_page/data/models/scanned_logs_product_model.dart';
 import '../../../data/models/product_model.dart';
 import '../../../data/repository/fire_store_repositories.dart';
@@ -30,7 +30,7 @@ class ProductScanCubit extends Cubit<ProductScanState> {
   ) {
     showBottomSheet(
       context,
-      S.of(context).sheetTitleProductInfo,
+      AppLocalizations.of(context)!.sheetTitleProductInfo,
       child: ProductListView(product: product),
     );
     final scannedProductToLogs = ScannedLogsProductModel.fromProduct(product);

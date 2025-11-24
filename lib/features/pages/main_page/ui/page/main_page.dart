@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/config/const/sensei_const.dart';
 import '../../../../../core/widgets/app_bar_component/app_bar.dart';
 import '../../../../../core/widgets/app_drawer/widgets/drawer.dart';
-import '../../../../../generated/l10n.dart';
+import '../../../../../l10n/app_localizations.dart';
 import '../../logic/cubit/main_page_cubit.dart';
 import '../../logic/cubit/main_page_state.dart';
 import '../widget/google_nav_bar/google_nav_bar.dart';
@@ -95,11 +95,11 @@ class _MainPageState extends State<MainPage>
   String _getAppBarTitle(final AppPage page) {
     switch (_pageCubit.state.currentPage.index) {
       case 0:
-        return S.of(context).home;
+        return AppLocalizations.of(context)!.home;
       case 1:
-        return S.of(context).search;
+        return AppLocalizations.of(context)!.search;
       case 2:
-        return S.of(context).logs;
+        return AppLocalizations.of(context)!.logs;
       default:
         return 'Unknown Page';
     }

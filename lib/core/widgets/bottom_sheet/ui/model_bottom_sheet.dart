@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../generated/l10n.dart';
+import '../../../../l10n/app_localizations.dart';
 import '../../../config/const/sensei_const.dart';
 import '../../button_components/textbutton_components/text_button_component.dart'
     show TextButtonComponent;
@@ -86,7 +86,7 @@ Widget _buildBottomSheet(
                     children: [
                       TextButtonComponent(
                         useInBorderRadius: true,
-                        text: S.of(context).close,
+                        text: AppLocalizations.of(context)!.close,
                         onPressed: () => {
                           HapticFeedback.vibrate(),
                           Navigator.of(context).pop(),

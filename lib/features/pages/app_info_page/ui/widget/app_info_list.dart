@@ -130,7 +130,7 @@ class _AppInfoListState extends State<AppInfoList>
                 child: Column(
                   children: [
                     ListTileIconComponent(
-                      iconLeading: _getIcons(key),
+                      icon: _getIcons(key),
                       title: _getTitle(key),
                       subtitle: value,
                       groupType: index == 0

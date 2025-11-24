@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart' hide showBottomSheet;
-import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../features/pdf_export/logic/cubit/pdf_export_cubit.dart';
-import '../../../../features/pdf_export/logic/cubit/pdf_export_state.dart';
+import '../../../../features/pdf_export/widgets/export_logs_sheet_content.dart';
 import '../../../../features/products_scanner/data/repository/objectbox_repositories.dart';
 import '../../../../features/report_products/widgets/report_products_seet_content/report_product_sheet_content.dart';
-import '../../../../generated/l10n.dart';
+import '../../../../l10n/app_localizations.dart';
 import '../../../config/const/app_enums.dart';
 import '../../../routing/routes.dart';
 import '../../bottom_sheet/ui/model_bottom_sheet.dart';
-import '../../dilog_components/dilog_waiting_component.dart';
+import '../../button_components/textbutton_components/text_icon_button_component.dart';
+import '../../dialog_components/dialog_ask_user_components.dart';
 import '../../list_tile_components/list_tile_icon_component.dart';
 
 class ActionsSection extends StatelessWidget {
@@ -39,9 +38,9 @@ class ActionsSection extends StatelessWidget {
 
   Widget _buildHowToUse(final BuildContext context) => ListTileIconComponent(
     groupType: ListTileGroupType.top,
-    iconLeading: Icons.question_answer_outlined,
-    title: S.of(context).howToUse,
-    subtitle: S.of(context).howToUseMassage,
+    icon: Icons.question_answer_outlined,
+    title: AppLocalizations.of(context)!.howToUse,
+    subtitle: AppLocalizations.of(context)!.howToUseMassage,
     trailing: Icon(
       Icons.arrow_forward_ios_rounded,
       color: Theme.of(context).colorScheme.onSurface.withAlpha(0x80),
@@ -55,53 +54,64 @@ class ActionsSection extends StatelessWidget {
   Widget _buildReportProduct(final BuildContext context) =>
       ListTileIconComponent(
         groupType: ListTileGroupType.bottom,
-        iconLeading: Icons.production_quantity_limits_outlined,
-        title: S.of(context).reportProduct,
-        subtitle: S.of(context).reportProductMassage,
+        icon: Icons.production_quantity_limits_outlined,
+        title: AppLocalizations.of(context)!.reportProduct,
+        subtitle: AppLocalizations.of(context)!.reportProductMassage,
         onTap: () {
           Navigator.pop(context);
           showBottomSheet(
             context,
-            'بلغ عن منتج',
+            AppLocalizations.of(context)!.reportProduct,
             child: const ReportProductSheetContent(),
           );
         },
       );
 
   Widget _buildClearLogs(final BuildContext context) => ListTileIconComponent(
-    iconLeading: Icons.clear_all_rounded,
-    title: S.of(context).clearLogs,
-    subtitle: S.of(context).clearLogs,
-    onTap: () {
-      Navigator.of(context).pop();
-      ObjectboxRepository().clearTadamonLogsFromLocalDB();
+    icon: Icons.clear_all_rounded,
+    title: AppLocalizations.of(context)!.clearLogs,
+    subtitle: AppLocalizations.of(context)!.clearLogsMassage,
+    onTap: () async {
+      await DialogAskUserComponents(
+        title: AppLocalizations.of(context)!.clearLogs,
+        question: AppLocalizations.of(context)!.clearLogsMassage,
+        icon: Icons.clear_all_rounded,
+        actions: [
+          TextIconButtonComponent(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            text: AppLocalizations.of(context)!.close,
+            useInBorderRadius: true,
+            icon: Icons.close_outlined,
+          ),
+          TextIconButtonComponent(
+            onPressed: () async {
+              ObjectboxRepository().clearTadamonLogsFromLocalDB();
+              Navigator.of(context).pop();
+            },
+            text: AppLocalizations.of(context)!.del,
+            useInBorderRadius: true,
+            icon: Icons.clear_all_rounded,
+          ),
+        ],
+      ).show(context);
     },
     groupType: ListTileGroupType.top,
   );
 
-  Widget _buildExportLogs(final BuildContext context) => BlocProvider(
-    create: (_) => PdfExportCubit(),
-    child: BlocConsumer<PdfExportCubit, PdfExportState>(
-      listener: (final context, final state) {},
-      builder: (final context, final state) {
-        if (state is PdfExportLoading) {
-          return const DilogWatingComponent(
-            icon: Icons.picture_as_pdf_rounded,
-            title: 'جاري تصدير السجلات',
-            message: 'الرجاء الانتظار',
-          );
-        }
-        return ListTileIconComponent(
-          iconLeading: Icons.picture_as_pdf_rounded,
-          title: 'تصدير السجلات',
-          subtitle: 'تصطير السجلات علي شكل PDF',
-          onTap: () {
-            Navigator.of(context).pop();
-            context.read<PdfExportCubit>().exportPdf();
-          },
-          groupType: ListTileGroupType.bottom,
-        );
-      },
-    ),
+  Widget _buildExportLogs(final BuildContext context) => ListTileIconComponent(
+    icon: Icons.picture_as_pdf_rounded,
+    title: AppLocalizations.of(context)!.exportLogs,
+    subtitle: AppLocalizations.of(context)!.exportLogsSummary,
+    onTap: () {
+      Navigator.of(context).pop();
+      showBottomSheet(
+        context,
+        AppLocalizations.of(context)!.exportLogs,
+        child: const ExportLogsSheetContent(),
+      );
+    },
+    groupType: ListTileGroupType.bottom,
   );
 }

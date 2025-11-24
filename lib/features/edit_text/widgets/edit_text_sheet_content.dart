@@ -8,7 +8,7 @@ import '../../../core/widgets/bottom_sheet/ui/model_bottom_sheet.dart'
 import '../../../core/widgets/button_components/elevated_button_components/elevated_icon_button_component.dart';
 import '../../../core/widgets/text_filed_component/text_filed_component.dart'
     show TextFieldComponent;
-import '../../../generated/l10n.dart' show S;
+import '../../../l10n/app_localizations.dart';
 
 class EditTextSheetContent extends StatefulWidget {
   const EditTextSheetContent({super.key});
@@ -19,7 +19,7 @@ class EditTextSheetContent extends StatefulWidget {
   static void showEditTextBottomSheet(final BuildContext context) {
     showBottomSheet(
       context,
-      S.of(context).editText,
+      AppLocalizations.of(context)!.editText,
       child: const EditTextSheetContent(),
     );
   }
