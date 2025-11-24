@@ -22,43 +22,72 @@ class DataManagementSection extends StatelessWidget {
 class DataManagementView extends StatelessWidget {
   const DataManagementView({super.key});
 
+  void _showWaitingDialog(
+    final BuildContext context,
+    final String title,
+    final String message,
+    final IconData icon,
+  ) {
+    DialogWatingComponent(
+      icon: icon,
+      title: title,
+      message: message,
+    ).show(context);
+  }
+
   @override
   Widget build(final BuildContext context) =>
-      BlocListener<LocalDBCubit, LocalDBState>(
+      BlocConsumer<LocalDBCubit, LocalDBState>(
         listener: (final context, final state) {
           if (state is LoclaDBDataFetchingFromFireStore) {
-            const DialogWatingComponent(
-              icon: Icons.cloud_download_outlined,
-              title: 'جاري استيراد البيانات',
-              message: 'يرجى الانتظار حتى تكتمل المزامنة...',
-            ).show(context);
+            _showWaitingDialog(
+              context,
+              'جاري استيراد البيانات',
+              'يرجى الانتظار حتى تكتمل المزامنة...',
+              Icons.cloud_download_outlined,
+            );
           } else if (state is LoclaDBDataFetchingFromFireStoreSuccess) {
+            if (!context.mounted) {
+              return;
+            }
             Navigator.of(context).pop();
+            Navigator.of(context).pop();
+
             showSuccessToast('تم تهيئة البيانات بنجاح.');
           } else if (state is LoclaDBDataFetchingFromFireStoreFailure) {
+            if (!context.mounted) {
+              return;
+            }
             Navigator.of(context).pop();
             Navigator.of(context).pop();
 
             showErrorToast('حدث خطأ في استيراد البيانات.');
           } else if (state is LoclaDBDataBaseDeleting) {
-            const DialogWatingComponent(
-              icon: Icons.delete_forever_outlined,
-              title: 'جاري حذف البيانات',
-              message: 'يرجى الانتظار حتى تكتمل المزامنة...',
-            ).show(context);
+            _showWaitingDialog(
+              context,
+              'جاري حذف البيانات',
+              'يرجى الانتظار حتى تكتمل المزامنة...',
+              Icons.delete_forever_outlined,
+            );
           } else if (state is LoclaDBDataDeleteSuccess) {
+            if (!context.mounted) {
+              return;
+            }
             Navigator.of(context).pop();
             Navigator.of(context).pop();
 
             showSuccessToast('تم حذف البيانات بنجاح.');
           } else if (state is LoclaDBDataDeleteFailure) {
+            if (!context.mounted) {
+              return;
+            }
             Navigator.of(context).pop();
             Navigator.of(context).pop();
 
             showErrorToast('حدث خطأ في حذف البيانات.');
           }
         },
-        child: Column(
+        builder: (final context, final state) => Column(
           children: [
             _buildAppOffline(),
             _buildEnableOnline(),
