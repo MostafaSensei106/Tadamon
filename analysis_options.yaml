@@ -20,11 +20,11 @@ analyzer:
 
 linter:
   rules:
-    # تنسيق ونظافة الكود
     prefer_single_quotes: true
     file_names: true
+
     directives_ordering: true
-    sort_pub_dependencies: true
+    sort_pub_dependencies: false
     prefer_relative_imports: true
     unnecessary_this: true
     unnecessary_brace_in_string_interps: true
@@ -37,7 +37,6 @@ linter:
     avoid_print: true
     public_member_api_docs: false
 
-    # الثبات والأمان
     always_declare_return_types: true
     always_put_required_named_parameters_first: true
     avoid_annotating_with_dynamic: true
@@ -54,7 +53,6 @@ linter:
     prefer_final_fields: true
     prefer_final_locals: true
 
-    # الأداء
     prefer_const_constructors: true
     prefer_const_declarations: true
     prefer_const_literals_to_create_immutables: true
@@ -66,14 +64,19 @@ linter:
     sort_unnamed_constructors_first: true
     always_put_control_body_on_new_line: true
 
-    # أسلوب الكتابة
     avoid_positional_boolean_parameters: true
     prefer_expression_function_bodies: true
     omit_local_variable_types: true
 
-    # التنظيم والفهم
     depend_on_referenced_packages: true
     avoid_unused_constructor_parameters: true
     constant_identifier_names: false
     non_constant_identifier_names: false
-    
+
+    use_super_parameters: true
+    prefer_spread_collections: true
+    prefer_if_elements_to_conditional_expressions: true
+    prefer_for_elements_to_map_fromIterable: true
+    prefer_inlined_adds: true
+    prefer_iterable_whereType: true
+    prefer_null_aware_method_calls: true
