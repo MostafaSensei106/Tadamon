@@ -123,13 +123,8 @@ Widget build(final BuildContext context) =&gt; ScreenUtilInit(
         initialRoute: Routes.onBoarding,
         onGenerateRoute: appRouter.generateRoute,
         locale: const Locale(&#39;ar&#39;, &#39;EG&#39;),
-        supportedLocales: const [Locale(&#39;ar&#39;, &#39;EG&#39;)],
-        localizationsDelegates: const [
-          S.delegate,
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-        ],
+        supportedLocales: AppLocalizations.supportedLocales,
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
         localeResolutionCallback: (final locale, final supportedLocales) =&gt;
             const Locale(&#39;ar&#39;, &#39;EG&#39;),
         builder: (final context, final child) =&gt;

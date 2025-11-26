@@ -126,7 +126,7 @@ Widget build(final BuildContext context) =&gt; Container(
           child: BlocBuilder&lt;ProductScanCubit, ProductScanState&gt;(
             builder: (final context, final state) =&gt; HomeToolsComponent(
               icon: Icons.qr_code_rounded,
-              title: S.of(context).scanBarcode,
+              title: AppLocalizations.of(context)!.scanBarcode,
               onTapped: () =&gt; context
                   .read&lt;ProductScanCubit&gt;()
                   .scanBarcodeByCamera(context),
@@ -139,7 +139,7 @@ Widget build(final BuildContext context) =&gt; Container(
           child: BlocBuilder&lt;ProductScanCubit, ProductScanState&gt;(
             builder: (final context, final state) =&gt; HomeToolsComponent(
               icon: Icons.image_search_rounded,
-              title: S.of(context).imageAnalysis,
+              title: AppLocalizations.of(context)!.imageAnalysis,
               onTapped: () =&gt;
                   context.read&lt;ProductScanCubit&gt;().imageAnalysisScan(context),
             ),
@@ -148,7 +148,7 @@ Widget build(final BuildContext context) =&gt; Container(
         SizedBox(width: 8.w),
         HomeToolsComponent(
           icon: Icons.short_text_outlined,
-          title: S.of(context).editText,
+          title: AppLocalizations.of(context)!.editText,
           onTapped: () {
             HapticFeedback.vibrate();
             EditTextSheetContent.showEditTextBottomSheet(context);
@@ -157,7 +157,7 @@ Widget build(final BuildContext context) =&gt; Container(
         SizedBox(width: 8.w),
         HomeToolsComponent(
           icon: Icons.map_outlined,
-          title: S.of(context).palatineMap,
+          title: AppLocalizations.of(context)!.palatineMap,
           onTapped: () {
             HapticFeedback.vibrate();
             Navigator.pushNamed(context, Routes.palatineMap);
@@ -166,7 +166,7 @@ Widget build(final BuildContext context) =&gt; Container(
         SizedBox(width: 8.w),
         HomeToolsComponent(
           icon: Icons.volunteer_activism_outlined,
-          title: S.of(context).donate,
+          title: AppLocalizations.of(context)!.donate,
           onTapped: () {
             HapticFeedback.vibrate();
             DonationSheetContent.showDonationBottomSheet(context);

@@ -110,7 +110,7 @@ and</li>
   <pre class="language-dart"><code class="language-dart">@override
 Widget build(final BuildContext context) =&gt; Scaffold(
   appBar: SidePageAppBar(
-    title: S.of(context).palatineMap,
+    title: AppLocalizations.of(context)!.palatineMap,
     useBackButton: true,
   ),
   body: ClipRRect(

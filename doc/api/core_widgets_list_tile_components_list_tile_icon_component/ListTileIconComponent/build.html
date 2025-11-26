@@ -71,7 +71,7 @@
   <p>Builds a <a href="https://api.flutter.dev/flutter/widgets/Container-class.html">Container</a> widget with a <a href="https://api.flutter.dev/flutter/widgets/Column-class.html">Column</a> containing a <a href="https://api.flutter.dev/flutter/material/Material-class.html">Material</a>
 widget wrapping a <a href="https://api.flutter.dev/flutter/material/ListTile-class.html">ListTile</a>. The appearance and behavior of the
 <a href="https://api.flutter.dev/flutter/material/ListTile-class.html">ListTile</a> are determined by the provided parameters. It includes
-customizable <a href="../../core_widgets_list_tile_components_list_tile_icon_component/ListTileIconComponent/iconLeading.html">iconLeading</a>, <a href="../../core_widgets_list_tile_components_list_tile_icon_component/ListTileIconComponent/title.html">title</a>, <a href="../../core_widgets_list_tile_components_list_tile_icon_component/ListTileIconComponent/subtitle.html">subtitle</a>, and <a href="../../core_widgets_list_tile_components_list_tile_icon_component/ListTileIconComponent/trailing.html">trailing</a> widgets.
+customizable <a href="../../core_widgets_list_tile_components_list_tile_icon_component/ListTileIconComponent/icon.html">icon</a>, <a href="../../core_widgets_list_tile_components_list_tile_icon_component/ListTileIconComponent/title.html">title</a>, <a href="../../core_widgets_list_tile_components_list_tile_icon_component/ListTileIconComponent/subtitle.html">subtitle</a>, and <a href="../../core_widgets_list_tile_components_list_tile_icon_component/ListTileIconComponent/trailing.html">trailing</a> widgets.
 The <a href="../../core_widgets_list_tile_components_list_tile_icon_component/ListTileIconComponent/onTap.html">onTap</a> callback is triggered when the <a href="https://api.flutter.dev/flutter/material/InkWell-class.html">InkWell</a> is tapped.
 The border radius is configured based on the <a href="../../core_widgets_list_tile_components_list_tile_icon_component/ListTileIconComponent/groupType.html">groupType</a> and
 <a href="../../core_widgets_list_tile_components_list_tile_icon_component/ListTileIconComponent/useinBorderRadius.html">useinBorderRadius</a> properties, and the background color is set
@@ -86,7 +86,7 @@ according to the current theme's color scheme.</p>
 &#47;&#47;&#47; Builds a [Container] widget with a [Column] containing a [Material]
 &#47;&#47;&#47; widget wrapping a [ListTile]. The appearance and behavior of the
 &#47;&#47;&#47; [ListTile] are determined by the provided parameters. It includes
-&#47;&#47;&#47; customizable [iconLeading], [title], [subtitle], and [trailing] widgets.
+&#47;&#47;&#47; customizable [icon], [title], [subtitle], and [trailing] widgets.
 &#47;&#47;&#47; The [onTap] callback is triggered when the [InkWell] is tapped.
 &#47;&#47;&#47; The border radius is configured based on the [groupType] and
 &#47;&#47;&#47; [useinBorderRadius] properties, and the background color is set
@@ -118,7 +118,7 @@ Widget build(final BuildContext context) {
               padding: const EdgeInsets.all(SenseiConst.padding),
               color: Theme.of(context).colorScheme.surfaceContainerHigh,
               useInBorderRadius: true,
-              child: Icon(iconLeading, size: SenseiConst.iconSize),
+              child: Icon(icon, size: SenseiConst.iconSize),
             ),
             title: Text(title),
             subtitle: subtitle != null

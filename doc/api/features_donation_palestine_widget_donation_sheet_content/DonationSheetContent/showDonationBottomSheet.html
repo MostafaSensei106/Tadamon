@@ -87,7 +87,7 @@ a bottom padding of 16 logical pixels.</p>
   <pre class="language-dart"><code class="language-dart">static void showDonationBottomSheet(final BuildContext context) {
   showBottomSheet(
     context,
-    S.of(context).donate,
+    AppLocalizations.of(context)!.donate,
     child: const DonationSheetContent(),
   );
 }</code></pre>

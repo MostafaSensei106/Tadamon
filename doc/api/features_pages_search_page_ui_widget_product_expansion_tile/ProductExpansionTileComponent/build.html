@@ -150,7 +150,7 @@ Widget build(final BuildContext context) =&gt; Container(
     ),
     children: [
       ListTileIconComponent(
-        iconLeading: Icons.qr_code_rounded,
+        icon: Icons.qr_code_rounded,
         title: &#39;الرقم التسلسلي&#39;,
         subtitle: product.serialNumber,
         groupType: ListTileGroupType.top,
@@ -161,25 +161,25 @@ Widget build(final BuildContext context) =&gt; Container(
         ),
       ),
       ListTileIconComponent(
-        iconLeading: Icons.label_outline_rounded,
+        icon: Icons.label_outline_rounded,
         title: &#39;اسم المنتج&#39;,
         subtitle: product.name,
         groupType: ListTileGroupType.middle,
       ),
       ListTileIconComponent(
-        iconLeading: Icons.business_rounded,
+        icon: Icons.business_rounded,
         title: &#39;الشركة المصنعة&#39;,
         subtitle: product.manufacturer,
         groupType: ListTileGroupType.middle,
       ),
       ListTileIconComponent(
-        iconLeading: Icons.category_outlined,
+        icon: Icons.category_outlined,
         title: &#39;التصنيف&#39;,
         subtitle: product.category,
         groupType: ListTileGroupType.middle,
       ),
       ListTileIconComponent(
-        iconLeading: Icons.handshake_outlined,
+        icon: Icons.handshake_outlined,
         title: &#39;الحالة&#39;,
         subtitle: product.trusted ? &#39;لا يدعم الكيان&#39; : &#39;مقاطعة&#39;,
         groupType: ListTileGroupType.middle,

@@ -109,7 +109,10 @@ and</li>
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">@override
 Widget build(final BuildContext context) =&gt; Scaffold(
-  appBar: AppBar(title: Text(S.of(context).noPage), centerTitle: true),
+  appBar: AppBar(
+    title: Text(AppLocalizations.of(context)!.noPage),
+    centerTitle: true,
+  ),
   body: Center(
     child: Padding(
       padding: const EdgeInsets.all(16.0),
@@ -123,7 +126,7 @@ Widget build(final BuildContext context) =&gt; Scaffold(
           ),
           const SizedBox(height: 20),
           Text(
-            S.of(context).noRoutes,
+            AppLocalizations.of(context)!.noRoutes,
             style: Theme.of(context).textTheme.headlineSmall?.copyWith(
               fontWeight: FontWeight.bold,
               color: Theme.of(context).colorScheme.error,
@@ -151,7 +154,7 @@ Widget build(final BuildContext context) =&gt; Scaffold(
               ),
             ),
             child: Text(
-              S.of(context).back,
+              AppLocalizations.of(context)!.back,
               style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,

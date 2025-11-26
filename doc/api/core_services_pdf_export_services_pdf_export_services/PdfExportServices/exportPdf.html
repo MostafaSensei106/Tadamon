@@ -54,7 +54,7 @@
 
     <section class="multi-line-signature">
       
-<span class="returntype"><a href="https://api.flutter.dev/flutter/flutter_test/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">void</span>&gt;</span></span>
+<span class="returntype"><a href="https://api.flutter.dev/flutter/flutter_test/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://pub.dev/documentation/pdf/3.11.3/widgets/Document-class.html">Document</a></span>&gt;</span></span>
 <span class="name ">exportPdf</span>(<wbr><ol class="parameter-list single-line"> <li><span class="parameter" id="exportPdf-param-dataList"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../features_pages_log_page_data_models_scanned_logs_product_model/ScannedLogsProductModel-class.html">ScannedLogsProductModel</a></span>&gt;</span></span> <span class="parameter-name">dataList</span></span></li>
 </ol>)
 
@@ -62,77 +62,80 @@
 
     </section>
     
-<section class="desc markdown">
-  <p>Exports the given list of <a href="../../features_pages_log_page_data_models_scanned_logs_product_model/ScannedLogsProductModel-class.html">ScannedLogsProductModel</a> to a pdf file named
-"Tadamon_Logs.pdf" in the app's document directory, and
-opens it afterwards.</p>
-<p>The pdf file will contain a table with the headers as the keys of the
-first element of the list, and the values as the rows of the table.</p>
-<p>If the operation fails, a toast error message will be shown.</p>
-</section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Future&lt;void&gt; exportPdf(final List&lt;ScannedLogsProductModel&gt; dataList) async {
-  try {
-    final fileName = &#39;Tadamon_Logs_${DateTime.now().formatted}&#39;;
-    final pdf = pw.Document();
-    final headers = dataList.first.toMap().keys.toList();
-    final data = dataList
-        .map((final item) =&gt; item.toMap().values.toList())
-        .toList();
+  <pre class="language-dart"><code class="language-dart">Future&lt;pw.Document&gt; exportPdf(
+  final List&lt;ScannedLogsProductModel&gt; dataList,
+) async {
+  final pdf = pw.Document();
+  final headers = dataList.first
+      .toMap()
+      .keys
+      .map(
+        (final key) =&gt; wrapWithUnicodeBidi(DartArabic.normalizeLetters(key)),
+      )
+      .toList();
+  final data = dataList
+      .map(
+        (final item) =&gt; item
+            .toMap()
+            .values
+            .map(
+              (final value) =&gt; wrapWithUnicodeBidi(
+                DartArabic.normalizeLetters(value.toString()),
+              ),
+            )
+            .toList(),
+      )
+      .toList();
 
-    final imageBytes = (await rootBundle.load(
-      SenseiConst.tadamonAppImage,
-    )).buffer.asUint8List();
-    final pw.ImageProvider image = pw.MemoryImage(imageBytes);
+  final imageBytes = (await rootBundle.load(
+    SenseiConst.tadamonAppImage,
+  )).buffer.asUint8List();
+  final pw.ImageProvider image = pw.MemoryImage(imageBytes);
 
-    pdf.addPage(
-      pw.Page(
-        build: (final context) =&gt; pw.Column(
-          crossAxisAlignment: pw.CrossAxisAlignment.start,
-          children: [
-            pw.Center(child: pw.Image(image, width: 150, height: 150)),
-            pw.SizedBox(height: 20),
-            pw.Center(
-              child: pw.Text(
-                &#39;تقرير السجلات&#39;,
-                style: pw.TextStyle(
-                  fontSize: 26,
-                  fontWeight: pw.FontWeight.bold,
-                ),
+  final fontData = await rootBundle.load(
+    &#39;assets&#47;fonts&#47;ar&#47;Tajawal-Regular.ttf&#39;,
+  );
+  final ttf = pw.Font.ttf(fontData);
+
+  pdf.addPage(
+    pw.Page(
+      theme: pw.ThemeData.withFont(base: ttf),
+      build: (final context) =&gt; pw.Column(
+        crossAxisAlignment: pw.CrossAxisAlignment.start,
+        children: [
+          pw.Center(child: pw.Image(image, width: 150, height: 150)),
+          pw.SizedBox(height: 20),
+          pw.Center(
+            child: pw.Text(
+              wrapWithUnicodeBidi(
+                DartArabic.normalizeLetters(&#39;تقرير السجلات&#39;),
+              ),
+              style: pw.TextStyle(
+                fontSize: 26,
+                fontWeight: pw.FontWeight.bold,
               ),
             ),
-            pw.SizedBox(height: 20),
-            pw.TableHelper.fromTextArray(
-              headers: headers,
-              headerStyle: const pw.TextStyle(fontSize: 14),
-              headerDecoration: const pw.BoxDecoration(),
-              data: data
-                  .map(
-                    (final row) =&gt;
-                        row.map((final cell) =&gt; cell.toString()).toList(),
-                  )
-                  .toList(),
-              border: pw.TableBorder.symmetric(),
-              cellAlignment: pw.Alignment.center,
-              cellStyle: const pw.TextStyle(fontSize: 12),
-            ),
-          ],
-        ),
+          ),
+          pw.SizedBox(height: 20),
+          pw.TableHelper.fromTextArray(
+            headers: headers,
+            headerStyle: const pw.TextStyle(fontSize: 14),
+            headerDecoration: const pw.BoxDecoration(),
+            data: data,
+            border: pw.TableBorder.symmetric(),
+            cellAlignment: pw.Alignment.center,
+            cellStyle: const pw.TextStyle(fontSize: 12),
+          ),
+        ],
       ),
-    );
-
-    final dir = await path.getApplicationDocumentsDirectory();
-    final file = File(&#39;${dir.path}&#47;$fileName.pdf&#39;);
-    await file.writeAsBytes(await pdf.save());
-    await OpenFile.open(file.path);
-    showSuccessToast(&#39;تم حفظ الملف بنجاح&#39;);
-  } catch (e) {
-    showErrorToast(&#39;Failed to generate the pdf&#39;);
-  }
+    ),
+  );
+  return pdf;
 }</code></pre>
 </section>
 

@@ -112,7 +112,7 @@ Widget build(final BuildContext context) =&gt;
     BlocListener&lt;LocalDBCubit, LocalDBState&gt;(
       listener: (final context, final state) {
         if (state is LoclaDBDataFetchingFromFireStore) {
-          const DilogWatingComponent(
+          const DialogWatingComponent(
             icon: Icons.cloud_download_outlined,
             title: &#39;جاري استيراد البيانات&#39;,
             message: &#39;يرجى الانتظار حتى تكتمل المزامنة...&#39;,
