@@ -21,49 +21,49 @@ export 'package:objectbox/objectbox.dart'; // so that callers only have to impor
 
 final _entities = <obx_int.ModelEntity>[
   obx_int.ModelEntity(
-    id: const obx_int.IdUid(2, 9154515039850596748),
+    id: const obx_int.IdUid(1, 3441289468533551156),
     name: 'ProductModel',
-    lastPropertyId: const obx_int.IdUid(7, 141492184540685496),
+    lastPropertyId: const obx_int.IdUid(7, 8493516055766680942),
     flags: 0,
     properties: <obx_int.ModelProperty>[
       obx_int.ModelProperty(
-        id: const obx_int.IdUid(1, 8119442383458368338),
+        id: const obx_int.IdUid(1, 2570021415353396296),
         name: 'id',
         type: 6,
         flags: 1,
       ),
       obx_int.ModelProperty(
-        id: const obx_int.IdUid(2, 8044557498577198452),
+        id: const obx_int.IdUid(2, 4350002819056813004),
         name: 'name',
         type: 9,
         flags: 0,
       ),
       obx_int.ModelProperty(
-        id: const obx_int.IdUid(3, 3326366019492487330),
+        id: const obx_int.IdUid(3, 9071078934498384482),
         name: 'serialNumber',
         type: 9,
         flags: 0,
       ),
       obx_int.ModelProperty(
-        id: const obx_int.IdUid(4, 8958825450245008746),
+        id: const obx_int.IdUid(4, 8610041405838187465),
         name: 'manufacture',
         type: 9,
         flags: 0,
       ),
       obx_int.ModelProperty(
-        id: const obx_int.IdUid(5, 7773340386920764557),
+        id: const obx_int.IdUid(5, 3041341624374391254),
         name: 'category',
         type: 9,
         flags: 0,
       ),
       obx_int.ModelProperty(
-        id: const obx_int.IdUid(6, 2418869364513338900),
+        id: const obx_int.IdUid(6, 2544987017347154515),
         name: 'trusted',
         type: 1,
         flags: 0,
       ),
       obx_int.ModelProperty(
-        id: const obx_int.IdUid(7, 141492184540685496),
+        id: const obx_int.IdUid(7, 8493516055766680942),
         name: 'onError',
         type: 9,
         flags: 0,
@@ -73,55 +73,55 @@ final _entities = <obx_int.ModelEntity>[
     backlinks: <obx_int.ModelBacklink>[],
   ),
   obx_int.ModelEntity(
-    id: const obx_int.IdUid(4, 9160064887395371876),
+    id: const obx_int.IdUid(2, 4284587484437811013),
     name: 'ScannedLogsProductModel',
-    lastPropertyId: const obx_int.IdUid(8, 2925683875874442903),
+    lastPropertyId: const obx_int.IdUid(8, 6116530927659954378),
     flags: 0,
     properties: <obx_int.ModelProperty>[
       obx_int.ModelProperty(
-        id: const obx_int.IdUid(1, 1385172095795576905),
+        id: const obx_int.IdUid(1, 8062348803444719097),
         name: 'id',
         type: 6,
         flags: 1,
       ),
       obx_int.ModelProperty(
-        id: const obx_int.IdUid(2, 8460290129714846462),
+        id: const obx_int.IdUid(2, 2876660628433523212),
         name: 'name',
         type: 9,
         flags: 0,
       ),
       obx_int.ModelProperty(
-        id: const obx_int.IdUid(3, 3102439661023963751),
+        id: const obx_int.IdUid(3, 6783192478182506190),
         name: 'serialNumber',
         type: 9,
         flags: 0,
       ),
       obx_int.ModelProperty(
-        id: const obx_int.IdUid(4, 8580526240427098784),
+        id: const obx_int.IdUid(4, 1184471534078224720),
         name: 'manufacture',
         type: 9,
         flags: 0,
       ),
       obx_int.ModelProperty(
-        id: const obx_int.IdUid(5, 867992797942690652),
+        id: const obx_int.IdUid(5, 8825999201900114079),
         name: 'category',
         type: 9,
         flags: 0,
       ),
       obx_int.ModelProperty(
-        id: const obx_int.IdUid(6, 2757222515576532312),
+        id: const obx_int.IdUid(6, 2934527485618620215),
         name: 'trusted',
         type: 1,
         flags: 0,
       ),
       obx_int.ModelProperty(
-        id: const obx_int.IdUid(7, 7202032809465492346),
+        id: const obx_int.IdUid(7, 1665116488713912248),
         name: 'onError',
         type: 9,
         flags: 0,
       ),
       obx_int.ModelProperty(
-        id: const obx_int.IdUid(8, 2925683875874442903),
+        id: const obx_int.IdUid(8, 6116530927659954378),
         name: 'scannedAt',
         type: 10,
         flags: 0,
@@ -169,30 +169,19 @@ Future<obx.Store> openStore({
 /// [obx.Store.new].
 obx_int.ModelDefinition getObjectBoxModel() {
   final model = obx_int.ModelInfo(
+    // If this version is not found, it means that this file was generated
+    // with an older version of the ObjectBox Dart generator.
+    // Please regenerate this file with the current generator version.
+    // Typically, this is done with `dart run build_runner build`.
+    generatorVersion: obx_int.GeneratorVersion.v2025_12_16,
     entities: _entities,
-    lastEntityId: const obx_int.IdUid(4, 9160064887395371876),
+    lastEntityId: const obx_int.IdUid(2, 4284587484437811013),
     lastIndexId: const obx_int.IdUid(0, 0),
     lastRelationId: const obx_int.IdUid(0, 0),
     lastSequenceId: const obx_int.IdUid(0, 0),
-    retiredEntityUids: const [6072440110067899483, 6674380074645599672],
+    retiredEntityUids: const [],
     retiredIndexUids: const [],
-    retiredPropertyUids: const [
-      3257500603860786490,
-      7184596676276845706,
-      4125859010512694816,
-      7999642378580237386,
-      1774581651058165040,
-      6648500980729496271,
-      5083381345625000545,
-      8316824247462543173,
-      2878691409008529064,
-      8553239779623812279,
-      136166845008193984,
-      4333210679318052728,
-      667664151190914925,
-      6348219516869610320,
-      8259691590146978420,
-    ],
+    retiredPropertyUids: const [],
     retiredRelationUids: const [],
     modelVersion: 5,
     modelVersionParserMinimum: 5,
@@ -228,12 +217,6 @@ obx_int.ModelDefinition getObjectBoxModel() {
       objectFromFB: (obx.Store store, ByteData fbData) {
         final buffer = fb.BufferContext(fbData);
         final rootOffset = buffer.derefObject(0);
-        final idParam = const fb.Int64Reader().vTableGet(
-          buffer,
-          rootOffset,
-          4,
-          0,
-        );
         final nameParam = const fb.StringReader(
           asciiOptimization: true,
         ).vTableGet(buffer, rootOffset, 6, '');
@@ -252,16 +235,22 @@ obx_int.ModelDefinition getObjectBoxModel() {
           14,
           false,
         );
+        final idParam = const fb.Int64Reader().vTableGet(
+          buffer,
+          rootOffset,
+          4,
+          0,
+        );
         final onErrorParam = const fb.StringReader(
           asciiOptimization: true,
         ).vTableGet(buffer, rootOffset, 16, '');
         final object = ProductModel(
-          id: idParam,
           name: nameParam,
           serialNumber: serialNumberParam,
           manufacture: manufactureParam,
           category: categoryParam,
           trusted: trustedParam,
+          id: idParam,
           onError: onErrorParam,
         );
 
@@ -297,12 +286,6 @@ obx_int.ModelDefinition getObjectBoxModel() {
       objectFromFB: (obx.Store store, ByteData fbData) {
         final buffer = fb.BufferContext(fbData);
         final rootOffset = buffer.derefObject(0);
-        final idParam = const fb.Int64Reader().vTableGet(
-          buffer,
-          rootOffset,
-          4,
-          0,
-        );
         final nameParam = const fb.StringReader(
           asciiOptimization: true,
         ).vTableGet(buffer, rootOffset, 6, '');
@@ -321,6 +304,12 @@ obx_int.ModelDefinition getObjectBoxModel() {
           14,
           false,
         );
+        final idParam = const fb.Int64Reader().vTableGet(
+          buffer,
+          rootOffset,
+          4,
+          0,
+        );
         final onErrorParam = const fb.StringReader(
           asciiOptimization: true,
         ).vTableGet(buffer, rootOffset, 16, '');
@@ -328,12 +317,12 @@ obx_int.ModelDefinition getObjectBoxModel() {
           const fb.Int64Reader().vTableGet(buffer, rootOffset, 18, 0),
         );
         final object = ScannedLogsProductModel(
-          id: idParam,
           name: nameParam,
           serialNumber: serialNumberParam,
           manufacture: manufactureParam,
           category: categoryParam,
           trusted: trustedParam,
+          id: idParam,
           onError: onErrorParam,
           scannedAt: scannedAtParam,
         );

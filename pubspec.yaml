@@ -5,10 +5,10 @@ publish_to: "none"
 version: 1.0.0+1
 
 licenses:
-  - GPL-3.0
+- GPL-3.0
 
 environment:
-  sdk: ^3.10.1
+  sdk: ^3.11.0
 
 dependencies:
   bidi: ^2.0.9
@@ -39,7 +39,7 @@ dependencies:
   share_plus: ^12.0.0
   shared_preferences: ^2.5.2
   simple_barcode_scanner: ^0.4.0
-  smooth_page_indicator: ^1.2.0+3
+  smooth_page_indicator: ^2.0.1
   toastification: ^3.0.3
   url_launcher: ^6.3.1
 
@@ -56,11 +56,11 @@ flutter:
   generate: true
   uses-material-design: true
   assets:
-    - assets/icons/
-    - assets/images/
-    - assets/animations/lottie/
+  - assets/icons/
+  - assets/images/
+  - assets/animations/lottie/
 
   fonts:
-    - family: ArabicFont
-      fonts:
-        - asset: assets/fonts/ar/Tajawal-Regular.ttf
+  - family: ArabicFont
+    fonts:
+    - asset: assets/fonts/ar/Tajawal-Regular.ttf
